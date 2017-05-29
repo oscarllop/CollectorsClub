@@ -1,0 +1,21 @@
+﻿@import "../variables.less.txt";
+
+.tab-content {
+    border-width: @BSBorderWidth;
+    border-style: @BSBorderStyle; 
+    border-color: @BSBorderThemeMode;
+    border-radius: @BSBorderRadius;
+    box-shadow: @BBoxShadow;
+}
+
+html body .tabs .nav-tabs li.active a {
+    color: @ASColor;
+    background-color: @ASBackgroundColor;
+    border-color: @ASBorderColor;
+}
+
+html body .tabs .nav-tabs a:hover {
+    color: @CHColor;
+    background-color: @CHBackgroundColor;
+    border-color: @CHBorderColor;
+}

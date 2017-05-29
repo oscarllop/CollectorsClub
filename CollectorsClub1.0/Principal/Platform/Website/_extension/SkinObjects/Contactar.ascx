@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="false" Inherits="CollectorsClub.UI.Skins.Controls.Contactar" CodeFile="Contactar.ascx.cs" %>
+<a class="terms" rel="nofollow" href="~/<%= Multiidioma.GetUrlFromTabID(Multiidioma.GetTabIDFromUrl("/Contacto")) %>"><%= Localization.GetString("NombreEnlace", Localization.GetResourceFile(this, MyFileName)) %></a>

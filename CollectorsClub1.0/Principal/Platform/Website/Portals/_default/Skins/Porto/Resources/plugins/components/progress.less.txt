@@ -1,0 +1,65 @@
+﻿@import "../variables.less.txt";
+
+.progress {
+	border-radius: @BSBorderRadius;
+	
+	background: @HSBackgroundColor;
+	box-shadow: @BBoxShadow;
+	
+}
+.progress.progress-border-radius {
+	border-radius: @BSBorderRadius;
+}
+
+.progress.progress-border-radius .progress-bar {
+	border-radius: @BSBorderRadius;
+}
+
+
+.progress-bar {
+	background-color: @HSBackgroundColor;
+	box-shadow: @BBoxShadow;
+	border-radius: @BSBorderRadius;
+}
+.progress-bar-tooltip {
+	
+	background-color:@HSBackgroundColor;
+	color: @FSColor;
+	font-size: @FSFontSize;
+	border-radius: @BSBorderRadius;
+}
+.progress-bar-primary {
+	background-color: @HSBackgroundColor;
+	color: @HSColor;
+}
+
+.progress-bar-success {
+	
+	color: @HSColor;
+}
+
+.progress-bar-warning {
+	
+	color: @HSColor;
+}
+
+.progress-bar-danger {
+	
+	color: @HSColor;
+}
+
+.progress-bar-info {
+	
+	color: @HSColor;
+}
+
+.progress-bar-dark {
+	
+	color: @HSColor;
+}
+.circular-bar.only-icon .fa {
+    color:@FSColor;
+	font-size: @FSFontSize;
+    line-height: @FSLineHeight;
+    
+}

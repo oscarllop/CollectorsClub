@@ -1,0 +1,1232 @@
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="..\\..\\CollectorsClub.Model\\Templates\\Context.Base.ttinclude"#>
+<#@ output extension=".html" encoding="utf-8"#><#
+
+const string _inputFile = @"..\..\CollectorsClub.EntityFramework\Model.edmx";
+string _modulo = "Editor";
+string _aplicacion = "CollectorsClub";
+Dictionary<string, MetadataGenerador.MetadataEntidad> _metadataEntidades = MetadataGenerador.ObtenerEntidades(_aplicacion);
+var _storeMetadata = LoadMetadata(_inputFile);
+var _textTransform = DynamicTextTransformation.Create(this);
+var _code = new CodeGenerationTools(this);
+var _ef = new MetadataTools(this);
+//var _itemCollection = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors).CreateEdmItemCollection(_inputFile);
+var _itemCollection = _storeMetadata.EdmItems;
+EntityContainer _container = _itemCollection.OfType<EntityContainer>().FirstOrDefault();
+var _typeMapper = new TypeMapper(_code, _ef, _container, _storeMetadata, _textTransform.Errors);
+var	_fileManager = EntityFrameworkTemplateFileManager.Create(this);
+var _codeStringGenerator = new CodeStringGenerator(_code, _typeMapper, _ef);
+var _codeJSGenerator = new CodeJSGenerator(_code, _typeMapper, _ef);
+
+if (!_typeMapper.VerifyCaseInsensitiveTypeUniqueness(_typeMapper.GetAllGlobalItems(_itemCollection), _inputFile)) {
+	return string.Empty;
+}
+
+MetadataGenerador.IncluirEntidadesNoExistentesEnFramework(_metadataEntidades, _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection).ToList(), _typeMapper);
+foreach (var _entity in _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection)) {
+  _fileManager.StartNewFile(_entity.Name + _modulo + "View.html"); 
+  IEnumerable<EdmProperty> _propertiesWithDefaultValues = _typeMapper.GetPropertiesWithDefaultValues(_entity);
+  IEnumerable<NavigationProperty> _collectionNavigationProperties = _typeMapper.GetCollectionNavigationProperties(_entity);
+  IEnumerable<NavigationProperty> _navigationProperties = _typeMapper.GetNavigationProperties(_entity);
+  IEnumerable<EdmProperty> _simpleProperties = _typeMapper.GetSimpleProperties(_entity);
+  IEnumerable<EdmProperty> _visibleProperties = _typeMapper.GetVisibleProperties(_entity);
+  IEnumerable<EdmMember> _keyProperties = _typeMapper.GetKeyProperties(_entity);
+  IEnumerable<EdmMember> _nonKeyVisibleProperties = _typeMapper.GetNonKeyVisibleProperties(_entity);
+  IEnumerable<EdmMember> _properties = _typeMapper.GetProperties(_entity);
+	int _tamanyoFila = 12;
+	#>
+<div id="__id__partialContenedorInterno" class="dnnForm dnnDatabase dnnClear contenedorNuevoFormatoListadoFormulario" style="display: none">
+	<fieldset>
+		<div id="PanelListado" data-bind="visible: MostrarListado">
+			<div id="Cargando" data-bind="visible: Cargando">
+				<img src="~/images/Extension/ajax-loader.gif" />
+				<span data-bind="text: TraduccionCampos.get('Cargando_Text')()"></span>
+			</div>
+			<div id="<#=_code.Escape(_entity)#><#= _modulo #>dvFiltrosFijados" style="display: none;">
+				<ul class="ulFiltroFijado">
+					<li class="pestanyaFijada">
+						<img src="~/images/Extension/Search.png" alt="Buscar" height="22" />
+						<img src="~/images/Extension/pin.png" alt="Fijar" data-bind="click: function () { MostrarFiltroFijado(false) }" class="imgPinFijado" />
+					</li>
+				</ul>
+				<div class="dvContenidoFiltroFijado">
+					<div id="<#=_code.Escape(_entity)#><#= _modulo #>dvFiltrosFijadosContenido">
+					</div>
+					<div style="clear: both;"></div>
+						
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			<div id="<#=_code.Escape(_entity)#><#= _modulo #>tabs" class="tabs" style="margin-top: 20px;">
+				<ul>
+					<li id="<#=_code.Escape(_entity)#><#= _modulo #>mostrarFiltro">
+						<a href="#<#=_code.Escape(_entity)#><#= _modulo #>filtro">
+							<img src="~/images/Extension/Search.png" data-bind="attr: { alt: TraduccionCampos.get('Buscar_Text')(), title: TraduccionCampos.get('Buscar_Text')() }" height="22" />
+						</a>
+						<img src="~/images/Extension/pin.png" alt="Fijar" class="imgPinSinFijar" data-bind="click: function () { MostrarFiltroFijado(true) }" />
+					</li>
+					<li>
+						<a href="#<#=_code.Escape(_entity)#><#= _modulo #>listado" id="btnMenuListado">
+							<img src="~/images/Extension/Table.png" data-bind="attr: { alt: TraduccionCampos.get('Listado_Text')(), title: TraduccionCampos.get('Listado_Text')() }" height="22" />
+						</a>
+					</li>
+					<li data-bind="visible: settings.PermitirCrear">
+						<a href="#nuevo" data-bind="click: New">
+							<img src="~/images/Extension/New.png" data-bind="attr: { alt: TraduccionCampos.get('Nuevo_Text')(), title: TraduccionCampos.get('Nuevo_Text')() }" height="22" />
+						</a>
+					</li>
+					<li>
+						<a href="#refescar" data-bind="click: Refrescar">
+							<img src="~/images/Extension/Refresh.png" data-bind="attr: { alt: TraduccionCampos.get('Refrescar_Text')(), title: TraduccionCampos.get('Refrescar_Text')() }" height="22" />
+						</a>
+					</li>
+					<li data-bind="visible: settings.PermitirExportarAExcel">
+						<a href="#refescar" data-bind="click: ExportarAExcel">
+							<img src="~/images/Extension/Excel.gif" data-bind="attr: { alt: TraduccionCampos.get('ExportarExcel_Text')(), title: TraduccionCampos.get('ExportarExcel_Title')() }" height="22" />
+						</a>
+					</li>
+					<li class="separator" />
+					<li data-bind="visible: HayRegistrosSeleccionados() && settings.PermitirBorrar">
+						<a href="#borrar" data-bind="click: DeleteSelected">
+							<img src="~/images/Extension/Delete.png" data-bind="attr: { alt: TraduccionCampos.get('Borrar_Text')(), title: TraduccionCampos.get('Borrar_Text')() }" height="22" />
+						</a>
+					</li>
+					<li data-bind="visible: HayRegistrosSeleccionados() && settings.PermitirCopiar">
+						<a href="#borrar" data-bind="click: MostrarDialogoCopia">
+							<img src="~/images/Extension/Copy.gif" data-bind="attr: { alt: TraduccionCampos.get('Copiar_Text')(), title: TraduccionCampos.get('Copiar_Text')() }" height="22" />
+						</a>
+					</li>
+					<li data-bind="visible: HayRegistrosSeleccionados() && settings.PermitirEdicionMultiple">
+						<a href="#borrar" data-bind="click: MostrarDialogoEdicionMultiple">
+							<img src="~/images/Extension/EditMultiple.png" data-bind="attr: { alt: TraduccionCampos.get('EdicionMultiple_Text')(), title: TraduccionCampos.get('EdicionMultiple_Text')() }" height="22" />
+						</a>
+					</li>
+				</ul>
+				<div id="<#=_code.Escape(_entity)#><#= _modulo #>filtro" data-bind="with: Filtro" class="filtro">
+					<div id="<#=_code.Escape(_entity)#><#= _modulo #>contenidoFiltro">
+						<div data-bind="visible: ($parent.Registros().length + $parent.IdsRegistrosFijos.length <= 0) && $parent.ListadoCargado()" class="MensajeNoExistenRegistros">
+							<span data-bind="text: $parent.TraduccionCampos.get('MensajeNoExistenRegistros_Text')()"></span>
+						</div>
+<# foreach (MetadataGenerador.MetadataPanel _metadataPanel in _metadataEntidades[_entity.Name].PanelesFiltro.Values) { 
+		if (_metadataPanel.Nombre != "SinPanel") { #>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title"><#= _metadataPanel.Nombre #></h3>
+							</div>
+							<div class="panel-body">
+		<# } #>
+								<div class="container">
+<#	int _tamanyoCamposFila = 0; 
+		foreach (MetadataGenerador.MetadataPropiedad _metadataPropiedad in _metadataPanel.Propiedades.Values.Where(p => p.Visible)) {
+			if (_tamanyoCamposFila == 0 || _tamanyoCamposFila >= _tamanyoFila) { 
+				_tamanyoCamposFila = _metadataPropiedad.Tamanyo; #>
+									<div class="row">
+<#		} else {
+				_tamanyoCamposFila += _metadataPropiedad.Tamanyo;
+			}
+			EntitySet _entitySet = null;
+			string _nombreTipoRelacionado = string.Empty;
+			if (MetadataGenerador.EsTipoCampoRelacion1_N(_metadataPropiedad.TipoCampo)) {
+				EdmMember _property = _properties.Where(p => p.Name == _metadataPropiedad.Nombre).FirstOrDefault();
+				if (_property != null) {
+					EntityType _tipoRelacionado = null;
+					NavigationProperty _navigationProperty = null;
+					_typeMapper.HasNavigationProperty((EdmProperty) _property, out _tipoRelacionado, out _navigationProperty);
+					if (_tipoRelacionado == null) { throw new ApplicationException(string.Format("No se ha encontrado el tipo relacionado de la propiedad {0} de la entidad {1}", _metadataPropiedad.Nombre, _entity.Name)); }
+					_nombreTipoRelacionado = _tipoRelacionado.Name;
+				} else {
+					_nombreTipoRelacionado = _metadataPropiedad.EntidadRelacionada;
+				}
+				if (string.IsNullOrEmpty(_nombreTipoRelacionado)) { throw new ApplicationException (string.Format("Error al procesar la propiedad {0} de la entidad {1}", _metadataPropiedad.Nombre, _entity.Name)); }
+				_entitySet = (EntitySet) _container.BaseEntitySets.Where(es => es.ElementType.Name == _nombreTipoRelacionado).FirstOrDefault(); 
+			} #>
+										<div class="form-group col-md-<#=_metadataPropiedad.Tamanyo #>">
+											<label data-bind="text: $parent.TraduccionCampos.get('<#= _metadataPropiedad.Nombre #><#= (_metadataPropiedad.TipoCampo == MetadataGenerador.TipoCampo.Fecha_Rango || _metadataPropiedad.TipoCampo == MetadataGenerador.TipoCampo.Hora_Rango || _metadataPropiedad.TipoCampo == MetadataGenerador.TipoCampo.Numero_Rango || _metadataPropiedad.TipoCampo == MetadataGenerador.TipoCampo.Relacion1_N_Fecha_Rango || _metadataPropiedad.TipoCampo == MetadataGenerador.TipoCampo.FechaHora_Rango ? "Desde" : string.Empty) #>_Text')() + ':'"></label>
+<#		switch (_metadataPropiedad.TipoCampo) {
+			case MetadataGenerador.TipoCampo.Relacion1_N_Desplegable: #>
+											<div class="input-group">
+												<span class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
+												<select class="form-control" data-bind="options: $parent.<#=_code.Escape(_entitySet) #>, optionsText: 'Nombre', optionsValue: 'Id', value: <#= _metadataPropiedad.Nombre  #>, optionsCaption: $parent.TraduccionCampos.get('Todos_Text')(), enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre  #>, event: { change: function () { $parent.FiltroModificado(true); } }, valueAllowUnset: true"></select>
+											</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Booleano_Desplegable_NoObligatorio: #>
+											<div class="input-group">
+												<span class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
+												<!--<select class="form-control" data-bind="options: $parent.OpcionesFiltrosBooleanos, optionsText: 'Nombre', optionsValue: 'Valor', value: <#= _metadataPropiedad.Nombre  #>, optionsCaption: $parent.TraduccionCampos.get('Todos_Text')(), event: { change: function () { $parent.FiltroModificado(true); } }, valueAllowUnset: true"></select>-->
+												<select class="form-control" data-bind="options: $parent.OpcionesFiltrosBooleanos, optionsText: 'Nombre', optionsValue: 'Valor', nullableBooleanValue: <#= _metadataPropiedad.Nombre  #>, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre  #>, event: { change: function () { $parent.FiltroModificado(true); } }, valueAllowUnset: true"></select>
+											</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Numero_Rango: #>
+											<input type="number" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>Desde, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+										</div>
+<#			if (_tamanyoCamposFila >= _tamanyoFila) { 
+					_tamanyoCamposFila = _metadataPropiedad.Tamanyo; #> 
+									</div>
+									<div class="row">
+<#			} else {
+					_tamanyoCamposFila += _metadataPropiedad.Tamanyo;
+				} #>
+										<div class="form-group col-md-<#=_metadataPropiedad.Tamanyo #>">
+											<label data-bind="text: $parent.TraduccionCampos.get('<#= _metadataPropiedad.Nombre #>Hasta_Text')() + ':'"></label>
+											<input type="number" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>Hasta, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+<#			break;
+			case MetadataGenerador.TipoCampo.FechaHora_Rango: #>
+											<div class="input-group">
+												<span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+												<input type="datetime-local" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>Desde, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+											</div>
+										</div>
+<#			if (_tamanyoCamposFila >= _tamanyoFila) { 
+					_tamanyoCamposFila = _metadataPropiedad.Tamanyo; #>
+									</div>
+									<div class="row">
+<#			} else {
+					_tamanyoCamposFila += _metadataPropiedad.Tamanyo;
+				} #>
+										<div class="form-group col-md-<#=_metadataPropiedad.Tamanyo #>">
+											<label data-bind="text: $parent.TraduccionCampos.get('<#= _metadataPropiedad.Nombre #>Hasta_Text')() + ':'"></label>
+											<div class="input-group">
+												<span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+												<input type="datetime-local" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>Hasta, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+											</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_Fecha_Rango:
+			case MetadataGenerador.TipoCampo.Fecha_Rango: #>
+											<div class="input-group">
+												<span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+												<input type="date" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>Desde, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+											</div>
+										</div>
+<#			if (_tamanyoCamposFila >= _tamanyoFila) { 
+					_tamanyoCamposFila = _metadataPropiedad.Tamanyo; #> 
+									</div>
+									<div class="row">
+<#			} else {
+					_tamanyoCamposFila += _metadataPropiedad.Tamanyo;
+				} #>
+										<div class="form-group col-md-<#=_metadataPropiedad.Tamanyo #>">
+											<label data-bind="text: $parent.TraduccionCampos.get('<#= _metadataPropiedad.Nombre #>Hasta_Text')() + ':'"></label>
+											<div class="input-group">
+												<span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+												<input type="date" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>Hasta, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+											</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Hora_Rango: #>
+											<div class="input-group">
+												<span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
+												<input type="time" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>Desde, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+											</div>
+										</div>
+<#			if (_tamanyoCamposFila >= _tamanyoFila) { 
+					_tamanyoCamposFila = _metadataPropiedad.Tamanyo; #> 
+									</div>
+									<div class="row">
+<#			} else {
+					_tamanyoCamposFila += _metadataPropiedad.Tamanyo;
+				} #>
+										<div class="form-group col-md-<#=_metadataPropiedad.Tamanyo #>">
+											<label data-bind="text: $parent.TraduccionCampos.get('<#= _metadataPropiedad.Nombre #>Hasta_Text')() + ':'"></label>
+											<div class="input-group">
+												<span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
+												<input type="time" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>Hasta, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+											</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_Numero_CampoSimple:
+			case MetadataGenerador.TipoCampo.Numero_CampoSimple: #>
+											<input type="number" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Video: #>
+											<input type="text" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Documento:
+			case MetadataGenerador.TipoCampo.Texto_Imagen:
+			case MetadataGenerador.TipoCampo.RelacionN_M_Imagenes: 
+			case MetadataGenerador.TipoCampo.RelacionN_M_Archivos: 
+			case MetadataGenerador.TipoCampo.Relacion1_N_CampoSimple:
+			case MetadataGenerador.TipoCampo.Texto_CampoSimple: #>
+											<input type="text" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_CorreoElectronico: #>
+											<div class="input-group">
+												<span class="input-group-addon">@</span>
+												<input type="email" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+											</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_DocumentoFiscal: #>
+											<div class="input-group">
+												<span class="input-group-addon"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span></span>
+												<input type="text" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" /><!-- pattern="/^\d{8}[a-zA-Z]$/" -->
+											</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_CodigoPostal: #>
+											<div class="input-group">
+												<span class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+												<input type="text" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" /><!-- pattern="^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$" -->
+											</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Telefono: #>
+											<div class="input-group">
+												<span class="input-group-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></span>
+												<input type="text" class="form-control" data-bind="inputmask: { value:<#= _metadataPropiedad.Nombre #>, mask:'phone' } , enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" pattern="+\d(\d{3})\d{3}-\d{4}" />
+												<span class="input-group-addon"></span>
+											</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_Autocomplete: #>
+											<div class="input-group">
+												<span class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
+												<input type="text" class="form-control" data-bind="jqAuto: { value: <#= _metadataPropiedad.Nombre #>, source: $parent.Autocomplete<#=_code.Escape(_entitySet) #>, inputProp: 'Id', labelProp: 'Nombre', valueProp: 'Id', template: 'TemplateAutocomplete<#= _metadataPropiedad.Nombre #>', options: { delay: 500, minLength: 3 }}, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+											</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_AutocompleteConBuscador: #>
+											<div class="input-group">
+												<span class="input-group-addon" data-bind="click: function() { $parent.MostrarBuscador('<#= _nombreTipoRelacionado #>', <#= _metadataPropiedad.Nombre #>); }" style="cursor: pointer"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+												<input type="text" class="form-control" data-bind="jqAuto: { value: <#= _metadataPropiedad.Nombre #>, source: $parent.Autocomplete<#=_code.Escape(_entitySet) #>, inputProp: 'Id', labelProp: 'Nombre', valueProp: 'Id', template: 'TemplateAutocomplete<#= _metadataPropiedad.Nombre #>', options: { delay: 500, minLength: 3 }}, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+											</div>
+											<div data-bind="visible: $parent.MostrarBuscador<#= _nombreTipoRelacionado #>">
+												<div id="__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorExterno" style="display: none" data-bind="partial: { PermitirCrear: true, PermitirGuardar: true, PermitirBorrar: true, BusquedaAutomatica: true, InteraccionExterna: true, IdModulo: '<#= _nombreTipoRelacionado #>Editor', Entidad: '<#= _nombreTipoRelacionado #>', IdPartial: '__id__partial<#= _nombreTipoRelacionado #>Buscador', Contenedor: '#__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorInterno', TamanyoPagina: 50, ColumnaOrden: 'Id', TipoOrden: 0, Filtro: { Mostrar: $parent.MostrarBuscador<#= _nombreTipoRelacionado #> }, Modo: ModoInicioModulo.Buscador, MetodosRespuesta: { Seleccionado: function (id, entidad) { $parent.ActualizarSeleccionadoEnBuscador(id, entidad, $parent.Filtro().<#= _metadataPropiedad.Nombre #>); } } }">
+												</div>
+											</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_DesplegableConBuscador: #>
+											<div class="input-group">
+												<span class="input-group-addon" data-bind="click: function() { $parent.MostrarBuscador('<#= _nombreTipoRelacionado #>', <#= _metadataPropiedad.Nombre #>); }" style="cursor: pointer"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+												<select class="form-control" data-bind="options: $parent.<#=_code.Escape(_entitySet) #>, optionsText: 'Nombre', optionsValue: 'Id', value: <#= _metadataPropiedad.Nombre #>, optionsCaption: $parent.TraduccionCampos.get('Todos_Text')(), enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); } }, valueAllowUnset: true"></select>
+											</div>
+											<div data-bind="visible: $parent.MostrarBuscador<#= _nombreTipoRelacionado #>">
+												<div id="__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorExterno" style="display: none" data-bind="partial: { PermitirCrear: true, PermitirGuardar: true, PermitirBorrar: true, BusquedaAutomatica: true, InteraccionExterna: true, IdModulo: '<#= _nombreTipoRelacionado #>Editor', Entidad: '<#= _nombreTipoRelacionado #>', IdPartial: '__id__partial<#= _nombreTipoRelacionado #>Buscador', Contenedor: '#__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorInterno', TamanyoPagina: 50, ColumnaOrden: 'Id', TipoOrden: 0, Filtro: { Mostrar: $parent.MostrarBuscador<#= _nombreTipoRelacionado #> }, Modo: ModoInicioModulo.Buscador, MetodosRespuesta: { Seleccionado: function (id, entidad) { $parent.ActualizarSeleccionadoEnBuscador(id, entidad, $parent.Filtro().<#= _metadataPropiedad.Nombre #>); } } }">
+												</div>
+											</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_AutocompleteConBuscadorYEtiqueta: #>
+											<div class="input-group">
+												<span class="input-group-addon" data-bind="click: function() { $parent.MostrarBuscador('<#= _nombreTipoRelacionado #>', <#= _metadataPropiedad.Nombre #>); }" style="cursor: pointer"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+												<input type="text" class="form-control" data-bind="jqAuto: { value: <#= _metadataPropiedad.Nombre #>, source: $parent.Autocomplete<#=_code.Escape(_entitySet) #>, inputProp: 'Id', labelProp: 'Nombre', valueProp: 'Id', template: 'TemplateAutocomplete<#= _metadataPropiedad.Nombre #>', options: { delay: 500, minLength: 3 }}, enable: $parent.HabilitarFiltro().<#= _metadataPropiedad.Nombre #>, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+											</div>
+											<div data-bind="visible: $parent.MostrarBuscador<#= _nombreTipoRelacionado #>">
+												<div id="__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorExterno" style="display: none" data-bind="partial: { PermitirCrear: true, PermitirGuardar: true, PermitirBorrar: true, BusquedaAutomatica: true, InteraccionExterna: true, IdModulo: '<#= _nombreTipoRelacionado #>Editor', Entidad: '<#= _nombreTipoRelacionado #>', IdPartial: '__id__partial<#= _nombreTipoRelacionado #>Buscador', Contenedor: '#__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorInterno', TamanyoPagina: 50, ColumnaOrden: 'Id', TipoOrden: 0, Filtro: { Mostrar: $parent.MostrarBuscador<#= _nombreTipoRelacionado #> }, Modo: ModoInicioModulo.Buscador, MetodosRespuesta: { Seleccionado: function (id, entidad) { $parent.ActualizarSeleccionadoEnBuscador(id, entidad, $parent.Filtro().<#= _metadataPropiedad.Nombre #>); } } }">
+												</div>
+											</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Desconocido: #>
+				<!-- No mostramos la propiedad <#= _metadataPropiedad.Nombre #> por ahora -->
+<#			break; 
+			default: #>
+											<#= _metadataPropiedad.TipoCampo #>
+<#			break; 
+			} #>
+										</div>
+<#		if (_tamanyoCamposFila >= _tamanyoFila || _metadataPropiedad == _metadataPanel.Propiedades.Values.Where(p => p.Visible).Last()) { #>									</div>
+<#		} 
+		}	#>
+								</div>
+<#	if (_metadataPanel.Nombre != "SinPanel") { #>
+							</div>
+						</div>
+<#	} 
+	} #>
+						<ul class="dnnActions dnnClear">
+							<li>
+								<a data-bind="click: $parent.Buscar, text: $parent.TraduccionCampos.get('Buscar_Text')()" class="dnnPrimaryAction"></a>
+							</li>
+							<li>
+								<a data-bind="click: $parent.RestablecerFiltroPorDefecto, text: $parent.TraduccionCampos.get('RestablecerFiltroPorDefecto_Text')()" class="dnnPrimaryAction"></a>
+							</li>
+						</ul>
+						<div class="dnnFormMessage dnnFormMessageFijado" data-bind="visible: $parent.FiltroModificado">
+							<span data-bind="text: $parent.TraduccionCampos.get('FiltroModificado_Text')()"></span>
+						</div>
+					</div>
+				</div>
+				<div id="<#=_code.Escape(_entity)#><#= _modulo #>listado">
+					<div data-bind="visible: (Registros().length + IdsRegistrosFijos.length <= 0) && ListadoCargado()" class="MensajeNoExistenRegistros">
+						<span data-bind="text: TraduccionCampos.get('MensajeNoExistenRegistros_Text')() "></span>
+					</div>
+					<div id="contenedorListado<#=_code.Escape(_entity)#><#= _modulo #>" class="contenedorListado">
+						<table class="dnnGrid listado scroll" data-bind="visible: (Registros().length + IdsRegistrosFijos.length > 0)" width="100%">
+							<thead>
+								<tr class="dnnGridHeader">
+									<th class="columnaCheckbox">
+										<img data-bind="attr: { 'src': '~/images/Extension/' + (ColumnasOcultasVisibles() ? 'Ocultar' : 'Mostrar') + 'ColumnasOcultas.png' }, click: MostrarOcultarColumnas" class="mostrarOcultarColumnas" />
+										<input type="checkbox" data-bind="checked: SeleccionarTodos, click: ActualizarSeleccion" />
+									</th>
+									<!-- OLL: pongo el data-bind en un span para que no elimine el selector de columnas -->
+<# foreach (MetadataGenerador.MetadataPanel _metadataPanel in _metadataEntidades[_entity.Name].PanelesListado.Values) {
+		foreach (MetadataGenerador.MetadataPropiedad _metadataPropiedad in _metadataPanel.Propiedades.Values.Where(p => p.Visible)) {
+			switch (_metadataPropiedad.TipoCampo) {
+			case MetadataGenerador.TipoCampo.Texto_Video:
+			case MetadataGenerador.TipoCampo.Texto_Documento:
+			case MetadataGenerador.TipoCampo.Texto_Imagen:
+			case MetadataGenerador.TipoCampo.RelacionN_M_Imagenes: 
+			case MetadataGenerador.TipoCampo.RelacionN_M_Archivos: 
+			case MetadataGenerador.TipoCampo.Desconocido:
+			case MetadataGenerador.TipoCampo.Texto_CeldaSimple:
+			case MetadataGenerador.TipoCampo.Hora_CeldaSimple:
+			case MetadataGenerador.TipoCampo.Fecha_CeldaSimple:
+			case MetadataGenerador.TipoCampo.FechaHora_CeldaSimple:
+			case MetadataGenerador.TipoCampo.Numero_CeldaSimple:
+			case MetadataGenerador.TipoCampo.Booleano_CeldaCasilla:
+			case MetadataGenerador.TipoCampo.Relacion1_N_CeldaSimple: #>
+									<th data-bind="visible: ColumnaVisible('<#= _metadataPropiedad.Nombre #>'), click: function () { Ordenar('<#= _metadataPropiedad.Nombre #>') }, attr: { 'class': ColumnaOculta('<#= _metadataPropiedad.Nombre #>') ? 'columnaOculta' : 'columnaVisible' }" style="cursor: pointer">
+										<span data-bind="text: TraduccionCampos.get('<#= _metadataPropiedad.Nombre #>_Text')()"></span>
+										<div data-bind="visible: ColumnasOcultasVisibles, click: function () { MostrarOcultarColumna('<#= _metadataPropiedad.Nombre #>') }, clickBubble: false, attr: { 'class': 'mostrarOcultarColumna ' + (ColumnaOculta('<#= _metadataPropiedad.Nombre #>') ? 'columnaOculta' : 'columnaVisible') }" />
+									</th>
+<#			break;	
+			case MetadataGenerador.TipoCampo.Texto_CeldaAmpliable: #>
+									<th data-bind="visible: ColumnaVisible('<#= _metadataPropiedad.Nombre #>'), click: function () { Ordenar('<#= _metadataPropiedad.Nombre #>') }, attr: { 'class': 'columnaHtml ' + (ColumnaOculta('<#= _metadataPropiedad.Nombre #>') ? 'columnaOculta' : 'columnaVisible') }" style="cursor: pointer">
+										<span data-bind="text: TraduccionCampos.get('<#= _metadataPropiedad.Nombre #>_Text')()"></span>
+										<div data-bind="visible: ColumnasOcultasVisibles, click: function () { MostrarOcultarColumna('<#= _metadataPropiedad.Nombre #>') }, clickBubble: false, attr: { 'class': 'mostrarOcultarColumna ' + (ColumnaOculta('<#= _metadataPropiedad.Nombre #>') ? 'columnaOculta' : 'columnaVisible') }" />
+									</th>
+<#			break; 
+			default: #>
+									<th data-bind="visible: ColumnaVisible('<#= _metadataPropiedad.Nombre #>'), click: function () { Ordenar('<#= _metadataPropiedad.Nombre #>') }, attr: { 'class': ColumnaOculta('<#= _metadataPropiedad.Nombre #>') ? 'columnaOculta' : 'columnaVisible' }" style="cursor: pointer">
+										<span data-bind="text: TraduccionCampos.get('<#= _metadataPropiedad.Nombre #>_Text')() + ' - <#= _metadataPropiedad.TipoCampo #>'"></span>
+										<div data-bind="visible: ColumnasOcultasVisibles, click: function () { MostrarOcultarColumna('<#= _metadataPropiedad.Nombre #>') }, clickBubble: false, attr: { 'class': 'mostrarOcultarColumna ' + (ColumnaOculta('<#= _metadataPropiedad.Nombre #>') ? 'columnaOculta' : 'columnaVisible') }" />
+									</th>
+<#			break; 
+			} 
+		 }
+	 }
+	 int _numeroColumnas = 0;
+	 foreach (MetadataGenerador.MetadataPanel _panel in _metadataEntidades[_entity.Name].PanelesListado.Values) {
+			_numeroColumnas += _panel.Propiedades.Values.Where(p => p.Visible).Count();
+	 }
+	 #>
+								</tr>
+							</thead>
+							<tbody data-bind="template: { name: '<#=_code.Escape(_entity)#><#= _modulo #>_registrofijo-template', foreach: RegistrosFijos }" class="registrosfijos">
+							</tbody>
+							<tbody data-bind="template: { name: '<#=_code.Escape(_entity)#><#= _modulo #>_registro-template', foreach: Registros }">
+							</tbody>
+							<tfoot>
+								<tr class="dnnGridFooter">
+									<td colspan="<#= _numeroColumnas + 1 #>"></td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+					<div style="min-height: 30px">
+						<div style="float: right; height: 30px" data-bind="visible: TotalRegistros() > 0">
+							<label>Visualizando <span data-bind="text: RegistrosCargados"></span> registros de <span data-bind="text: TotalRegistros"></span></label>
+						</div>
+						<ul class="dnnActions dnnClear" data-bind="visible: TotalRegistros() > RegistrosCargados()">
+							<li>
+								<a data-bind="click: VerMas, text: TraduccionCampos.get('VerMas_Text')()" class="dnnPrimaryAction"></a>
+							</li>
+							<div class="form-group col-md-2">
+								<!--<label data-bind="text: $parent.TraduccionCampos.get('FechaPrimerAcceso_Text')() + ':'"></label>-->
+								<div class="input-group">
+									<span class="input-group-addon">Cantidad:</span>
+									<select class="form-control" data-bind="options: TamanyosPagina, value: TamanyoPagina"></select>
+								</div>
+							</div>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="<#=_code.Escape(_entity)#><#= _modulo #>PanelFormulario" class="panelformulario" data-bind="visible: MostrarFormulario">
+			<div id="__id__partialContenedorCargandoFormulario" class="ContenedorCargando" style="height: 50px; width: 50px;" data-elementoReferencia="<#=_code.Escape(_entity)#><#= _modulo #>PanelFormulario"></div>
+			<div id="CargandoFormulario" data-bind="visible: CargandoFormulario">
+				<img src="~/images/Extension/ajax-loader.gif" data-bind="attr: { alt: TraduccionCampos.get('CargandoFormulario_Text')() }" />
+				<span data-bind="text: TraduccionCampos.get('CargandoFormulario_Text')()"></span>
+			</div>
+			<div class="Formulario" data-bind="with: Registro">
+				<div data-bind="validationOptions: { 'messageTemplate': 'MensajeTooltipTemplate', 'decorateInputElement': true, 'errorElementClass': 'has-error', insertMessages: false }">
+<# foreach (MetadataGenerador.MetadataPanel _metadataPanel in _metadataEntidades[_entity.Name].PanelesFormulario.Values) {
+		if (_metadataPanel.Nombre != "SinPanel") { #>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title"><#= _metadataPanel.Nombre #></h3>
+						</div>
+						<div class="panel-body">
+<#  } 
+		if (_metadataPanel.Propiedades.Values.Where(p => p.Visible).Count() > 0) { #>
+							<div class="container">
+<#	}
+		int _tamanyoCamposFila = 0; 
+		foreach (MetadataGenerador.MetadataPropiedad _metadataPropiedad in _metadataPanel.Propiedades.Values.Where(p => p.Visible)) {
+			EdmMember _property = _properties.Where(p => p.Name == _metadataPropiedad.Nombre).FirstOrDefault();
+			bool _tieneValidacion = _typeMapper.TieneAlgunTipoDeValidacion(_property);
+			if (_tamanyoCamposFila == 0 || _tamanyoCamposFila >= _tamanyoFila) { 
+				_tamanyoCamposFila = _metadataPropiedad.Tamanyo; #>
+								<div class="row">
+<#		} else {
+				_tamanyoCamposFila += _metadataPropiedad.Tamanyo;
+			} #>
+									<div class="form-group col-md-<#=_metadataPropiedad.Tamanyo #>" data-bind="visible: $parent.MostrarElemento().<#= _metadataPropiedad.Nombre #><# if (_tieneValidacion) { #>, validationElement: <#= _metadataPropiedad.Nombre #><# } #>">
+<#		if (_metadataPropiedad.MostrarEtiqueta) { #>
+										<label data-bind="text: $parent.TraduccionCampos.get('<#= _metadataPropiedad.Nombre #>_Text')() + ':'"></label>
+<#		}
+			EntitySet _entitySet = null;
+			string _nombreTipoRelacionado = string.Empty;
+			if (MetadataGenerador.EsTipoCampoRelacion1_N(_metadataPropiedad.TipoCampo)) {
+				if (_property != null) {
+					EntityType _tipoRelacionado = null;
+					NavigationProperty _navigationProperty = null;
+					_typeMapper.HasNavigationProperty((EdmProperty) _property, out _tipoRelacionado, out _navigationProperty);
+					if (_tipoRelacionado == null) { throw new ApplicationException(string.Format("No se ha encontrado el tipo relacionado de la propiedad {0} de la entidad {1}", _metadataPropiedad.Nombre, _entity.Name)); }
+					_nombreTipoRelacionado = _tipoRelacionado.Name;
+				} else {
+					_nombreTipoRelacionado = _metadataPropiedad.EntidadRelacionada;
+				}
+				if (string.IsNullOrEmpty(_nombreTipoRelacionado)) { throw new ApplicationException (string.Format("Error al procesar la propiedad {0} de la entidad {1}", _metadataPropiedad.Nombre, _entity.Name)); }
+				_entitySet = (EntitySet) _container.BaseEntitySets.Where(es => es.ElementType.Name == _nombreTipoRelacionado).FirstOrDefault(); 
+			}
+		 	switch (_metadataPropiedad.TipoCampo) {
+			case MetadataGenerador.TipoCampo.Relacion1_N_Desplegable: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
+											<select class="form-control" data-bind="options: $parent.<#=_code.Escape(_entitySet) #>, optionsText: 'Nombre', optionsValue: 'Id', value: <#= _metadataPropiedad.Nombre  #>, optionsCaption: $parent.TraduccionCampos.get('Seleccionar_Text')(), enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #><#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>, valueAllowUnset: true"></select>
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Booleano_Casilla: #>
+										<div class="input-group">
+											<input type="checkbox" data-bind="checked: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #><#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>" class="normalCheckBox" />
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_Numero_CampoSimple:
+			case MetadataGenerador.TipoCampo.Numero_CampoSimple: #>
+										<input type="number" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }" />
+<#			break;
+			case MetadataGenerador.TipoCampo.FechaHora_CampoSimple: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+											<input type="datetime-local" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }" />
+										</div>	
+<#			break;
+			case MetadataGenerador.TipoCampo.Fecha_CampoSimple: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+											<input type="date" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }" />
+										</div>	
+<#			break;
+			case MetadataGenerador.TipoCampo.Hora_CampoSimple: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
+											<input type="time" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }" />
+										</div>	
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Editor: #>
+										<textarea id="<#= _metadataPropiedad.Nombre #>" style="width: 500px !important;" data-bind="ckEditor: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre  #><#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>"></textarea>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Textarea: #>
+										<textarea class="form-control" data-bind="value: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }"></textarea>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_CampoSimple:
+			case MetadataGenerador.TipoCampo.Texto_CampoSimple: #>
+										<input type="text" class="form-control" data-bind="value: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }" />
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_CorreoElectronico: #>
+										<div class="input-group">
+											<span class="input-group-addon">@</span>
+											<input type="text" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }" />
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_DocumentoFiscal: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }" />
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_CodigoPostal: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }" />
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Telefono: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }" />
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_1_Partial:
+			case MetadataGenerador.TipoCampo.Relacion1_N_Partial:
+				string _moduloTipoRelacionadoRelacion1_N_Partial = "Editor";
+				string _nombreTipoRelacionadoRelacion1_N_Partial = _metadataPropiedad.EntidadRelacionada;
+				EntityType _tipoRelacionadoRelacion1_N_Partial = null;
+				if (_nombreTipoRelacionadoRelacion1_N_Partial == null) {
+					if (_property is EdmProperty) {
+						NavigationProperty _navigationPropertyRelacion1_N_Partial = null;
+						_typeMapper.HasNavigationProperty((EdmProperty) _property, out _tipoRelacionadoRelacion1_N_Partial, out _navigationPropertyRelacion1_N_Partial);
+					} else {
+						_tipoRelacionadoRelacion1_N_Partial = _typeMapper.FromEntityType((NavigationProperty) _property);
+					}
+					_nombreTipoRelacionadoRelacion1_N_Partial = _tipoRelacionadoRelacion1_N_Partial.Name; 
+				} 
+				string _ParamatrosRelacion1_N_Partial = string.Empty;
+				if (_metadataPropiedad.PermitirCrear != null) { _ParamatrosRelacion1_N_Partial += "PermitirCrear: " + _metadataPropiedad.PermitirCrear.ToString().ToLower(); } 
+				if (_metadataPropiedad.PermitirGuardar != null) { _ParamatrosRelacion1_N_Partial += (_ParamatrosRelacion1_N_Partial != string.Empty ? ", " : string.Empty) + "PermitirGuardar: " + _metadataPropiedad.PermitirGuardar.ToString().ToLower(); }
+				if (_metadataPropiedad.PermitirBorrar != null) { _ParamatrosRelacion1_N_Partial += (_ParamatrosRelacion1_N_Partial != string.Empty ? ", " : string.Empty) + "PermitirBorrar: " + _metadataPropiedad.PermitirBorrar.ToString().ToLower(); }
+				if (_metadataPropiedad.BusquedaAutomatica != null) { _ParamatrosRelacion1_N_Partial += (_ParamatrosRelacion1_N_Partial != string.Empty ? ", " : string.Empty) + "BusquedaAutomatica: " + _metadataPropiedad.BusquedaAutomatica.ToString().ToLower(); }
+				if (_metadataPropiedad.InteraccionExterna != null) { _ParamatrosRelacion1_N_Partial += (_ParamatrosRelacion1_N_Partial != string.Empty ? ", " : string.Empty) + "InteraccionExterna: " + _metadataPropiedad.InteraccionExterna.ToString().ToLower(); } 
+				_ParamatrosRelacion1_N_Partial += (_ParamatrosRelacion1_N_Partial != string.Empty ? ", " : string.Empty) + "IdModulo: '" + _nombreTipoRelacionadoRelacion1_N_Partial + _moduloTipoRelacionadoRelacion1_N_Partial + "', Entidad: '" + _nombreTipoRelacionadoRelacion1_N_Partial +"', IdPartial: '__id__partial" + _nombreTipoRelacionadoRelacion1_N_Partial + _moduloTipoRelacionadoRelacion1_N_Partial + "', Contenedor: '#__id__partial" + _nombreTipoRelacionadoRelacion1_N_Partial + _moduloTipoRelacionadoRelacion1_N_Partial + "ContenedorInterno', TamanyoPagina: 50, ColumnaOrden: '" + (_tipoRelacionadoRelacion1_N_Partial != null ? _typeMapper.GetKeyProperties(_tipoRelacionadoRelacion1_N_Partial).First().Name : "Id") + "', TipoOrden: 0"; #>
+										<div id="__id__partial<#= _nombreTipoRelacionadoRelacion1_N_Partial #><#= _moduloTipoRelacionadoRelacion1_N_Partial #>ContenedorExterno" style="display: none" data-bind="partial: { <#= _ParamatrosRelacion1_N_Partial #>, Filtro: { <#= (_metadataPropiedad.Filtros != null ? _metadataPropiedad.Filtros : string.Empty) #><#= (_metadataPropiedad.MetodosRespuesta != null ? ", MetodosRespuesta: " + _metadataPropiedad.MetodosRespuesta : string.Empty) #> }, Modo: ModoInicioModulo.<#= Enum.GetName(typeof(MetadataGenerador.ModoInicio), _metadataPropiedad.ModoInicio ?? MetadataGenerador.ModoInicio.Listado) #> }<#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>">
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.RelacionN_M_Partial:
+				// OLL: Ahora mismo está pensado para que solo ponga el html una vez. ¿Que pasa si tenemos dos propiedades del mismo tipo?
+				// Por ejemplo DocumentosCliente, DocumentosAgente
+				string _moduloTipoRelacionado = "Editor";
+				EntityType _tipoRelacionN_M_Partial = (EntityType) ((CollectionType) _property.TypeUsage.EdmType).TypeUsage.EdmType;
+				string _nombreTipoRelacionadoRelacionN_M_Partial = _tipoRelacionN_M_Partial.Name; 
+				string _ParamatrosPartial = string.Empty;
+				if (_metadataPropiedad.PermitirCrear != null) { _ParamatrosPartial += "PermitirCrear: " + _metadataPropiedad.PermitirCrear.ToString().ToLower(); } 
+				if (_metadataPropiedad.PermitirGuardar != null) { _ParamatrosPartial += (_ParamatrosPartial != string.Empty ? ", " : string.Empty) + "PermitirGuardar: " + _metadataPropiedad.PermitirGuardar.ToString().ToLower(); }
+				if (_metadataPropiedad.PermitirBorrar != null) { _ParamatrosPartial += (_ParamatrosPartial != string.Empty ? ", " : string.Empty) + "PermitirBorrar: " + _metadataPropiedad.PermitirBorrar.ToString().ToLower(); }
+				if (_metadataPropiedad.BusquedaAutomatica != null) { _ParamatrosPartial += (_ParamatrosPartial != string.Empty ? ", " : string.Empty) + "BusquedaAutomatica: " + _metadataPropiedad.BusquedaAutomatica.ToString().ToLower(); }
+				if (_metadataPropiedad.InteraccionExterna != null) { _ParamatrosPartial += (_ParamatrosPartial != string.Empty ? ", " : string.Empty) + "InteraccionExterna: " + _metadataPropiedad.InteraccionExterna.ToString().ToLower(); } 
+				_ParamatrosPartial += (_ParamatrosPartial != string.Empty ? ", " : string.Empty) + "IdModulo: '" + _nombreTipoRelacionadoRelacionN_M_Partial + _moduloTipoRelacionado + "', Entidad: '" + _nombreTipoRelacionadoRelacionN_M_Partial +"', IdPartial: '__id__partial" + _nombreTipoRelacionadoRelacionN_M_Partial + _moduloTipoRelacionado + "', Contenedor: '#__id__partial" + _nombreTipoRelacionadoRelacionN_M_Partial + _moduloTipoRelacionado + "ContenedorInterno', TamanyoPagina: 50, ColumnaOrden: '" + (_tipoRelacionN_M_Partial != null ? _typeMapper.GetKeyProperties(_tipoRelacionN_M_Partial).First().Name : "Id") + "', TipoOrden: 0"; #>
+										<div id="__id__partial<#= _nombreTipoRelacionadoRelacionN_M_Partial #><#= _moduloTipoRelacionado #>ContenedorExterno" style="display: none" data-bind="partial: { <#= _ParamatrosPartial #>, Filtro: { <#= (_metadataPropiedad.Filtros != null ? _metadataPropiedad.Filtros : string.Empty) #><#= (_metadataPropiedad.MetodosRespuesta != null ? ", MetodosRespuesta: " + _metadataPropiedad.MetodosRespuesta : string.Empty) #> }, Modo: ModoInicioModulo.<#= Enum.GetName(typeof(MetadataGenerador.ModoInicio), _metadataPropiedad.ModoInicio ?? MetadataGenerador.ModoInicio.Listado) #> }<#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>">
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_Autocomplete: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="jqAuto: { value: <#= _metadataPropiedad.Nombre #>, source: $parent.Autocomplete<#=_code.Escape(_entitySet) #>, inputProp: 'Id', labelProp: 'Nombre', valueProp: 'Id', template: 'TemplateAutocomplete<<#= _metadataPropiedad.Nombre #>, options: { delay: 500, minLength: 3 }}, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }" />
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_AutocompleteConBuscador: #>
+										<div class="input-group">
+											<span class="input-group-addon" data-bind="click: function() { $parent.MostrarBuscador('<#= _nombreTipoRelacionado #>', <#= _metadataPropiedad.Nombre #>); }" style="cursor: pointer"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="jqAuto: { value: <#= _metadataPropiedad.Nombre #>, source: $parent.Autocomplete<#=_code.Escape(_entitySet) #>, inputProp: 'Id', labelProp: 'Nombre', valueProp: 'Id', template: 'TemplateAutocomplete<#= _metadataPropiedad.Nombre #>', options: { delay: 500, minLength: 3 }}, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }" />
+										</div>
+										<div data-bind="visible: $parent.MostrarBuscador<#= _nombreTipoRelacionado #>">
+											<div id="__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorExterno" style="display: none" data-bind="partial: { PermitirCrear: true, PermitirGuardar: true, PermitirBorrar: true, BusquedaAutomatica: true, InteraccionExterna: true, IdModulo: '<#= _nombreTipoRelacionado #>Editor', Entidad: '<#= _nombreTipoRelacionado #>', IdPartial: '__id__partial<#= _nombreTipoRelacionado #>Buscador', Contenedor: '#__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorInterno', TamanyoPagina: 50, ColumnaOrden: 'Id', TipoOrden: 0, Filtro: { Mostrar: $parent.MostrarBuscador<#= _nombreTipoRelacionado #> }, Modo: ModoInicioModulo.Buscador, MetodosRespuesta: { Seleccionado: function (id, entidad) { $parent.ActualizarSeleccionadoEnBuscador(id, entidad, $parent.Filtro().<#= _metadataPropiedad.Nombre #>); } } }">
+											</div>
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_DesplegableConBuscador: #>
+										<div class="input-group">
+											<span class="input-group-addon" data-bind="click: function() { $parent.MostrarBuscador('<#= _nombreTipoRelacionado #>', <#= _metadataPropiedad.Nombre #>); }" style="cursor: pointer"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+											<select class="form-control" data-bind="options: $parent.<#=_code.Escape(_entitySet) #>, optionsText: 'Nombre', optionsValue: 'Id', value: <#= _metadataPropiedad.Nombre #>, optionsCaption: $parent.TraduccionCampos.get('Todos_Text')(), enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #><#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>, valueAllowUnset: true"></select>
+										</div>
+										<div data-bind="visible: $parent.MostrarBuscador<#= _nombreTipoRelacionado #>">
+											<div id="__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorExterno" style="display: none" data-bind="partial: { PermitirCrear: true, PermitirGuardar: true, PermitirBorrar: true, BusquedaAutomatica: true, InteraccionExterna: true, IdModulo: '<#= _nombreTipoRelacionado #>Editor', Entidad: '<#= _nombreTipoRelacionado #>', IdPartial: '__id__partial<#= _nombreTipoRelacionado #>Buscador', Contenedor: '#__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorInterno', TamanyoPagina: 50, ColumnaOrden: 'Id', TipoOrden: 0, Filtro: { Mostrar: $parent.MostrarBuscador<#= _nombreTipoRelacionado #> }, Modo: ModoInicioModulo.Buscador, MetodosRespuesta: { Seleccionado: function (id, entidad) { $parent.ActualizarSeleccionadoEnBuscador(id, entidad, $parent.Filtro().<#= _metadataPropiedad.Nombre #>); } } }">
+											</div>
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_AutocompleteConBuscadorYEtiqueta: #>
+										<div class="input-group">
+											<span class="input-group-addon" data-bind="click: function() { $parent.MostrarBuscador('<#= _nombreTipoRelacionado #>', <#= _metadataPropiedad.Nombre #>); }" style="cursor: pointer"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="jqAuto: { value: <#= _metadataPropiedad.Nombre #>, source: $parent.Autocomplete<#=_code.Escape(_entitySet) #>, inputProp: 'Id', labelProp: 'Nombre', valueProp: 'Id', template: 'TemplateAutocomplete<#= _metadataPropiedad.Nombre #>', options: { delay: 500, minLength: 3 }}, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }" />
+										</div>
+										<div data-bind="visible: $parent.MostrarBuscador<#= _nombreTipoRelacionado #>">
+											<div id="__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorExterno" style="display: none" data-bind="partial: { PermitirCrear: true, PermitirGuardar: true, PermitirBorrar: true, BusquedaAutomatica: true, InteraccionExterna: true, IdModulo: '<#= _nombreTipoRelacionado #>Editor', Entidad: '<#= _nombreTipoRelacionado #>', IdPartial: '__id__partial<#= _nombreTipoRelacionado #>Buscador', Contenedor: '#__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorInterno', TamanyoPagina: 50, ColumnaOrden: 'Id', TipoOrden: 0, Filtro: { Mostrar: $parent.MostrarBuscador<#= _nombreTipoRelacionado #> }, Modo: ModoInicioModulo.Buscador, MetodosRespuesta: { Seleccionado: function (id, entidad) { $parent.ActualizarSeleccionadoEnBuscador(id, entidad, $parent.Filtro().<#= _metadataPropiedad.Nombre #>); } } }">
+											</div>
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Video: #>
+										<input type="text" class="form-control" data-bind="value: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }" />
+										<div class="embed-responsive embed-responsive-16by9" data-bind="visible: <#= _metadataPropiedad.Nombre #>">
+												<iframe frameborder="0"  data-bind="attr: { 'src': <#= _metadataPropiedad.Nombre #> }"></iframe> <!-- src="http://www.youtube.com/embed/oNBBijn4JuY?showinfo=0&amp;wmode=opaque" -->
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Documento: #>
+										<div id="__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>ContenedorExterno" style="display: block" data-bind="partialbieniniciada: { IdModulo: 'GestorArchivos', IdPartial: '__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>', Contenedor: '#__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>ContenedorInterno', MetodosRespuesta: { ArchivosCargados: function(archivos) { $parent.CargaFinalizada<#= _metadataPropiedad.Nombre #>(archivos); } }, DatosPorDefecto: { ListaArchivos: $parent.Archivos<#= _metadataPropiedad.Nombre #>, UrlArchivos: $parent.UrlArchivos<#= _metadataPropiedad.Nombre #>, UrlArchivosNuevos: $parent.UrlArchivosNuevos<#= _metadataPropiedad.Nombre #> }, NumeroMaximoArchivosACargar: $parent.NumeroMaximoArchivosACargar<#= _metadataPropiedad.Nombre #>, TiposArchivoPermitidos: 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-powerpointtd,application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }">
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Imagen: #>
+										<div id="__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>ContenedorExterno" style="display: block" data-bind="partialbieniniciada: { IdModulo: 'GestorArchivos', IdPartial: '__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>', Contenedor: '#__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>ContenedorInterno', MetodosRespuesta: { ArchivosCargados: function(archivos) { $parent.CargaFinalizada<#= _metadataPropiedad.Nombre #>(archivos); } }, DatosPorDefecto: { ListaArchivos: $parent.Archivos<#= _metadataPropiedad.Nombre #>, UrlArchivos: $parent.UrlArchivos<#= _metadataPropiedad.Nombre #>, UrlArchivosNuevos: $parent.UrlArchivosNuevos<#= _metadataPropiedad.Nombre #> }, NumeroMaximoArchivosACargar: $parent.NumeroMaximoArchivosACargar<#= _metadataPropiedad.Nombre #>, TiposArchivoPermitidos: 'image/jpeg,image/png,image/gif' }">
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.RelacionN_M_Imagenes:  #>
+										<label>Campo <#= _metadataPropiedad.Nombre #></label>
+<#			break;
+			case MetadataGenerador.TipoCampo.RelacionN_M_Archivos:  #>
+										<label>Campo <#= _metadataPropiedad.Nombre #></label>
+<#			break;
+			case MetadataGenerador.TipoCampo.Desconocido: #>
+										<#= _metadataPropiedad.Nombre #>
+<#			break; 
+			} #>
+<# if (_tieneValidacion) { #>
+										<div data-bind="validationMessageWithTemplate: <#= _metadataPropiedad.Nombre #>"></div>
+<# } #>
+									</div>
+<#		if (_tamanyoCamposFila >= _tamanyoFila || _metadataPropiedad == _metadataPanel.Propiedades.Values.Where(p => p.Visible).Last()) { #>								</div>
+<#		}
+		} 
+		if (_metadataPanel.Propiedades.Values.Where(p => p.Visible).Count() > 0) { #>
+							</div>
+<#	}
+		if (_metadataPanel.Nombre != "SinPanel") { #>
+						</div>
+					</div>
+<#	} 
+} #>				
+				</div>
+				<ul class="dnnActions dnnClear" data-bind="visible: $parent.MostrarAcciones">
+					<li>
+						<a data-bind="click: $parent.Update, text: $parent.TraduccionCampos.get('Guardar_Text')(), visible: $parent.settings.PermitirGuardar" class="dnnPrimaryAction"></a>
+					</li>
+					<li>
+						<a data-bind="click: $parent.Cancel, text: $parent.TraduccionCampos.get('Cancelar_Text')()" class="dnnSecondaryAction"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="<#=_code.Escape(_entity)#><#= _modulo #>FormularioCopia" class="panelformulario" data-bind="visible: MostrarFormularioCopia">
+			<div id="__id__partialContenedorCargandoFormularioCopia" class="ContenedorCargando" style="height: 50px; width: 50px;" data-elementoReferencia="<#=_code.Escape(_entity)#><#= _modulo #>FormularioCopia"></div>
+			<div class="Formulario" data-bind="with: RegistroCopia">
+				<div data-bind="validationOptions: { insertMessages: false }">
+<# foreach (MetadataGenerador.MetadataPanel _metadataPanel in _metadataEntidades[_entity.Name].PanelesFormularioCopia.Values) {
+		if (_metadataPanel.Nombre != "SinPanel") { #>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title"><#= _metadataPanel.Nombre #></h3>
+						</div>
+						<div class="panel-body">
+<#  } 
+		if (_metadataPanel.Propiedades.Values.Where(p => p.Visible).Count() > 0) { #>
+							<div class="container">
+<#	}
+		int _tamanyoCamposFila = 0; 
+		foreach (MetadataGenerador.MetadataPropiedad _metadataPropiedad in _metadataPanel.Propiedades.Values.Where(p => p.Visible)) {
+			EdmMember _property = _properties.Where(p => p.Name == _metadataPropiedad.Nombre).FirstOrDefault();
+			if (_tamanyoCamposFila == 0 || _tamanyoCamposFila >= _tamanyoFila) { 
+				_tamanyoCamposFila = _metadataPropiedad.Tamanyo; #>
+								<div class="row">
+<#		} else {
+				_tamanyoCamposFila += _metadataPropiedad.Tamanyo;
+			} #>
+									<div class="form-group col-md-<#=_metadataPropiedad.Tamanyo #>" data-bind="visible: $parent.MostrarElemento().<#= _metadataPropiedad.Nombre #>">
+<#		if (_metadataPropiedad.MostrarEtiqueta) { #>
+										<label data-bind="text: $parent.TraduccionCampos.get('<#= _metadataPropiedad.Nombre #>_Text')() + ':'"></label>
+<#		}
+			EntitySet _entitySet = null;
+			string _nombreTipoRelacionado = string.Empty;
+			if (MetadataGenerador.EsTipoCampoRelacion1_N(_metadataPropiedad.TipoCampo)) {
+				if (_property != null) {
+					EntityType _tipoRelacionado = null;
+					NavigationProperty _navigationProperty = null;
+					_typeMapper.HasNavigationProperty((EdmProperty) _property, out _tipoRelacionado, out _navigationProperty);
+					if (_tipoRelacionado == null) { throw new ApplicationException(string.Format("No se ha encontrado el tipo relacionado de la propiedad {0} de la entidad {1}", _metadataPropiedad.Nombre, _entity.Name)); }
+					_nombreTipoRelacionado = _tipoRelacionado.Name;
+				} else {
+					_nombreTipoRelacionado = _metadataPropiedad.EntidadRelacionada;
+				}
+				if (string.IsNullOrEmpty(_nombreTipoRelacionado)) { throw new ApplicationException (string.Format("Error al procesar la propiedad {0} de la entidad {1}", _metadataPropiedad.Nombre, _entity.Name)); }
+				_entitySet = (EntitySet) _container.BaseEntitySets.Where(es => es.ElementType.Name == _nombreTipoRelacionado).FirstOrDefault(); 
+			}
+		 	switch (_metadataPropiedad.TipoCampo) {
+			case MetadataGenerador.TipoCampo.Relacion1_N_Desplegable: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
+											<select class="form-control" data-bind="options: $parent.<#=_code.Escape(_entitySet) #>, optionsText: 'Nombre', optionsValue: 'Id', value: <#= _metadataPropiedad.Nombre  #>, optionsCaption: $parent.TraduccionCampos.get('MantenerValorCampo_Text')(), enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #><#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>, valueAllowUnset: true"></select>
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Booleano_Desplegable_NoObligatorio: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
+											<select class="form-control" data-bind="options: $parent.OpcionesBooleanasMantenerValor, optionsText: 'Nombre', optionsValue: 'Valor', nullableBooleanValue: <#= _metadataPropiedad.Nombre  #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre  #><#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>, valueAllowUnset: true"></select>
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_Numero_CampoSimple:
+			case MetadataGenerador.TipoCampo.Numero_CampoSimple: #>
+										<input type="number" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+<#			break;
+			case MetadataGenerador.TipoCampo.FechaHora_CampoSimple: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+											<input type="datetime-local" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }", attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>	
+<#			break;
+			case MetadataGenerador.TipoCampo.Fecha_CampoSimple: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+											<input type="date" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }", attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>	
+<#			break;
+			case MetadataGenerador.TipoCampo.Hora_CampoSimple: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
+											<input type="time" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }", attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>	
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Editor: #>
+										<textarea id="<#= _metadataPropiedad.Nombre #>" style="width: 500px !important;" data-bind="ckEditor: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre  #><#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }"></textarea>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Textarea: #>
+										<textarea class="form-control" data-bind="value: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }"></textarea>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_CampoSimple:
+			case MetadataGenerador.TipoCampo.Texto_CampoSimple: #>
+										<input type="text" class="form-control" data-bind="value: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_CorreoElectronico: #>
+										<div class="input-group">
+											<span class="input-group-addon">@</span>
+											<input type="text" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_DocumentoFiscal: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_CodigoPostal: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Telefono: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_1_Partial:
+			case MetadataGenerador.TipoCampo.Relacion1_N_Partial:
+				string _moduloTipoRelacionadoRelacion1_N_Partial = "Editor";
+				string _nombreTipoRelacionadoRelacion1_N_Partial = _metadataPropiedad.EntidadRelacionada;
+				EntityType _tipoRelacionadoRelacion1_N_Partial = null;
+				if (_nombreTipoRelacionadoRelacion1_N_Partial == null) {
+					if (_property is EdmProperty) {
+						NavigationProperty _navigationPropertyRelacion1_N_Partial = null;
+						_typeMapper.HasNavigationProperty((EdmProperty) _property, out _tipoRelacionadoRelacion1_N_Partial, out _navigationPropertyRelacion1_N_Partial);
+					} else {
+						_tipoRelacionadoRelacion1_N_Partial = _typeMapper.FromEntityType((NavigationProperty) _property);
+					}
+					_nombreTipoRelacionadoRelacion1_N_Partial = _tipoRelacionadoRelacion1_N_Partial.Name; 
+				} 
+				string _ParamatrosRelacion1_N_Partial = string.Empty;
+				if (_metadataPropiedad.PermitirCrear != null) { _ParamatrosRelacion1_N_Partial += "PermitirCrear: " + _metadataPropiedad.PermitirCrear.ToString().ToLower(); } 
+				if (_metadataPropiedad.PermitirGuardar != null) { _ParamatrosRelacion1_N_Partial += (_ParamatrosRelacion1_N_Partial != string.Empty ? ", " : string.Empty) + "PermitirGuardar: " + _metadataPropiedad.PermitirGuardar.ToString().ToLower(); }
+				if (_metadataPropiedad.PermitirBorrar != null) { _ParamatrosRelacion1_N_Partial += (_ParamatrosRelacion1_N_Partial != string.Empty ? ", " : string.Empty) + "PermitirBorrar: " + _metadataPropiedad.PermitirBorrar.ToString().ToLower(); }
+				if (_metadataPropiedad.BusquedaAutomatica != null) { _ParamatrosRelacion1_N_Partial += (_ParamatrosRelacion1_N_Partial != string.Empty ? ", " : string.Empty) + "BusquedaAutomatica: " + _metadataPropiedad.BusquedaAutomatica.ToString().ToLower(); }
+				if (_metadataPropiedad.InteraccionExterna != null) { _ParamatrosRelacion1_N_Partial += (_ParamatrosRelacion1_N_Partial != string.Empty ? ", " : string.Empty) + "InteraccionExterna: " + _metadataPropiedad.InteraccionExterna.ToString().ToLower(); } 
+				_ParamatrosRelacion1_N_Partial += (_ParamatrosRelacion1_N_Partial != string.Empty ? ", " : string.Empty) + "IdModulo: '" + _nombreTipoRelacionadoRelacion1_N_Partial + _moduloTipoRelacionadoRelacion1_N_Partial + "', Entidad: '" + _nombreTipoRelacionadoRelacion1_N_Partial +"', IdPartial: '__id__partial" + _nombreTipoRelacionadoRelacion1_N_Partial + _moduloTipoRelacionadoRelacion1_N_Partial + "', Contenedor: '#__id__partial" + _nombreTipoRelacionadoRelacion1_N_Partial + _moduloTipoRelacionadoRelacion1_N_Partial + "ContenedorInterno', TamanyoPagina: 50, ColumnaOrden: '" + (_tipoRelacionadoRelacion1_N_Partial != null ? _typeMapper.GetKeyProperties(_tipoRelacionadoRelacion1_N_Partial).First().Name : "Id") + "', TipoOrden: 0"; #>
+										<div id="__id__partial<#= _nombreTipoRelacionadoRelacion1_N_Partial #><#= _moduloTipoRelacionadoRelacion1_N_Partial #>ContenedorExterno" style="display: none" data-bind="partial: { <#= _ParamatrosRelacion1_N_Partial #>, Filtro: { <#= (_metadataPropiedad.Filtros != null ? _metadataPropiedad.Filtros : string.Empty) #><#= (_metadataPropiedad.MetodosRespuesta != null ? ", MetodosRespuesta: " + _metadataPropiedad.MetodosRespuesta : string.Empty) #> }, Modo: ModoInicioModulo.<#= Enum.GetName(typeof(MetadataGenerador.ModoInicio), _metadataPropiedad.ModoInicio ?? MetadataGenerador.ModoInicio.Listado) #> }<#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>">
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.RelacionN_M_Partial:
+				// OLL: Ahora mismo está pensado para que solo ponga el html una vez. ¿Que pasa si tenemos dos propiedades del mismo tipo?
+				// Por ejemplo DocumentosCliente, DocumentosAgente
+				string _moduloTipoRelacionado = "Editor";
+				EntityType _tipoRelacionN_M_Partial = (EntityType) ((CollectionType) _property.TypeUsage.EdmType).TypeUsage.EdmType;
+				string _nombreTipoRelacionadoRelacionN_M_Partial = _tipoRelacionN_M_Partial.Name; 
+				string _ParamatrosPartial = string.Empty;
+				if (_metadataPropiedad.PermitirCrear != null) { _ParamatrosPartial += "PermitirCrear: " + _metadataPropiedad.PermitirCrear.ToString().ToLower(); } 
+				if (_metadataPropiedad.PermitirGuardar != null) { _ParamatrosPartial += (_ParamatrosPartial != string.Empty ? ", " : string.Empty) + "PermitirGuardar: " + _metadataPropiedad.PermitirGuardar.ToString().ToLower(); }
+				if (_metadataPropiedad.PermitirBorrar != null) { _ParamatrosPartial += (_ParamatrosPartial != string.Empty ? ", " : string.Empty) + "PermitirBorrar: " + _metadataPropiedad.PermitirBorrar.ToString().ToLower(); }
+				if (_metadataPropiedad.BusquedaAutomatica != null) { _ParamatrosPartial += (_ParamatrosPartial != string.Empty ? ", " : string.Empty) + "BusquedaAutomatica: " + _metadataPropiedad.BusquedaAutomatica.ToString().ToLower(); }
+				if (_metadataPropiedad.InteraccionExterna != null) { _ParamatrosPartial += (_ParamatrosPartial != string.Empty ? ", " : string.Empty) + "InteraccionExterna: " + _metadataPropiedad.InteraccionExterna.ToString().ToLower(); } 
+				_ParamatrosPartial += (_ParamatrosPartial != string.Empty ? ", " : string.Empty) + "IdModulo: '" + _nombreTipoRelacionadoRelacionN_M_Partial + _moduloTipoRelacionado + "', Entidad: '" + _nombreTipoRelacionadoRelacionN_M_Partial +"', IdPartial: '__id__partial" + _nombreTipoRelacionadoRelacionN_M_Partial + _moduloTipoRelacionado + "', Contenedor: '#__id__partial" + _nombreTipoRelacionadoRelacionN_M_Partial + _moduloTipoRelacionado + "ContenedorInterno', TamanyoPagina: 50, ColumnaOrden: '" + (_tipoRelacionN_M_Partial != null ? _typeMapper.GetKeyProperties(_tipoRelacionN_M_Partial).First().Name : "Id") + "', TipoOrden: 0"; #>
+										<div id="__id__partial<#= _nombreTipoRelacionadoRelacionN_M_Partial #><#= _moduloTipoRelacionado #>ContenedorExterno" style="display: none" data-bind="partial: { <#= _ParamatrosPartial #>, Filtro: { <#= (_metadataPropiedad.Filtros != null ? _metadataPropiedad.Filtros : string.Empty) #><#= (_metadataPropiedad.MetodosRespuesta != null ? ", MetodosRespuesta: " + _metadataPropiedad.MetodosRespuesta : string.Empty) #> }, Modo: ModoInicioModulo.<#= Enum.GetName(typeof(MetadataGenerador.ModoInicio), _metadataPropiedad.ModoInicio ?? MetadataGenerador.ModoInicio.Listado) #> }<#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>">
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_Autocomplete: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="jqAuto: { value: <#= _metadataPropiedad.Nombre #>, source: $parent.Autocomplete<#=_code.Escape(_entitySet) #>, inputProp: 'Id', labelProp: 'Nombre', valueProp: 'Id', template: 'TemplateAutocomplete<<#= _metadataPropiedad.Nombre #>, options: { delay: 500, minLength: 3 }}, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_AutocompleteConBuscador: #>
+										<div class="input-group">
+											<span class="input-group-addon" data-bind="click: function() { $parent.MostrarBuscador('<#= _nombreTipoRelacionado #>', <#= _metadataPropiedad.Nombre #>); }" style="cursor: pointer"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="jqAuto: { value: <#= _metadataPropiedad.Nombre #>, source: $parent.Autocomplete<#=_code.Escape(_entitySet) #>, inputProp: 'Id', labelProp: 'Nombre', valueProp: 'Id', template: 'TemplateAutocomplete<#= _metadataPropiedad.Nombre #>', options: { delay: 500, minLength: 3 }}, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>
+										<div data-bind="visible: $parent.MostrarBuscador<#= _nombreTipoRelacionado #>">
+											<div id="__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorExterno" style="display: none" data-bind="partial: { PermitirCrear: true, PermitirGuardar: true, PermitirBorrar: true, BusquedaAutomatica: true, InteraccionExterna: true, IdModulo: '<#= _nombreTipoRelacionado #>Editor', Entidad: '<#= _nombreTipoRelacionado #>', IdPartial: '__id__partial<#= _nombreTipoRelacionado #>Buscador', Contenedor: '#__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorInterno', TamanyoPagina: 50, ColumnaOrden: 'Id', TipoOrden: 0, Filtro: { Mostrar: $parent.MostrarBuscador<#= _nombreTipoRelacionado #> }, Modo: ModoInicioModulo.Buscador, MetodosRespuesta: { Seleccionado: function (id, entidad) { $parent.ActualizarSeleccionadoEnBuscador(id, entidad, $parent.Filtro().<#= _metadataPropiedad.Nombre #>); } } }">
+											</div>
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_DesplegableConBuscador: #>
+										<div class="input-group">
+											<span class="input-group-addon" data-bind="click: function() { $parent.MostrarBuscador('<#= _nombreTipoRelacionado #>', <#= _metadataPropiedad.Nombre #>); }" style="cursor: pointer"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+											<select class="form-control" data-bind="options: $parent.<#=_code.Escape(_entitySet) #>, optionsText: 'Nombre', optionsValue: 'Id', value: <#= _metadataPropiedad.Nombre #>, optionsCaption: $parent.TraduccionCampos.get('MantenerValorCampo_Text')(), enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #><#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>, valueAllowUnset: true"></select>
+										</div>
+										<div data-bind="visible: $parent.MostrarBuscador<#= _nombreTipoRelacionado #>">
+											<div id="__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorExterno" style="display: none" data-bind="partial: { PermitirCrear: true, PermitirGuardar: true, PermitirBorrar: true, BusquedaAutomatica: true, InteraccionExterna: true, IdModulo: '<#= _nombreTipoRelacionado #>Editor', Entidad: '<#= _nombreTipoRelacionado #>', IdPartial: '__id__partial<#= _nombreTipoRelacionado #>Buscador', Contenedor: '#__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorInterno', TamanyoPagina: 50, ColumnaOrden: 'Id', TipoOrden: 0, Filtro: { Mostrar: $parent.MostrarBuscador<#= _nombreTipoRelacionado #> }, Modo: ModoInicioModulo.Buscador, MetodosRespuesta: { Seleccionado: function (id, entidad) { $parent.ActualizarSeleccionadoEnBuscador(id, entidad, $parent.Filtro().<#= _metadataPropiedad.Nombre #>); } } }">
+											</div>
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_AutocompleteConBuscadorYEtiqueta: #>
+										<div class="input-group">
+											<span class="input-group-addon" data-bind="click: function() { $parent.MostrarBuscador('<#= _nombreTipoRelacionado #>', <#= _metadataPropiedad.Nombre #>); }" style="cursor: pointer"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="jqAuto: { value: <#= _metadataPropiedad.Nombre #>, source: $parent.Autocomplete<#=_code.Escape(_entitySet) #>, inputProp: 'Id', labelProp: 'Nombre', valueProp: 'Id', template: 'TemplateAutocomplete<#= _metadataPropiedad.Nombre #>', options: { delay: 500, minLength: 3 }}, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>
+										<div data-bind="visible: $parent.MostrarBuscador<#= _nombreTipoRelacionado #>">
+											<div id="__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorExterno" style="display: none" data-bind="partial: { PermitirCrear: true, PermitirGuardar: true, PermitirBorrar: true, BusquedaAutomatica: true, InteraccionExterna: true, IdModulo: '<#= _nombreTipoRelacionado #>Editor', Entidad: '<#= _nombreTipoRelacionado #>', IdPartial: '__id__partial<#= _nombreTipoRelacionado #>Buscador', Contenedor: '#__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorInterno', TamanyoPagina: 50, ColumnaOrden: 'Id', TipoOrden: 0, Filtro: { Mostrar: $parent.MostrarBuscador<#= _nombreTipoRelacionado #> }, Modo: ModoInicioModulo.Buscador, MetodosRespuesta: { Seleccionado: function (id, entidad) { $parent.ActualizarSeleccionadoEnBuscador(id, entidad, $parent.Filtro().<#= _metadataPropiedad.Nombre #>); } } }">
+											</div>
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Video: #>
+										<input type="text" class="form-control" data-bind="value: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										<div class="embed-responsive embed-responsive-16by9" data-bind="visible: <#= _metadataPropiedad.Nombre #>">
+											<iframe frameborder="0"  data-bind="attr: { 'src': <#= _metadataPropiedad.Nombre #> }"></iframe> <!-- src="http://www.youtube.com/embed/oNBBijn4JuY?showinfo=0&amp;wmode=opaque" -->
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Documento: #>
+										<div id="__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>ContenedorExterno" style="display: block" data-bind="partialbieniniciada: { IdModulo: 'GestorArchivos', IdPartial: '__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>', Contenedor: '#__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>ContenedorInterno', MetodosRespuesta: { ArchivosCargados: function(archivos) { $parent.CargaFinalizada<#= _metadataPropiedad.Nombre #>(archivos); } }, DatosPorDefecto: { ListaArchivos: $parent.Archivos<#= _metadataPropiedad.Nombre #>, UrlArchivos: $parent.UrlArchivos<#= _metadataPropiedad.Nombre #>, UrlArchivosNuevos: $parent.UrlArchivosNuevos<#= _metadataPropiedad.Nombre #> }, NumeroMaximoArchivosACargar: $parent.NumeroMaximoArchivosACargar<#= _metadataPropiedad.Nombre #>, TiposArchivoPermitidos: 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-powerpointtd,application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }">
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Imagen: #>
+										<div id="__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>ContenedorExterno" style="display: block" data-bind="partialbieniniciada: { IdModulo: 'GestorArchivos', IdPartial: '__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>', Contenedor: '#__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>ContenedorInterno', MetodosRespuesta: { ArchivosCargados: function(archivos) { $parent.CargaFinalizada<#= _metadataPropiedad.Nombre #>(archivos); } }, DatosPorDefecto: { ListaArchivos: $parent.Archivos<#= _metadataPropiedad.Nombre #>, UrlArchivos: $parent.UrlArchivos<#= _metadataPropiedad.Nombre #>, UrlArchivosNuevos: $parent.UrlArchivosNuevos<#= _metadataPropiedad.Nombre #> }, NumeroMaximoArchivosACargar: $parent.NumeroMaximoArchivosACargar<#= _metadataPropiedad.Nombre #>, TiposArchivoPermitidos: 'image/jpeg,image/png,image/gif' }">
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.RelacionN_M_Imagenes:  #>
+										<label>Campo <#= _metadataPropiedad.Nombre #></label>
+<#			break;
+			case MetadataGenerador.TipoCampo.RelacionN_M_Archivos:  #>
+										<label>Campo <#= _metadataPropiedad.Nombre #></label>
+<#			break;
+			case MetadataGenerador.TipoCampo.Desconocido: #>
+										<#= _metadataPropiedad.Nombre #>
+<#			break; 
+			} #>
+									</div>
+<#		if (_tamanyoCamposFila >= _tamanyoFila || _metadataPropiedad == _metadataPanel.Propiedades.Values.Where(p => p.Visible).Last()) { #>								</div>
+<#		}
+		} 
+		if (_metadataPanel.Propiedades.Values.Where(p => p.Visible).Count() > 0) { #>
+							</div>
+<#	}
+		if (_metadataPanel.Nombre != "SinPanel") { #>
+						</div>
+					</div>
+<#	} 
+} #>
+				</div>
+				<ul class="dnnActions dnnClear" data-bind="visible: $parent.MostrarAcciones">
+					<li>
+						<a data-bind="click: $parent.CopiarSeleccionados, text: $parent.TraduccionCampos.get('Copiar_Text')(), visible: $parent.settings.PermitirCopiar" class="dnnPrimaryAction"></a>
+					</li>
+					<li>
+						<a data-bind="click: $parent.CancelarCopiar, text: $parent.TraduccionCampos.get('Cancelar_Text')()" class="dnnSecondaryAction"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="<#=_code.Escape(_entity)#><#= _modulo #>FormularioEdicionMultiple" class="panelformulario" data-bind="visible: MostrarFormularioEdicionMultiple">
+			<div id="__id__partialContenedorCargandoFormularioEdicionMultiple" class="ContenedorCargando" style="height: 50px; width: 50px;" data-elementoReferencia="<#=_code.Escape(_entity)#><#= _modulo #>FormularioEdicionMultiple"></div>
+			<div class="Formulario" data-bind="with: RegistroEdicionMultiple">
+				<div data-bind="validationOptions: { insertMessages: false }">
+<# foreach (MetadataGenerador.MetadataPanel _metadataPanel in _metadataEntidades[_entity.Name].PanelesFormularioEdicionMultiple.Values) {
+		if (_metadataPanel.Nombre != "SinPanel") { #>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title"><#= _metadataPanel.Nombre #></h3>
+						</div>
+						<div class="panel-body">
+<#  } 
+		if (_metadataPanel.Propiedades.Values.Where(p => p.Visible).Count() > 0) { #>
+							<div class="container">
+<#	}
+		int _tamanyoCamposFila = 0; 
+		foreach (MetadataGenerador.MetadataPropiedad _metadataPropiedad in _metadataPanel.Propiedades.Values.Where(p => p.Visible)) {
+			EdmMember _property = _properties.Where(p => p.Name == _metadataPropiedad.Nombre).FirstOrDefault();
+			if (_tamanyoCamposFila == 0 || _tamanyoCamposFila >= _tamanyoFila) { 
+				_tamanyoCamposFila = _metadataPropiedad.Tamanyo; #>
+								<div class="row">
+<#		} else {
+				_tamanyoCamposFila += _metadataPropiedad.Tamanyo;
+			} #>
+									<div class="form-group col-md-<#=_metadataPropiedad.Tamanyo #>" data-bind="visible: $parent.MostrarElemento().<#= _metadataPropiedad.Nombre #>">
+<#		if (_metadataPropiedad.MostrarEtiqueta) { #>
+										<label data-bind="text: $parent.TraduccionCampos.get('<#= _metadataPropiedad.Nombre #>_Text')() + ':'"></label>
+<#		}
+			EntitySet _entitySet = null;
+			string _nombreTipoRelacionado = string.Empty;
+			if (MetadataGenerador.EsTipoCampoRelacion1_N(_metadataPropiedad.TipoCampo)) {
+				if (_property != null) {
+					EntityType _tipoRelacionado = null;
+					NavigationProperty _navigationProperty = null;
+					_typeMapper.HasNavigationProperty((EdmProperty) _property, out _tipoRelacionado, out _navigationProperty);
+					if (_tipoRelacionado == null) { throw new ApplicationException(string.Format("No se ha encontrado el tipo relacionado de la propiedad {0} de la entidad {1}", _metadataPropiedad.Nombre, _entity.Name)); }
+					_nombreTipoRelacionado = _tipoRelacionado.Name;
+				} else {
+					_nombreTipoRelacionado = _metadataPropiedad.EntidadRelacionada;
+				}
+				if (string.IsNullOrEmpty(_nombreTipoRelacionado)) { throw new ApplicationException (string.Format("Error al procesar la propiedad {0} de la entidad {1}", _metadataPropiedad.Nombre, _entity.Name)); }
+				_entitySet = (EntitySet) _container.BaseEntitySets.Where(es => es.ElementType.Name == _nombreTipoRelacionado).FirstOrDefault(); 
+			}
+		 	switch (_metadataPropiedad.TipoCampo) {
+			case MetadataGenerador.TipoCampo.Relacion1_N_Desplegable: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
+											<select class="form-control" data-bind="options: $parent.<#=_code.Escape(_entitySet) #>, optionsText: 'Nombre', optionsValue: 'Id', value: <#= _metadataPropiedad.Nombre  #>, optionsCaption: $parent.TraduccionCampos.get('MantenerValorCampo_Text')(), enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #><#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>, valueAllowUnset: true"></select>
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Booleano_Desplegable_NoObligatorio: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
+											<select class="form-control" data-bind="options: $parent.OpcionesBooleanasMantenerValor, optionsText: 'Nombre', optionsValue: 'Valor', nullableBooleanValue: <#= _metadataPropiedad.Nombre  #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre  #><#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>, valueAllowUnset: true"></select>
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_Numero_CampoSimple:
+			case MetadataGenerador.TipoCampo.Numero_CampoSimple: #>
+										<input type="number" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+<#			break;
+			case MetadataGenerador.TipoCampo.FechaHora_CampoSimple: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+											<input type="datetime-local" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>	
+<#			break;
+			case MetadataGenerador.TipoCampo.Fecha_CampoSimple: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+											<input type="date" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>	
+<#			break;
+			case MetadataGenerador.TipoCampo.Hora_CampoSimple: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
+											<input type="time" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>	
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Editor: #>
+										<textarea id="<#= _metadataPropiedad.Nombre #>" style="width: 500px !important;" data-bind="ckEditor: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre  #><#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }"></textarea>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Textarea: #>
+										<textarea class="form-control" data-bind="value: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }"></textarea>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_CampoSimple:
+			case MetadataGenerador.TipoCampo.Texto_CampoSimple: #>
+										<input type="text" class="form-control" data-bind="value: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_CorreoElectronico: #>
+										<div class="input-group">
+											<span class="input-group-addon">@</span>
+											<input type="text" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_DocumentoFiscal: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_CodigoPostal: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Telefono: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="textInput: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_1_Partial:
+			case MetadataGenerador.TipoCampo.Relacion1_N_Partial:
+				string _moduloTipoRelacionadoRelacion1_N_Partial = "Editor";
+				string _nombreTipoRelacionadoRelacion1_N_Partial = _metadataPropiedad.EntidadRelacionada;
+				EntityType _tipoRelacionadoRelacion1_N_Partial = null;
+				if (_nombreTipoRelacionadoRelacion1_N_Partial == null) {
+					if (_property is EdmProperty) {
+						NavigationProperty _navigationPropertyRelacion1_N_Partial = null;
+						_typeMapper.HasNavigationProperty((EdmProperty) _property, out _tipoRelacionadoRelacion1_N_Partial, out _navigationPropertyRelacion1_N_Partial);
+					} else {
+						_tipoRelacionadoRelacion1_N_Partial = _typeMapper.FromEntityType((NavigationProperty) _property);
+					}
+					_nombreTipoRelacionadoRelacion1_N_Partial = _tipoRelacionadoRelacion1_N_Partial.Name; 
+				} 
+				string _ParamatrosRelacion1_N_Partial = string.Empty;
+				if (_metadataPropiedad.PermitirCrear != null) { _ParamatrosRelacion1_N_Partial += "PermitirCrear: " + _metadataPropiedad.PermitirCrear.ToString().ToLower(); } 
+				if (_metadataPropiedad.PermitirGuardar != null) { _ParamatrosRelacion1_N_Partial += (_ParamatrosRelacion1_N_Partial != string.Empty ? ", " : string.Empty) + "PermitirGuardar: " + _metadataPropiedad.PermitirGuardar.ToString().ToLower(); }
+				if (_metadataPropiedad.PermitirBorrar != null) { _ParamatrosRelacion1_N_Partial += (_ParamatrosRelacion1_N_Partial != string.Empty ? ", " : string.Empty) + "PermitirBorrar: " + _metadataPropiedad.PermitirBorrar.ToString().ToLower(); }
+				if (_metadataPropiedad.BusquedaAutomatica != null) { _ParamatrosRelacion1_N_Partial += (_ParamatrosRelacion1_N_Partial != string.Empty ? ", " : string.Empty) + "BusquedaAutomatica: " + _metadataPropiedad.BusquedaAutomatica.ToString().ToLower(); }
+				if (_metadataPropiedad.InteraccionExterna != null) { _ParamatrosRelacion1_N_Partial += (_ParamatrosRelacion1_N_Partial != string.Empty ? ", " : string.Empty) + "InteraccionExterna: " + _metadataPropiedad.InteraccionExterna.ToString().ToLower(); } 
+				_ParamatrosRelacion1_N_Partial += (_ParamatrosRelacion1_N_Partial != string.Empty ? ", " : string.Empty) + "IdModulo: '" + _nombreTipoRelacionadoRelacion1_N_Partial + _moduloTipoRelacionadoRelacion1_N_Partial + "', Entidad: '" + _nombreTipoRelacionadoRelacion1_N_Partial +"', IdPartial: '__id__partial" + _nombreTipoRelacionadoRelacion1_N_Partial + _moduloTipoRelacionadoRelacion1_N_Partial + "', Contenedor: '#__id__partial" + _nombreTipoRelacionadoRelacion1_N_Partial + _moduloTipoRelacionadoRelacion1_N_Partial + "ContenedorInterno', TamanyoPagina: 50, ColumnaOrden: '" + (_tipoRelacionadoRelacion1_N_Partial != null ? _typeMapper.GetKeyProperties(_tipoRelacionadoRelacion1_N_Partial).First().Name : "Id") + "', TipoOrden: 0"; #>
+										<div id="__id__partial<#= _nombreTipoRelacionadoRelacion1_N_Partial #><#= _moduloTipoRelacionadoRelacion1_N_Partial #>ContenedorExterno" style="display: none" data-bind="partial: { <#= _ParamatrosRelacion1_N_Partial #>, Filtro: { <#= (_metadataPropiedad.Filtros != null ? _metadataPropiedad.Filtros : string.Empty) #><#= (_metadataPropiedad.MetodosRespuesta != null ? ", MetodosRespuesta: " + _metadataPropiedad.MetodosRespuesta : string.Empty) #> }, Modo: ModoInicioModulo.<#= Enum.GetName(typeof(MetadataGenerador.ModoInicio), _metadataPropiedad.ModoInicio ?? MetadataGenerador.ModoInicio.Listado) #> }<#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>">
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.RelacionN_M_Partial:
+				// OLL: Ahora mismo está pensado para que solo ponga el html una vez. ¿Que pasa si tenemos dos propiedades del mismo tipo?
+				// Por ejemplo DocumentosCliente, DocumentosAgente
+				string _moduloTipoRelacionado = "Editor";
+				EntityType _tipoRelacionN_M_Partial = (EntityType) ((CollectionType) _property.TypeUsage.EdmType).TypeUsage.EdmType;
+				string _nombreTipoRelacionadoRelacionN_M_Partial = _tipoRelacionN_M_Partial.Name; 
+				string _ParamatrosPartial = string.Empty;
+				if (_metadataPropiedad.PermitirCrear != null) { _ParamatrosPartial += "PermitirCrear: " + _metadataPropiedad.PermitirCrear.ToString().ToLower(); } 
+				if (_metadataPropiedad.PermitirGuardar != null) { _ParamatrosPartial += (_ParamatrosPartial != string.Empty ? ", " : string.Empty) + "PermitirGuardar: " + _metadataPropiedad.PermitirGuardar.ToString().ToLower(); }
+				if (_metadataPropiedad.PermitirBorrar != null) { _ParamatrosPartial += (_ParamatrosPartial != string.Empty ? ", " : string.Empty) + "PermitirBorrar: " + _metadataPropiedad.PermitirBorrar.ToString().ToLower(); }
+				if (_metadataPropiedad.BusquedaAutomatica != null) { _ParamatrosPartial += (_ParamatrosPartial != string.Empty ? ", " : string.Empty) + "BusquedaAutomatica: " + _metadataPropiedad.BusquedaAutomatica.ToString().ToLower(); }
+				if (_metadataPropiedad.InteraccionExterna != null) { _ParamatrosPartial += (_ParamatrosPartial != string.Empty ? ", " : string.Empty) + "InteraccionExterna: " + _metadataPropiedad.InteraccionExterna.ToString().ToLower(); } 
+				_ParamatrosPartial += (_ParamatrosPartial != string.Empty ? ", " : string.Empty) + "IdModulo: '" + _nombreTipoRelacionadoRelacionN_M_Partial + _moduloTipoRelacionado + "', Entidad: '" + _nombreTipoRelacionadoRelacionN_M_Partial +"', IdPartial: '__id__partial" + _nombreTipoRelacionadoRelacionN_M_Partial + _moduloTipoRelacionado + "', Contenedor: '#__id__partial" + _nombreTipoRelacionadoRelacionN_M_Partial + _moduloTipoRelacionado + "ContenedorInterno', TamanyoPagina: 50, ColumnaOrden: '" + (_tipoRelacionN_M_Partial != null ? _typeMapper.GetKeyProperties(_tipoRelacionN_M_Partial).First().Name : "Id") + "', TipoOrden: 0"; #>
+										<div id="__id__partial<#= _nombreTipoRelacionadoRelacionN_M_Partial #><#= _moduloTipoRelacionado #>ContenedorExterno" style="display: none" data-bind="partial: { <#= _ParamatrosPartial #>, Filtro: { <#= (_metadataPropiedad.Filtros != null ? _metadataPropiedad.Filtros : string.Empty) #><#= (_metadataPropiedad.MetodosRespuesta != null ? ", MetodosRespuesta: " + _metadataPropiedad.MetodosRespuesta : string.Empty) #> }, Modo: ModoInicioModulo.<#= Enum.GetName(typeof(MetadataGenerador.ModoInicio), _metadataPropiedad.ModoInicio ?? MetadataGenerador.ModoInicio.Listado) #> }<#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>">
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_Autocomplete: #>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="jqAuto: { value: <#= _metadataPropiedad.Nombre #>, source: $parent.Autocomplete<#=_code.Escape(_entitySet) #>, inputProp: 'Id', labelProp: 'Nombre', valueProp: 'Id', template: 'TemplateAutocomplete<<#= _metadataPropiedad.Nombre #>, options: { delay: 500, minLength: 3 }}, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_AutocompleteConBuscador: #>
+										<div class="input-group">
+											<span class="input-group-addon" data-bind="click: function() { $parent.MostrarBuscador('<#= _nombreTipoRelacionado #>', <#= _metadataPropiedad.Nombre #>); }" style="cursor: pointer"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="jqAuto: { value: <#= _metadataPropiedad.Nombre #>, source: $parent.Autocomplete<#=_code.Escape(_entitySet) #>, inputProp: 'Id', labelProp: 'Nombre', valueProp: 'Id', template: 'TemplateAutocomplete<#= _metadataPropiedad.Nombre #>', options: { delay: 500, minLength: 3 }}, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>
+										<div data-bind="visible: $parent.MostrarBuscador<#= _nombreTipoRelacionado #>">
+											<div id="__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorExterno" style="display: none" data-bind="partial: { PermitirCrear: true, PermitirGuardar: true, PermitirBorrar: true, BusquedaAutomatica: true, InteraccionExterna: true, IdModulo: '<#= _nombreTipoRelacionado #>Editor', Entidad: '<#= _nombreTipoRelacionado #>', IdPartial: '__id__partial<#= _nombreTipoRelacionado #>Buscador', Contenedor: '#__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorInterno', TamanyoPagina: 50, ColumnaOrden: 'Id', TipoOrden: 0, Filtro: { Mostrar: $parent.MostrarBuscador<#= _nombreTipoRelacionado #> }, Modo: ModoInicioModulo.Buscador, MetodosRespuesta: { Seleccionado: function (id, entidad) { $parent.ActualizarSeleccionadoEnBuscador(id, entidad, $parent.Filtro().<#= _metadataPropiedad.Nombre #>); } } }">
+											</div>
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_DesplegableConBuscador: #>
+										<div class="input-group">
+											<span class="input-group-addon" data-bind="click: function() { $parent.MostrarBuscador('<#= _nombreTipoRelacionado #>', <#= _metadataPropiedad.Nombre #>); }" style="cursor: pointer"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+											<select class="form-control" data-bind="options: $parent.<#=_code.Escape(_entitySet) #>, optionsText: 'Nombre', optionsValue: 'Id', value: <#= _metadataPropiedad.Nombre #>, optionsCaption: $parent.TraduccionCampos.get('MantenerValorCampo_Text')(), enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #><#= (_metadataPropiedad.Eventos != null ? ", event: " + _metadataPropiedad.Eventos : string.Empty) #>, valueAllowUnset: true"></select>
+										</div>
+										<div data-bind="visible: $parent.MostrarBuscador<#= _nombreTipoRelacionado #>">
+											<div id="__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorExterno" style="display: none" data-bind="partial: { PermitirCrear: true, PermitirGuardar: true, PermitirBorrar: true, BusquedaAutomatica: true, InteraccionExterna: true, IdModulo: '<#= _nombreTipoRelacionado #>Editor', Entidad: '<#= _nombreTipoRelacionado #>', IdPartial: '__id__partial<#= _nombreTipoRelacionado #>Buscador', Contenedor: '#__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorInterno', TamanyoPagina: 50, ColumnaOrden: 'Id', TipoOrden: 0, Filtro: { Mostrar: $parent.MostrarBuscador<#= _nombreTipoRelacionado #> }, Modo: ModoInicioModulo.Buscador, MetodosRespuesta: { Seleccionado: function (id, entidad) { $parent.ActualizarSeleccionadoEnBuscador(id, entidad, $parent.Filtro().<#= _metadataPropiedad.Nombre #>); } } }">
+											</div>
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Relacion1_N_AutocompleteConBuscadorYEtiqueta: #>
+										<div class="input-group">
+											<span class="input-group-addon" data-bind="click: function() { $parent.MostrarBuscador('<#= _nombreTipoRelacionado #>', <#= _metadataPropiedad.Nombre #>); }" style="cursor: pointer"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+											<input type="text" class="form-control" data-bind="jqAuto: { value: <#= _metadataPropiedad.Nombre #>, source: $parent.Autocomplete<#=_code.Escape(_entitySet) #>, inputProp: 'Id', labelProp: 'Nombre', valueProp: 'Id', template: 'TemplateAutocomplete<#= _metadataPropiedad.Nombre #>', options: { delay: 500, minLength: 3 }}, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										</div>
+										<div data-bind="visible: $parent.MostrarBuscador<#= _nombreTipoRelacionado #>">
+											<div id="__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorExterno" style="display: none" data-bind="partial: { PermitirCrear: true, PermitirGuardar: true, PermitirBorrar: true, BusquedaAutomatica: true, InteraccionExterna: true, IdModulo: '<#= _nombreTipoRelacionado #>Editor', Entidad: '<#= _nombreTipoRelacionado #>', IdPartial: '__id__partial<#= _nombreTipoRelacionado #>Buscador', Contenedor: '#__id__partial<#= _nombreTipoRelacionado #>BuscadorContenedorInterno', TamanyoPagina: 50, ColumnaOrden: 'Id', TipoOrden: 0, Filtro: { Mostrar: $parent.MostrarBuscador<#= _nombreTipoRelacionado #> }, Modo: ModoInicioModulo.Buscador, MetodosRespuesta: { Seleccionado: function (id, entidad) { $parent.ActualizarSeleccionadoEnBuscador(id, entidad, $parent.Filtro().<#= _metadataPropiedad.Nombre #>); } } }">
+											</div>
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Video: #>
+										<input type="text" class="form-control" data-bind="value: <#= _metadataPropiedad.Nombre #>, enable: $parent.HabilitarElemento().<#= _metadataPropiedad.Nombre #>, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } }<#= (_metadataPropiedad.Eventos != null ? "," + _metadataPropiedad.Eventos : string.Empty) #> }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+										<div class="embed-responsive embed-responsive-16by9" data-bind="visible: <#= _metadataPropiedad.Nombre #>">
+											<iframe frameborder="0"  data-bind="attr: { 'src': <#= _metadataPropiedad.Nombre #> }"></iframe> <!-- src="http://www.youtube.com/embed/oNBBijn4JuY?showinfo=0&amp;wmode=opaque" -->
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Documento: #>
+										<div id="__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>ContenedorExterno" style="display: block" data-bind="partialbieniniciada: { IdModulo: 'GestorArchivos', IdPartial: '__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>', Contenedor: '#__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>ContenedorInterno', MetodosRespuesta: { ArchivosCargados: function(archivos) { $parent.CargaFinalizada<#= _metadataPropiedad.Nombre #>(archivos); } }, DatosPorDefecto: { ListaArchivos: $parent.Archivos<#= _metadataPropiedad.Nombre #>, UrlArchivos: $parent.UrlArchivos<#= _metadataPropiedad.Nombre #>, UrlArchivosNuevos: $parent.UrlArchivosNuevos<#= _metadataPropiedad.Nombre #> }, NumeroMaximoArchivosACargar: $parent.NumeroMaximoArchivosACargar<#= _metadataPropiedad.Nombre #>, TiposArchivoPermitidos: 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-powerpointtd,application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }">
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_Imagen: #>
+										<div id="__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>ContenedorExterno" style="display: block" data-bind="partialbieniniciada: { IdModulo: 'GestorArchivos', IdPartial: '__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>', Contenedor: '#__id__partialGestorArchivos<#= _metadataPropiedad.Nombre #>ContenedorInterno', MetodosRespuesta: { ArchivosCargados: function(archivos) { $parent.CargaFinalizada<#= _metadataPropiedad.Nombre #>(archivos); } }, DatosPorDefecto: { ListaArchivos: $parent.Archivos<#= _metadataPropiedad.Nombre #>, UrlArchivos: $parent.UrlArchivos<#= _metadataPropiedad.Nombre #>, UrlArchivosNuevos: $parent.UrlArchivosNuevos<#= _metadataPropiedad.Nombre #> }, NumeroMaximoArchivosACargar: $parent.NumeroMaximoArchivosACargar<#= _metadataPropiedad.Nombre #>, TiposArchivoPermitidos: 'image/jpeg,image/png,image/gif' }">
+										</div>
+<#			break;
+			case MetadataGenerador.TipoCampo.RelacionN_M_Imagenes:  #>
+										<label>Campo <#= _metadataPropiedad.Nombre #></label>
+<#			break;
+			case MetadataGenerador.TipoCampo.RelacionN_M_Archivos:  #>
+										<label>Campo <#= _metadataPropiedad.Nombre #></label>
+<#			break;
+			case MetadataGenerador.TipoCampo.Desconocido: #>
+										<#= _metadataPropiedad.Nombre #>
+<#			break; 
+			} #>
+									</div>
+<#		if (_tamanyoCamposFila >= _tamanyoFila || _metadataPropiedad == _metadataPanel.Propiedades.Values.Where(p => p.Visible).Last()) { #>								</div>
+<#		}
+		} 
+		if (_metadataPanel.Propiedades.Values.Where(p => p.Visible).Count() > 0) { #>
+							</div>
+<#	}
+		if (_metadataPanel.Nombre != "SinPanel") { #>
+						</div>
+					</div>
+<#	} 
+} #>
+				</div>
+				<ul class="dnnActions dnnClear" data-bind="visible: $parent.MostrarAcciones">
+					<li>
+						<a data-bind="click: $parent.EditarSeleccionados, text: $parent.TraduccionCampos.get('EdicionMultiple_Text')(), visible: $parent.settings.PermitirEdicionMultiple" class="dnnPrimaryAction"></a>
+					</li>
+					<li>
+						<a data-bind="click: $parent.CancelarEdicionMultiple, text: $parent.TraduccionCampos.get('Cancelar_Text')()" class="dnnSecondaryAction"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</fieldset>
+</div>
+<# string[] _templates = { "registrofijo", "registro" };
+	 foreach (string _template in _templates) { #>
+<script type="text/html" id="<#=_code.Escape(_entity)#><#= _modulo #>_<#= _template #>-template">
+	<tr data-bind="attr: { 'class': $index() % 2 == 0 ? 'dnnGridItem' : 'dnnGridAltItem' }" class="dnnGridItem">
+		<td class="columnaCheckbox">
+			<input type="checkbox" data-bind="checked: RegistroSeleccionado" />
+		</td>
+<# foreach (MetadataGenerador.MetadataPanel _metadataPanel in _metadataEntidades[_entity.Name].PanelesListado.Values) {
+		foreach (MetadataGenerador.MetadataPropiedad _metadataPropiedad in _metadataPanel.Propiedades.Values.Where(p => p.Visible)) {
+			if (_metadataPropiedad.TipoCampo != MetadataGenerador.TipoCampo.RelacionN_M_CeldaSimple) { #>
+		<td data-bind="visible: $parent.ColumnaVisible('<#= _metadataPropiedad.Nombre #>'), click: $parent.Select">
+<#		} #>
+<#		switch (_metadataPropiedad.TipoCampo) {
+			case MetadataGenerador.TipoCampo.Booleano_CeldaCasillaSoloLectura: #>
+			<input type="checkbox" data-bind="checked: <#= _metadataPropiedad.Nombre #>" readonly />
+<#			break;
+			case MetadataGenerador.TipoCampo.Booleano_CeldaCasilla: #>
+			<input type="checkbox" data-bind="checked: <#= _metadataPropiedad.Nombre #>, click: $parent.ActualizarCampoBooleano.bind($data, '<#= _metadataPropiedad.Nombre #>', $index(), '<#= (_template == "registro" ? "Normales" : "Fijos") #>'), clickBubble: false" />
+<#			break;
+			case MetadataGenerador.TipoCampo.Hora_CeldaSimple:
+			case MetadataGenerador.TipoCampo.Texto_CeldaSimple:
+			case MetadataGenerador.TipoCampo.Relacion1_N_CeldaSimple:
+			case MetadataGenerador.TipoCampo.Numero_CeldaSimple: #>
+			<span data-bind="text: <#= _metadataPropiedad.Nombre #>" />
+<#			break;
+			case MetadataGenerador.TipoCampo.FechaHora_CeldaSimple: #>
+			<span data-bind="text: $parent.FormatearFecha(<#= _metadataPropiedad.Nombre #>, 'LLL')" />
+<#			break;
+			case MetadataGenerador.TipoCampo.Fecha_CeldaSimple: #>
+			<span data-bind="text: $parent.FormatearFecha(<#= _metadataPropiedad.Nombre #>, 'LL')" />
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_CeldaAmpliable: #>
+			<span data-bind="celdaAmpliable: <#= _metadataPropiedad.Nombre #>" />
+<#			break;
+			case MetadataGenerador.TipoCampo.Texto_CeldaHtml: #>
+			<span data-bind="html: <#= _metadataPropiedad.Nombre #>" />
+<#			break;
+			case MetadataGenerador.TipoCampo.Desconocido: #>
+			<#= _metadataPropiedad.Nombre #>
+<#			break; 
+			case MetadataGenerador.TipoCampo.RelacionN_M_CeldaSimple: #>
+			<!-- No mostramos la propiedad por ahora -->
+<#			break; 
+			}
+			if (_metadataPropiedad.TipoCampo != MetadataGenerador.TipoCampo.RelacionN_M_CeldaSimple) {
+				if (_metadataPropiedad == _metadataPanel.Propiedades.Values.Where(p => p.Visible).First()) { #>			<span class="glyphicon glyphicon-pushpin <#= (_template == "registrofijo" ? "unpin" : "pin") #>" aria-hidden="true" data-bind="click: $parent.<#= (_template == "registrofijo" ? "LiberarRegistro" : "FijarRegistro") #>, clickBubble: false"></span>
+<#			} #>
+		</td>
+<#		}
+		}
+	 } #>
+	</tr>
+</script>
+<# } #>
+<# IEnumerable<MetadataGenerador.MetadataPropiedad> _propiedadesRelaciones = MetadataGenerador.AgruparPropiedadesPaneles(_metadataEntidades[_entity.Name].PanelesFormulario).Values.Where(p => p.Visible && MetadataGenerador.EsTipoCampoRelacion1_N(p.TipoCampo)).Union(MetadataGenerador.AgruparPropiedadesPaneles(_metadataEntidades[_entity.Name].PanelesFiltro).Values.Where(p => p.Visible && MetadataGenerador.EsTipoCampoRelacion(p.TipoCampo)), new MetadataGenerador.MetadataPropiedadComparer(_properties, _typeMapper));
+	foreach(MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesRelaciones.Where(p => (p.TipoCampo == MetadataGenerador.TipoCampo.Relacion1_N_Autocomplete || p.TipoCampo == MetadataGenerador.TipoCampo.Relacion1_N_AutocompleteConBuscador || p.TipoCampo == MetadataGenerador.TipoCampo.Relacion1_N_AutocompleteConBuscadorYEtiqueta))) { #>
+<script id="TemplateAutocomplete<#= _propiedad.Nombre #>" type="text/html">
+	<a><span data-bind="text: Id"></span> - <span data-bind="text: Nombre"></span></a>
+</script>
+<# } #>
+<script id="MensajeTooltipTemplate" type="text/html">
+	<div class="mensaje-tooltip mensaje-tooltip-secondary" data-bind="visible: field.isModified() && !field.isValid()">
+		<div class="mensaje-tooltip-arrow-up"></div>
+		<blockquote>
+			<p data-bind="text: field.error"></p>
+		</blockquote>
+	</div>
+</script>
+<script type="text/javascript">
+	window.__id__partial = {
+		Iniciar: function (parametros, partials) {
+			try {
+				//_viewModelListado = {
+				//	Registros: parametros.ViewModel,
+				//	Select: function (registro, evento) {
+				//		if (typeof (parametros.Eventos.SelectedIndexChanged) !== 'undefined') { parametros.Eventos.SelectedIndexChanged(registro); }
+				//	}
+				//}
+				//ko.applyBindings(_viewModelListado, $('#__id__modulo_Contenedor')[0]);
+				partials.IniciarPartial(parametros.IdModulo + 'System', parametros, [], []);
+			} catch (excepcion) {
+				console.log(excepcion);
+			}
+		}
+	}
+</script>
+<#}
+
+_fileManager.Process();
+#>

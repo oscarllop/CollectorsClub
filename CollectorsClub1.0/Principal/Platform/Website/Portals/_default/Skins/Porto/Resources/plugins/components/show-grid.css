@@ -1,0 +1,9 @@
+﻿/* Show Grid */
+.show-grid [class*="col-md-"] .show-grid-block {
+	background-color: #EEE;
+	line-height: 40px;
+	min-height: 40px;
+	text-align: center;
+	border: 1px solid #FFF;
+	display: block;
+}

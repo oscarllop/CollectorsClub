@@ -1,0 +1,7 @@
+﻿@import "../variables.less.txt";
+
+.owl-theme .owl-controls .owl-nav [class*="owl-"]:hover {
+    border-color: @CHBackgroundColor;
+    background-color: @CHBorderColor;
+    color: @CHColor;
+}

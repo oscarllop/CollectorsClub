@@ -1,0 +1,40 @@
+/target:CreateSource
+"/logger:JetBrains.BuildServer.MSBuildLoggers.MSBuildLogger,C:\TeamCity\buildAgent\plugins\dotnetPlugin\bin\JetBrains.BuildServer.MSBuildLoggers.4.0.dll"
+/nodeReuse:false
+/property:agent_home_dir=C:\TeamCity\buildAgent
+/property:agent_name="Dev-Build2"
+/property:agent_ownPort=9090
+/property:agent_work_dir=C:\TeamCity\buildAgent\work
+/property:build_number=1.1.0.120
+/property:build_vcs_number=8eb03cfb55e7670429e1c74785b1439050c15a67
+/property:build_vcs_number_1=8eb03cfb55e7670429e1c74785b1439050c15a67
+/property:build_vcs_number_DnnAdminExperience110_DnnAdminExperienceExtensions=8eb03cfb55e7670429e1c74785b1439050c15a67
+/property:FxCopCmdFileVersion=14.0.23107.0
+/property:FxCopRoot="C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\FxCop"
+/property:java_io_tmpdir=C:\TeamCity\buildAgent\temp\buildTmp
+/property:teamcity_agent_cpuBenchmark=520
+/property:teamcity_agent_dotnet_agent_url=http://localhost:9090/RPC2
+/property:teamcity_agent_dotnet_build_id=689528
+/property:teamcity_auth_password=sI0Pr2HboV8pAEbojziNZmyYucxJm0DP
+/property:teamcity_auth_userId=TeamCityBuildId=689528
+/property:teamcity_build_changedFiles_file=C:\TeamCity\buildAgent\temp\buildTmp\changedFiles1339009094412045087.txt
+/property:teamcity_build_checkoutDir="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions"
+/property:teamcity_build_id=689528
+/property:teamcity_build_properties_file=C:\TeamCity\buildAgent\temp\buildTmp\teamcity.build7178773003184823434.properties
+/property:teamcity_build_tempDir=C:\TeamCity\buildAgent\temp\buildTmp
+/property:teamcity_build_workingDir="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions"
+/property:teamcity_buildConfName=CompilePlatformExtensions
+/property:teamcity_buildType_id=DnnAdminExperience110_CompilePlatformExtensions
+/property:teamcity_configuration_properties_file=C:\TeamCity\buildAgent\temp\buildTmp\teamcity.config2345734343735452675.properties
+/property:teamcity_dotnet_nunitaddin="C:\TeamCity\buildAgent\plugins\dotnetPlugin\bin\JetBrains.TeamCity.NUnitAddin-NUnit"
+/property:teamcity_dotnet_nunitlauncher=C:\TeamCity\buildAgent\plugins\dotnetPlugin\bin\JetBrains.BuildServer.NUnitLauncher.exe
+/property:teamcity_dotnet_nunitlauncher_msbuild_task=C:\TeamCity\buildAgent\plugins\dotnetPlugin\bin\JetBrains.BuildServer.MSBuildLoggers.dll
+/property:teamcity_dotnet_nunitlauncher1_1=C:\TeamCity\buildAgent\plugins\dotnetPlugin\bin\JetBrains.BuildServer.NUnitLauncher1.1.exe
+/property:teamcity_dotnet_nunitlauncher2_0=C:\TeamCity\buildAgent\plugins\dotnetPlugin\bin\JetBrains.BuildServer.NUnitLauncher2.0.exe
+/property:teamcity_dotnet_nunitlauncher2_0_vsts=C:\TeamCity\buildAgent\plugins\dotnetPlugin\bin\JetBrains.BuildServer.NUnitLauncher2.0.VSTS.exe
+/property:teamcity_dotnet_platform=C:\TeamCity\buildAgent\plugins\dotnetPlugin\bin\JetBrains.TeamCity.PlatformProcessRunner.1.1.exe
+/property:teamcity_nuget_feed_auth_serverRootUrlBased_server="https://dev-build1.dnndev.local/httpAuth/app/nuget/v1/FeedService.svc/"
+/property:teamcity_projectName="Dnn AdminExperience 1.1.0"
+/property:teamcity_runner_properties_file=C:\TeamCity\buildAgent\temp\buildTmp\teamcity.runner6029280958477351116.properties
+/property:teamcity_tests_recentlyFailedTests_file=C:\TeamCity\buildAgent\temp\buildTmp\testsToRunFirst791295551928241385.txt
+/property:teamcity_version="10.0.4 (build 42538)"

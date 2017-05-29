@@ -1,0 +1,40 @@
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="..\\Templates\\Context.Base.ttinclude"#>
+<#@ output extension=".cs"#>
+<#
+
+const string _inputFile = @"..\..\CollectorsClub.EntityFramework\Model.edmx";
+var _storeMetadata = LoadMetadata(_inputFile);
+var _textTransform = DynamicTextTransformation.Create(this);
+var _code = new CodeGenerationTools(this);
+var _ef = new MetadataTools(this);
+//var _itemCollection = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors).CreateEdmItemCollection(_inputFile);
+var _itemCollection = _storeMetadata.EdmItems;
+EntityContainer _container = _itemCollection.OfType<EntityContainer>().FirstOrDefault();
+var _typeMapper = new TypeMapper(_code, _ef, _container, _storeMetadata, _textTransform.Errors);
+var	_fileManager = EntityFrameworkTemplateFileManager.Create(this);
+var _codeStringGenerator = new CodeStringGenerator(_code, _typeMapper, _ef);
+ 
+if (!_typeMapper.VerifyCaseInsensitiveTypeUniqueness(_typeMapper.GetAllGlobalItems(_itemCollection), _inputFile)) {
+    return string.Empty;
+}
+
+WriteHeader(_codeStringGenerator, _fileManager);
+
+foreach (var _entity in _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection)) {
+    _fileManager.StartNewFile(_entity.Name + "Repository.cs");
+#>
+<#= _codeStringGenerator.UsingDirectives(inHeader: true, otherNamespaces: new string[] { "CollectorsClub.Data.Infrastructure", "CollectorsClub.Model.Infrastructure", "CollectorsClub.Model.Entities" })#>
+<# BeginNamespace(_code, "Repositories"); #>
+<#= _codeStringGenerator.ClassOpening(_entity, "{2}Repository", "RepositoryBase<" + _code.Escape(_entity) + ">, I" + _code.Escape(_entity) + "Repository")#> {
+	public <#=_code.Escape(_entity)#>Repository(IDatabaseFactory databaseFactory) : base(databaseFactory) {
+	}
+}
+public partial interface I<#=_code.Escape(_entity)#>Repository : IRepository<<#=_code.Escape(_entity)#>> {
+}
+<#
+	EndNamespace(_code);
+}
+_fileManager.Process();
+#>

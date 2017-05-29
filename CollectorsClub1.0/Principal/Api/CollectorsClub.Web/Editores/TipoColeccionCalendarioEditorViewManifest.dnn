@@ -1,0 +1,29 @@
+<dotnetnuke version="3.0" type="Module">
+  <folders>
+    <folder>
+      <name>CollectorsClub.EditorTiposColeccionCalendario</name>
+      <friendlyname>CollectorsClub - Mantenimiento TiposColeccionCalendario</friendlyname>
+      <modulename>CollectorsClub.EditorTiposColeccionCalendario</modulename>
+      <description>CollectorsClub - Mantenimiento TiposColeccionCalendario</description>
+      <version>01.00.00</version>
+      <modules>
+        <module>
+          <friendlyname>CollectorsClub - Mantenimiento TiposColeccionCalendario</friendlyname>
+          <cachetime>0</cachetime>
+          <controls>
+            <control>
+              <src>DesktopModules/CollectorsClub/Editores/TipoColeccionCalendarioEditorView.ascx</src>
+              <type>View</type>
+              <helpurl></helpurl>
+            </control>
+          </controls>
+        </module>
+      </modules>
+      <files>
+        <file>
+          <name>TipoColeccionCalendarioEditorView.ascx</name>
+        </file>
+      </files>
+    </folder>
+  </folders>
+</dotnetnuke>

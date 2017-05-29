@@ -1,0 +1,29 @@
+<dotnetnuke version="3.0" type="Module">
+  <folders>
+    <folder>
+      <name>CollectorsClub.EditorSubcategoriasCalendario</name>
+      <friendlyname>CollectorsClub - Mantenimiento SubcategoriasCalendario</friendlyname>
+      <modulename>CollectorsClub.EditorSubcategoriasCalendario</modulename>
+      <description>CollectorsClub - Mantenimiento SubcategoriasCalendario</description>
+      <version>01.00.00</version>
+      <modules>
+        <module>
+          <friendlyname>CollectorsClub - Mantenimiento SubcategoriasCalendario</friendlyname>
+          <cachetime>0</cachetime>
+          <controls>
+            <control>
+              <src>DesktopModules/CollectorsClub/Editores/SubcategoriaCalendarioEditorView.ascx</src>
+              <type>View</type>
+              <helpurl></helpurl>
+            </control>
+          </controls>
+        </module>
+      </modules>
+      <files>
+        <file>
+          <name>SubcategoriaCalendarioEditorView.ascx</name>
+        </file>
+      </files>
+    </folder>
+  </folders>
+</dotnetnuke>

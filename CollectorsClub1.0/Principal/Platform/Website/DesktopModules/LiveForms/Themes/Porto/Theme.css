@@ -1,0 +1,575 @@
+﻿.LiveForm.Porto {
+    font-size: 12px;
+    margin-bottom: 20px;
+    line-height: normal;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #CCCCCC;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+.LiveForm.Default ul {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.LiveForm.Default .Field-Container {
+    position: relative;
+}
+
+.LiveForm.Default .MatrixWrapper .Field-Container {
+    position: static;
+}
+
+.viewport-sm .LiveForm.Porto .Field.Fullname input[type="text"] {
+    margin-right: 16px;
+}
+
+.LiveForm.Porto .Field.Address table tr td:first-child {
+    padding-right: 16px;
+}
+
+.LiveForm.Porto .Field.Address table tr:nth-child(1) td,
+.LiveForm.Porto .Field.Address table tr:nth-child(2) td {
+    padding-right: 0;
+}
+
+.LiveForm.Porto .Field.Fullname .fullname-container,
+.LiveForm.Porto .Field.ScaleRating input[type="radio"],
+.LiveForm.Porto .Field.Fullname .Field-SubLabel-TextBox:last-child input[type="text"] {
+    margin-right: 0;
+}
+
+.LiveForm.Porto .Field input[type="radio"],
+.LiveForm.Porto .Field input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/*
+    .LiveForm.Porto input[type="submit"]:hover, 
+    .LiveForm.Porto input[type="button"]:hover {
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));
+    }
+*/
+/*----------------Heading----------------*/
+
+.LiveForm.Porto .Field.Heading div.Field-Container-Wide {
+    padding: 0 0 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+    .LiveForm.Porto .Field.Heading div.Field-Container-Wide .SubHeader {
+        font-style: italic;
+    }
+
+    .LiveForm.Porto .Field.Heading div.Field-Container-Wide .Header {
+        margin-bottom: 5px;
+    }
+
+.LiveForm.Porto .Field.Heading h1 {
+    font-size: 44px;
+    font-weight: normal;
+    border-bottom: 1px solid #ccc;
+    padding: 0 0 10px;
+    margin: 0 0 5px;
+    color: #1d2127;
+}
+
+.LiveForm.Porto .Field.Heading h2 {
+    font-size: 36px;
+    border-bottom: 1px solid #ccc;
+    font-weight: normal;
+    padding: 0 0 5px;
+    margin: 0 0 5px;
+    color: #1d2127;
+}
+
+.LiveForm.Porto .Field.Heading h3 {
+    font-size: 25px;
+    font-weight: normal;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc;
+    padding: 0 0 5px;
+    margin: 0 0 5px;
+    color: #0088cc;
+}
+
+/*Default Submit Button Alignment css */
+.LiveForm.Porto .Submit-Align-Left {
+    text-align: left;
+}
+
+.LiveForm.Porto .Submit-Align-Center {
+    text-align: center;
+}
+
+.LiveForm.Porto .Submit-Align-Right {
+    text-align: right;
+}
+
+/*Default Field Validation css */
+.LiveForm.Porto .Field.Required input,
+.LiveForm.Porto .Field.Required textarea,
+.LiveForm.Porto .Field.Required .plupload_filelist_footer,
+.LiveForm.Porto .Field.Required select,
+.LiveForm.Porto .Field.Required.Radiobutton table,
+.LiveForm.Porto .Field.Required.Checkbox table,
+.LiveForm.Porto .Field.Required.ScaleRating table,
+.LiveForm.Porto .Field.Required .StarRatingRequired{
+    border-left: solid red 5px !important;
+    padding-left: 5px !important;
+}
+
+.LiveForm.Porto .Field.Required.Radiobutton table,
+.LiveForm.Porto .Field.Required.Checkbox table {
+    padding-left: 6px;
+    display: inline-block;
+}
+
+/*Default (Input/Textarea/Label/Select) Validation css */
+.LiveForm.Porto label.error {
+    padding: 5px;
+    color: red;
+}
+
+.LiveForm.Porto input.error, .LiveForm.Porto textarea.error, .LiveForm.Porto select.error {
+    border: 2px solid red;
+    border-radius: 3px 3px 3px 3px;
+    padding-left: 5px;
+}
+
+.LiveForm.Porto label.InlineEdit form input {
+    width: 100px !important;
+}
+
+.LiveForm.Porto .Field-Tooltip {
+    position: absolute;
+    right: -275px;
+    top: 0px;
+    max-width: 250px;
+    min-width: 250px;
+    border: 4px solid #333;
+    background: #fff;
+    border-radius: 6px 6px;
+    box-shadow: 0px 2px 4px #666;
+    white-space: normal;
+    display: none;
+    z-index: 99999;
+}
+
+.LiveForm.Porto .Field.Datetime .Field-Tooltip {
+    right: -295px;
+}
+
+.LiveForm.Porto .Field-Tooltip-Arrow {
+    border-color: transparent #333 transparent transparent;
+    border-style: solid;
+    border-width: 10px;
+    left: -24px;
+    top: 7px;
+    position: absolute;
+    height: 0;
+    width: 0;
+}
+
+/*----------------Common----------------*/
+
+.LiveForm.Porto .Field-SubLabel-TextBox {
+    position: relative;
+    vertical-align: top;
+}
+
+.LiveForm.Porto .Field .Field-Container label,
+.LiveForm.Porto .Field .Field-Container-Wide label,
+.LiveForm.Porto .Field .Field-SubLabel-Container {
+    font-size: 11px;
+    margin: 2px 0 0 2px;
+}
+
+.LiveForm.Porto .Field.Radiobutton .Field-Container label,
+.LiveForm.Porto .Field.Radiobutton .Field-Container-Wide label,
+.LiveForm.Porto .Field.Checkbox .Field-Container label,
+.LiveForm.Porto .Field.Checkbox .Field-Container-Wide label {
+    font-size: 1em;
+    margin: 0;
+}
+
+.LiveForm.Porto .Field-Sub-Label label,
+.LiveForm.Porto .Address table label,
+.LiveForm.Porto .Field-SubLabel-Container {
+    display: block;
+}
+/*
+    .LiveForm.Porto input, 
+    .LiveForm.Porto select, 
+    .LiveForm.Porto textarea {
+        margin: 0;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #fff;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        font-size: 13px;
+        color: #666;
+    }
+*/
+
+
+.LiveForm.Porto .Field.Address .Field-Container span,
+.LiveForm.Porto .Field.Address .Field-Container label,
+.LiveForm.Porto .Field.Fullname .Field-Container label,
+.LiveForm.Porto .Field.Datetime .Field-Container label,
+.LiveForm.Porto .Field.Address .Field-Container-Wide span,
+.LiveForm.Porto .Field.Address .Field-Container-Wide label,
+.LiveForm.Porto .Field.Fullname .Field-Container-Wide label,
+.LiveForm.Porto .Field.Datetime .Field-Container-Wide label {
+    margin-bottom: 10px;
+}
+
+.LiveForm.Porto .Field.Fullname .Field-Container label {
+    display: inline-block;
+}
+
+.LiveForm.Porto .Field table td {
+    padding: 0;
+    vertical-align: baseline;
+}
+
+.LiveForm.Porto .Field.Address table td {
+    vertical-align: top;
+}
+
+.LiveForm.Porto .Field.Radiobutton table td,
+.LiveForm.Porto .Field.Checkbox table td {
+    padding: 4px;
+}
+
+.LiveForm.Porto .ScaleRating table td,
+.LiveForm.Porto .ScaleRating table th {
+    text-align: center;
+    padding: 4px;
+}
+
+.LiveForm.Porto select,
+.LiveForm.Porto textarea,
+.LiveForm.Porto input[type="text"],
+.LiveForm.Porto input[type="password"],
+.LiveForm.Porto .Field.FileUpload input,
+.LiveForm.Porto .Field.Phone input.Phone {
+    width: 100%;
+}
+
+.viewport-sm .LiveForm.Porto .Field.Fullname input.prefix,
+.viewport-sm .LiveForm.Porto .Field.Fullname input.suffix {
+    width: 50px;
+}
+
+.LiveForm.Porto .Field-Container,
+.LiveForm.Porto .Field-SubLabel-TextBox {
+    display: block;
+}
+
+.viewport-sm .LiveForm.Porto .Field-Container,
+.viewport-sm .Field.Fullname .Field-SubLabel-TextBox {
+    display: inline-table;
+}
+
+.LiveForm.Porto .Field table {
+    padding: 0;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.LiveForm.Porto .Field .Field-Seperator {
+    padding: 0 8px;
+}
+
+.viewport-sm .LiveForm.Porto .Field.Address input[type="text"],
+.viewport-sm .LiveForm.Porto .Field.Address select {
+    width: 142px;
+}
+
+.viewport-sm .LiveForm.Porto select,
+.viewport-sm .LiveForm.Porto textarea,
+.viewport-sm .LiveForm.Porto input[type="text"],
+.viewport-sm .LiveForm.Porto input[type="password"],
+.viewport-sm .LiveForm.Porto .Field.FileUpload input,
+.viewport-sm .LiveForm.Porto .Field.Address input.Street-Address,
+.viewport-sm .LiveForm.Porto .Field.Address input.Street-Address2,
+.viewport-sm .LiveForm.Porto .Field.Phone input.Phone {
+    width: 300px;
+}
+
+.viewport-sm .LiveForm.Porto .Field.Fullname input[type="text"] {
+    width: 142px;
+}
+
+.viewport-sm .LiveForm.Porto .Field.Fullname input.prefix,
+.viewport-sm .LiveForm.Porto .Field.Fullname input.suffix {
+    width: 50px;
+}
+
+.viewport-sm .LiveForm.Porto .Field.Birthdate input[type="text"],
+.viewport-sm .LiveForm.Porto .Field.Datetime input[type="text"],
+.viewport-sm .LiveForm.Porto .Field.Datetime select {
+    width: 80px;
+}
+
+.viewport-sm .LiveForm.Porto .Field.Time select {
+    width: 88px;
+}
+
+.LiveForm.Porto .Field.Phone input.AreaCode,
+.LiveForm.Porto .Field.Phone table tr td:first-child {
+    width: 60px;
+}
+
+.viewport-sm .LiveForm.Porto .Field.Phone input.PhoneNumber {
+    width: 211px;
+}
+
+.viewport-sm .LiveForm.Porto .Field-Container-Wide {
+    display: table;
+    position: relative;
+}
+
+/*----------------Matrix----------------*/
+
+.LiveForm.Porto .Matrix table th {
+    background-color: #ddd;
+}
+
+.LiveForm.Porto .Matrix table td,
+.LiveForm.Porto .Matrix table th {
+    padding: 6px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+    .LiveForm.Porto .Matrix table th.thBlank {
+        border: 0;
+        background-color: transparent;
+    }
+
+.LiveForm.Porto .Matrix table tr > th:first-child {
+    text-align: left;
+}
+
+.viewport-sm .LiveForm.Porto input.Field-Matrix-TextBox,
+.viewport-sm .LiveForm.Porto select.Field-Matrix-DropDown,
+.viewport-sm .LiveForm.Porto input.Field-Matrix-TextBoxNumeric {
+    width: 130px;
+}
+
+.LiveForm.Porto input.Field-Matrix-TextBoxNumeric {
+    width: 60px;
+}
+
+.LiveForm.Porto .Matrix .MatrixWrapper {
+    overflow-x: auto;
+}
+
+.LiveForm.Porto .Matrix table th {
+    font-weight: bold;
+}
+
+.LiveForm.Porto .Matrix .Field-Container input {
+    margin: 0;
+}
+
+.LiveForm.Porto .Field-Tooltip-Arrow-Small {
+    border-color: transparent #F5F5F5 transparent transparent;
+    border-style: solid;
+    border-width: 7px;
+    height: 0;
+    width: 0;
+    left: -14px;
+    top: 10px;
+    position: absolute;
+}
+
+.LiveForm.Porto .Field-Tooltip-Content {
+    padding: 10px;
+    font-size: 10px;
+    color: #333;
+}
+
+.LiveForm .fullname-container {
+    margin-right: 5px;
+    white-space: nowrap;
+}
+
+.emailwizard-header {
+    background: none repeat scroll 0px 0px rgb(255, 161, 0);
+    border-bottom: 1px solid rgb(194, 122, 0);
+    border-radius: 3px 3px 0px 0px;
+    height: 35px;
+    padding: 2px;
+    position: relative;
+    z-index: 1000;
+    vertical-align: middle;
+    font-weight: bolder;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+    padding-left: 11px 4px 0 12px;
+    font-size: 13px;
+    cursor: move;
+    color: rgb(255, 255, 255);
+}
+
+.emailwizard-header-label {
+    vertical-align: middle;
+    font-weight: bold;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+    padding-left: 10px;
+    font-size: 13px;
+    cursor: move;
+    color: rgb(255, 255, 255);
+}
+
+.viewport-sm .LiveForm.Porto label.Field-Label-Auto,
+.viewport-sm .LiveForm.Porto label.Field-Label-Hidden,
+.viewport-sm .LiveForm.Porto span.Field-Label-Auto {
+    width: 150px;
+}
+
+.viewport-sm .LiveForm.Porto.Form-Top .Field-Label-Auto,
+.viewport-sm .LiveForm.Porto.Form-Top .Field-Label-Hidden {
+    width: auto;
+}
+
+.LiveForm.Porto label.Field-Label-Auto,
+.LiveForm.Porto span.Field-Label-Auto,
+.LiveForm.Porto label.Field-Label-Hidden,
+.LiveForm.Porto span.Field-Label-Auto {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/*Field Specific*/
+.LiveForm.Porto .Field.Image .Field-Container {
+    display: block;
+}
+
+/*hide button in page break */
+.LiveForm.Porto ul li .button-hidden {
+    display: none;
+}
+
+.LiveForm.Porto ul li .form-pagebreak-back-container input[type=button],
+.LiveForm.Porto ul li .form-pagebreak-next-container input[type=button] {
+    float: left;
+}
+
+.LiveForm.Porto .hidden {
+    display: none;
+}
+
+.LiveForm.Porto .Field-Container-Wide .next-form-pagebreak button:last-child,
+.LiveForm.Porto .Field-Container-Wide .form-pagebreak.next-form-pagebreak .button-next {
+    float: right;
+}
+
+/* Smartphones and iPad (portrait and landscape) ----------- */
+@media only screen and (min-width: 0px) and (max-width: 1024px) {
+
+    .LiveForm.Porto {
+        max-width: 100%;
+    }
+}
+
+.LiveForm.Porto .Matrix .Field-Container > div {
+    display: table-caption;
+}
+
+.LiveForm.Porto .plupload_filelist_footer {
+    box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+}
+
+.LiveForm.Porto .next-form-pagebreak .button-next {
+    float: right !important;
+}
+
+.LiveForm.Porto .nrequired, .LiveForm.Porto .Radiobutton.Required input[type="text"] {
+    width: 107px;
+    margin: 0;
+}
+
+.LiveForm.Porto .Submitbutton input[type='button'], .LiveForm.Porto .bSubmit, .LiveForm.Porto .form-pagebreak .button-next, .LiveForm.Porto .form-pagebreak .button-back, .LiveForm.Porto .page-break-section .button-back {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #0088cc;
+    border-color: #0088cc #0088cc #006699;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.LiveForm.Porto .Submitbutton input[type='button']:hover, 
+.LiveForm.Porto .bSubmit:hover, 
+.LiveForm.Porto .form-pagebreak .button-next:hover, 
+.LiveForm.Porto .form-pagebreak .button-back:hover, 
+.LiveForm.Porto .page-break-section .button-back:hover {
+    color: #ffffff;
+    border-color: #0099e6 #0099e6 #0077b3;
+    background-color: #0099e6;
+}
+
+.LiveForm.Porto input[type='text'], 
+.LiveForm.Porto input[type='password'],
+.LiveForm.Porto textarea, 
+.LiveForm.Porto select {
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #555555;
+    vertical-align: middle;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -moz-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    display: block;
+}
+
+.LiveForm.Porto .Field > label {
+    margin-bottom: 5px;
+    color: #777;
+    font-size: 14px;
+}
+
+.LiveForm.Porto .page-break-section {
+    list-style-type: none;
+    padding: 0;
+}
+
+.LiveForm.Porto .Field-Container br {
+    display: none;
+}
+footer .terms:before,
+footer .privacy:before {
+    display: block;
+    content: '';
+    height: 12px;
+    border-left: 1px solid #777777;
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+}

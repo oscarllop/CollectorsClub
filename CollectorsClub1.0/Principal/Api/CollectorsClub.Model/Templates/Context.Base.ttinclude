@@ -1,0 +1,1927 @@
+﻿<#@ assembly name="C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\Microsoft.Data.Entity.Design.DatabaseGeneration.dll"#>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Microsoft.Data.Entity.Design.DatabaseGeneration" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#+
+public void WriteHeader(CodeStringGenerator codeStringGenerator, EntityFrameworkTemplateFileManager fileManager) {
+    fileManager.StartHeader();
+#><#=codeStringGenerator.UsingDirectives(inHeader: true)#>
+<#+
+    fileManager.EndBlock();
+}
+
+public void BeginNamespace(CodeGenerationTools code, string suffix) {
+  string codeNamespace = code.VsNamespaceSuggestion();
+	if (!String.IsNullOrEmpty(codeNamespace)) {
+		codeNamespace = codeNamespace.Replace("Templates", suffix); #>
+namespace <#=code.EscapeNamespace(codeNamespace)#> {
+<#+
+		PushIndent("	");
+  }
+}
+
+public void EndNamespace(CodeGenerationTools code) {
+  if (!String.IsNullOrEmpty(code.VsNamespaceSuggestion())) {
+    PopIndent();
+#>}<#+
+  }
+}
+
+public const string TemplateId = "CSharp_DbContext_Types_EF5";
+
+public class CodeJSGenerator {
+	private readonly CodeGenerationTools _code;
+	private readonly TypeMapper _typeMapper;
+	private readonly MetadataTools _ef;
+
+	public string ToVariableName(string name) {
+		return name.Substring(0,1).ToLower() + name.Substring(1);
+	}
+
+	public CodeJSGenerator(CodeGenerationTools code, TypeMapper typeMapper, MetadataTools ef) {
+		ArgumentNotNull(code, "code");
+		ArgumentNotNull(typeMapper, "typeMapper");
+		ArgumentNotNull(ef, "ef");
+
+		_code = code;
+		_typeMapper = typeMapper;
+		_ef = ef;
+	}
+
+	public string KeyMappingFunction(IEnumerable<EdmProperty> _properties) {
+		string _mapping = string.Empty;
+		if (_properties.Count() > 0) {
+			if (_properties.Count() > 1) {
+				foreach(EdmProperty _property in _properties) {
+					if (_mapping != string.Empty) { _mapping += " + ',' + "; }
+					_mapping += string.Format("'{0}: ' + o.{0}", _property.Name); 
+					_mapping = "'{' + " + _mapping + " + '}';";
+				}
+			} else {
+				_mapping = string.Format("o.{0}.toString();", _properties.FirstOrDefault());
+			}
+		}
+		return _mapping;
+	}
+
+	public string KeyMapping(IEnumerable<EdmProperty> _properties) {
+		string _mapping = string.Empty;
+		if (_properties.Count() > 0) {
+			if (_properties.Count() > 1) {
+				foreach(EdmProperty _property in _properties) {
+					if (_mapping != string.Empty) { _mapping += " + ',' + "; }
+					_mapping += string.Format("'{0}: ' + {0}", _property.Name); 
+					_mapping = "'{' + " + _mapping + " + '}';";
+				}
+			} else {
+				_mapping = string.Format("{0}", _properties.FirstOrDefault());
+			}
+		}
+		return _mapping;
+	}
+
+//	public string ConstructorParameters(IEnumerable<EdmProperty> properties, bool includeDefaultValue) {
+//		string _resultado = string.Empty;
+//		foreach (EdmProperty _property in properties) {
+//			if (_resultado != string.Empty) { _resultado += ", "; }
+//			_resultado += ConstructorParameter(_property, includeDefaultValue);
+//		}
+//		return _resultado;
+//	}
+
+//	public string ConstructorParameter(EdmProperty edmProperty, bool includeDefaultValue) {
+//		return string.Format(CultureInfo.InvariantCulture, "{0}{1}", _code.Escape(edmProperty), (includeDefaultValue ? ": " + DefaultValue(edmProperty) : string.Empty));
+//	}
+
+//	public object DefaultValue(EdmProperty edmProperty) {
+//		object _default = _typeMapper.GetDefaultTypeValue(_typeMapper.UnderlyingClrType(edmProperty.TypeUsage.EdmType));
+//		if (_default == null || _ef.IsNullable(edmProperty.TypeUsage)) { _default = "null"; }
+//		else if (_default is bool) { _default = _default.ToString().ToLower(); }
+//		else if (_default is string) { _default = "''"; }
+//		else if (_default is DateTime || _default is TimeSpan) { _default = "new Date('" + _default.ToString() + "')"; }
+//		return _default;
+//	}
+
+//	public string ConstructorParameters(IEnumerable<EdmMember> properties, bool includeDefaultValue) {
+//		string _resultado = string.Empty;
+//		foreach (EdmMember _property in properties) {
+//			if (_resultado != string.Empty) { _resultado += ", "; }
+//			_resultado += ConstructorParameter(_property, includeDefaultValue);
+//		}
+//		return _resultado;
+//	}
+
+	public string ConstructorParameter(EdmMember edmMember, bool includeDefaultValue) {
+		return string.Format(CultureInfo.InvariantCulture, "{0}{1}", _code.Escape(edmMember), (includeDefaultValue ? ": " + DefaultValue(edmMember) : string.Empty));
+	}
+
+	public string DefaultValue(EdmMember edmMember) {
+		string _default = "null";
+		if (edmMember is EdmProperty) {
+			Type _tipo = _typeMapper.UnderlyingClrType(edmMember.TypeUsage.EdmType);
+			object _objetoDefault = _typeMapper.GetDefaultTypeValue(_tipo);
+			if (_ef.IsNullable(edmMember.TypeUsage)) { _default = "null"; }
+			else if (_objetoDefault is bool) { _default = _objetoDefault.ToString().ToLower(); }
+			else if (_tipo.FullName == "System.String") { _default = "''"; }
+			else if (_objetoDefault is short || _objetoDefault is int || _objetoDefault is long || _objetoDefault is double || _objetoDefault is decimal || _objetoDefault is float) { _default = "0"; }
+			else if (_objetoDefault is DateTime || _objetoDefault is TimeSpan) { _default = "(typeof moment !== 'undefined' ? moment().format() : new Date('" + _objetoDefault.ToString() + "'))"; }
+			else if (_objetoDefault == null) { _default = "null"; } 
+			else { _default = _objetoDefault.ToString(); }
+		}
+		return _default;
+	}
+
+	public string MethodParameters(IEnumerable<EdmProperty> properties, string objetoOrigen, bool minusculas) {
+		string _resultado = string.Empty;
+		foreach (EdmProperty _property in properties) {
+			if (_resultado != string.Empty) { _resultado += ", "; }
+			_resultado += PropertyAsMethodParameter(_property, objetoOrigen, minusculas);
+		}
+		return _resultado;
+	}
+
+	public string PropertyAsMethodParameter(EdmProperty edmProperty, string objetoOrigen, bool minusculas) {
+		return string.Format(CultureInfo.InvariantCulture, "{0}{1}", (objetoOrigen != string.Empty ? objetoOrigen + "." : string.Empty), (minusculas ? _code.Escape(edmProperty).ToLower() : _code.Escape(edmProperty)));
+	}
+
+	public string JSONDeclaration(IEnumerable<EdmProperty> properties, string objeto, bool knockout) {
+		string _resultado = string.Empty;
+		foreach (EdmProperty _property in properties) {
+			if (_resultado != string.Empty) { _resultado += ", "; }
+			_resultado += PropertyAsJSONDeclaration(_property, objeto, knockout);
+		}
+		return _resultado;
+	}
+
+	public string PropertyAsJSONDeclaration(EdmProperty edmProperty, string objeto, bool knockout) {
+		return string.Format(CultureInfo.InvariantCulture, "{0}: {1}{2}{3}", _code.Escape(edmProperty), (objeto != string.Empty ? objeto + "." : string.Empty), _code.Escape(edmProperty), (knockout ? "()" : string.Empty));
+	}
+
+	public string HTTPCallParameters(IEnumerable<EdmProperty> properties, string objeto, bool knockout, bool minusculas) {
+		string _resultado = string.Empty;
+		foreach (EdmProperty _property in properties) {
+			_resultado += " + '/' + " + PropertyAsHTTPCallParameter(_property, objeto, knockout, minusculas);
+		}
+		return _resultado;
+	}
+
+	public string PropertyAsHTTPCallParameter(EdmProperty edmProperty, string objeto, bool knockout, bool minusculas) {
+		return string.Format(CultureInfo.InvariantCulture, "{0}{1}{2}", (objeto != string.Empty ? objeto + "." : string.Empty), (minusculas ? _code.Escape(edmProperty).ToLower() : _code.Escape(edmProperty)), (knockout ? "()" : string.Empty));
+	}
+
+	public string NewValueKeyCondition(IEnumerable<EdmProperty> properties, string objeto) {
+		string _resultado = string.Empty;
+		foreach (EdmProperty _property in properties) {
+			if (_resultado != string.Empty) { _resultado += " || "; }
+			_resultado += PropertyAsNewValueKeyCondition(_property, objeto);
+		}
+		return _resultado;
+	}
+
+	public string PropertyAsNewValueKeyCondition(EdmProperty edmProperty, string objeto) {
+		return string.Format(CultureInfo.InvariantCulture, "{0}.{1}() == {2}", objeto, _code.Escape(edmProperty), DefaultValue(edmProperty));
+	}
+
+	public string KnockoutObjectsAssign(IEnumerable<EdmProperty> properties, string objetoOrigen, string objetoDestino, bool acabarSentencia) {
+		string _resultado = string.Empty;
+		foreach (EdmProperty _property in properties) {
+			if (_resultado != string.Empty) { _resultado += " "; }
+			_resultado += KnockoutObjectPropertyAssign(_property, objetoOrigen, objetoDestino, acabarSentencia);
+		}
+		return _resultado;
+	}
+
+	public string KnockoutObjectPropertyAssign(EdmProperty edmProperty, string objetoOrigen, string objetoDestino, bool acabarSentencia) {
+		return string.Format(CultureInfo.InvariantCulture, "{1}{0}({2}{0})", _code.Escape(edmProperty), (objetoDestino != string.Empty ? objetoDestino + "." : string.Empty), (objetoOrigen != string.Empty ? objetoOrigen + "." : string.Empty)) + (acabarSentencia ? ";" : string.Empty);
+	}
+
+	public string ValidationExtension(MetadataLoadResult loadResult, EntityType entity, EdmProperty property) {
+		string _usage = string.Empty;
+		foreach(Facet _facet in property.TypeUsage.Facets) {
+			// OLL: Mirar que más facets podemos controlar
+			switch(_facet.Name) { 
+			case "MaxLength": 
+				string _valor = _facet.Value.ToString();
+				if (_facet.Value.ToString() == "Max") {
+					_valor = ((System.Data.Metadata.Edm.PrimitiveType) _facet.FacetType).ClrEquivalentType.GetField("MaxValue").GetValue(null).ToString();
+				}
+				if (_usage != string.Empty) { _usage += ", "; }
+				_usage += "maxLength: " + _valor;
+				break;
+			case "Nullable": 
+				if ((bool) _facet.Value == false) { 
+					if (_usage != string.Empty) { _usage += ", "; }
+					_usage += "required: { message: traducciones.get('MensajeError_" + property.Name + "_Text')() }"; 
+				} 
+				break;
+			}
+		}
+		return (_usage != string.Empty ? ".extend({ " + _usage + " })" : string.Empty);
+	}
+
+	private bool IsNumeric(Type type) {
+		switch (Type.GetTypeCode(type)) {
+		case TypeCode.Byte:
+		case TypeCode.SByte:
+		case TypeCode.UInt16:
+		case TypeCode.UInt32:
+		case TypeCode.UInt64:
+		case TypeCode.Int16:
+		case TypeCode.Int32:
+		case TypeCode.Int64:
+		case TypeCode.Decimal:
+		case TypeCode.Double:
+		case TypeCode.Single:
+			return true;
+		default: 
+			return false;
+		} 
+	}
+}
+
+public class CodeSQLGenerator {
+	private readonly CodeGenerationTools _code;
+	private readonly TypeMapper _typeMapper;
+	private readonly MetadataTools _ef;
+	private readonly MetadataLoadResult _storeMetadata;
+
+	public CodeSQLGenerator(CodeGenerationTools code, TypeMapper typeMapper, MetadataTools ef, MetadataLoadResult storeMetadata) {
+		ArgumentNotNull(code, "code");
+		ArgumentNotNull(typeMapper, "typeMapper");
+		ArgumentNotNull(ef, "ef");
+		ArgumentNotNull(storeMetadata, "storeMetadata");
+
+		_code = code;
+		_typeMapper = typeMapper;
+		_ef = ef;
+		_storeMetadata = storeMetadata;
+	}
+
+	public List<EdmMember> GetQueryParameterProperties(IEnumerable<EdmMember> visibleProperties, IEnumerable<EdmMember> simpleProperties) {
+		List<EdmMember> _procedureParameterProperties = visibleProperties.ToList();
+		EdmMember _idMarca = simpleProperties.Where(p => p.Name == "IdMarca").FirstOrDefault();
+		if (_idMarca != null && !_procedureParameterProperties.Contains(_idMarca)) { _procedureParameterProperties.Add(_idMarca); }
+		return _procedureParameterProperties;
+	}
+
+	public string WhereStatement(EntityType entity, EntitySet entitySet, IEnumerable<EdmMember> properties, Dictionary<string, MetadataGenerador.MetadataPropiedad> metadataPropiedades) {
+		string _resultado = string.Empty;
+		foreach (MetadataGenerador.MetadataPropiedad _propiedad in metadataPropiedades.Values) { 
+			EdmProperty _property = (EdmProperty) properties.Where(p => p.Name == _propiedad.Nombre).FirstOrDefault();
+			if (_property != null) { _resultado += Condicion(entity, entitySet.Name, _property, _propiedad, "AND", true) + "\r\n"; }
+		}
+		return (_resultado != string.Empty ? "WHERE" + _resultado.Remove(0, 5) : string.Empty);
+	}
+
+	public string ProcedureParameters(EntityType entity, IEnumerable<EdmMember> properties, Dictionary<string, MetadataGenerador.MetadataPropiedad> metadataPropiedades) {
+		string _resultado = string.Empty;
+		foreach (MetadataGenerador.MetadataPropiedad _propiedad in metadataPropiedades.Values) {
+			EdmProperty _property = (EdmProperty) properties.Where(p => p.Name == _propiedad.Nombre).FirstOrDefault();
+			if (_resultado != string.Empty) { _resultado += ", "; }
+			_resultado += ProcedureParameter(_propiedad, _property);
+		}
+		return _resultado;
+	}
+
+	public string ProcedureParameter(MetadataGenerador.MetadataPropiedad propiedad, EdmMember property) {
+		string _tipo = (property != null ? _typeMapper.GetSQLTypeName((EdmProperty) property) : propiedad.TipoDatosSql);
+		if (propiedad.TipoCampo ==  MetadataGenerador.TipoCampo.Numero_Rango || propiedad.TipoCampo == MetadataGenerador.TipoCampo.Fecha_Rango || propiedad.TipoCampo == MetadataGenerador.TipoCampo.Hora_Rango || propiedad.TipoCampo == MetadataGenerador.TipoCampo.Relacion1_N_Fecha_Rango|| propiedad.TipoCampo == MetadataGenerador.TipoCampo.FechaHora_Rango) {
+			return string.Format(CultureInfo.InvariantCulture, "@{0}Desde as {1}", propiedad.Nombre, _tipo) + ", " +
+						 string.Format(CultureInfo.InvariantCulture, "@{0}Hasta as {1}", propiedad.Nombre, _tipo);
+		} else {
+			return string.Format(CultureInfo.InvariantCulture, "@{0} as {1}{2}", propiedad.Nombre, (_tipo != "ntext" && _tipo != "text"? _tipo : _tipo.Replace("text", "varchar(MAX)")), (!_tipo.ToLower().Contains("max") && (_tipo.Contains("char") || _tipo == "varbinary") ? "(" + (property != null ? _typeMapper.MaxLength((EdmProperty) property) : propiedad.TamanyoDatosSql) + ")" : string.Empty));
+		}
+	}
+
+	// OLL: Las variables de tipo rango no se declaran bien, aparecen en la misma línea y en la primera no se le ubica el null. Podemos pasar el null como valor por defector por parámetro a ProcedureParameter y 
+	// poner tanto valor por defecto al parámetro como a la variable. Hace que vaya más lento la ejecucioón del stored?
+	public string DeclareVariables(EntityType entity, IEnumerable<EdmMember> properties, Dictionary<string, MetadataGenerador.MetadataPropiedad> metadataPropiedades) {
+		string _resultado = string.Empty;
+		foreach (MetadataGenerador.MetadataPropiedad _propiedad in metadataPropiedades.Values) { 
+			EdmProperty _property = (EdmProperty) properties.Where(p => p.Name == _propiedad.Nombre).FirstOrDefault();
+			_resultado += "	--declare " + ProcedureParameter(_propiedad, _property) + " = null\r\n";
+		}
+		return _resultado;
+	}
+
+	public string Select(EntityType entity, string alias, IEnumerable<EdmMember> properties) {
+		string _resultado = string.Empty;
+		foreach (EdmMember _property in properties) {
+			if (_resultado != string.Empty) { _resultado += ", "; }
+			_resultado += _typeMapper.StoreColumnNameWithAlias(alias, entity, (EdmProperty) _property) + " AS " + _code.Escape(_property);
+			EntityType _tipoRelacionado = null;
+			NavigationProperty _propiedadRelacionada = null;
+			if (_typeMapper.HasNavigationProperty((EdmProperty) _property, out _tipoRelacionado, out _propiedadRelacionada) && _tipoRelacionado != entity) {
+				EdmMember _propiedadNombreoCodigo = _typeMapper.GetSimpleProperties(_tipoRelacionado).Where(p => p.Name.ToLower().Contains("nombre") || p.Name.ToLower().Contains("descripcion")).OrderBy(p => p.Name.Length).FirstOrDefault();
+				if (_propiedadNombreoCodigo == null) { _propiedadNombreoCodigo = _typeMapper.GetSimpleProperties(_tipoRelacionado).Where(p => p.Name.ToLower().Contains("codigo")).OrderBy(p => p.Name.Length).FirstOrDefault(); }
+				if (_propiedadNombreoCodigo != null) {
+					string _columnaNombre = _typeMapper.StoreColumnNameWithAlias(_typeMapper.StoreAlias(_typeMapper.GetEntitySet(_tipoRelacionado), _propiedadRelacionada), _tipoRelacionado, _propiedadNombreoCodigo);
+					_resultado += ", " + _columnaNombre + " AS " + _propiedadRelacionada.Name;
+				}
+			}
+		}
+		return _resultado;
+	}
+
+	public string SelectNombresCampos(EntityType entity, string alias, IEnumerable<EdmMember> properties) {
+		string _resultado = string.Empty;
+		foreach (EdmMember _property in properties) {
+			if (_resultado != string.Empty) { _resultado += ", "; }
+			_resultado += _code.Escape(_property);
+			EntityType _tipoRelacionado = null;
+			NavigationProperty _propiedadRelacionada = null;
+			if (_typeMapper.HasNavigationProperty((EdmProperty) _property, out _tipoRelacionado, out _propiedadRelacionada) && _tipoRelacionado != entity) {
+				EdmMember _propiedadNombreoCodigo = _typeMapper.GetSimpleProperties(_tipoRelacionado).Where(p => p.Name.ToLower().Contains("nombre") || p.Name.ToLower().Contains("descripcion")).OrderBy(p => p.Name.Length).FirstOrDefault();
+				if (_propiedadNombreoCodigo == null) { _propiedadNombreoCodigo = _typeMapper.GetSimpleProperties(_tipoRelacionado).Where(p => p.Name.ToLower().Contains("codigo")).OrderBy(p => p.Name.Length).FirstOrDefault(); }
+				if (_propiedadNombreoCodigo != null) { _resultado += ", " + _propiedadRelacionada.Name; }
+			}
+		}
+		return _resultado;
+	}
+
+	public string Condicion(EntityType entity, string alias, EdmMember property, MetadataGenerador.MetadataPropiedad metadataPropiedad, string condicion, bool Nullable) {
+		string _columnaConAlias = _typeMapper.StoreColumnNameWithAlias(alias, entity, (EdmProperty) property);
+		string _resultado = "		" + condicion + (!string.IsNullOrEmpty(condicion) ? " " : string.Empty);
+		switch (metadataPropiedad.TipoCampo) {
+		case MetadataGenerador.TipoCampo.Texto_CorreoElectronico:
+		case MetadataGenerador.TipoCampo.Texto_CampoSimple:
+		case MetadataGenerador.TipoCampo.Texto_AutoComplete: _resultado += "(" + (Nullable ? "@" + _code.Escape(property) + " IS NULL OR " : string.Empty) + _columnaConAlias + (_typeMapper.MaxLength((EdmProperty) property) < 15 ? " = @" + _code.Escape(property) : " LIKE '%' + @" + _code.Escape(property) + " + '%'") + ")"; break;
+		case MetadataGenerador.TipoCampo.Numero_Rango:
+		case MetadataGenerador.TipoCampo.Hora_Rango:
+		case MetadataGenerador.TipoCampo.Relacion1_N_Fecha_Rango:
+		case MetadataGenerador.TipoCampo.FechaHora_Rango:
+		case MetadataGenerador.TipoCampo.Fecha_Rango: _resultado += "(" + (Nullable ? "@" + _code.Escape(property) + "Desde IS NULL OR @" + _code.Escape(property) + "Hasta IS NULL OR (" : string.Empty) + _columnaConAlias + " >= @" + _code.Escape(property) + "Desde AND " + _columnaConAlias + " < DateAdd(d, 1, @" + _code.Escape(property) + "Hasta)))"; break;
+		default: _resultado += "(" + (Nullable ? "@" + _code.Escape(property) + " IS NULL OR " : string.Empty) + _columnaConAlias + " = @" + _code.Escape(property) + ")"; break;
+		}
+		if (_typeMapper.GetSQLTypeName((EdmProperty) property) == "xml") { _resultado = "-- OLL: Tenemos que usar el contains " + _resultado; }
+		return _resultado;
+	}
+}
+
+public class CodeStringGenerator {
+	private readonly CodeGenerationTools _code;
+	private readonly TypeMapper _typeMapper;
+	private readonly MetadataTools _ef;
+
+	public CodeStringGenerator(CodeGenerationTools code, TypeMapper typeMapper, MetadataTools ef) {
+		ArgumentNotNull(code, "code");
+		ArgumentNotNull(typeMapper, "typeMapper");
+		ArgumentNotNull(ef, "ef");
+
+		_code = code;
+		_typeMapper = typeMapper;
+		_ef = ef;
+	}
+
+	public string CompareProperties(IEnumerable<EdmProperty> properties, string objetoOrigen, string objetoDestino, string operando, string condicion) {
+		string _resultado = string.Empty;
+		foreach (EdmProperty _property in properties) {
+			if (_resultado != string.Empty) { _resultado += " " + operando + " "; }
+			_resultado += CompareProperty(_property, objetoOrigen, objetoDestino, condicion);
+		}
+		return _resultado;
+	}
+
+	public string CompareProperty(EdmProperty edmProperty, string objetoOrigen, string objetoDestino, string condicion) {
+		return string.Format(CultureInfo.InvariantCulture, "{1}{0} {3} {2}{0}", _code.Escape(edmProperty), (objetoDestino != string.Empty ? objetoDestino + "." : string.Empty), (objetoOrigen != string.Empty ? objetoOrigen + "." : string.Empty), condicion);
+	}
+
+	public string IncludePrimaryEntities(EntityType entity) {
+		string _entities = string.Empty;
+		IEnumerable<NavigationProperty> _navigationProperties = _typeMapper.GetNavigationProperties(entity);
+		foreach (NavigationProperty _property in _navigationProperties) { 
+			EntityType _relationshipType = _typeMapper.PrimaryEntityType(entity, _property);
+			if (_relationshipType != null) { 
+				if (_entities != string.Empty) { _entities += ", "; }
+				_entities += "\"" + _property.Name + "\""; 
+			}
+		}
+		return (!string.IsNullOrEmpty(_entities) ? "new string[] { " + _entities + " }" : string.Empty);
+	}
+
+	public string PropertyTypeUsage(MetadataLoadResult loadResult, EntityType entity, EdmProperty property) {
+		string _usage = string.Empty;
+		foreach(Facet _facet in property.TypeUsage.Facets) {
+			switch(_facet.Name) { 
+			case "MaxLength": 
+				string _valor = _facet.Value.ToString();
+				if (_facet.Value.ToString() == "Max") {
+					_valor = ((System.Data.Metadata.Edm.PrimitiveType) _facet.FacetType).ClrEquivalentType.GetField("MaxValue").GetValue(null).ToString();
+				}
+				_usage += ".HasMaxLength(" + _valor + ")";
+				break;
+			case "Nullable": if ((bool) _facet.Value == false) { _usage += ".IsRequired()"; } break;
+			}
+		}
+		MetadataProperty _identity = property.MetadataProperties.Where(m => m.Name == "http://schemas.microsoft.com/ado/2009/02/edm/annotation:StoreGeneratedPattern").FirstOrDefault();
+		if (entity.KeyMembers.Contains(property) && _typeMapper.IsNumeric(((PrimitiveType) property.TypeUsage.EdmType).ClrEquivalentType) && (_identity == null || (_identity != null && (string) _identity.Value == System.Data.Metadata.Edm.StoreGeneratedPattern.None.ToString()))) {
+			_usage += ".HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)";
+		}
+		string _storePropertyName = loadResult.PropertyToColumnMapping[entity].Item2[property].Name;
+		if (_storePropertyName != property.Name) { _usage += string.Format(".HasColumnName(\"{0}\")", _storePropertyName); }
+		return (_usage != string.Empty ? "Property(p => p." + property.Name + ")" + _usage + ";" : string.Empty);
+	}
+
+//	public string ConstructorParameters(EntityType entity, IEnumerable<EdmProperty> properties) {
+//		string _resultado = string.Empty;
+//		foreach (EdmProperty _property in properties) {
+//			if (_resultado != string.Empty) { _resultado += ", "; }
+//			_resultado += PropertyAsParameter(_property);
+//		}
+//		return _resultado;
+//	}
+
+	public string ConstructorParameters(EntityType entity, IEnumerable<EdmMember> properties) {
+		string _resultado = string.Empty;
+		foreach (EdmMember _property in properties) {
+			if (_resultado != string.Empty) { _resultado += ", "; }
+			_resultado += PropertyAsParameter(_property);
+		}
+		return _resultado;
+	}
+
+	public string MethodParameters(IEnumerable<EdmProperty> properties, string objetoOrigen) {
+		string _resultado = string.Empty;
+		foreach (EdmProperty _property in properties) {
+			if (_resultado != string.Empty) { _resultado += ", "; }
+			_resultado += PropertyAsMethodParameter(_property, objetoOrigen);
+		}
+		return _resultado;
+	}
+
+	public string PropertyAsMethodParameter(EdmProperty edmProperty, string objetoOrigen) {
+		return string.Format(CultureInfo.InvariantCulture, "{0}{1}", (objetoOrigen != string.Empty ? objetoOrigen + "." : string.Empty), _code.Escape(edmProperty));
+	}
+
+//	public string PropertyAsParameter(EdmProperty edmProperty) {
+//		return string.Format(CultureInfo.InvariantCulture, "{0} {1}", _typeMapper.GetTypeName(edmProperty.TypeUsage), _code.Escape(edmProperty));
+//	}
+
+	public string PropertyAsParameter(EdmMember edmProperty) {
+		return string.Format(CultureInfo.InvariantCulture, "{0} {1}", _typeMapper.GetTypeName(edmProperty.TypeUsage), _code.Escape(edmProperty));
+	}
+
+	public string ObjectsAssign(IEnumerable<EdmProperty> properties, string objetoOrigen, string objetoDestino, bool acabarSentencia) {
+		string _resultado = string.Empty;
+		foreach (EdmProperty _property in properties) {
+			if (_resultado != string.Empty) { _resultado += ", "; }
+			_resultado += ObjectPropertyAssign(_property, objetoOrigen, objetoDestino, acabarSentencia);
+		}
+		return _resultado;
+	}
+
+//	public string ObjectPropertyAssign(EdmProperty edmProperty, string objetoOrigen, string objetoDestino, bool acabarSentencia) {
+//		return string.Format(CultureInfo.InvariantCulture, "{1}{0} = {2}{0}", _code.Escape(edmProperty), (objetoDestino != string.Empty ? objetoDestino + "." : string.Empty), (objetoOrigen != string.Empty ? objetoOrigen + "." : string.Empty)) + (acabarSentencia ? ";" : string.Empty);
+//	}
+
+	public string ObjectPropertyAssign(EdmMember edmProperty, string objetoOrigen, string objetoDestino, bool acabarSentencia) {
+		return string.Format(CultureInfo.InvariantCulture, "{1}{0} = {2}{0}", _code.Escape(edmProperty), (objetoDestino != string.Empty ? objetoDestino + "." : string.Empty), (objetoOrigen != string.Empty ? objetoOrigen + "." : string.Empty)) + (acabarSentencia ? ";" : string.Empty);
+	}
+
+	public string NewValueCondition(EdmProperty edmProperty, string objeto) {
+		//return string.Format(CultureInfo.InvariantCulture, "{1}.{0} == {2}", _code.Escape(edmProperty), objeto, _typeMapper.GetDefaultTypeValue(_typeMapper.UnderlyingClrType(edmProperty.TypeUsage.EdmType)));
+		return string.Format(CultureInfo.InvariantCulture, "{1}.{0} == {2}", _code.Escape(edmProperty), objeto, DefaultValue(edmProperty));
+	}
+
+	public object DefaultValue(EdmProperty edmProperty) {
+		object _default = _typeMapper.GetDefaultTypeValue(_typeMapper.UnderlyingClrType(edmProperty.TypeUsage.EdmType));
+		if (_default == null || _ef.IsNullable(edmProperty.TypeUsage)) { _default = "null"; }
+		else if (_default is bool) { _default = _default.ToString().ToLower(); }
+		else if (_default is string) { _default = "string.Empty"; }
+		else if (_default is DateTime || _default is TimeSpan) { _default = "DateTime.MinValue"; }
+		return _default;
+	}
+
+	public string Property(EdmProperty edmProperty) {
+		return string.Format(CultureInfo.InvariantCulture, "{0} {1} {2} {{ {3}get; {4}set; }}", Accessibility.ForProperty(edmProperty), _typeMapper.GetTypeName(edmProperty.TypeUsage), _code.Escape(edmProperty), _code.SpaceAfter(Accessibility.ForGetter(edmProperty)), _code.SpaceAfter(Accessibility.ForSetter(edmProperty)));
+	}
+
+	public string Property(EntityType entity, EdmMember property, string typeSufix) {
+		if (property is NavigationProperty) {
+			NavigationProperty _navigationProperty = property as NavigationProperty;
+			EntityType _relationshipType = _typeMapper.PrimaryEntityType(entity, _navigationProperty);
+
+			if (_relationshipType != null) {
+				if (_navigationProperty.ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many) {
+					string _tipoRelacionado = ((CollectionType)_navigationProperty.TypeUsage.EdmType).TypeUsage.EdmType.Name;
+					return string.Format(CultureInfo.InvariantCulture, "{0} {1} {2} {{ {3}get; {4}set; }}", Accessibility.ForProperty(_navigationProperty), (!string.IsNullOrEmpty(typeSufix) ? _typeMapper.GetTypeName(_navigationProperty.TypeUsage).Replace(_tipoRelacionado, string.Format(typeSufix , _tipoRelacionado)) : _typeMapper.GetTypeName(_navigationProperty.TypeUsage)), _code.Escape(_navigationProperty), _code.SpaceAfter(Accessibility.ForGetter(_navigationProperty)), _code.SpaceAfter(Accessibility.ForSetter(_navigationProperty)));
+				} else { 
+					return string.Format(CultureInfo.InvariantCulture, "{0} {1} {2} {{ {3}get; {4}set; }}", Accessibility.ForProperty(_navigationProperty), (!string.IsNullOrEmpty(typeSufix) ? string.Format(typeSufix, _typeMapper.GetTypeName(_navigationProperty.TypeUsage)) : _typeMapper.GetTypeName(_navigationProperty.TypeUsage)), _code.Escape(_navigationProperty), _code.SpaceAfter(Accessibility.ForGetter(_navigationProperty)), _code.SpaceAfter(Accessibility.ForSetter(_navigationProperty)));
+				}
+			} else { 
+				string _tipoRelacionado = ((CollectionType)_navigationProperty.TypeUsage.EdmType).TypeUsage.EdmType.Name;
+				return string.Format(CultureInfo.InvariantCulture, "{0} {1} {2} {{ {3}get; {4}set; }}", Accessibility.ForProperty(_navigationProperty), (!string.IsNullOrEmpty(typeSufix) ? _typeMapper.GetTypeName(_navigationProperty.TypeUsage).Replace(_tipoRelacionado, string.Format(typeSufix , _tipoRelacionado)) : _typeMapper.GetTypeName(_navigationProperty.TypeUsage)), _code.Escape(_navigationProperty), _code.SpaceAfter(Accessibility.ForGetter(_navigationProperty)), _code.SpaceAfter(Accessibility.ForSetter(_navigationProperty)));
+			}
+		} else {
+			return string.Format(CultureInfo.InvariantCulture, "{0} {1} {2} {{ {3}get; {4}set; }}", Accessibility.ForProperty((EdmProperty) property), _typeMapper.GetTypeName(((EdmProperty) property).TypeUsage), _code.Escape(property), _code.SpaceAfter(Accessibility.ForGetter((EdmProperty) property)), _code.SpaceAfter(Accessibility.ForSetter((EdmProperty) property)));
+		}
+	}
+
+	public string NavigationProperty(NavigationProperty navigationProperty) {
+    var endType = _typeMapper.GetTypeName(navigationProperty.ToEndMember.GetEntityType());
+    return string.Format(CultureInfo.InvariantCulture, "{0} {1} {2} {{ {3}get; {4}set; }}", AccessibilityAndVirtual(Accessibility.ForProperty(navigationProperty)), navigationProperty.ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many ? ("ICollection<" + endType + ">") : endType, _code.Escape(navigationProperty), _code.SpaceAfter(Accessibility.ForGetter(navigationProperty)), _code.SpaceAfter(Accessibility.ForSetter(navigationProperty)));
+  }
+
+  public string AccessibilityAndVirtual(string accessibility) {
+    return accessibility + (accessibility != "private" ? " virtual" : "");
+  }
+
+	public string EntityClassOpening(EntityType entity) {
+		return string.Format(CultureInfo.InvariantCulture, "{0} {1}partial class {2}{3}", Accessibility.ForType(entity), _code.SpaceAfter(_code.AbstractOption(entity)), _code.Escape(entity), _code.StringBefore(" : ", _typeMapper.GetTypeName(entity.BaseType)));
+	}
+
+  public string EnumOpening(SimpleType enumType) {
+		return string.Format(CultureInfo.InvariantCulture, "{0} enum {1} : {2}", Accessibility.ForType(enumType), _code.Escape(enumType), _code.Escape(_typeMapper.UnderlyingClrType(enumType)));
+	}
+
+	public string ClassOpening(EntityType entity, string name) {
+		return ClassOpening(entity, name, null);
+	}
+
+	public string ClassOpening(EntityType entity, string name, string baseType) {
+		return string.Format(CultureInfo.InvariantCulture, "{0} {1}partial class " + name + "{3}", Accessibility.ForType(entity), _code.SpaceAfter(_code.AbstractOption(entity)), _code.Escape(entity), _code.StringBefore(" : ", baseType));
+	}
+
+	public string UsingDirectives(bool inHeader, bool includeCollections = true) {
+		return UsingDirectives(inHeader, new string[] {}, includeCollections);
+	}
+		
+	public string UsingDirectives(bool inHeader, string[] otherNamespaces, bool includeCollections = true) {
+		string _namespaces = (inHeader == string.IsNullOrEmpty(_code.VsNamespaceSuggestion()) ? string.Format(CultureInfo.InvariantCulture, "{0}using System;{1}{2}", inHeader ? Environment.NewLine : string.Empty, includeCollections ? (Environment.NewLine + "using System.Collections.Generic;") : string.Empty, inHeader ? string.Empty : Environment.NewLine) : string.Empty);
+		foreach(string _namespace in otherNamespaces) { _namespaces += "using " + _namespace + ";" + Environment.NewLine; }
+		return _namespaces;
+	}
+
+  public void WriteFunctionParameters(EdmFunction edmFunction, Action<string, string, string, string> writeParameter) {
+    var parameters = FunctionImportParameter.Create(edmFunction.Parameters, _code, _ef);
+    foreach (var parameter in parameters.Where(p => p.NeedsLocalVariable)) {
+      var isNotNull = parameter.IsNullableOfT ? parameter.FunctionParameterName + ".HasValue" : parameter.FunctionParameterName + " != null";
+      var notNullInit = "new ObjectParameter(\"" + parameter.EsqlParameterName + "\", " + parameter.FunctionParameterName + ")";
+      var nullInit = "new ObjectParameter(\"" + parameter.EsqlParameterName + "\", typeof(" + parameter.RawClrTypeName + "))";
+      writeParameter(parameter.LocalVariableName, isNotNull, notNullInit, nullInit);
+    }
+  }
+
+  public string ComposableFunctionMethod(EdmFunction edmFunction, string modelNamespace) {
+    var parameters = _typeMapper.GetParameters(edmFunction);
+    return string.Format( CultureInfo.InvariantCulture, "{0} IQueryable<{1}> {2}({3})", AccessibilityAndVirtual(Accessibility.ForMethod(edmFunction)), _typeMapper.GetTypeName(_typeMapper.GetReturnType(edmFunction), modelNamespace), _code.Escape(edmFunction), string.Join(", ", parameters.Select(p => p.FunctionParameterType + " " + p.FunctionParameterName).ToArray()));
+  }
+
+  public string ComposableCreateQuery(EdmFunction edmFunction, string modelNamespace) {
+    var parameters = _typeMapper.GetParameters(edmFunction);
+    return string.Format(CultureInfo.InvariantCulture, "return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<{0}>(\"[{1}].[{2}]({3})\"{4});", _typeMapper.GetTypeName(_typeMapper.GetReturnType(edmFunction), modelNamespace), edmFunction.NamespaceName, edmFunction.Name, string.Join(", ", parameters.Select(p => "@" + p.EsqlParameterName).ToArray()), _code.StringBefore(", ", string.Join(", ", parameters.Select(p => p.ExecuteParameterName).ToArray())));
+  }
+
+  public string FunctionMethod(EdmFunction edmFunction, string modelNamespace, bool includeMergeOption) {
+    var parameters = _typeMapper.GetParameters(edmFunction);
+    var returnType = _typeMapper.GetReturnType(edmFunction);
+
+    var paramList = String.Join(", ", parameters.Select(p => p.FunctionParameterType + " " + p.FunctionParameterName).ToArray());
+    if (includeMergeOption) {
+      paramList = _code.StringAfter(paramList, ", ") + "MergeOption mergeOption";
+    }
+
+    return string.Format(CultureInfo.InvariantCulture, "{0} {1} {2}({3})", AccessibilityAndVirtual(Accessibility.ForMethod(edmFunction)), returnType == null ? "int" : "ObjectResult<" + _typeMapper.GetTypeName(returnType, modelNamespace) + ">", _code.Escape(edmFunction), paramList);
+  }
+
+  public string ExecuteFunction(EdmFunction edmFunction, string modelNamespace, bool includeMergeOption) {
+    var parameters = _typeMapper.GetParameters(edmFunction);
+    var returnType = _typeMapper.GetReturnType(edmFunction);
+
+    var callParams = _code.StringBefore(", ", String.Join(", ", parameters.Select(p => p.ExecuteParameterName).ToArray()));
+    if (includeMergeOption) { callParams = ", mergeOption" + callParams; }
+        
+    return string.Format(CultureInfo.InvariantCulture, "return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction{0}(\"{1}\"{2});", returnType == null ? "" : "<" + _typeMapper.GetTypeName(returnType, modelNamespace) + ">", edmFunction.Name, callParams);
+  }
+
+  public string DbSet(EntitySet entitySet) {
+		//return string.Format(CultureInfo.InvariantCulture, "{0} DbSet<{1}> {2} {{ get; set; }}", Accessibility.ForReadOnlyProperty(entitySet), _typeMapper.GetTypeName(entitySet.ElementType), _code.Escape(entitySet));
+		return string.Format(CultureInfo.InvariantCulture, "{0} DbSet<{1}> {2} {{ get; set; }}", Accessibility.ForReadOnlyProperty(entitySet), _typeMapper.GetTypeName(entitySet.ElementType), _typeMapper.GetTypeName(entitySet.ElementType));
+  }
+}
+
+public class TypeMapper {
+	private const string ExternalTypeNameAttributeName = @"http://schemas.microsoft.com/ado/2006/04/codegeneration:ExternalTypeName";
+
+	private readonly System.Collections.IList _errors;
+	private readonly CodeGenerationTools _code;
+	private readonly MetadataTools _ef;
+	private readonly MetadataLoadResult _storeMetadata;
+	private readonly EntityContainer _container;
+
+	public TypeMapper(CodeGenerationTools code, MetadataTools ef, EntityContainer container, MetadataLoadResult storeMetadata, System.Collections.IList errors) {
+		ArgumentNotNull(code, "code");
+		ArgumentNotNull(ef, "ef");
+		ArgumentNotNull(container, "container");
+		ArgumentNotNull(storeMetadata, "storeMetadata");
+		ArgumentNotNull(errors, "errors");
+
+		_code = code;
+		_ef = ef;
+		_container = container;
+		_storeMetadata = storeMetadata;
+		_errors = errors;
+	}
+
+	public bool IsNumeric(Type type) {
+		switch (Type.GetTypeCode(type)) {
+		case TypeCode.Byte:
+		case TypeCode.SByte:
+		case TypeCode.UInt16:
+		case TypeCode.UInt32:
+		case TypeCode.UInt64:
+		case TypeCode.Int16:
+		case TypeCode.Int32:
+		case TypeCode.Int64:
+		case TypeCode.Decimal:
+		case TypeCode.Double:
+		case TypeCode.Single:
+			return true;
+		default: 
+			return false;
+		} 
+	}
+
+	public string StoreColumnName(EntityType entity, EdmMember property) {
+		return _storeMetadata.PropertyToColumnMapping[entity].Item2[(EdmProperty) property].Name;
+	}
+	
+	public string StoreAlias(EntitySet entitySet, EdmMember property) {
+		return _code.Escape(entitySet) + "_" + _code.Escape(property);
+	}
+
+	public string StoreColumnNameWithAlias(string alias, EntityType entity, EdmMember property) {
+		return alias + "." + StoreColumnName(entity, property);
+	}
+
+	public string Metadata(EdmProperty property, string name) {
+		return (string) property.MetadataProperties.Where(p => p.Name.Contains("http://schemas.planeta.com/coreannotation:" + name)).Select(p => p.Value).FirstOrDefault();
+	}
+
+	public bool HasNavigationProperty(EdmProperty property) {
+		EntityType _tipoRelacionado = null;
+		NavigationProperty _navigationProperty = null;
+		return HasNavigationProperty(property, out _tipoRelacionado, out _navigationProperty);
+	}
+
+	public bool HasNavigationProperty(EdmProperty property, out EntityType tipoRelacionado, out NavigationProperty navigationProperty) {
+		tipoRelacionado = null;
+		navigationProperty = null;
+		bool _tiene = false;
+		foreach (NavigationProperty _navigationProperty in ((EntityType) property.DeclaringType).NavigationProperties.OrderBy(p => (((AssociationType) p.RelationshipType).ReferentialConstraints.Count == 0 ? 9 : ((AssociationType) p.RelationshipType).ReferentialConstraints[0].ToProperties.Count))) {
+			if (!_tiene && ((AssociationType) _navigationProperty.RelationshipType).ReferentialConstraints.Count > 0) {
+				foreach (EdmProperty _property in ((AssociationType) _navigationProperty.RelationshipType).ReferentialConstraints[0].ToProperties ) { 
+					if (_property == property) {
+						_tiene = true; tipoRelacionado = FromEntityType(_navigationProperty); navigationProperty = _navigationProperty; 
+					}
+				}
+			}
+		}
+		return _tiene;
+	}
+
+	public int MaxLength(EdmProperty property) {
+		int _maxLength = 0;
+		foreach (Facet _facet in property.TypeUsage.Facets) {
+			switch(_facet.Name) { 
+			case "MaxLength": 
+				_maxLength = (int) (_facet.Value.ToString() == "Max" ? ((System.Data.Metadata.Edm.PrimitiveType) _facet.FacetType).ClrEquivalentType.GetField("MaxValue").GetValue(null) : _facet.Value);
+				break;
+			}
+		}
+		return _maxLength;
+	} 
+	
+	public EntitySet GetEntitySet(EdmProperty property) {
+		return (EntitySet) _container.BaseEntitySets.Where(es => es.ElementType.Name == property.DeclaringType.Name).FirstOrDefault();
+	}
+
+	public EntitySet GetEntitySet(EdmMember member) {
+		return (EntitySet) _container.BaseEntitySets.Where(es => es.ElementType.Name == member.DeclaringType.Name).FirstOrDefault();
+	}
+
+	public EntitySet GetEntitySet(EntityType entity) {
+		return (EntitySet) _container.BaseEntitySets.Where(es => es.ElementType.Name == entity.Name).FirstOrDefault();
+	}
+
+	public string GetEntitySetTableName(EntitySet entitySet) {
+		string _table = entitySet.Name;
+		string _schema = entitySet.GetSchemaName();
+		if (!string.IsNullOrWhiteSpace(_schema) && _schema != "dbo") { _table += "\", \"" + _schema; }
+		return _table;
+	}
+
+	public object GetDefaultTypeValue(Type type) {
+		return (type.IsValueType ? Activator.CreateInstance(type) : null);
+	}
+
+	public string GetSQLTypeName(EdmProperty property) {
+		return _storeMetadata.PropertyToColumnMapping[(EntityType) property.DeclaringType].Item2[property].TypeUsage.EdmType.Name;
+		/*
+			switch (UnderlyingClrType(property.TypeUsage.EdmType).FullName) {
+		case "System.Boolean": return "bit";
+		case "System.Byte": return "tinyint";
+		case "System.Int16": return "smallint";
+		case "System.Int32": return "int";
+		case "System.Int64": return "bigint";
+		case "System.Double": return "bigint";
+		case "System.Decimal": return "money";
+		case "System.DateTime": return "datetime";
+		case "System.TimeSpan": return "time";
+		case "System.Byte[]": return "varbinary";
+		case "System.String": return (MaxLength(property) == 2147483647 ? "ntext" : "nvarchar");
+		default: return "variant " + UnderlyingClrType(property.TypeUsage.EdmType).FullName;
+		}
+			*/
+	}
+
+	public string GetTypeName(TypeUsage typeUsage) {
+		return typeUsage == null ? null : GetTypeName(typeUsage.EdmType, _ef.IsNullable(typeUsage), modelNamespace: null);
+	}
+
+	public string GetTypeName(EdmType edmType) {
+		return GetTypeName(edmType, isNullable: null, modelNamespace: null);
+	}
+
+	public string GetTypeName(TypeUsage typeUsage, string modelNamespace) {
+		return typeUsage == null ? null : GetTypeName(typeUsage.EdmType, _ef.IsNullable(typeUsage), modelNamespace);
+	}
+
+	public string GetTypeName(EdmType edmType, string modelNamespace) {
+		return GetTypeName(edmType, isNullable: null, modelNamespace: modelNamespace);
+	}
+
+	public string GetTypeName(EdmType edmType, bool? isNullable, string modelNamespace) {
+		if (edmType == null) { return null; }
+
+		var collectionType = edmType as CollectionType;
+		if (collectionType != null) {
+			return String.Format(CultureInfo.InvariantCulture, "ICollection<{0}>", GetTypeName(collectionType.TypeUsage, modelNamespace));
+		}
+
+		var typeName = _code.Escape(edmType.MetadataProperties.Where(p => p.Name == ExternalTypeNameAttributeName).Select(p => (string) p.Value).FirstOrDefault()) ?? (modelNamespace != null && edmType.NamespaceName != modelNamespace ? _code.CreateFullName(_code.EscapeNamespace(edmType.NamespaceName), _code.Escape(edmType)) : _code.Escape(edmType));
+
+		if (edmType is StructuralType) { return typeName; }
+
+		if (edmType is SimpleType) {
+			var clrType = UnderlyingClrType(edmType);
+			if (!IsEnumType(edmType)) {
+				typeName = _code.Escape(clrType);
+			}
+
+			return clrType.IsValueType && isNullable == true ? String.Format(CultureInfo.InvariantCulture, "Nullable<{0}>", typeName) : typeName;
+		}
+
+		throw new ArgumentException("edmType");
+	}
+
+	public Type UnderlyingClrType(EdmType edmType) {
+		ArgumentNotNull(edmType, "edmType");
+
+		var primitiveType = edmType as PrimitiveType;
+		if (primitiveType != null) {
+			return primitiveType.ClrEquivalentType;
+		}
+
+		if (IsEnumType(edmType)) {
+			return GetEnumUnderlyingType(edmType).ClrEquivalentType;
+		}
+
+		return typeof(object);
+	}
+
+	public ReadOnlyMetadataCollection<EdmProperty> FromProperties(NavigationProperty _property) {
+		AssociationType _associationType = (AssociationType) _property.RelationshipType;
+		return (_associationType.ReferentialConstraints.Count > 0 ? _associationType.ReferentialConstraints[0].FromProperties : null);
+	}
+
+	public ReadOnlyMetadataCollection<EdmProperty> ToProperties(NavigationProperty _property) {
+		AssociationType _associationType = (AssociationType) _property.RelationshipType;
+		return (_associationType.ReferentialConstraints.Count > 0 ? _associationType.ReferentialConstraints[0].ToProperties : null);
+	}
+
+	public EntityType PrimaryEntityType(EntityType entity, NavigationProperty _property) {
+		EntityType _relationshipType = FromEntityType(_property);
+		if (_relationshipType == entity) { 
+			_relationshipType = ToEntityType(_property);
+		}
+		return _relationshipType;
+	}
+
+	public EntityType FromEntityType(NavigationProperty _property) {
+		ReadOnlyMetadataCollection<EdmProperty> _fromProperties = FromProperties(_property);
+		EdmProperty _fromProperty = (_fromProperties != null && _fromProperties.Count > 0 ? _fromProperties[0] : null);
+		return (_fromProperty != null ? (EntityType) _fromProperty.DeclaringType : null);
+	}
+
+	public EntityType ToEntityType(NavigationProperty _property) {
+		ReadOnlyMetadataCollection<EdmProperty> _toProperties = ToProperties(_property);
+		EdmProperty _toProperty = (_toProperties != null && _toProperties.Count > 0 ? _toProperties[0] : null);
+		return (_toProperty != null ? (EntityType) _toProperty.DeclaringType : null);
+	}
+	
+	public object GetEnumMemberValue(MetadataItem enumMember) {
+		ArgumentNotNull(enumMember, "enumMember");
+
+		var valueProperty = enumMember.GetType().GetProperty("Value");
+		return valueProperty == null ? null : valueProperty.GetValue(enumMember, null);
+	}
+
+	public string GetEnumMemberName(MetadataItem enumMember) {
+		ArgumentNotNull(enumMember, "enumMember");
+
+		var nameProperty = enumMember.GetType().GetProperty("Name");
+		return nameProperty == null ? null : (string) nameProperty.GetValue(enumMember, null);
+	}
+
+	public System.Collections.IEnumerable GetEnumMembers(EdmType enumType) {
+		ArgumentNotNull(enumType, "enumType");
+
+		var membersProperty = enumType.GetType().GetProperty("Members");
+		return membersProperty != null ? (System.Collections.IEnumerable) membersProperty.GetValue(enumType, null) : Enumerable.Empty<MetadataItem>();
+	}
+
+	public bool EnumIsFlags(EdmType enumType) {
+		ArgumentNotNull(enumType, "enumType");
+
+		var isFlagsProperty = enumType.GetType().GetProperty("IsFlags");
+		return isFlagsProperty != null && (bool) isFlagsProperty.GetValue(enumType, null);
+	}
+
+	public bool IsEnumType(GlobalItem edmType) {
+		ArgumentNotNull(edmType, "edmType");
+
+		return edmType.GetType().Name == "EnumType";
+	}
+
+	public PrimitiveType GetEnumUnderlyingType(EdmType enumType) {
+		ArgumentNotNull(enumType, "enumType");
+
+		return (PrimitiveType) enumType.GetType().GetProperty("UnderlyingType").GetValue(enumType, null);
+	}
+
+	public string CreateLiteral(object value) {
+		if (value == null || value.GetType() != typeof(TimeSpan)) { return _code.CreateLiteral(value); }
+
+		return string.Format(CultureInfo.InvariantCulture, "new TimeSpan({0})", ((TimeSpan) value).Ticks);
+	}
+
+	public bool VerifyCaseInsensitiveTypeUniqueness(IEnumerable<string> types, string sourceFile) {
+		ArgumentNotNull(types, "types");
+		ArgumentNotNull(sourceFile, "sourceFile");
+
+		var hash = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase);
+		if (types.Any(item => !hash.Add(item))) {
+			_errors.Add(new CompilerError(sourceFile, -1, -1, "6023", String.Format(CultureInfo.CurrentCulture, GetResourceString("Template_CaseInsensitiveTypeConflict"))));
+			return false;
+		}
+		return true;
+	}
+
+	public IEnumerable<SimpleType> GetEnumItemsToGenerate(IEnumerable<GlobalItem> itemCollection) {
+		return GetItemsToGenerate<SimpleType>(itemCollection).Where(e => IsEnumType(e));
+	}
+
+	public IEnumerable<T> GetItemsToGenerate<T>(IEnumerable<GlobalItem> itemCollection) where T : EdmType {
+		return itemCollection.OfType<T>().Where(i => !i.MetadataProperties.Any(p => p.Name == ExternalTypeNameAttributeName)).OrderBy(i => i.Name);
+	}
+
+	public IEnumerable<string> GetAllGlobalItems(IEnumerable<GlobalItem> itemCollection) {
+		return itemCollection.Where(i => i is EntityType || i is ComplexType || i is EntityContainer || IsEnumType(i)).Select(g => GetGlobalItemName(g));
+	}
+
+	public string GetGlobalItemName(GlobalItem item) {
+		return  (item is EdmType ? ((EdmType) item).Name : ((EntityContainer) item).Name);
+	}
+
+	public IEnumerable<EdmProperty> GetKeyProperties(EntityType type) {
+		return type.Properties.Where(p => p.TypeUsage.EdmType is SimpleType && p.DeclaringType == type && _ef.IsKey(p));
+	}
+
+	public IEnumerable<EdmProperty> GetNonKeyProperties(EntityType type) {
+		return type.Properties.Where(p => p.TypeUsage.EdmType is SimpleType && p.DeclaringType == type && !_ef.IsKey(p));
+	}
+
+	public IEnumerable<EdmProperty> GetSimpleProperties(EntityType type) {
+		return type.Properties.Where(p => p.TypeUsage.EdmType is SimpleType && p.DeclaringType == type);
+	}
+
+	public IEnumerable<EdmProperty> GetSimpleProperties(ComplexType type) {
+		return type.Properties.Where(p => p.TypeUsage.EdmType is SimpleType && p.DeclaringType == type);
+	}
+
+	public IEnumerable<EdmProperty> GetComplexProperties(EntityType type) {
+		return type.Properties.Where(p => p.TypeUsage.EdmType is ComplexType && p.DeclaringType == type);
+	}
+
+	public IEnumerable<EdmProperty> GetComplexProperties(ComplexType type) {
+		return type.Properties.Where(p => p.TypeUsage.EdmType is ComplexType && p.DeclaringType == type);
+	}
+
+	public IEnumerable<EdmProperty> GetPropertiesWithDefaultValues(EntityType type) {
+		return type.Properties.Where(p => p.TypeUsage.EdmType is SimpleType && p.DeclaringType == type && p.DefaultValue != null);
+	}
+
+	public IEnumerable<EdmProperty> GetPropertiesWithDefaultValues(ComplexType type) {
+		return type.Properties.Where(p => p.TypeUsage.EdmType is SimpleType && p.DeclaringType == type && p.DefaultValue != null);
+	}
+
+	public IEnumerable<NavigationProperty> GetNavigationProperties(EntityType type) {
+		return type.NavigationProperties.Where(np => np.DeclaringType == type);
+	}
+
+	public IEnumerable<EdmProperty> GetNonNavigationProperties(EntityType type) {
+		return type.Properties;
+	}
+
+	public IEnumerable<EdmProperty> GetVisibleProperties(EntityType type) {
+		return type.Properties.Where(p => p.TypeUsage.EdmType is SimpleType && p.DeclaringType == type && (Metadata(p, "Visible") ?? "true") == "true"); 
+	}
+		
+	public IEnumerable<EdmProperty> GetNonKeyVisibleProperties(EntityType type) {
+		return type.Properties.Where(p => p.TypeUsage.EdmType is SimpleType && p.DeclaringType == type && !_ef.IsKey(p) && (Metadata(p, "Visible") ?? "true") == "true"); 
+	}
+
+	public IEnumerable<NavigationProperty> GetCollectionNavigationProperties(EntityType type) {
+		return type.NavigationProperties.Where(np => np.DeclaringType == type && np.ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many);
+	}
+	
+	public IEnumerable<NavigationProperty> GetSimpleNavigationProperties(EntityType type) {
+		return type.NavigationProperties.Where(np => np.DeclaringType == type && np.ToEndMember.RelationshipMultiplicity != RelationshipMultiplicity.Many);
+	}
+
+	public IEnumerable<EdmMember> GetProperties(EntityType type) {
+		return Enumerable.Concat<EdmMember>(type.Properties.Where(np => np.DeclaringType == type), type.NavigationProperties.Where(np => np.DeclaringType == type));
+	}
+
+	public FunctionParameter GetReturnParameter(EdmFunction edmFunction) {
+		ArgumentNotNull(edmFunction, "edmFunction");
+
+		var returnParamsProperty = edmFunction.GetType().GetProperty("ReturnParameters");
+		return (returnParamsProperty == null ? edmFunction.ReturnParameter : ((IEnumerable<FunctionParameter>) returnParamsProperty.GetValue(edmFunction, null)).FirstOrDefault());
+	}
+
+	public bool IsComposable(EdmFunction edmFunction) {
+		ArgumentNotNull(edmFunction, "edmFunction");
+
+		var isComposableProperty = edmFunction.GetType().GetProperty("IsComposableAttribute");
+		return isComposableProperty != null && (bool) isComposableProperty.GetValue(edmFunction, null);
+	}
+
+	public IEnumerable<FunctionImportParameter> GetParameters(EdmFunction edmFunction) {
+		return FunctionImportParameter.Create(edmFunction.Parameters, _code, _ef);
+	}
+
+	public TypeUsage GetReturnType(EdmFunction edmFunction) {
+		var returnParam = GetReturnParameter(edmFunction);
+		return (returnParam == null ? null : _ef.GetElementType(returnParam.TypeUsage));
+	}
+
+	public bool GenerateMergeOptionFunction(EdmFunction edmFunction, bool includeMergeOption) {
+		var returnType = GetReturnType(edmFunction);
+		return !includeMergeOption && returnType != null && returnType.EdmType.BuiltInTypeKind == BuiltInTypeKind.EntityType;
+	}
+
+	public bool IsGeneratedByStore(EdmProperty _property) {
+		if (IsNumeric(((PrimitiveType) _property.TypeUsage.EdmType).ClrEquivalentType)) {
+			MetadataProperty _identity = _property.MetadataProperties.Where(m => m.Name == "http://schemas.microsoft.com/ado/2009/02/edm/annotation:StoreGeneratedPattern").FirstOrDefault();
+			return (_identity != null && (string) _identity.Value == System.Data.Metadata.Edm.StoreGeneratedPattern.Identity.ToString());
+		} else {
+			return false;
+		}
+	}
+
+	public bool TieneAlgunTipoDeValidacion(EdmMember property) {
+		bool _tiene = false;
+		if (property is EdmProperty) {
+			foreach(Facet _facet in property.TypeUsage.Facets) {
+				// OLL: Mirar que más facets podemos controlar
+				switch(_facet.Name) { 
+				case "MaxLength": 
+					_tiene = true;
+					break;
+				case "Nullable": 
+					if ((bool) _facet.Value == false) { _tiene = true; }
+					break;
+				}
+			}
+		}
+		return _tiene;
+	}
+}
+
+public class EdmMetadataLoader {
+	private readonly IDynamicHost _host;
+	private readonly System.Collections.IList _errors;
+
+	public EdmMetadataLoader(IDynamicHost host, System.Collections.IList errors) {
+		ArgumentNotNull(host, "host");
+		ArgumentNotNull(errors, "errors");
+
+		_host = host;
+		_errors = errors;
+	}
+
+	public IEnumerable<GlobalItem> CreateEdmItemCollection(string sourcePath) {
+		ArgumentNotNull(sourcePath, "sourcePath");
+
+		if (!ValidateInputPath(sourcePath)) {
+			return new EdmItemCollection();
+		}
+
+		var schemaElement = LoadRootElement(_host.ResolvePath(sourcePath));
+		if (schemaElement != null) {
+			using (var reader = schemaElement.CreateReader()) {
+				IList<EdmSchemaError> errors;
+				var itemCollection = MetadataItemCollectionFactory.CreateEdmItemCollection(new[] { reader }, out errors);
+
+				ProcessErrors(errors, sourcePath);
+
+				return itemCollection;
+			}
+		}
+		return new EdmItemCollection();
+	}
+
+	public string GetModelNamespace(string sourcePath) {
+		ArgumentNotNull(sourcePath, "sourcePath");
+
+		if (!ValidateInputPath(sourcePath)) {
+			return string.Empty;
+		}
+
+		var model = LoadRootElement(_host.ResolvePath(sourcePath));
+		if (model == null) { return string.Empty; }
+
+		var attribute = model.Attribute("Namespace");
+		return attribute != null ? attribute.Value : "";
+	}
+
+	private bool ValidateInputPath(string sourcePath) {
+		if (sourcePath == "$" + "edmxInputFile" + "$") {
+			_errors.Add(new CompilerError(_host.TemplateFile ?? sourcePath, 0, 0, string.Empty, GetResourceString("Template_ReplaceVsItemTemplateToken")));
+			return false;
+		}
+
+		return true;
+	}
+
+	public XElement LoadRootElement(string sourcePath) {
+		ArgumentNotNull(sourcePath, "sourcePath");
+
+		var root = XElement.Load(sourcePath, LoadOptions.SetBaseUri | LoadOptions.SetLineInfo);
+		return root.Elements()
+				.Where(e => e.Name.LocalName == "Runtime")
+				.Elements()
+				.Where(e => e.Name.LocalName == "ConceptualModels")
+				.Elements()
+				.Where(e => e.Name.LocalName == "Schema")
+				.FirstOrDefault()
+				?? root;
+	}
+
+	private void ProcessErrors(IEnumerable<EdmSchemaError> errors, string sourceFilePath) {
+		foreach (var error in errors) {
+			_errors.Add(new CompilerError(error.SchemaLocation ?? sourceFilePath, error.Line, error.Column, error.ErrorCode.ToString(CultureInfo.InvariantCulture), error.Message) { IsWarning = error.Severity == EdmSchemaErrorSeverity.Warning });
+		}
+	}
+
+	public bool IsLazyLoadingEnabled(EntityContainer container) {
+		string lazyLoadingAttributeValue;
+		var lazyLoadingAttributeName = MetadataConstants.EDM_ANNOTATION_09_02 + ":LazyLoadingEnabled";
+		bool isLazyLoading;
+		return !MetadataTools.TryGetStringMetadataPropertySetting(container, lazyLoadingAttributeName, out lazyLoadingAttributeValue) || !bool.TryParse(lazyLoadingAttributeValue, out isLazyLoading) || isLazyLoading;
+	}
+}
+
+public static void ArgumentNotNull<T>(T arg, string name) where T : class {
+	if (arg == null) {
+		throw new ArgumentNullException(name);
+	}
+}
+    
+private static readonly Lazy<System.Resources.ResourceManager> ResourceManager = new Lazy<System.Resources.ResourceManager>(() => new System.Resources.ResourceManager("System.Data.Entity.Design", typeof(MetadataItemCollectionFactory).Assembly), isThreadSafe: true);
+
+public static string GetResourceString(string resourceName) {
+	ArgumentNotNull(resourceName, "resourceName");
+
+	return ResourceManager.Value.GetString(resourceName, null);
+}
+
+MetadataLoadResult LoadMetadata(string inputFile) {
+	var loader = new MetadataLoader(this);
+	bool loaded = false;
+	EdmItemCollection edmItemCollection = loader.CreateEdmItemCollection(inputFile);      
+	StoreItemCollection storeItemCollection = null;
+	if (loader.TryCreateStoreItemCollection(inputFile, out storeItemCollection)) {
+		StorageMappingItemCollection storageMappingItemCollection;
+		if (loader.TryCreateStorageMappingItemCollection(inputFile, edmItemCollection, storeItemCollection, out storageMappingItemCollection)) { loaded = true; }
+	}
+
+	if(loaded == false) { throw new Exception("Cannot load a metadata from the file " + inputFile); }
+
+	var xmlDoc = new XmlDocument();
+	xmlDoc.Load(Host.ResolvePath(inputFile));
+	var nsmgr = new XmlNamespaceManager(xmlDoc.NameTable);
+	nsmgr.AddNamespace("ef", MetadataConstants.V3_SCHEMA_CONSTANTS.MslNamespace);
+	nsmgr.AddNamespace("edmx", MetadataConstants.V3_SCHEMA_CONSTANTS.EdmxNamespace);
+	var mappingNode = xmlDoc.DocumentElement.SelectSingleNode("./*/edmx:Mappings", nsmgr);
+	var allEntitySets = storeItemCollection.GetAllEntitySets();	
+
+		
+	return new MetadataLoadResult {
+		EdmItems = edmItemCollection,
+		PropertyToColumnMapping = BuildEntityMappings(mappingNode, nsmgr, edmItemCollection.GetItems<EntityType>(), edmItemCollection.GetAllEntitySets(), allEntitySets),
+		ManyToManyMappings = BuildManyToManyMappings(mappingNode, nsmgr, edmItemCollection.GetAllAssociationSets(), allEntitySets),
+		TphMappings = BuildTPHMappings(mappingNode, nsmgr, edmItemCollection.GetItems<EntityType>(), edmItemCollection.GetAllEntitySets(), allEntitySets)
+ 	};
+}
+
+private Dictionary<EntityType, Dictionary<EntityType, Dictionary<EdmProperty, string>>> BuildTPHMappings(XmlNode mappingNode, XmlNamespaceManager nsmgr, IEnumerable<EntityType> entityTypes, IEnumerable<EntitySet> entitySets, IEnumerable<EntitySet> tableSets) {
+	var dictionary = new Dictionary<EntityType, Dictionary<EntityType, Dictionary<EdmProperty, string>>>();
+
+	foreach (EntitySet set in entitySets)	{
+		XmlNodeList nodes = mappingNode.SelectNodes(string.Format(".//ef:EntitySetMapping[@Name=\"{0}\"]/ef:EntityTypeMapping/ef:MappingFragment", set.Name), nsmgr);
+		foreach(XmlNode node in nodes) {
+			string typeName=node.ParentNode.Attributes["TypeName"].Value;
+			if (typeName.StartsWith("IsTypeOf(")) { typeName = typeName.Substring("IsTypeOf(".Length, typeName.Length - "IsTypeOf()".Length); }
+			EntityType type = entityTypes.Single(z => z.FullName == typeName);
+			string tableName = node.Attributes["StoreEntitySet"].Value;
+			EntitySet set2 = tableSets.Single(entitySet => entitySet.Name == tableName);
+			var entityMap = new Dictionary<EdmProperty, string>();
+			
+			XmlNodeList propertyNodes = node.SelectNodes("./ef:Condition", nsmgr);
+			if(propertyNodes.Count == 0) { continue; }
+			foreach(XmlNode propertyNode in propertyNodes) {
+				EdmProperty property2 = set2.ElementType.Properties[propertyNode.Attributes["ColumnName"].Value];
+				entityMap.Add(property2, propertyNode.Attributes["Value"].Value);
+			}
+			EntityType baseType = (EntityType) (type.BaseType ?? type);
+			if(!dictionary.Keys.Contains(baseType)) {
+				var entityMappings = new Dictionary<EntityType, Dictionary<EdmProperty, string>>();
+				//entityMappings.Add(type,entityMap);
+				dictionary.Add(baseType, entityMappings);
+			}
+			dictionary[baseType].Add(type,entityMap);
+		}
+	}
+	return dictionary;
+}
+
+private Dictionary<EntityType, Tuple<EntitySet, Dictionary<EdmProperty, EdmProperty>>> BuildEntityMappings(XmlNode mappingNode, XmlNamespaceManager nsmgr, IEnumerable<EntityType> entityTypes, IEnumerable<EntitySet> entitySets, IEnumerable<EntitySet> tableSets) {
+	var dictionary = new Dictionary<EntityType, Tuple<EntitySet, Dictionary<EdmProperty, EdmProperty>>>();
+
+	foreach (EntitySet set in entitySets)	{
+		XmlNodeList nodes = mappingNode.SelectNodes(string.Format(".//ef:EntitySetMapping[@Name=\"{0}\"]/ef:EntityTypeMapping/ef:MappingFragment", set.Name), nsmgr);
+		foreach(XmlNode node in nodes) {
+			string typeName = node.ParentNode.Attributes["TypeName"].Value;
+			if (typeName.StartsWith("IsTypeOf(")) { typeName = typeName.Substring("IsTypeOf(".Length, typeName.Length - "IsTypeOf()".Length); }
+			EntityType type = entityTypes.Single(z => z.FullName == typeName);
+			string tableName = node.Attributes["StoreEntitySet"].Value;
+			EntitySet set2 = tableSets.Single(entitySet => entitySet.Name == tableName);
+			var entityMap = new Dictionary<EdmProperty, EdmProperty>();
+			foreach (EdmProperty property in type.Properties) {
+				XmlNode propertyNode = node.SelectSingleNode(string.Format("./ef:ScalarProperty[@Name=\"{0}\"]", property.Name), nsmgr);
+				if (propertyNode == null) { continue; }
+				entityMap.Add(property, set2.ElementType.Properties[propertyNode.Attributes["ColumnName"].Value]);
+			}
+			dictionary.Add(type, Tuple.Create(set2, entityMap));
+		}
+	}
+	return dictionary;
+}
+
+private Dictionary<AssociationType, Tuple<EntitySet, Dictionary<RelationshipEndMember, Dictionary<EdmMember, string>>>> BuildManyToManyMappings(XmlNode mappingNode, XmlNamespaceManager nsmgr, IEnumerable<AssociationSet> associationSets, IEnumerable<EntitySet> tableSets) {
+	var dictionary = new Dictionary<AssociationType, Tuple<EntitySet, Dictionary<RelationshipEndMember, Dictionary<EdmMember, string>>>>();
+	foreach (AssociationSet associationSet in associationSets.Where(set => set.ElementType.IsManyToMany())) {
+		
+		XmlNode node = mappingNode.SelectSingleNode(string.Format("//ef:AssociationSetMapping[@Name=\"{0}\"]", associationSet.Name), nsmgr);
+		string tableName = node.Attributes["StoreEntitySet"].Value;
+		EntitySet entitySet = tableSets.Single(s => s.Name == tableName);
+		
+		var relationEndMap = new Dictionary<RelationshipEndMember, Dictionary<EdmMember, string>>();
+		foreach (AssociationSetEnd end in associationSet.AssociationSetEnds) {
+			var map = new Dictionary<EdmMember, string>();
+			foreach (XmlNode endProperty in node.SelectSingleNode(string.Format("./ef:EndProperty[@Name=\"{0}\"]", end.Name), nsmgr).ChildNodes) {
+				map.Add(end.EntitySet.ElementType.Properties[endProperty.Attributes["Name"].Value], endProperty.Attributes["ColumnName"].Value);
+			}
+			relationEndMap.Add(end.CorrespondingAssociationEndMember, map);
+		}
+		dictionary.Add(associationSet.ElementType, Tuple.Create(entitySet, relationEndMap));
+	}
+	return dictionary;
+}
+
+public class MetadataLoadResult {
+	public EdmItemCollection EdmItems { get; set; }
+	public Dictionary<EntityType, Tuple<EntitySet, Dictionary<EdmProperty, EdmProperty>>> PropertyToColumnMapping { get; set; }
+	public Dictionary<AssociationType, Tuple<EntitySet, Dictionary<RelationshipEndMember, Dictionary<EdmMember, string>>>> ManyToManyMappings { get; set; }
+	public Dictionary<EntityType, Dictionary<EntityType, Dictionary<EdmProperty, string>>> TphMappings { get; set; }
+}
+
+public class ManyToMany {
+	public AssociationType Asociacion { get; set; }
+	public Tuple<EntitySet, Dictionary<RelationshipEndMember, Dictionary<EdmMember, string>>> Tupla { get; set; }
+	public NavigationProperty Propiedad { get; set; }
+	public NavigationProperty PropiedadEntidadRelacionada { get; set; }
+	public List<EdmProperty> PropiedadesClaveEntidadRelacionada { get; set; }
+}
+
+/************************ Carga de datos de la BBDD de GeneradorMetadata ******************************/
+public class MetadataGenerador {
+	public enum TipoCampo : short {
+		Texto_CampoSimple = 1,
+		Fecha_CampoSimple = 2,
+		Texto_Editor = 3,
+		Numero_CampoSimple = 4,
+		Hora_CampoSimple = 5,
+		Booleano_Desplegable_NoObligatorio = 6,
+		Texto_Textarea = 7,
+		Relacion1_N_Desplegable = 8,
+		Relacion1_N_Opciones = 9,
+		RelacionN_M_Opciones = 10,
+		RelacionN_M_Listado = 11,
+		Booleano_Casilla = 12,
+		Fecha_Rango = 13,
+		Numero_Rango = 14,
+		Hora_Rango = 15,
+		Texto_AutoComplete = 16,
+		Texto_CeldaSimple = 17,
+		Texto_CeldaAmpliable = 18,
+		Relacion1_N_CeldaSimple = 19,
+		Booleano_CeldaCasilla = 20,
+		Numero_CeldaSimple = 21,
+		Fecha_CeldaSimple = 22,
+		Hora_CeldaSimple = 23,
+		Texto_CorreoElectronico = 24,
+		Desconocido = 25,
+		Texto_DocumentoFiscal = 26,
+		Texto_CodigoPostal = 27,
+		Texto_Telefono = 28,
+		RelacionN_M_Partial = 29,
+		Relacion1_N_CampoSimple = 30,
+		Relacion1_N_Partial = 31,
+		Texto_CeldaHtml = 32,
+		RelacionN_M_CargaArchivos = 33,
+		Texto_CargaArchivo = 34,
+		RelacionN_M_CeldaSimple = 35,
+		Relacion1_N_Numero_CampoSimple = 36,
+		Relacion1_N_Fecha_Rango = 37,
+		FechaHora_CampoSimple = 38,
+		FechaHora_Rango = 39,
+		FechaHora_CeldaSimple = 40,
+		Relacion1_1_Partial = 41,
+		Relacion1_N_Autocomplete = 42,
+		Relacion1_N_AutocompleteConBuscador = 43,
+		Relacion1_N_DesplegableConBuscador = 44,
+		Relacion1_N_AutocompleteConBuscadorYEtiqueta = 45,
+		Texto_Video = 46,
+		Texto_Imagen = 47,
+		RelacionN_M_Imagenes = 48, 
+		RelacionN_M_Archivos = 49,
+		Texto_Documento = 50, 
+		Booleano_CeldaCasillaSoloLectura = 51
+	}
+
+	public enum ModoInicio : short {
+		Listado = 1,
+		Edicion = 2
+	}
+
+	public class MetadataPropiedad {
+		public string Nombre;
+		public string Literal;
+		public TipoCampo TipoCampo;
+		public bool Visible;
+		public bool SoloLecturaInsercion;
+		public bool SoloLecturaEdicion;
+		public bool VisibleInsercion;
+		public bool VisibleEdicion;
+		public short Orden;
+		public short Tamanyo;
+		public bool? PermitirCrear;
+		public bool? PermitirGuardar;
+		public bool? PermitirBorrar;
+		public bool? BusquedaAutomatica;
+		public bool? InteraccionExterna;
+		public ModoInicio? ModoInicio;
+		public string MetodosRespuesta;
+		public string Eventos;
+		public string Filtros;
+		public bool ObtenerTodosLosCamposEntidadEnDesplegables;
+		public bool GenerarObservables;
+		public bool MostrarEtiqueta;
+		public string TipoDatosSql;
+		public int? TamanyoDatosSql;
+		public string EntidadRelacionada;
+		public bool HabilitarFiltro;
+		// TODO: OLL: Incluir propiedad modelo
+	}
+
+	public class MetadataEntidad {
+		public string Nombre;
+		public Dictionary<string, MetadataPanel> PanelesFiltro;
+		public Dictionary<string, MetadataPanel> PanelesListado;
+		public Dictionary<string, MetadataPanel> PanelesFormulario;
+		public Dictionary<string, MetadataPanel> PanelesFormularioCopia;
+		public Dictionary<string, MetadataPanel> PanelesFormularioEdicionMultiple;
+		public bool TieneExtensionObtenerCombo;
+		public bool TieneExtensionObtenerLista;
+		public bool TieneExtensionObtenerPorFiltros;
+		public bool TieneExtensionObtenerCantidadPorFiltros;
+		public bool TieneExtensionInsertar;
+		public bool TieneExtensionActualizar;
+		public bool TieneExtensionBorrar;
+		public bool TieneExtensionModelo;
+		public bool TieneExtensionAutocomplete;
+		public bool GenerarAutocomplete;
+		public bool Multiidioma;
+	}
+
+	public class MetadataPanel {
+		public string Nombre;
+		public short Orden;
+		public bool Colapsable;
+		public Dictionary<string, MetadataPropiedad> Propiedades;
+	}
+
+	public static Dictionary<string, MetadataEntidad> ObtenerEntidades(string aplicacion) {
+		Dictionary<string, MetadataEntidad> _entidades = new Dictionary<string, MetadataEntidad>();
+		using (SqlConnection _conexion = new SqlConnection("Data Source=localhost;Initial Catalog=GeneradorMetadata;Persist Security Info=True;User ID=sa;Password=saroot;enlist=false;")) {
+			_conexion.Open();
+			using (SqlCommand _comando = new SqlCommand("SELECT e.Nombre AS Entidad, e.TieneExtensionObtenerCombo, e.TieneExtensionObtenerLista, e.TieneExtensionObtenerPorFiltros, e.TieneExtensionObtenerCantidadPorFiltros, e.TieneExtensionInsertar, e.TieneExtensionActualizar, e.TieneExtensionBorrar, e.TieneExtensionModelo, e.TieneExtensionAutocomplete, e.GenerarAutocomplete, e.Multiidioma, pr.*, p.Nombre AS NombrePanelFiltro, p.OrdenEnEntidad AS OrdenPanelFiltro, p.Colapsable AS ColapsablePanelFiltro FROM Entidades e INNER JOIN Propiedades pr ON e.Id = pr.IdEntidad LEFT OUTER JOIN Paneles p ON pr.IdPanelFiltro = p.Id WHERE e.Aplicacion = '" + aplicacion + "' ORDER BY e.Nombre, p.OrdenEnEntidad, pr.OrdenEnPanelFiltro", _conexion)) {
+				using (SqlDataReader _reader = _comando.ExecuteReader()) {
+					while(_reader.Read()) {
+						string _nombreEntidad = (string) _reader["Entidad"];
+						if (!_entidades.Keys.Contains(_nombreEntidad)) {
+							_entidades.Add(_nombreEntidad, new MetadataEntidad());
+							_entidades[_nombreEntidad].Nombre = (string) _reader["Entidad"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerCombo = (bool) _reader["TieneExtensionObtenerCombo"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerLista = (bool) _reader["TieneExtensionObtenerLista"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerPorFiltros = (bool) _reader["TieneExtensionObtenerPorFiltros"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerCantidadPorFiltros = (bool) _reader["TieneExtensionObtenerCantidadPorFiltros"];
+							_entidades[_nombreEntidad].TieneExtensionInsertar = (bool) _reader["TieneExtensionInsertar"];
+							_entidades[_nombreEntidad].TieneExtensionActualizar = (bool) _reader["TieneExtensionActualizar"];
+							_entidades[_nombreEntidad].TieneExtensionBorrar = (bool) _reader["TieneExtensionBorrar"];
+							_entidades[_nombreEntidad].TieneExtensionModelo = (bool) _reader["TieneExtensionModelo"];
+							_entidades[_nombreEntidad].TieneExtensionAutocomplete = (bool) _reader["TieneExtensionAutocomplete"];
+							_entidades[_nombreEntidad].GenerarAutocomplete = (bool) _reader["GenerarAutocomplete"];
+							_entidades[_nombreEntidad].Multiidioma = (bool) _reader["Multiidioma"];
+						}
+						if (_entidades[_nombreEntidad].PanelesFiltro == null) { _entidades[_nombreEntidad].PanelesFiltro = new Dictionary<string, MetadataPanel>(); }
+						string _nombrePanel = (_reader["NombrePanelFiltro"] is DBNull ? "SinPanel" : (string) _reader["NombrePanelFiltro"]);
+						if (!_entidades[_nombreEntidad].PanelesFiltro.Keys.Contains(_nombrePanel)) {
+							_entidades[_nombreEntidad].PanelesFiltro.Add(_nombrePanel, new MetadataPanel());
+							_entidades[_nombreEntidad].PanelesFiltro[_nombrePanel].Nombre = (_reader["NombrePanelFiltro"] is DBNull ? "SinPanel" : (string) _reader["NombrePanelFiltro"]);
+							_entidades[_nombreEntidad].PanelesFiltro[_nombrePanel].Orden = (_reader["OrdenPanelFiltro"] is DBNull ? (short) 1 : (short) _reader["OrdenPanelFiltro"]);
+							_entidades[_nombreEntidad].PanelesFiltro[_nombrePanel].Colapsable = (_reader["ColapsablePanelFiltro"] is DBNull ? true : (bool) _reader["ColapsablePanelFiltro"]);
+							_entidades[_nombreEntidad].PanelesFiltro[_nombrePanel].Propiedades = new Dictionary<string, MetadataPropiedad>();
+						}
+						try {
+							_entidades[_nombreEntidad].PanelesFiltro[_nombrePanel].Propiedades.Add((string) _reader["Propiedad"], new MetadataPropiedad() { Nombre = (string) _reader["Propiedad"], Literal = (string) _reader["Literal"], TipoCampo = (TipoCampo) (short) _reader["IdTipoCampoFiltro"], Visible = (bool) _reader["VisibleEnFiltro"], SoloLecturaInsercion = (bool) _reader["SoloLecturaInsercion"], SoloLecturaEdicion = (bool) _reader["SoloLecturaEdicion"], VisibleInsercion = (bool) _reader["VisibleInsercion"], VisibleEdicion = (bool) _reader["VisibleEdicion"], Orden = (_reader["OrdenEnPanelFiltro"] is DBNull ? (short) 1 : (short) _reader["OrdenEnPanelFiltro"]), Tamanyo = (short) _reader["TamanyoCampoFiltro"], PermitirCrear = (bool?) (_reader["PermitirCrear"] is DBNull ? (bool?) null : _reader["PermitirCrear"]), PermitirGuardar = (bool?) (_reader["PermitirGuardar"] is DBNull ? (bool?) null : _reader["PermitirGuardar"]), PermitirBorrar = (bool?) (_reader["PermitirBorrar"] is DBNull ? (bool?) null : _reader["PermitirBorrar"]), BusquedaAutomatica = (bool?) (_reader["BusquedaAutomatica"] is DBNull ? (bool?) null : _reader["BusquedaAutomatica"]), InteraccionExterna = (bool?) (_reader["InteraccionExterna"] is DBNull ? (bool?) null : _reader["InteraccionExterna"]), ModoInicio = (ModoInicio?) (_reader["IdModoInicio"] is DBNull ? (ModoInicio?) null : (ModoInicio) _reader["IdModoInicio"]), MetodosRespuesta = (string) (_reader["MetodosRespuesta"] is DBNull ? null : _reader["MetodosRespuesta"]), TipoDatosSql = (string) (_reader["TipoDatosSql"] is DBNull ? null : _reader["TipoDatosSql"]), TamanyoDatosSql = (int?) (_reader["TamanyoDatosSql"] is DBNull ? (int?) null : _reader["TamanyoDatosSql"]), Eventos = (string) (_reader["Eventos"] is DBNull ? null : _reader["Eventos"]), Filtros = (string) (_reader["Filtros"] is DBNull ? null : _reader["Filtros"]), ObtenerTodosLosCamposEntidadEnDesplegables = (bool) _reader["ObtenerTodosLosCamposEntidadEnDesplegables"], GenerarObservables = (bool) _reader["GenerarObservables"], MostrarEtiqueta = (bool) _reader["MostrarEtiqueta"], EntidadRelacionada = (string) (_reader["EntidadRelacionada"] is DBNull ? null : _reader["EntidadRelacionada"]), HabilitarFiltro = (bool) _reader["HabilitarFiltro"] });
+						} catch (Exception _excepcion) {
+							throw new ApplicationException(string.Format("Error al incluir la entidad-panel-propiedad: {0}-{1}-{2}: {3}", _nombreEntidad, _nombrePanel, _reader["Propiedad"], _excepcion.Message), _excepcion);
+						}
+					}
+					_reader.Close();
+				}
+			}
+			using (SqlCommand _comando = new SqlCommand("SELECT e.Nombre AS Entidad, e.TieneExtensionObtenerCombo, e.TieneExtensionObtenerLista, e.TieneExtensionObtenerPorFiltros, e.TieneExtensionObtenerCantidadPorFiltros, e.TieneExtensionInsertar, e.TieneExtensionActualizar, e.TieneExtensionBorrar, e.TieneExtensionModelo, e.TieneExtensionAutocomplete, e.GenerarAutocomplete, e.Multiidioma, pr.*, p.Nombre AS NombrePanelListado, p.OrdenEnEntidad AS OrdenPanelListado, p.Colapsable AS ColapsablePanelListado FROM Entidades e INNER JOIN Propiedades pr ON e.Id = pr.IdEntidad LEFT OUTER JOIN Paneles p ON pr.IdPanelListado = p.Id WHERE e.Aplicacion = '" + aplicacion + "' ORDER BY e.Nombre, p.OrdenEnEntidad, pr.OrdenEnPanelListado", _conexion)) {
+				using (SqlDataReader _reader = _comando.ExecuteReader()) {
+					while(_reader.Read()) {
+						string _nombreEntidad = (string) _reader["Entidad"];
+						if (!_entidades.Keys.Contains(_nombreEntidad)) {
+							_entidades.Add(_nombreEntidad, new MetadataEntidad());
+							_entidades[_nombreEntidad].Nombre = (string) _reader["Entidad"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerCombo = (bool) _reader["TieneExtensionObtenerCombo"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerLista = (bool) _reader["TieneExtensionObtenerLista"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerPorFiltros = (bool) _reader["TieneExtensionObtenerPorFiltros"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerCantidadPorFiltros = (bool) _reader["TieneExtensionObtenerCantidadPorFiltros"];
+							_entidades[_nombreEntidad].TieneExtensionInsertar = (bool) _reader["TieneExtensionInsertar"];
+							_entidades[_nombreEntidad].TieneExtensionActualizar = (bool) _reader["TieneExtensionActualizar"];
+							_entidades[_nombreEntidad].TieneExtensionBorrar = (bool) _reader["TieneExtensionBorrar"];
+							_entidades[_nombreEntidad].TieneExtensionModelo = (bool) _reader["TieneExtensionModelo"];
+							_entidades[_nombreEntidad].TieneExtensionAutocomplete = (bool) _reader["TieneExtensionAutocomplete"];
+							_entidades[_nombreEntidad].GenerarAutocomplete = (bool) _reader["GenerarAutocomplete"];
+							_entidades[_nombreEntidad].Multiidioma = (bool) _reader["Multiidioma"];
+						}
+						if (_entidades[_nombreEntidad].PanelesListado == null) { _entidades[_nombreEntidad].PanelesListado = new Dictionary<string, MetadataPanel>(); }
+						string _nombrePanel = (_reader["NombrePanelListado"] is DBNull ? "SinPanel" : (string) _reader["NombrePanelListado"]);
+						if (!_entidades[_nombreEntidad].PanelesListado.Keys.Contains(_nombrePanel)) {
+							_entidades[_nombreEntidad].PanelesListado.Add(_nombrePanel, new MetadataPanel());
+							_entidades[_nombreEntidad].PanelesListado[_nombrePanel].Nombre = (_reader["NombrePanelListado"] is DBNull ? "SinPanel" : (string) _reader["NombrePanelListado"]);
+							_entidades[_nombreEntidad].PanelesListado[_nombrePanel].Orden = (_reader["OrdenPanelListado"] is DBNull ? (short) 1 : (short) _reader["OrdenPanelListado"]);
+							_entidades[_nombreEntidad].PanelesListado[_nombrePanel].Colapsable = (_reader["ColapsablePanelListado"] is DBNull ? true : (bool) _reader["ColapsablePanelListado"]);
+							_entidades[_nombreEntidad].PanelesListado[_nombrePanel].Propiedades = new Dictionary<string, MetadataPropiedad>();
+						}
+						_entidades[_nombreEntidad].PanelesListado[_nombrePanel].Propiedades.Add((string) _reader["Propiedad"], new MetadataPropiedad() { Nombre = (string) _reader["Propiedad"], Literal = (string) _reader["Literal"], TipoCampo = (TipoCampo) (short) _reader["IdTipoCampoListado"], Visible = (bool) _reader["VisibleEnListado"], VisibleInsercion = (bool) _reader["VisibleInsercion"], VisibleEdicion = (bool) _reader["VisibleEdicion"], Orden = (_reader["OrdenEnPanelListado"] is DBNull ? (short) 1 : (short) _reader["OrdenEnPanelListado"]), Tamanyo = (short) _reader["TamanyoCampoListado"], PermitirCrear = (bool?) (_reader["PermitirCrear"] is DBNull ? (bool?) null : _reader["PermitirCrear"]), PermitirGuardar = (bool?) (_reader["PermitirGuardar"] is DBNull ? (bool?) null : _reader["PermitirGuardar"]), PermitirBorrar = (bool?) (_reader["PermitirBorrar"] is DBNull ? (bool?) null : _reader["PermitirBorrar"]), BusquedaAutomatica = (bool?) (_reader["BusquedaAutomatica"] is DBNull ? (bool?) null : _reader["BusquedaAutomatica"]), InteraccionExterna = (bool?) (_reader["InteraccionExterna"] is DBNull ? (bool?) null : _reader["InteraccionExterna"]), ModoInicio = (ModoInicio?) (_reader["IdModoInicio"] is DBNull ? (ModoInicio?) null : (ModoInicio) _reader["IdModoInicio"]), MetodosRespuesta = (string) (_reader["MetodosRespuesta"] is DBNull ? null : _reader["MetodosRespuesta"]), TipoDatosSql = (string) (_reader["TipoDatosSql"] is DBNull ? null : _reader["TipoDatosSql"]), TamanyoDatosSql = (int?) (_reader["TamanyoDatosSql"] is DBNull ? (int?) null : _reader["TamanyoDatosSql"]), Eventos = (string) (_reader["Eventos"] is DBNull ? null : _reader["Eventos"]), Filtros = (string) (_reader["Filtros"] is DBNull ? null : _reader["Filtros"]), ObtenerTodosLosCamposEntidadEnDesplegables = (bool) _reader["ObtenerTodosLosCamposEntidadEnDesplegables"], GenerarObservables = (bool) _reader["GenerarObservables"], MostrarEtiqueta = (bool) _reader["MostrarEtiqueta"], EntidadRelacionada = (string) (_reader["EntidadRelacionada"] is DBNull ? null : _reader["EntidadRelacionada"]), HabilitarFiltro = (bool) _reader["HabilitarFiltro"] });
+					}
+					_reader.Close();
+				}
+			}
+			using (SqlCommand _comando = new SqlCommand("SELECT e.Nombre AS Entidad, e.TieneExtensionObtenerCombo, e.TieneExtensionObtenerLista, e.TieneExtensionObtenerPorFiltros, e.TieneExtensionObtenerCantidadPorFiltros, e.TieneExtensionModelo, e.TieneExtensionInsertar, e.TieneExtensionActualizar, e.TieneExtensionBorrar, e.TieneExtensionAutocomplete, e.GenerarAutocomplete, e.Multiidioma, pr.*, p.Nombre AS NombrePanelFormulario, p.OrdenEnEntidad AS OrdenPanelFormulario, p.Colapsable AS ColapsablePanelFormulario FROM Entidades e INNER JOIN Propiedades pr ON e.Id = pr.IdEntidad LEFT OUTER JOIN Paneles p ON pr.IdPanelFormulario = p.Id WHERE e.Aplicacion = '" + aplicacion + "' ORDER BY e.Nombre, p.OrdenEnEntidad, pr.OrdenEnPanelFormulario", _conexion)) {
+				using (SqlDataReader _reader = _comando.ExecuteReader()) {
+					while(_reader.Read()) {
+						string _nombreEntidad = (string) _reader["Entidad"];
+						if (!_entidades.Keys.Contains(_nombreEntidad)) {
+							_entidades.Add(_nombreEntidad, new MetadataEntidad());
+							_entidades[_nombreEntidad].Nombre = (string) _reader["Entidad"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerCombo = (bool) _reader["TieneExtensionObtenerCombo"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerLista = (bool) _reader["TieneExtensionObtenerLista"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerPorFiltros = (bool) _reader["TieneExtensionObtenerPorFiltros"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerCantidadPorFiltros = (bool) _reader["TieneExtensionObtenerCantidadPorFiltros"];
+							_entidades[_nombreEntidad].TieneExtensionInsertar = (bool) _reader["TieneExtensionInsertar"];
+							_entidades[_nombreEntidad].TieneExtensionActualizar = (bool) _reader["TieneExtensionActualizar"];
+							_entidades[_nombreEntidad].TieneExtensionBorrar = (bool) _reader["TieneExtensionBorrar"];
+							_entidades[_nombreEntidad].TieneExtensionModelo = (bool) _reader["TieneExtensionModelo"];
+							_entidades[_nombreEntidad].TieneExtensionAutocomplete = (bool) _reader["TieneExtensionAutocomplete"];
+							_entidades[_nombreEntidad].GenerarAutocomplete = (bool) _reader["GenerarAutocomplete"];
+							_entidades[_nombreEntidad].Multiidioma = (bool) _reader["Multiidioma"];
+						}
+						if (_entidades[_nombreEntidad].PanelesFormulario == null) { _entidades[_nombreEntidad].PanelesFormulario = new Dictionary<string, MetadataPanel>(); }
+						string _nombrePanel = (_reader["NombrePanelFormulario"] is DBNull ? "SinPanel" : (string) _reader["NombrePanelFormulario"]);
+						if (!_entidades[_nombreEntidad].PanelesFormulario.Keys.Contains(_nombrePanel)) {
+							_entidades[_nombreEntidad].PanelesFormulario.Add(_nombrePanel, new MetadataPanel());
+							_entidades[_nombreEntidad].PanelesFormulario[_nombrePanel].Nombre = (_reader["NombrePanelFormulario"] is DBNull ? "SinPanel" : (string) _reader["NombrePanelFormulario"]);
+							_entidades[_nombreEntidad].PanelesFormulario[_nombrePanel].Orden = (_reader["OrdenPanelFormulario"] is DBNull ? (short) 1 : (short) _reader["OrdenPanelFormulario"]);
+							_entidades[_nombreEntidad].PanelesFormulario[_nombrePanel].Colapsable = (_reader["ColapsablePanelFormulario"] is DBNull ? true : (bool) _reader["ColapsablePanelFormulario"]);
+							_entidades[_nombreEntidad].PanelesFormulario[_nombrePanel].Propiedades = new Dictionary<string, MetadataPropiedad>();
+						}
+						_entidades[_nombreEntidad].PanelesFormulario[_nombrePanel].Propiedades.Add((string) _reader["Propiedad"], new MetadataPropiedad() { Nombre = (string) _reader["Propiedad"], Literal = (string) _reader["Literal"], TipoCampo = (TipoCampo) (short) _reader["IdTipoCampoFormulario"], Visible = (bool) _reader["VisibleEnFormulario"], SoloLecturaInsercion = (bool) _reader["SoloLecturaInsercion"], SoloLecturaEdicion = (bool) _reader["SoloLecturaEdicion"], VisibleInsercion = (bool) _reader["VisibleInsercion"], VisibleEdicion = (bool) _reader["VisibleEdicion"], Orden = (_reader["OrdenEnPanelFormulario"] is DBNull ? (short) 1 : (short) _reader["OrdenEnPanelFormulario"]), Tamanyo = (short) _reader["TamanyoCampoFormulario"], PermitirCrear = (bool?) (_reader["PermitirCrear"] is DBNull ? (bool?) null : _reader["PermitirCrear"]), PermitirGuardar = (bool?) (_reader["PermitirGuardar"] is DBNull ? (bool?) null : _reader["PermitirGuardar"]), PermitirBorrar = (bool?) (_reader["PermitirBorrar"] is DBNull ? (bool?) null : _reader["PermitirBorrar"]), BusquedaAutomatica = (bool?) (_reader["BusquedaAutomatica"] is DBNull ? (bool?) null : _reader["BusquedaAutomatica"]), InteraccionExterna = (bool?) (_reader["InteraccionExterna"] is DBNull ? (bool?) null : _reader["InteraccionExterna"]), ModoInicio = (ModoInicio?) (_reader["IdModoInicio"] is DBNull ? (ModoInicio?) null : (ModoInicio) _reader["IdModoInicio"]), MetodosRespuesta = (string) (_reader["MetodosRespuesta"] is DBNull ? null : _reader["MetodosRespuesta"]), TipoDatosSql = (string) (_reader["TipoDatosSql"] is DBNull ? null : _reader["TipoDatosSql"]), TamanyoDatosSql = (int?) (_reader["TamanyoDatosSql"] is DBNull ? (int?) null : _reader["TamanyoDatosSql"]), Eventos = (string) (_reader["Eventos"] is DBNull ? null : _reader["Eventos"]), Filtros = (string) (_reader["Filtros"] is DBNull ? null : _reader["Filtros"]), ObtenerTodosLosCamposEntidadEnDesplegables = (bool) _reader["ObtenerTodosLosCamposEntidadEnDesplegables"], GenerarObservables = (bool) _reader["GenerarObservables"], MostrarEtiqueta = (bool) _reader["MostrarEtiqueta"], EntidadRelacionada = (string) (_reader["EntidadRelacionada"] is DBNull ? null : _reader["EntidadRelacionada"]), HabilitarFiltro = (bool) _reader["HabilitarFiltro"] });
+					}
+					_reader.Close();
+				}
+			}
+			using (SqlCommand _comando = new SqlCommand("SELECT e.Nombre AS Entidad, e.TieneExtensionObtenerCombo, e.TieneExtensionObtenerLista, e.TieneExtensionObtenerPorFiltros, e.TieneExtensionObtenerCantidadPorFiltros, e.TieneExtensionModelo, e.TieneExtensionInsertar, e.TieneExtensionActualizar, e.TieneExtensionBorrar, e.TieneExtensionAutocomplete, e.GenerarAutocomplete, e.Multiidioma, pr.*, p.Nombre AS NombrePanelFormularioCopia, p.OrdenEnEntidad AS OrdenPanelFormularioCopia, p.Colapsable AS ColapsablePanelFormularioCopia FROM Entidades e INNER JOIN Propiedades pr ON e.Id = pr.IdEntidad LEFT OUTER JOIN Paneles p ON pr.IdPanelFormularioCopia = p.Id WHERE e.Aplicacion = '" + aplicacion + "' ORDER BY e.Nombre, p.OrdenEnEntidad, pr.OrdenEnFormularioCopia", _conexion)) {
+				using (SqlDataReader _reader = _comando.ExecuteReader()) {
+					while(_reader.Read()) {
+						string _nombreEntidad = (string) _reader["Entidad"];
+						if (!_entidades.Keys.Contains(_nombreEntidad)) {
+							_entidades.Add(_nombreEntidad, new MetadataEntidad());
+							_entidades[_nombreEntidad].Nombre = (string) _reader["Entidad"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerCombo = (bool) _reader["TieneExtensionObtenerCombo"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerLista = (bool) _reader["TieneExtensionObtenerLista"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerPorFiltros = (bool) _reader["TieneExtensionObtenerPorFiltros"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerCantidadPorFiltros = (bool) _reader["TieneExtensionObtenerCantidadPorFiltros"];
+							_entidades[_nombreEntidad].TieneExtensionInsertar = (bool) _reader["TieneExtensionInsertar"];
+							_entidades[_nombreEntidad].TieneExtensionActualizar = (bool) _reader["TieneExtensionActualizar"];
+							_entidades[_nombreEntidad].TieneExtensionBorrar = (bool) _reader["TieneExtensionBorrar"];
+							_entidades[_nombreEntidad].TieneExtensionModelo = (bool) _reader["TieneExtensionModelo"];
+							_entidades[_nombreEntidad].TieneExtensionAutocomplete = (bool) _reader["TieneExtensionAutocomplete"];
+							_entidades[_nombreEntidad].GenerarAutocomplete = (bool) _reader["GenerarAutocomplete"];
+							_entidades[_nombreEntidad].Multiidioma = (bool) _reader["Multiidioma"];
+						}
+						if (_entidades[_nombreEntidad].PanelesFormularioCopia == null) { _entidades[_nombreEntidad].PanelesFormularioCopia = new Dictionary<string, MetadataPanel>(); }
+						string _nombrePanel = (_reader["NombrePanelFormularioCopia"] is DBNull ? "SinPanel" : (string) _reader["NombrePanelFormularioCopia"]);
+						if (!_entidades[_nombreEntidad].PanelesFormularioCopia.Keys.Contains(_nombrePanel)) {
+							_entidades[_nombreEntidad].PanelesFormularioCopia.Add(_nombrePanel, new MetadataPanel());
+							_entidades[_nombreEntidad].PanelesFormularioCopia[_nombrePanel].Nombre = (_reader["NombrePanelFormularioCopia"] is DBNull ? "SinPanel" : (string) _reader["NombrePanelFormularioCopia"]);
+							_entidades[_nombreEntidad].PanelesFormularioCopia[_nombrePanel].Orden = (_reader["OrdenPanelFormularioCopia"] is DBNull ? (short) 1 : (short) _reader["OrdenPanelFormularioCopia"]);
+							_entidades[_nombreEntidad].PanelesFormularioCopia[_nombrePanel].Colapsable = (_reader["ColapsablePanelFormularioCopia"] is DBNull ? true : (bool) _reader["ColapsablePanelFormularioCopia"]);
+							_entidades[_nombreEntidad].PanelesFormularioCopia[_nombrePanel].Propiedades = new Dictionary<string, MetadataPropiedad>();
+						}
+						_entidades[_nombreEntidad].PanelesFormularioCopia[_nombrePanel].Propiedades.Add((string) _reader["Propiedad"], new MetadataPropiedad() { Nombre = (string) _reader["Propiedad"], Literal = (string) _reader["Literal"], TipoCampo = (TipoCampo) (short) _reader["IdTipoCampoFormularioCopia"], Visible = (bool) _reader["VisibleEnFormularioCopia"], SoloLecturaInsercion = (bool) _reader["SoloLecturaInsercion"], SoloLecturaEdicion = (bool) _reader["SoloLecturaEdicion"], VisibleInsercion = (bool) _reader["VisibleInsercion"], VisibleEdicion = (bool) _reader["VisibleEdicion"], Orden = (_reader["OrdenEnFormularioCopia"] is DBNull ? (short) 1 : (short) _reader["OrdenEnFormularioCopia"]), Tamanyo = (short) _reader["TamanyoCampoFormularioCopia"], PermitirCrear = (bool?) (_reader["PermitirCrear"] is DBNull ? (bool?) null : _reader["PermitirCrear"]), PermitirGuardar = (bool?) (_reader["PermitirGuardar"] is DBNull ? (bool?) null : _reader["PermitirGuardar"]), PermitirBorrar = (bool?) (_reader["PermitirBorrar"] is DBNull ? (bool?) null : _reader["PermitirBorrar"]), BusquedaAutomatica = (bool?) (_reader["BusquedaAutomatica"] is DBNull ? (bool?) null : _reader["BusquedaAutomatica"]), InteraccionExterna = (bool?) (_reader["InteraccionExterna"] is DBNull ? (bool?) null : _reader["InteraccionExterna"]), ModoInicio = (ModoInicio?) (_reader["IdModoInicio"] is DBNull ? (ModoInicio?) null : (ModoInicio) _reader["IdModoInicio"]), MetodosRespuesta = (string) (_reader["MetodosRespuesta"] is DBNull ? null : _reader["MetodosRespuesta"]), TipoDatosSql = (string) (_reader["TipoDatosSql"] is DBNull ? null : _reader["TipoDatosSql"]), TamanyoDatosSql = (int?) (_reader["TamanyoDatosSql"] is DBNull ? (int?) null : _reader["TamanyoDatosSql"]), Eventos = (string) (_reader["Eventos"] is DBNull ? null : _reader["Eventos"]), Filtros = (string) (_reader["Filtros"] is DBNull ? null : _reader["Filtros"]), ObtenerTodosLosCamposEntidadEnDesplegables = (bool) _reader["ObtenerTodosLosCamposEntidadEnDesplegables"], GenerarObservables = (bool) _reader["GenerarObservables"], MostrarEtiqueta = (bool) _reader["MostrarEtiqueta"], EntidadRelacionada = (string) (_reader["EntidadRelacionada"] is DBNull ? null : _reader["EntidadRelacionada"]), HabilitarFiltro = (bool) _reader["HabilitarFiltro"] });
+					}
+					_reader.Close();
+				}
+			}
+			using (SqlCommand _comando = new SqlCommand("SELECT e.Nombre AS Entidad, e.TieneExtensionObtenerCombo, e.TieneExtensionObtenerLista, e.TieneExtensionObtenerPorFiltros, e.TieneExtensionObtenerCantidadPorFiltros, e.TieneExtensionModelo, e.TieneExtensionInsertar, e.TieneExtensionActualizar, e.TieneExtensionBorrar, e.TieneExtensionAutocomplete, e.GenerarAutocomplete, e.Multiidioma, pr.*, p.Nombre AS NombrePanelFormularioEdicionMultiple, p.OrdenEnEntidad AS OrdenPanelFormularioEdicionMultiple, p.Colapsable AS ColapsablePanelFormularioEdicionMultiple FROM Entidades e INNER JOIN Propiedades pr ON e.Id = pr.IdEntidad LEFT OUTER JOIN Paneles p ON pr.IdPanelFormularioEdicionMultiple = p.Id WHERE e.Aplicacion = '" + aplicacion + "' ORDER BY e.Nombre, p.OrdenEnEntidad, pr.OrdenEnFormularioEdicionMultiple", _conexion)) {
+				using (SqlDataReader _reader = _comando.ExecuteReader()) {
+					while(_reader.Read()) {
+						string _nombreEntidad = (string) _reader["Entidad"];
+						if (!_entidades.Keys.Contains(_nombreEntidad)) {
+							_entidades.Add(_nombreEntidad, new MetadataEntidad());
+							_entidades[_nombreEntidad].Nombre = (string) _reader["Entidad"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerCombo = (bool) _reader["TieneExtensionObtenerCombo"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerLista = (bool) _reader["TieneExtensionObtenerLista"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerPorFiltros = (bool) _reader["TieneExtensionObtenerPorFiltros"];
+							_entidades[_nombreEntidad].TieneExtensionObtenerCantidadPorFiltros = (bool) _reader["TieneExtensionObtenerCantidadPorFiltros"];
+							_entidades[_nombreEntidad].TieneExtensionInsertar = (bool) _reader["TieneExtensionInsertar"];
+							_entidades[_nombreEntidad].TieneExtensionActualizar = (bool) _reader["TieneExtensionActualizar"];
+							_entidades[_nombreEntidad].TieneExtensionBorrar = (bool) _reader["TieneExtensionBorrar"];
+							_entidades[_nombreEntidad].TieneExtensionModelo = (bool) _reader["TieneExtensionModelo"];
+							_entidades[_nombreEntidad].TieneExtensionAutocomplete = (bool) _reader["TieneExtensionAutocomplete"];
+							_entidades[_nombreEntidad].GenerarAutocomplete = (bool) _reader["GenerarAutocomplete"];
+							_entidades[_nombreEntidad].Multiidioma = (bool) _reader["Multiidioma"];
+						}
+						if (_entidades[_nombreEntidad].PanelesFormularioEdicionMultiple == null) { _entidades[_nombreEntidad].PanelesFormularioEdicionMultiple = new Dictionary<string, MetadataPanel>(); }
+						string _nombrePanel = (_reader["NombrePanelFormularioEdicionMultiple"] is DBNull ? "SinPanel" : (string) _reader["NombrePanelFormularioEdicionMultiple"]);
+						if (!_entidades[_nombreEntidad].PanelesFormularioEdicionMultiple.Keys.Contains(_nombrePanel)) {
+							_entidades[_nombreEntidad].PanelesFormularioEdicionMultiple.Add(_nombrePanel, new MetadataPanel());
+							_entidades[_nombreEntidad].PanelesFormularioEdicionMultiple[_nombrePanel].Nombre = (_reader["NombrePanelFormularioEdicionMultiple"] is DBNull ? "SinPanel" : (string) _reader["NombrePanelFormularioEdicionMultiple"]);
+							_entidades[_nombreEntidad].PanelesFormularioEdicionMultiple[_nombrePanel].Orden = (_reader["OrdenPanelFormularioEdicionMultiple"] is DBNull ? (short) 1 : (short) _reader["OrdenPanelFormularioEdicionMultiple"]);
+							_entidades[_nombreEntidad].PanelesFormularioEdicionMultiple[_nombrePanel].Colapsable = (_reader["ColapsablePanelFormularioEdicionMultiple"] is DBNull ? true : (bool) _reader["ColapsablePanelFormularioEdicionMultiple"]);
+							_entidades[_nombreEntidad].PanelesFormularioEdicionMultiple[_nombrePanel].Propiedades = new Dictionary<string, MetadataPropiedad>();
+						}
+						_entidades[_nombreEntidad].PanelesFormularioEdicionMultiple[_nombrePanel].Propiedades.Add((string) _reader["Propiedad"], new MetadataPropiedad() { Nombre = (string) _reader["Propiedad"], Literal = (string) _reader["Literal"], TipoCampo = (TipoCampo) (short) _reader["IdTipoCampoFormularioEdicionMultiple"], Visible = (bool) _reader["VisibleEnFormularioEdicionMultiple"], SoloLecturaInsercion = (bool) _reader["SoloLecturaInsercion"], SoloLecturaEdicion = (bool) _reader["SoloLecturaEdicion"], VisibleInsercion = (bool) _reader["VisibleInsercion"], VisibleEdicion = (bool) _reader["VisibleEdicion"], Orden = (_reader["OrdenEnFormularioEdicionMultiple"] is DBNull ? (short) 1 : (short) _reader["OrdenEnFormularioEdicionMultiple"]), Tamanyo = (short) _reader["TamanyoCampoFormularioEdicionMultiple"], PermitirCrear = (bool?) (_reader["PermitirCrear"] is DBNull ? (bool?) null : _reader["PermitirCrear"]), PermitirGuardar = (bool?) (_reader["PermitirGuardar"] is DBNull ? (bool?) null : _reader["PermitirGuardar"]), PermitirBorrar = (bool?) (_reader["PermitirBorrar"] is DBNull ? (bool?) null : _reader["PermitirBorrar"]), BusquedaAutomatica = (bool?) (_reader["BusquedaAutomatica"] is DBNull ? (bool?) null : _reader["BusquedaAutomatica"]), InteraccionExterna = (bool?) (_reader["InteraccionExterna"] is DBNull ? (bool?) null : _reader["InteraccionExterna"]), ModoInicio = (ModoInicio?) (_reader["IdModoInicio"] is DBNull ? (ModoInicio?) null : (ModoInicio) _reader["IdModoInicio"]), MetodosRespuesta = (string) (_reader["MetodosRespuesta"] is DBNull ? null : _reader["MetodosRespuesta"]), TipoDatosSql = (string) (_reader["TipoDatosSql"] is DBNull ? null : _reader["TipoDatosSql"]), TamanyoDatosSql = (int?) (_reader["TamanyoDatosSql"] is DBNull ? (int?) null : _reader["TamanyoDatosSql"]), Eventos = (string) (_reader["Eventos"] is DBNull ? null : _reader["Eventos"]), Filtros = (string) (_reader["Filtros"] is DBNull ? null : _reader["Filtros"]), ObtenerTodosLosCamposEntidadEnDesplegables = (bool) _reader["ObtenerTodosLosCamposEntidadEnDesplegables"], GenerarObservables = (bool) _reader["GenerarObservables"], MostrarEtiqueta = (bool) _reader["MostrarEtiqueta"], EntidadRelacionada = (string) (_reader["EntidadRelacionada"] is DBNull ? null : _reader["EntidadRelacionada"]), HabilitarFiltro = (bool) _reader["HabilitarFiltro"] });
+					}
+					_reader.Close();
+				}
+			}
+			_conexion.Close();
+		}
+		return _entidades;
+	}
+
+	public static void IncluirEntidadesNoExistentesEnFramework(Dictionary<string, MetadataEntidad> metadataEntidades, List<EntityType> entidades, TypeMapper typeMapper) {
+		foreach (EntityType _entidad in entidades) {
+			if (!metadataEntidades.ContainsKey(_entidad.Name)) {
+				metadataEntidades.Add(_entidad.Name, new MetadataEntidad());
+				metadataEntidades[_entidad.Name].Nombre = _entidad.Name;
+				metadataEntidades[_entidad.Name].PanelesFiltro = new Dictionary<string, MetadataPanel>();
+				metadataEntidades[_entidad.Name].PanelesListado = new Dictionary<string, MetadataPanel>();
+				metadataEntidades[_entidad.Name].PanelesFormulario = new Dictionary<string, MetadataPanel>();
+				metadataEntidades[_entidad.Name].PanelesFormularioCopia = new Dictionary<string, MetadataPanel>();
+				metadataEntidades[_entidad.Name].PanelesFormularioEdicionMultiple = new Dictionary<string, MetadataPanel>();
+				metadataEntidades[_entidad.Name].PanelesFiltro.Add("SinPanel", new MetadataPanel() { Nombre = "SinPanel", Orden = 1, Colapsable = true, Propiedades = new Dictionary<string, MetadataPropiedad>() });
+				metadataEntidades[_entidad.Name].PanelesListado.Add("SinPanel", new MetadataPanel() { Nombre = "SinPanel", Orden = 1, Colapsable = true, Propiedades = new Dictionary<string, MetadataPropiedad>() });
+				metadataEntidades[_entidad.Name].PanelesFormulario.Add("SinPanel", new MetadataPanel() { Nombre = "SinPanel", Orden = 1, Colapsable = true, Propiedades = new Dictionary<string, MetadataPropiedad>() });
+				metadataEntidades[_entidad.Name].PanelesFormularioCopia.Add("SinPanel", new MetadataPanel() { Nombre = "SinPanel", Orden = 1, Colapsable = true, Propiedades = new Dictionary<string, MetadataPropiedad>() });
+				metadataEntidades[_entidad.Name].PanelesFormularioEdicionMultiple.Add("SinPanel", new MetadataPanel() { Nombre = "SinPanel", Orden = 1, Colapsable = true, Propiedades = new Dictionary<string, MetadataPropiedad>() });
+			}
+			foreach (EdmMember _propiedad in typeMapper.GetVisibleProperties(_entidad)) {
+				if (!ContienePropiedad(metadataEntidades[_entidad.Name].PanelesFiltro, _propiedad)) {
+					if (!metadataEntidades[_entidad.Name].PanelesFiltro.ContainsKey("Incluidas")) { 
+						metadataEntidades[_entidad.Name].PanelesFiltro.Add("Incluidas", new MetadataPanel()); 
+						metadataEntidades[_entidad.Name].PanelesFiltro["Incluidas"].Nombre = "Incluidas";
+						metadataEntidades[_entidad.Name].PanelesFiltro["Incluidas"].Propiedades = new Dictionary<string, MetadataPropiedad>();
+					}
+					metadataEntidades[_entidad.Name].PanelesFiltro["Incluidas"].Propiedades.Add(_propiedad.Name, new MetadataPropiedad() { Nombre = _propiedad.Name, Literal = _propiedad.Name, TipoCampo = ObtenerTipoCampoFiltro(null, typeMapper, _entidad, (EdmProperty) _propiedad), Visible = true, SoloLecturaInsercion = false, SoloLecturaEdicion = false, VisibleInsercion = true, VisibleEdicion = true, Orden = 1, Tamanyo = 6, PermitirCrear = true, PermitirGuardar = true, PermitirBorrar = true, BusquedaAutomatica = true, ModoInicio = ModoInicio.Listado, HabilitarFiltro = true });
+				}
+			}
+			foreach (EdmMember _propiedad in typeMapper.GetNonKeyVisibleProperties(_entidad)) {
+				if (!ContienePropiedad(metadataEntidades[_entidad.Name].PanelesListado, _propiedad)) {
+					if (!metadataEntidades[_entidad.Name].PanelesListado.ContainsKey("Incluidas")) { 
+						metadataEntidades[_entidad.Name].PanelesListado.Add("Incluidas", new MetadataPanel()); 
+						metadataEntidades[_entidad.Name].PanelesListado["Incluidas"].Nombre = "Incluidas";
+						metadataEntidades[_entidad.Name].PanelesListado["Incluidas"].Propiedades = new Dictionary<string, MetadataPropiedad>();
+					}
+					metadataEntidades[_entidad.Name].PanelesListado["Incluidas"].Propiedades.Add(_propiedad.Name, new MetadataPropiedad() { Nombre = _propiedad.Name, Literal = _propiedad.Name, TipoCampo = ObtenerTipoCampoListado(null, typeMapper, _entidad, (EdmProperty) _propiedad), Visible = true, SoloLecturaInsercion = false, SoloLecturaEdicion = false, VisibleInsercion = true, VisibleEdicion = true, Orden = 1, Tamanyo = 6, PermitirCrear = true, PermitirGuardar = true, PermitirBorrar = true, BusquedaAutomatica = true, ModoInicio = ModoInicio.Listado, HabilitarFiltro = true });
+				}
+			}
+			foreach (EdmMember _propiedad in typeMapper.GetNonKeyVisibleProperties(_entidad)) {
+				if (!ContienePropiedad(metadataEntidades[_entidad.Name].PanelesFormulario, _propiedad)) {
+					if (!metadataEntidades[_entidad.Name].PanelesFormulario.ContainsKey("Incluidas")) { 
+						metadataEntidades[_entidad.Name].PanelesFormulario.Add("Incluidas", new MetadataPanel()); 
+						metadataEntidades[_entidad.Name].PanelesFormulario["Incluidas"].Nombre = "Incluidas";
+						metadataEntidades[_entidad.Name].PanelesFormulario["Incluidas"].Propiedades = new Dictionary<string, MetadataPropiedad>();
+					}
+					metadataEntidades[_entidad.Name].PanelesFormulario["Incluidas"].Propiedades.Add(_propiedad.Name, new MetadataPropiedad() { Nombre = _propiedad.Name, Literal = _propiedad.Name, TipoCampo = ObtenerTipoCampoFormulario(null, typeMapper, _entidad, (EdmProperty) _propiedad), Visible = true, SoloLecturaInsercion = false, SoloLecturaEdicion = false, VisibleInsercion = true, VisibleEdicion = true, Orden = 1, Tamanyo = 6, PermitirCrear = true, PermitirGuardar = true, PermitirBorrar = true, BusquedaAutomatica = true, ModoInicio = ModoInicio.Listado, HabilitarFiltro = true });
+				}
+			}
+			foreach (EdmMember _propiedad in typeMapper.GetNonKeyVisibleProperties(_entidad)) {
+				if (!ContienePropiedad(metadataEntidades[_entidad.Name].PanelesFormularioCopia, _propiedad)) {
+					if (!metadataEntidades[_entidad.Name].PanelesFormularioCopia.ContainsKey("Incluidas")) { 
+						metadataEntidades[_entidad.Name].PanelesFormularioCopia.Add("Incluidas", new MetadataPanel()); 
+						metadataEntidades[_entidad.Name].PanelesFormularioCopia["Incluidas"].Nombre = "Incluidas";
+						metadataEntidades[_entidad.Name].PanelesFormularioCopia["Incluidas"].Propiedades = new Dictionary<string, MetadataPropiedad>();
+					}
+					metadataEntidades[_entidad.Name].PanelesFormularioCopia["Incluidas"].Propiedades.Add(_propiedad.Name, new MetadataPropiedad() { Nombre = _propiedad.Name, Literal = _propiedad.Name, TipoCampo = ObtenerTipoCampoFormularioCopia(null, typeMapper, _entidad, (EdmProperty) _propiedad), Visible = true, SoloLecturaInsercion = false, SoloLecturaEdicion = false, VisibleInsercion = true, VisibleEdicion = true, Orden = 1, Tamanyo = 6, PermitirCrear = true, PermitirGuardar = true, PermitirBorrar = true, BusquedaAutomatica = true, ModoInicio = ModoInicio.Listado, HabilitarFiltro = true });
+				}
+			}
+			foreach (EdmMember _propiedad in typeMapper.GetNonKeyVisibleProperties(_entidad)) {
+				if (!ContienePropiedad(metadataEntidades[_entidad.Name].PanelesFormularioEdicionMultiple, _propiedad)) {
+					if (!metadataEntidades[_entidad.Name].PanelesFormularioEdicionMultiple.ContainsKey("Incluidas")) { 
+						metadataEntidades[_entidad.Name].PanelesFormularioEdicionMultiple.Add("Incluidas", new MetadataPanel()); 
+						metadataEntidades[_entidad.Name].PanelesFormularioEdicionMultiple["Incluidas"].Nombre = "Incluidas";
+						metadataEntidades[_entidad.Name].PanelesFormularioEdicionMultiple["Incluidas"].Propiedades = new Dictionary<string, MetadataPropiedad>();
+					}
+					metadataEntidades[_entidad.Name].PanelesFormularioEdicionMultiple["Incluidas"].Propiedades.Add(_propiedad.Name, new MetadataPropiedad() { Nombre = _propiedad.Name, Literal = _propiedad.Name, TipoCampo = ObtenerTipoCampoFormularioEdicionMultiple(null, typeMapper, _entidad, (EdmProperty) _propiedad), Visible = true, SoloLecturaInsercion = false, SoloLecturaEdicion = false, VisibleInsercion = true, VisibleEdicion = true, Orden = 1, Tamanyo = 6, PermitirCrear = true, PermitirGuardar = true, PermitirBorrar = true, BusquedaAutomatica = true, ModoInicio = ModoInicio.Listado, HabilitarFiltro = true });
+				}
+			}
+		}
+	}
+
+	public static MetadataPropiedad BuscarPropiedad(Dictionary<string, MetadataPanel> paneles, EdmMember propiedad) {
+		MetadataPropiedad _metadataPropiedad = null;
+		foreach (MetadataPanel _panel in paneles.Values) {
+			if (_panel.Propiedades.Keys.Contains(propiedad.Name)) { _metadataPropiedad = _panel.Propiedades[propiedad.Name]; }
+		}
+		return _metadataPropiedad;
+	}
+
+	public static MetadataPropiedad BuscarPropiedad(MetadataEntidad entidad, EdmMember propiedad) {
+		MetadataPropiedad _metadataPropiedad = BuscarPropiedad(entidad.PanelesFiltro, propiedad);
+		if (_metadataPropiedad == null) { _metadataPropiedad = BuscarPropiedad(entidad.PanelesListado, propiedad); }
+		if (_metadataPropiedad == null) { _metadataPropiedad = BuscarPropiedad(entidad.PanelesFormulario, propiedad); }
+		if (_metadataPropiedad == null) { _metadataPropiedad = BuscarPropiedad(entidad.PanelesFormularioCopia, propiedad); }
+		if (_metadataPropiedad == null) { _metadataPropiedad = BuscarPropiedad(entidad.PanelesFormularioEdicionMultiple, propiedad); }
+		return _metadataPropiedad;
+	}
+
+	public static List<MetadataPropiedad> PropiedadesVisibles(MetadataEntidad entidad) {
+		Dictionary<string, MetadataPropiedad> _propiedadesVisibles = new Dictionary<string, MetadataPropiedad>();
+		foreach (MetadataPanel _panel in entidad.PanelesFiltro.Values) {
+			foreach (MetadataPropiedad _metadataPropiedad in _panel.Propiedades.Values) { if (_metadataPropiedad.Visible && !_propiedadesVisibles.ContainsKey(_metadataPropiedad.Nombre)) { _propiedadesVisibles.Add(_metadataPropiedad.Nombre, _metadataPropiedad); } }
+		}
+		foreach (MetadataPanel _panel in entidad.PanelesListado.Values) {
+			foreach (MetadataPropiedad _metadataPropiedad in _panel.Propiedades.Values) { if (_metadataPropiedad.Visible && !_propiedadesVisibles.ContainsKey(_metadataPropiedad.Nombre)) { _propiedadesVisibles.Add(_metadataPropiedad.Nombre, _metadataPropiedad); } }
+		}
+		foreach (MetadataPanel _panel in entidad.PanelesFormulario.Values) {
+			foreach (MetadataPropiedad _metadataPropiedad in _panel.Propiedades.Values) { if (_metadataPropiedad.Visible && !_propiedadesVisibles.ContainsKey(_metadataPropiedad.Nombre)) { _propiedadesVisibles.Add(_metadataPropiedad.Nombre, _metadataPropiedad); } }
+		}
+		foreach (MetadataPanel _panel in entidad.PanelesFormularioCopia.Values) {
+			foreach (MetadataPropiedad _metadataPropiedad in _panel.Propiedades.Values) { if (_metadataPropiedad.Visible && !_propiedadesVisibles.ContainsKey(_metadataPropiedad.Nombre)) { _propiedadesVisibles.Add(_metadataPropiedad.Nombre, _metadataPropiedad); } }
+		}
+		foreach (MetadataPanel _panel in entidad.PanelesFormularioEdicionMultiple.Values) {
+			foreach (MetadataPropiedad _metadataPropiedad in _panel.Propiedades.Values) { if (_metadataPropiedad.Visible && !_propiedadesVisibles.ContainsKey(_metadataPropiedad.Nombre)) { _propiedadesVisibles.Add(_metadataPropiedad.Nombre, _metadataPropiedad); } }
+		}
+		return _propiedadesVisibles.Values.ToList();
+	}
+
+	public static IEnumerable<MetadataPropiedad> PropiedadesGestionArchivos(IEnumerable<MetadataPropiedad> propiedades) {
+		return propiedades.Where(p => p.TipoCampo == MetadataGenerador.TipoCampo.Texto_Imagen || p.TipoCampo == MetadataGenerador.TipoCampo.RelacionN_M_Imagenes || p.TipoCampo ==  MetadataGenerador.TipoCampo.RelacionN_M_Archivos || p.TipoCampo ==  MetadataGenerador.TipoCampo.Texto_Documento);
+	}
+
+	public static bool ContienePropiedad(Dictionary<string, MetadataPanel> paneles, EdmMember propiedad) {
+		return BuscarPropiedad(paneles, propiedad) != null;
+	}
+
+	public static bool ContienePropiedad(MetadataEntidad entidad, EdmMember propiedad) {
+		bool _existe = false;
+		if (BuscarPropiedad(entidad.PanelesFiltro, propiedad) != null) { _existe = true; }
+		else if (BuscarPropiedad(entidad.PanelesListado, propiedad) != null) { _existe = true; }
+		else if (BuscarPropiedad(entidad.PanelesFormulario, propiedad) != null) { _existe = true; }
+		else if (BuscarPropiedad(entidad.PanelesFormularioCopia, propiedad) != null) { _existe = true; }
+		else if (BuscarPropiedad(entidad.PanelesFormularioEdicionMultiple, propiedad) != null) { _existe = true; }
+		return _existe;
+	}
+
+	public static TipoCampo ObtenerTipoCampoFiltro(MetadataPropiedad metadataPropiedad, TypeMapper typeMapper, EntityType entidad, EdmMember propiedad) {
+		TipoCampo? _tipoCampo = null;
+		if (metadataPropiedad != null) { _tipoCampo = (TipoCampo) metadataPropiedad.TipoCampo; }
+		if (_tipoCampo == null) {
+			if (propiedad is EdmProperty) {
+				if (typeMapper.HasNavigationProperty((EdmProperty) propiedad)) { 
+					_tipoCampo = TipoCampo.Relacion1_N_Desplegable;
+				} else {
+					switch (typeMapper.UnderlyingClrType(propiedad.TypeUsage.EdmType).FullName) {
+					case "System.Boolean": _tipoCampo = TipoCampo.Booleano_Desplegable_NoObligatorio; break;
+					case "System.Int16": 
+					case "System.Int32": 
+					case "System.Int64": 
+					case "System.Double": 
+					case "System.Decimal": _tipoCampo = TipoCampo.Numero_Rango; break;
+					case "System.DateTime": _tipoCampo = TipoCampo.FechaHora_Rango; break;
+					case "System.TimeSpan": _tipoCampo = TipoCampo.Hora_Rango; break;
+					case "System.String":	_tipoCampo = TipoCampo.Texto_CampoSimple; break;
+					default: _tipoCampo = TipoCampo.Desconocido; break;
+					}
+				}
+			} else {
+				if (((NavigationProperty) propiedad).ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many) {
+					_tipoCampo = TipoCampo.Desconocido;
+				} else {
+					_tipoCampo = TipoCampo.Desconocido;
+				}
+			}
+		}
+		return (TipoCampo) _tipoCampo;
+	}
+
+	public static TipoCampo ObtenerTipoCampoListado(MetadataPropiedad metadataPropiedad, TypeMapper typeMapper, EntityType entidad, EdmMember propiedad) {
+		TipoCampo? _tipoCampo = null;
+		if (metadataPropiedad != null) { _tipoCampo = (TipoCampo) metadataPropiedad.TipoCampo; }
+		if (_tipoCampo == null) {
+			if (propiedad is EdmProperty) {
+				if (typeMapper.HasNavigationProperty((EdmProperty) propiedad)) { 
+					_tipoCampo = TipoCampo.Relacion1_N_CeldaSimple;
+				} else {
+					switch (typeMapper.UnderlyingClrType(propiedad.TypeUsage.EdmType).FullName) {
+					case "System.Boolean": _tipoCampo = TipoCampo.Booleano_CeldaCasilla; break;
+					case "System.Int16": 
+					case "System.Int32": 
+					case "System.Int64": 
+					case "System.Double": 
+					case "System.Decimal": _tipoCampo = TipoCampo.Numero_CeldaSimple; break;
+					case "System.DateTime": _tipoCampo = TipoCampo.FechaHora_CeldaSimple; break;
+					case "System.TimeSpan": _tipoCampo = TipoCampo.Hora_CeldaSimple; break;
+					case "System.String":	
+						if (typeMapper.MaxLength((EdmProperty) propiedad) > 250) { 
+							_tipoCampo = TipoCampo.Texto_CeldaAmpliable;
+						} else {
+							_tipoCampo = TipoCampo.Texto_CeldaSimple;
+						}
+						break;
+					default: _tipoCampo = TipoCampo.Desconocido; break;
+					}
+				}
+			} else {
+				if (((NavigationProperty) propiedad).ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many) {
+					_tipoCampo = TipoCampo.RelacionN_M_CeldaSimple;
+				} else {
+					_tipoCampo = TipoCampo.Relacion1_N_CeldaSimple;
+				}
+			}
+		}
+		return (TipoCampo) _tipoCampo;
+	}
+
+	public static TipoCampo ObtenerTipoCampoFormulario(MetadataPropiedad metadataPropiedad, TypeMapper typeMapper, EntityType entidad, EdmMember propiedad) {
+		TipoCampo? _tipoCampo = null;
+		if (metadataPropiedad != null) { _tipoCampo = (TipoCampo) metadataPropiedad.TipoCampo; }
+		if (_tipoCampo == null) {
+			if (propiedad is EdmProperty) {
+				if (typeMapper.HasNavigationProperty((EdmProperty) propiedad)) {
+					_tipoCampo = TipoCampo.Relacion1_N_Desplegable;
+				} else {
+					switch (typeMapper.UnderlyingClrType(propiedad.TypeUsage.EdmType).FullName) {
+					case "System.Boolean": _tipoCampo = TipoCampo.Booleano_Casilla; break;
+					case "System.Int16":
+					case "System.Int32":
+					case "System.Int64":
+					case "System.Double":
+					case "System.Decimal": _tipoCampo = TipoCampo.Numero_CampoSimple; break;
+					case "System.DateTime": _tipoCampo = TipoCampo.FechaHora_CampoSimple; break;
+					case "System.TimeSpan": _tipoCampo = TipoCampo.Hora_CampoSimple; break;
+					case "System.String":	
+						if (typeMapper.MaxLength((EdmProperty) propiedad) > 8000) { 
+							_tipoCampo = TipoCampo.Texto_Editor;
+						} else if (typeMapper.MaxLength((EdmProperty) propiedad) > 250) { 
+							_tipoCampo = TipoCampo.Texto_Textarea;
+						} else {
+							_tipoCampo = TipoCampo.Texto_CampoSimple;
+						}
+						break;
+					default: _tipoCampo = TipoCampo.Desconocido; break;
+					}
+				}
+			} else {
+				if (((NavigationProperty) propiedad).ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many) {
+					_tipoCampo = TipoCampo.RelacionN_M_Partial;
+				} else {
+					_tipoCampo = TipoCampo.Desconocido;
+				}
+			}
+		}
+		return (TipoCampo) _tipoCampo;
+	}
+
+	public static TipoCampo ObtenerTipoCampoFormularioCopia(MetadataPropiedad metadataPropiedad, TypeMapper typeMapper, EntityType entidad, EdmMember propiedad) {
+		TipoCampo? _tipoCampo = null;
+		if (metadataPropiedad != null) { _tipoCampo = (TipoCampo) metadataPropiedad.TipoCampo; }
+		if (_tipoCampo == null) {
+			if (propiedad is EdmProperty) {
+				if (typeMapper.HasNavigationProperty((EdmProperty) propiedad)) {
+					_tipoCampo = TipoCampo.Relacion1_N_Desplegable;
+				} else {
+					switch (typeMapper.UnderlyingClrType(propiedad.TypeUsage.EdmType).FullName) {
+					case "System.Boolean": _tipoCampo = TipoCampo.Booleano_Desplegable_NoObligatorio; break;
+					case "System.Int16":
+					case "System.Int32":
+					case "System.Int64":
+					case "System.Double":
+					case "System.Decimal": _tipoCampo = TipoCampo.Numero_CampoSimple; break;
+					case "System.DateTime": _tipoCampo = TipoCampo.FechaHora_CampoSimple; break;
+					case "System.TimeSpan": _tipoCampo = TipoCampo.Hora_CampoSimple; break;
+					case "System.String":	
+						if (typeMapper.MaxLength((EdmProperty) propiedad) > 8000) { 
+							_tipoCampo = TipoCampo.Texto_Editor;
+						} else if (typeMapper.MaxLength((EdmProperty) propiedad) > 250) { 
+							_tipoCampo = TipoCampo.Texto_Textarea;
+						} else {
+							_tipoCampo = TipoCampo.Texto_CampoSimple;
+						}
+						break;
+					default: _tipoCampo = TipoCampo.Desconocido; break;
+					}
+				}
+			} else {
+				if (((NavigationProperty) propiedad).ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many) {
+					_tipoCampo = TipoCampo.RelacionN_M_Partial;
+				} else {
+					_tipoCampo = TipoCampo.Desconocido;
+				}
+			}
+		}
+		return (TipoCampo) _tipoCampo;
+	}
+
+	public static TipoCampo ObtenerTipoCampoFormularioEdicionMultiple(MetadataPropiedad metadataPropiedad, TypeMapper typeMapper, EntityType entidad, EdmMember propiedad) {
+		TipoCampo? _tipoCampo = null;
+		if (metadataPropiedad != null) { _tipoCampo = (TipoCampo) metadataPropiedad.TipoCampo; }
+		if (_tipoCampo == null) {
+			if (propiedad is EdmProperty) {
+				if (typeMapper.HasNavigationProperty((EdmProperty) propiedad)) {
+					_tipoCampo = TipoCampo.Relacion1_N_Desplegable;
+				} else {
+					switch (typeMapper.UnderlyingClrType(propiedad.TypeUsage.EdmType).FullName) {
+					case "System.Boolean": _tipoCampo = TipoCampo.Booleano_Desplegable_NoObligatorio; break;
+					case "System.Int16":
+					case "System.Int32":
+					case "System.Int64":
+					case "System.Double":
+					case "System.Decimal": _tipoCampo = TipoCampo.Numero_CampoSimple; break;
+					case "System.DateTime": _tipoCampo = TipoCampo.FechaHora_CampoSimple; break;
+					case "System.TimeSpan": _tipoCampo = TipoCampo.Hora_CampoSimple; break;
+					case "System.String":	
+						if (typeMapper.MaxLength((EdmProperty) propiedad) > 8000) { 
+							_tipoCampo = TipoCampo.Texto_Editor;
+						} else if (typeMapper.MaxLength((EdmProperty) propiedad) > 250) { 
+							_tipoCampo = TipoCampo.Texto_Textarea;
+						} else {
+							_tipoCampo = TipoCampo.Texto_CampoSimple;
+						}
+						break;
+					default: _tipoCampo = TipoCampo.Desconocido; break;
+					}
+				}
+			} else {
+				if (((NavigationProperty) propiedad).ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many) {
+					_tipoCampo = TipoCampo.RelacionN_M_Partial;
+				} else {
+					_tipoCampo = TipoCampo.Desconocido;
+				}
+			}
+		}
+		return (TipoCampo) _tipoCampo;
+	}
+
+	public static Dictionary<string, MetadataPropiedad> AgruparPropiedadesPaneles(Dictionary<string, MetadataPanel> paneles) {
+		Dictionary<string, MetadataPropiedad> _propiedades = new Dictionary<string, MetadataPropiedad>();
+		foreach (MetadataPanel _panel in paneles.Values) {
+			foreach (MetadataPropiedad _propiedad in _panel.Propiedades.Values) { _propiedades.Add(_propiedad.Nombre, _propiedad); }
+		}
+		return _propiedades;
+	}
+
+	public static EntityType ObtenerEntidadRelacionada(MetadataPropiedad propiedad, IEnumerable<EdmMember> properties, TypeMapper typeMapper) {
+		EdmMember _property = properties.Where(p => p.Name == propiedad.Nombre).FirstOrDefault();
+		if (_property != null) {
+			if (_property is NavigationProperty) {
+				// OLL: He cambiado esta línea porque en relaciones N_M daba el tipo de la entidad en lugar del relacionado
+				//return typeMapper.FromEntityType((NavigationProperty) _property);
+				return typeMapper.PrimaryEntityType((EntityType) _property.DeclaringType, (NavigationProperty) _property);
+			} else {
+				EntityType _tipoRelacionado = null;
+				NavigationProperty _navigationProperty = null;
+				typeMapper.HasNavigationProperty((EdmProperty) _property, out _tipoRelacionado, out _navigationProperty); 
+				return _tipoRelacionado;
+				//return _typeMapper.GetTypeName(_navigationProperty.ToEndMember.GetEntityType());
+			}
+		} else {
+			return null;
+		}
+	}
+
+	public static string ObtenerNombreEntidadRelacionada(MetadataPropiedad propiedad, IEnumerable<EdmMember> properties, TypeMapper typeMapper) {
+		return (propiedad.EntidadRelacionada != null ? propiedad.EntidadRelacionada : ObtenerEntidadRelacionada(propiedad, properties, typeMapper).Name);
+	}
+
+	public static bool EsTipoCampoRelacion1_N(TipoCampo tipo) {
+		return (tipo == TipoCampo.Relacion1_N_Desplegable || 
+						tipo == TipoCampo.Relacion1_N_DesplegableConBuscador ||
+						tipo == TipoCampo.Relacion1_N_Autocomplete || 
+						tipo == TipoCampo.Relacion1_N_AutocompleteConBuscador || 
+						tipo == TipoCampo.Relacion1_N_AutocompleteConBuscadorYEtiqueta);
+	}
+
+	public static bool EsTipoCampoRelacion(TipoCampo tipo) {
+		return (tipo == TipoCampo.Relacion1_1_Partial || 
+						tipo == TipoCampo.Relacion1_N_Autocomplete ||
+						tipo == TipoCampo.Relacion1_N_AutocompleteConBuscador || 
+						tipo == TipoCampo.Relacion1_N_AutocompleteConBuscadorYEtiqueta || 
+						tipo == TipoCampo.Relacion1_N_CampoSimple || 
+						tipo == TipoCampo.Relacion1_N_Desplegable || 
+						tipo == TipoCampo.Relacion1_N_DesplegableConBuscador || 
+						tipo == TipoCampo.Relacion1_N_Fecha_Rango || 
+						tipo == TipoCampo.Relacion1_N_Numero_CampoSimple || 
+						tipo == TipoCampo.Relacion1_N_Opciones || 
+						tipo == TipoCampo.Relacion1_N_Partial || 
+						tipo == TipoCampo.RelacionN_M_Archivos || 
+						tipo == TipoCampo.RelacionN_M_CargaArchivos || 
+						tipo == TipoCampo.RelacionN_M_CeldaSimple || 
+						tipo == TipoCampo.RelacionN_M_Imagenes || 
+						tipo == TipoCampo.RelacionN_M_Listado || 
+						tipo == TipoCampo.RelacionN_M_Opciones || 
+						tipo == TipoCampo.RelacionN_M_Partial);
+	}
+
+	public class MetadataPropiedadComparer : IEqualityComparer<MetadataPropiedad> {
+		private IEnumerable<EdmMember> __properties;
+		private TypeMapper __typeMapper;
+
+		public MetadataPropiedadComparer(IEnumerable<EdmMember> properties, TypeMapper typeMapper) {
+			__properties = properties;
+			__typeMapper = typeMapper;
+		}
+
+		public bool Equals(MetadataPropiedad x, MetadataPropiedad y) {
+			if (x.EntidadRelacionada != null && y.EntidadRelacionada != null) { 
+				return (x.EntidadRelacionada == y.EntidadRelacionada);
+			} else {
+				return MetadataGenerador.ObtenerNombreEntidadRelacionada(x, __properties, __typeMapper) == MetadataGenerador.ObtenerNombreEntidadRelacionada(y, __properties, __typeMapper);
+ 			}
+		}
+
+		// If Equals() returns true for a pair of objects then GetHashCode() must return the same value for these objects.
+		public int GetHashCode(MetadataPropiedad propiedad) {
+			try {
+				return MetadataGenerador.ObtenerNombreEntidadRelacionada(propiedad, __properties, __typeMapper).GetHashCode();
+			} catch {
+				throw new ApplicationException("No se ha encontrado la entidad para la propiedad '" + propiedad.Nombre + "' en la entidad '" + __properties.First().DeclaringType.Name + "'");
+			}
+		}
+	}
+}
+#>

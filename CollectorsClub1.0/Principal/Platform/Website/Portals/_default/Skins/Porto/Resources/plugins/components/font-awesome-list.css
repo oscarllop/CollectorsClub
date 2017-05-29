@@ -1,0 +1,9 @@
+﻿
+/* Font Awesome List */
+.fontawesome-icon-list [class*="col-md-"] {
+	margin-bottom: 9px;
+}
+
+.fontawesome-icon-list > section {
+	margin-top: 25px;
+}

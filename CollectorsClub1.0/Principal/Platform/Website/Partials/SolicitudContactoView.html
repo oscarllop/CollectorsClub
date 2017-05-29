@@ -1,0 +1,94 @@
+﻿<div id="__id__partialContenedorInterno" class="contenedorNuevoFormatoListadoFormulario" style="display: none">
+	<div id="__id__partialContenedorCargandoFormulario" class="ContenedorCargando" style="height: 50px; width: 50px;" data-elementoReferencia="contenedorNuevoFormatoListadoFormulario"></div>
+	<div data-bind="with: Registro">
+		<h4>
+			<span class="Head" data-bind="text: $parent.TraduccionCampos.get('TituloContacto_Text')()">asdfasdfasf</span>
+		</h4>
+		<div id="__id__partialErrores">
+		</div>
+		<div data-bind="validationOptions: { 'messageTemplate': 'MensajeTooltipTemplate', 'decorateInputElement': true, 'errorElementClass': 'has-error' }">
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-6" data-bind="validationElement: Nombre">
+						<label data-bind="text: $parent.TraduccionCampos.get('Nombre_Text')() + ' *'"></label>
+						<input data-msg-required="Indica el nombre." maxlength="150" class="form-control" type="text" data-bind="value: Nombre, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } } }">
+					</div>
+					<div class="col-md-6" data-bind="validationElement: Nombre">
+						<label data-bind="text: $parent.TraduccionCampos.get('CorreoElectronico_Text')() + ' *'"></label>
+						<input data-msg-required="indica la dirección de correo." data-msg-email="Indica una dirección de correo válida." maxlength="150" class="form-control" type="email" data-bind="value: CorreoElectronico, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } } }">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-12" data-bind="validationElement: Nombre">
+						<label data-bind="text: $parent.TraduccionCampos.get('Asunto_Text')() + ' *'"></label>
+						<input data-msg-required="Indica el asunto." maxlength="150" class="form-control" type="text" data-bind="value: Asunto, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } } }">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-12" data-bind="validationElement: Nombre">
+						<label data-bind="text: $parent.TraduccionCampos.get('Contenido_Text')() + ' *'"></label>
+						<textarea maxlength="5000" data-msg-required="Please enter your message." rows="10" class="form-control" data-bind="value: Contenido, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } } }"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<input class="btn btn-primary btn-lg" data-loading-text="Loading..." type="submit" data-bind="click: $parent.Update, value: $parent.TraduccionCampos.get('Guardar_Text')()">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/html" id="MensajeTooltipTemplate">
+	<div class="mensaje-tooltip mensaje-tooltip-secondary" data-bind="visible: field.isModified() && !field.isValid()">
+		<div class="mensaje-tooltip-arrow-up"></div>
+		<blockquote>
+			<p data-bind="text: field.error"></p>
+		</blockquote>
+	</div>
+</script>
+<script type="text/javascript">
+	var __id_partialParametros = null;
+	var __id_partialTimeoutActualizarActivado = false;
+	window.__id__partial = {
+		Iniciar: function (parametros, partials) {
+			__id_partialParametros = parametros;
+			try {
+				partials.IniciarPartial(parametros.IdModulo + 'System', parametros, [], []);
+			} catch (excepcion) {
+				console.log(excepcion);
+			}
+		},
+		Actualizar: function (parametros, partials) {
+			__id_partialParametros = parametros;
+			try {
+				// TODO: OLL: Revisar esto. Es feo feo, pero no se me ocurre otra manera ahora.
+				var _llamadaRecursiva = function () {
+					if (typeof (GlobalViewModels['__id__partialViewModel']) === 'undefined') {
+						setTimeout(_llamadaRecursiva, 100);
+					} else {
+						__id_partialTimeoutActualizarActivado = false;
+						_actualizarViewModel();
+					}
+				}
+
+				var _actualizarViewModel = function () {
+					GlobalViewModels['__id__partialViewModel'].Actualizar(__id_partialParametros);
+				}
+
+				if (typeof (GlobalViewModels['__id__partialViewModel']) === 'undefined') {
+					if (!__id_partialTimeoutActualizarActivado) { __id_partialTimeoutActualizarActivado = true; setTimeout(_llamadaRecursiva, 100); }
+				} else {
+					__id_partialTimeoutActualizarActivado = false;
+					_actualizarViewModel();
+				}
+			} catch (excepcion) {
+				console.log(excepcion);
+			}
+		}
+	}
+</script>

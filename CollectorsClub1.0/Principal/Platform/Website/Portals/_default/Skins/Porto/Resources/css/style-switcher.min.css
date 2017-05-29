@@ -1,0 +1,1152 @@
+.colorpicker, .colorpicker input {
+    font-family: Arial,Helvetica,sans-serif;
+}
+
+.StyleSwitcher div.style-switcher {
+    -moz-transition: all .5s ease;
+    height: 100%;
+    position: fixed;
+    -webkit-transition: all .5s ease;
+    font-size: 15px;
+    z-index: 1002;
+    transition: all .5s ease;
+    top: 0;
+    left: 0;
+}
+
+.StyleSwitcher .vertical-bar {
+    width: 48px;
+    -moz-transition: all .5s ease;
+    height: 100%;
+    position: fixed;
+    color: #666;
+    -webkit-transition: all .5s ease;
+    font-size: 15px;
+    z-index: 9999;
+    transition: all .5s ease;
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,.2);
+    background: #2b2b2b;
+    top: 0;
+    left: 0;
+    max-height: 50px;
+    overflow: hidden;
+    top: 30px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    opacity: 0.9;
+}
+
+.StyleSwitcher.DNN9 .vertical-bar, .StyleSwitcher.DNN9 div.style-switcher {
+    left: 80px;
+}
+
+.StyleSwitcher .vertical-bar:hover,
+.StyleSwitcher.open .vertical-bar {
+    opacity: 1;
+}
+
+.StyleSwitcher .vertical-bar .fa.fa-clone:before
+{
+    content: "\f013";
+}
+
+.StyleSwitcher .vertical-bar:hover .fa.fa-clone:before, 
+.StyleSwitcher.open .vertical-bar .fa.fa-clone:before,
+.StyleSwitcher.lockswitcher .vertical-bar .fa.fa-clone:before
+{
+    content: "\f24d";
+}
+
+.StyleSwitcher .vertical-bar:hover, 
+.StyleSwitcher.open .vertical-bar,
+.StyleSwitcher.lockswitcher .vertical-bar {
+    max-height: 100%;
+    top: 0;
+    border-radius: 0px;
+}
+
+.StyleSwitcher .vertical-bar .icongroup a:before {
+     display: none;   
+}
+
+.StyleSwitcher .vertical-bar .icongroup a.fa-clone:before, 
+.StyleSwitcher .vertical-bar:hover .icongroup a:before, 
+.StyleSwitcher.open .vertical-bar .icongroup a:before,
+.StyleSwitcher.lockswitcher .vertical-bar .icongroup a:before {
+     display: block !important;   
+}
+
+.colorpicker {
+    width: 356px;
+    height: 176px;
+    overflow: hidden;
+    position: absolute;
+    background: url(../img/colorpicker_background.png);
+    display: none;
+    z-index: 9999;
+}
+
+.colorpicker_color, .colorpicker_color div {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+}
+
+.colorpicker_color {
+    left: 14px;
+    top: 13px;
+    background: red;
+    overflow: hidden;
+    cursor: crosshair;
+}
+
+    .colorpicker_color div {
+        top: 0;
+        left: 0;
+        background: url(../img/colorpicker_overlay.png);
+    }
+
+        .colorpicker_color div div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 11px;
+            height: 11px;
+            overflow: hidden;
+            background: url(../img/colorpicker_select.gif);
+            margin: -5px 0 0 -5px;
+        }
+
+.colorpicker_hue {
+    position: absolute;
+    top: 13px;
+    left: 171px;
+    width: 35px;
+    height: 150px;
+    cursor: n-resize;
+}
+
+    .colorpicker_hue div {
+        position: absolute;
+        width: 35px;
+        height: 9px;
+        overflow: hidden;
+        background: url(../img/colorpicker_indic.gif) left top;
+        margin: -4px 0 0;
+        left: 0;
+    }
+
+.colorpicker_current_color, .colorpicker_new_color {
+    width: 60px;
+    height: 30px;
+    top: 13px;
+    background: red;
+    position: absolute;
+}
+
+.colorpicker_new_color {
+    left: 213px;
+}
+
+.colorpicker_current_color {
+    left: 283px;
+}
+
+.colorpicker input {
+    background-color: transparent;
+    border: 1px solid transparent;
+    position: absolute;
+    font-size: 10px;
+    color: #898989;
+    top: 4px;
+    right: 11px;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    height: 11px;
+}
+
+.StyleSwitcher #getCSSModal, .StyleSwitcher #getConfirmedModal, .StyleSwitcher #getTheme strong, .StyleSwitcher #getapplyCSSModal {
+    font-family: "Open Sans",Arial,sans-serif;
+}
+
+.colorpicker_field, .colorpicker_field span, .colorpicker_hex, .colorpicker_submit {
+    position: absolute;
+    height: 22px;
+}
+
+.colorpicker_hex {
+    width: 72px;
+    background: url(../img/colorpicker_hex.png) top;
+    left: 212px;
+    top: 142px;
+}
+
+    .colorpicker_hex input {
+        right: 6px;
+    }
+
+.colorpicker_field {
+    width: 62px;
+    background-position: top;
+}
+
+    .colorpicker_field span {
+        width: 12px;
+        overflow: hidden;
+        top: 0;
+        right: 0;
+        cursor: n-resize;
+    }
+
+.colorpicker_rgb_r {
+    background-image: url(../img/colorpicker_rgb_r.png);
+    top: 52px;
+    left: 212px;
+}
+
+.colorpicker_rgb_g {
+    background-image: url(../img/colorpicker_rgb_g.png);
+    top: 82px;
+    left: 212px;
+}
+
+.colorpicker_rgb_b {
+    background-image: url(../img/colorpicker_rgb_b.png);
+    top: 112px;
+    left: 212px;
+}
+
+.colorpicker_hsb_h {
+    background-image: url(../img/colorpicker_hsb_h.png);
+    top: 52px;
+    left: 282px;
+}
+
+.colorpicker_hsb_s {
+    background-image: url(../img/colorpicker_hsb_s.png);
+    top: 82px;
+    left: 282px;
+}
+
+.colorpicker_hsb_b {
+    background-image: url(../img/colorpicker_hsb_b.png);
+    top: 112px;
+    left: 282px;
+}
+
+.colorpicker_submit {
+    width: 22px;
+    background: url(../img/colorpicker_submit.png) top;
+    left: 322px;
+    top: 142px;
+    overflow: hidden;
+}
+
+.colorpicker_focus {
+    background-position: center;
+}
+
+.colorpicker_hex.colorpicker_focus, .colorpicker_slider, .colorpicker_submit.colorpicker_focus {
+    background-position: bottom;
+}
+
+#colorSelectorPrimary, #colorSelectorQuaternary, #colorSelectorSecondary, #colorSelectorTertiary {
+    position: relative;
+    width: 18px;
+}
+
+    #colorSelectorPrimary .color-picker-icon, #colorSelectorQuaternary .color-picker-icon, #colorSelectorSecondary .color-picker-icon, #colorSelectorTertiary .color-picker-icon {
+        display: inline-block;
+        width: 20px;
+        height: 18px;
+        position: absolute;
+        background: url(../img/color-picker.png) no-repeat;
+        top: -2px;
+        left: -2px;
+        cursor: pointer;
+    }
+
+.StyleSwitcher .ms-help-block {
+    background-color: #fff;
+    font-size: 12px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.26);
+    margin: 0;
+    float: left;
+    padding: 0 15px 15px;
+}
+
+.StyleSwitcher .GoogleMap .ms-help-block {
+    padding: 0;
+    box-shadow: none;
+}
+
+.StyleSwitcher .ms-form-group label {
+    color: #707070;
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 13px;
+}
+
+.StyleSwitcher .ms-btn.ms-disabled {
+    opacity: 1;
+}
+
+.StyleSwitcher input.ms-form-control, .StyleSwitcher select.ms-form-control.ng-pristine, .StyleSwitcher select.ng-valid-parse {
+    border-radius: 0;
+    height: 40px;
+    box-shadow: 2px 2px 5px 2px rgba(0,0,0,.26);
+    border: none;
+    margin-bottom: 15px;
+}
+
+.StyleSwitcher .ms-container a:focus, .StyleSwitcher .ms-container a:hover {
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.StyleSwitcher #Colors a {
+    width: 100%;
+    display: inline-table;
+    text-decoration: none;
+    cursor: pointer;
+    padding-bottom: 10px;
+    color: #767676;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+#Colors a:hover {
+    color: #71aabb;
+    transition: all .5s ease;
+}
+
+.modal-backdrop {
+    z-index: 1000 !important;
+}
+
+.StyleSwitcher #getCSSModal input[type=text], .StyleSwitcher #getConfirmedModal input[type=text], .StyleSwitcher #getapplyCSSModal input[type=text] {
+    width: 100%;
+    height: 34px;
+    color: #555;
+    padding: 6px 12px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+    .StyleSwitcher #getCSSModal input[type=text]:focus, .StyleSwitcher #getConfirmedModal input[type=text]:focus, .StyleSwitcher #getapplyCSSModal input[type=text]:focus {
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    }
+
+.StyleSwitcher #getCSSModal .modal-title, .StyleSwitcher #getConfirmedModal .modal-title, .StyleSwitcher #getRemoveModal .modal-title, .StyleSwitcher #getapplyCSSModal .modal-title {
+    font-size: 1.4em;
+    margin: 0;
+    line-height: 1.42857143;
+    font-weight: 400;
+    letter-spacing: normal;
+}
+
+.StyleSwitcher #getCSSModal .close, .StyleSwitcher #getConfirmedModal .close, .StyleSwitcher #getRemoveModal .close, .StyleSwitcher #getapplyCSSModal .close {
+    float: right;
+    font-size: 21px;
+    margin-top: -2px;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
+}
+
+    .StyleSwitcher #getCSSModal .close:hover, .StyleSwitcher #getConfirmedModal .close:hover, .StyleSwitcher #getRemoveModal .close:hover, .StyleSwitcher #getapplyCSSModal .close:hover {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+        opacity: .5;
+    }
+
+.StyleSwitcher #getCSSModal .btn-primary, .StyleSwitcher #getConfirmedModal .btn-primary, .StyleSwitcher #getRemoveModal .btn-primary, .StyleSwitcher #getapplyCSSModal .btn-primary {
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    background-color: #08c;
+    border-color: #08c #08c #069;
+}
+
+    .StyleSwitcher #getCSSModal .btn-primary:hover, .StyleSwitcher #getConfirmedModal .btn-primary:hover, .StyleSwitcher #getRemoveModal .btn-primary:hover, .StyleSwitcher #getapplyCSSModal .btn-primary:hover {
+        border-color: #0099e6 #0099e6 #0077b3;
+        background-color: #0099e6;
+        text-decoration: none;
+    }
+
+.StyleSwitcher #getCSSModal .btn-default, .StyleSwitcher #getConfirmedModal .btn-default, .StyleSwitcher #getRemoveModal .btn-default, .StyleSwitcher #getapplyCSSModal .btn-default {
+    text-decoration: none;
+}
+
+    .StyleSwitcher #getCSSModal .btn-default:hover, .StyleSwitcher #getConfirmedModal .btn-default:hover, .StyleSwitcher #getRemoveModal .btn-default:hover, .StyleSwitcher #getapplyCSSModal .btn-default:hover {
+        color: #333 !important;
+        background-color: #e6e6e6 !important;
+        border-color: #adadad !important;
+    }
+
+.StyleSwitcher #Basic .ms-form-group ul li input[type=radio] {
+    width: 19px;
+    margin: 3px;
+    height: 18px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: checkbox-container;
+}
+
+.StyleSwitcher #Basic .ms-form-group ul li label.bg-label {
+    height: 18px;
+    width: 19px;
+    display: block;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    margin: 3px;
+}
+
+.StyleSwitcher #Colors input.col_picker, .StyleSwitcher #Colors label.col_picker {
+    background: url(../img/color-picker.png) no-repeat;
+    width: 20px !important;
+    height: 18px !important;
+}
+
+.StyleSwitcher #Basic .ms-form-group ul li.bg-fix {
+    float: left;
+}
+
+.StyleSwitcher .ms-nav-tabs > li {
+    float: none;
+}
+
+.StyleSwitcher ul.social-icons li.active {
+    display: inline-flex;
+}
+
+.StyleSwitcher #Colors .ms-form-group {
+    display: block;
+    margin-top: 0;
+}
+
+.StyleSwitcher #Colors .color_picker {
+    position: relative;
+}
+
+.StyleSwitcher #Colors input.col_picker {
+    position: absolute;
+    right: -2px;
+}
+
+.StyleSwitcher #Colors label.col_picker, .StyleSwitcher #Components div.ms-btn-group, .StyleSwitcher #Settings .ms-btn-group, .StyleSwitcher #Social .ms-btn-group, .StyleSwitcher #shortcodes .ms-btn-group {
+    float: right;
+}
+
+.StyleSwitcher .ms-container input[type=radio] {
+    cursor: pointer;
+}
+
+.StyleSwitcher .ms-form-group ul li input[type=radio] {
+    width: 100%;
+    margin-bottom: 7px;
+    height: 10px;
+    float: left;
+    margin-right: 2px;
+    cursor: pointer;
+    border-radius: 0;
+    margin-top: 0;
+    appearance: none;
+    -moz-appearance: checkbox-container;
+    -webkit-appearance: none;
+}
+
+.StyleSwitcher label.ColorLabel {
+    width: 100%;
+    display: block !important;
+    height: 10px;
+    margin-bottom: 12px !important;
+}
+
+.StyleSwitcher ul {
+    padding-left: 0 !important;
+}
+
+    .StyleSwitcher ul.social-icons > li {
+        display: inline-flex;
+        margin-bottom: 10px;
+        border-radius: 0;
+        box-shadow: none;
+        width: 49%;
+    }
+
+.StyleSwitcher #Colors .ms-form-group {
+    padding: 5px 0;
+    box-shadow: none;
+}
+
+.StyleSwitcher div.style-switcher ul.social-icons em {
+    color: #5B616A;
+    font-size: 20px;
+    height: 31px;
+    transition: all .2s ease 0s;
+    width: 30px;
+    cursor: pointer;
+    margin-right: 11px;
+    border: 1px solid #d4d4d4;
+}
+
+.StyleSwitcher .ng-binding.ng-scope {
+    position: relative;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 5px 0;
+}
+
+.StyleSwitcher label.ng-binding {
+    position: absolute;
+    top: 5px;
+    cursor: pointer;
+    z-index: 1;
+    margin-left: -20px;
+}
+
+.StyleSwitcher .basic-cont {
+    width: 223px;
+    outline: 0;
+    padding: 8px;
+    border-radius: 2px;
+}
+
+.StyleSwitcher .style-switcher-mode {
+    font-size: 12px;
+    color: #ccc;
+}
+
+.StyleSwitcher .ms-container ul li a:hover {
+    background: 0 0;
+    text-decoration: none;
+    color: #ccc;
+}
+
+.StyleSwitcher a.ms-btn ms-btn-default {
+    background-color: #000;
+    border: 1px solid #000;
+}
+
+.StyleSwitcher .ms-tab-content > .ms-tab-pane {
+    margin: 25px 0;
+}
+
+.StyleSwitcher #Social ul {
+    list-style-type: none;
+    margin-right: -15px;
+}
+
+.StyleSwitcher .toggle .active > .toggle-content {
+    display: block;
+}
+
+.StyleSwitcher .ms-btn {
+    display: inline-block;
+    padding: 5px;
+    width: 64px;
+}
+
+.StyleSwitcher #Settings .ms-btn {
+    width: 75px;
+}
+
+.StyleSwitcher .ms-container a:focus, .style-switcher .ms-container a:hover {
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.StyleSwitcher .style-switcher:hover .ms-col-md-12.ms-tab-content, .StyleSwitcher .style-switcher:hover .ms-col-md-12.ms-tab-content .StyleSwitcher .validationGroup.ms-tab-pane.ms-active {
+    display: block !important;
+    z-index: 0 !important;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.StyleSwitcher .ms-container label {
+    color: #999;
+    margin-top: 7px;
+    line-height: 30px;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 10px 10px 10px 0;
+}
+
+.StyleSwitcher .ms-container p {
+    margin: 0 0 10px;
+    padding: 5px;
+}
+
+.StyleSwitcher .ms-nav-tabs > li > a {
+    border: 0 solid transparent;
+    border-radius: 0;
+}
+
+.StyleSwitcher.lockswitcher .ms-tab-content {
+    display: block !important;
+    left: 48px !important;
+}
+
+.StyleSwitcher .ms-col-md-12.ms-tab-content #Basic {
+    border: 0 solid #525252;
+    margin-bottom: 25px;
+}
+
+.StyleSwitcher .social-icons li.digg.active {
+    background-position: 0 -30px;
+}
+
+.StyleSwitcher .social-icons li.dribbble.active {
+    background-position: 0 -90px;
+}
+
+.StyleSwitcher .social-icons li.facebook.active {
+    background-position: 0 -150px;
+}
+
+.StyleSwitcher .social-icons li.flickr.active {
+    background-position: 0 -210px;
+}
+
+.StyleSwitcher .social-icons li.forrst.active {
+    background-position: 0 -270px;
+}
+
+.StyleSwitcher .social-icons li.googleplus.active {
+    background-position: 0 -330px;
+}
+
+.StyleSwitcher .social-icons li.html5.active {
+    background-position: 0 -390px;
+}
+
+.StyleSwitcher .social-icons li.icloud.active {
+    background-position: 0 -450px;
+}
+
+.StyleSwitcher .social-icons li.lastfm.active {
+    background-position: 0 -510px;
+}
+
+.StyleSwitcher .social-icons li.linkedin.active {
+    background-position: 0 -570px;
+}
+
+.StyleSwitcher .social-icons li.myspace.active {
+    background-position: 0 -630px;
+}
+
+.StyleSwitcher .social-icons li.paypal.active {
+    background-position: 0 -690px;
+}
+
+.StyleSwitcher .social-icons li.picasa.active {
+    background-position: 0 -750px;
+}
+
+.StyleSwitcher .social-icons li.pinterest.active {
+    background-position: 0 -810px;
+}
+
+.StyleSwitcher .social-icons li.reddit.active {
+    background-position: 0 -870px;
+}
+
+.StyleSwitcher .social-icons li.rss.active {
+    background-position: 0 -930px;
+}
+
+.StyleSwitcher .social-icons li.skype.active {
+    background-position: 0 -990px;
+}
+
+.StyleSwitcher .social-icons li.stumbleupon.active {
+    background-position: 0 -1050px;
+}
+
+.StyleSwitcher .social-icons li.tumblr.active {
+    background-position: 0 -1110px;
+}
+
+.StyleSwitcher .social-icons li.twitter.active {
+    background-position: 0 -1170px;
+}
+
+.StyleSwitcher .social-icons li.vimeo.active {
+    background-position: 0 -1230px;
+}
+
+.StyleSwitcher .social-icons li.wordpress.active {
+    background-position: 0 -1290px;
+}
+
+.StyleSwitcher .social-icons li.yahoo.active {
+    background-position: 0 -1350px;
+}
+
+.StyleSwitcher .social-icons li.youtube.active {
+    background-position: 0 -1410px;
+}
+
+.StyleSwitcher .social-icons li.github.active {
+    background-position: 0 -1470px;
+}
+
+.StyleSwitcher .social-icons li.behance.active {
+    background-position: 0 -1530px;
+}
+
+.StyleSwitcher .social-icons li.yelp.active {
+    background-position: 0 -1590px;
+}
+
+.StyleSwitcher .social-icons li.mail.active {
+    background-position: 0 -1650px;
+}
+
+.StyleSwitcher .social-icons li.instagram.active {
+    background-position: 0 -1710px;
+}
+
+.StyleSwitcher .social-icons li.foursquare.active {
+    background-position: 0 -1770px;
+}
+
+.StyleSwitcher .social-icons li.zerply.active {
+    background-position: 0 -1830px;
+}
+
+.StyleSwitcher .social-icons li.vk.active {
+    background-position: 0 -1890px;
+}
+
+.StyleSwitcher #getTheme a {
+    text-decoration: none;
+    color: #707070;
+    top: 80px;
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+}
+
+.StyleSwitcher #getTheme strong {
+    padding-top: 4px;
+    text-decoration: none;
+    color: #707070;
+}
+
+.StyleSwitcher .hide-text p {
+    background-color: #fff;
+}
+
+.StyleSwitcher .validationGroup p {
+    font-size: 13px;
+    color: #999;
+    padding: 0 15px 15px;
+    margin: 0;
+    clear: both;
+}
+
+.StyleSwitcher .validationGroup small {
+    font-size: 12px;
+}
+
+.StyleSwitcher .ms-form-group.shortcodes {
+    padding-right: 15px !important;
+}
+
+.StyleSwitcher .ms-col-md-12 {
+    padding-right: 0;
+    padding-left: 0;
+    min-height: 0;
+    height: 100%;
+}
+
+    .StyleSwitcher .ms-col-md-12.ms-tab-content {
+        box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+        border: 0 solid transparent;
+        background-color: #e9ecf1;
+        font-family: Roboto,"Helvetica Neue",Helvetica,Helvetica,Arimo,Arial,sans-serif !important;
+        position: absolute;
+        top: 0;
+        width: 288px;
+        float: left;
+        transition: all .5s ease;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        left: -550px;
+        z-index: 0 !important;
+        border-top-right-radius: 2px;
+        -moz-border-radius-topright: 2px;
+        -webkit-border-top-right-radius: 2px;
+    }
+
+.StyleSwitcher.open .ms-col-md-12.ms-tab-content {
+    left: 48px !important;
+}
+
+.StyleSwitcher.open .vertical-bar:hover .ms-col-md-12.ms-tab-content{
+    display:  block;
+}
+
+.StyleSwitcher .ms-nav > li > a:focus, .ms-nav > li > a:hover {
+    background-color: transparent;
+}
+
+.StyleSwitcher .validationGroup.ms-tab-pane.ms-active {
+    display: block !important;
+    float: left;
+    width: 100%;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.26);
+}
+
+.StyleSwitcher .vertical-bar .style-switcher-mode .ms-nav-tabs {
+    border-bottom: 0 solid #666;
+}
+
+    .StyleSwitcher .vertical-bar .style-switcher-mode .ms-nav-tabs > li > a:hover {
+        color: #fff;
+        background: 0 0;
+    }
+
+.StyleSwitcher .vertical-bar .style-switcher-mode .controlgroup {
+    position: absolute;
+    bottom: 0;
+}
+
+.StyleSwitcher .vertical-bar .style-switcher-mode .icongroup a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 15px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.StyleSwitcher .ms-nav-tabs > li.ms-active > a:focus, .StyleSwitcher .ms-nav-tabs > li.ms-active > a:hover, .StyleSwitcher .vertical-bar .style-switcher-mode .ms-nav-tabs > li.ms-active > a {
+    opacity: 1;
+    background: #4c4c4c;
+    cursor: pointer;
+    border: none;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    color: #fff !important;
+}
+
+.StyleSwitcher .title {
+    height: 40px;
+    padding: 0 15px;
+}
+
+.StyleSwitcher .bg-content, .StyleSwitcher .ms-form-group {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 0;
+    float: left;
+    width: 100%;
+}
+
+.StyleSwitcher #Basic .ms-form-group ul li input[type=radio].active {
+    border: 1px solid #525252;
+}
+
+.StyleSwitcher .ms-form-group ul li input[type=radio].active {
+    border: 1px solid #000;
+}
+
+.StyleSwitcher .ms-col-md-12.ms-tab-content .ShortContent {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+}
+
+.StyleSwitcher .full.ms-col-md-12.ms-tab-content {
+    display: block !important;
+    width: 550px !important;
+}
+
+.StyleSwitcher .middle.ms-col-md-12.ms-tab-content {
+    display: block !important;
+    width: 400px !important;
+}
+
+.StyleSwitcher .ShortContent ul.social-icons li {
+    margin: 0 0 5px;
+}
+
+.StyleSwitcher div[data-name=Header] .ng-binding {
+    float: left;
+    margin-right: 23px;
+}
+
+.StyleSwitcher div[data-name=Header] label.ng-binding {
+    border-radius: 4px;
+    width: 26px;
+    height: 26px;
+    float: left;
+    border: 1px solid #ccc;
+    margin-right: 2px !important;
+    cursor: pointer;
+    background-color: #fff;
+    padding: 3px 13px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    left: 20px;
+    text-indent: -3px;
+    font-weight: normal;
+}
+
+.StyleSwitcher div[data-name=Header] input[type=radio] {
+    margin: 0;
+}
+
+.StyleSwitcher div[data-name=Header] label.active {
+    background-color: #5cb85c;
+    color: #fff;
+    border-color: #4cae4c;
+}
+
+.StyleSwitcher #Social ul.social-icons li {
+    margin: 0 0 15px 5px;
+}
+
+.StyleSwitcher #Social ul li:last-child, .StyleSwitcher #Social ul li:nth-child(23) {
+    margin-bottom: 0 !important;
+}
+
+.StyleSwitcher #ShortCodes .ShortContent input[type=checkbox] {
+    float: right;
+}
+
+.StyleSwitcher #Social .bg-none {
+    background-color: transparent !important;
+    padding-top: 0;
+    padding-bottom: 0;
+    box-shadow: none;
+    margin-bottom: 10px;
+}
+
+.StyleSwitcher #Basic .alert p, .style-switcher .help-cont, html.dark .style-switcher .modal-content {
+    background-color: #fff;
+}
+
+.StyleSwitcher #Social .bg-none label {
+    font-weight: 700;
+    font-size: 100%;
+}
+
+.StyleSwitcher #getTheme .fa-plus-square-o::before {
+    margin-right: 5px;
+}
+
+.StyleSwitcher #ShortCodes .ms-input-group.ms-col-sm-9 {
+    float: right !important;
+    width: 0;
+}
+
+.StyleSwitcher #ShortCodes .ShortContent .ms-input-group {
+    display: block;
+    text-transform: capitalize;
+}
+
+.StyleSwitcher #ShortCodes div[data-name=Toggle] {
+    position: relative;
+}
+
+    .StyleSwitcher #ShortCodes div[data-name=Toggle] label {
+        position: absolute;
+        right: 45px;
+        margin-bottom: 0;
+    }
+
+.StyleSwitcher #Colors [ng-click="Click_Active('QuaternaryColor')"] {
+    padding-bottom: 0;
+}
+
+.StyleSwitcher #Basic div.ms-form-group:last-child {
+    padding-bottom: 20px;
+}
+
+.StyleSwitcher #Social ul.social-icons input[type=text] {
+    padding-left: 5px;
+}
+
+.StyleSwitcher #New .ms-form-group {
+    padding: 30px 15px 12px 19px;
+}
+
+.StyleSwitcher #Colors .ms-form-group ul, .StyleSwitcher li.ng-scope {
+    list-style-type: none;
+}
+
+.StyleSwitcher #Settings .GoogleMap {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.26);
+    margin-top: 20px;
+}
+
+    .StyleSwitcher #Settings .GoogleMap input[type=text] {
+        box-shadow: 2px 2px 5px 2px rgba(0,0,0,.26);
+        margin-bottom: 0;
+        margin-top: 5px;
+    }
+
+.StyleSwitcher #Settings .ms-form-group.loginpopup {
+    margin-top: 20px;
+}
+
+.StyleSwitcher a.style-switcher-help img {
+    width: 250px;
+    border: 5px solid #999;
+    margin: 20px 20px 15px 15px;
+}
+
+.StyleSwitcher .pad-top {
+    padding-top: 0;
+}
+
+.StyleSwitcher #Basic .alert {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+    .StyleSwitcher #Basic .alert p {
+        padding: 5px 10px 10px 15px;
+        font-size: 12px;
+        color: #aaa;
+    }
+
+.StyleSwitcher .fnt-ic:before {
+    font-size: 19px;
+}
+
+.StyleSwitcher .removebox {
+    box-shadow: none !important;
+}
+
+.StyleSwitcher #Settings .ms-form-group.api_key {
+    font-size: 12px;
+    color: #737373;
+    padding-top: 0px;
+}
+
+.StyleSwitcher .st_social {
+    height: 565px;
+    overflow-y: scroll;
+}
+
+.StyleSwitcher #Settings [data-label=loginpopup] {
+    margin-bottom: 0;
+}
+
+.style-switcher .help-cont hr, .style-switcher .help-message hr {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+html.dark .style-switcher .modal-header {
+    border: 1px solid #e5e5e5;
+}
+
+html.dark .style-switcher .modal-footer {
+    border-top-color: #e5e5e5;
+}
+
+html.dark .style-switcher .btn-default {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.style-switcher .help-cont p {
+    font-size: 12px;
+    line-height: normal;
+}
+
+    .style-switcher .help-cont p:last-child, .style-switcher .help-cont span {
+        color: #0083c1;
+    }
+
+.style-switcher button.ms-btn.ms-btn-primary.ms-active, .style-switcher button.ms-btn.ms-btn-primary.ms-disabled {
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.style-switcher .ms-form-group.bg-none > div.ms-btn-group {
+    width: 36%;
+}
+
+.style-switcher .help-message {
+    background-color: #fff;
+    float: left;
+}
+
+.style-switcher .ms-form-group.Viewport {
+    margin-top: 20px;
+}
+
+
+.style-switcher button.ms-btn.ms-btn-primary.ms-active {
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.style-switcher button.ms-btn.ms-btn-primary.ms-disabled {
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.StyleSwitcher #Basic .ms-btn {
+    width: 90px;
+}
+
+.style-switcher .ms-form-group.bg-none > div.ms-btn-group {
+    width: 107px;
+    display: inline-flex;
+}
+
+.style-switcher .help-message {
+    background-color: #fff;
+    float: left;
+}
+
+.style-switcher .ms-form-group.Viewport {
+    margin-top: 20px;
+}
+
+.style-switcher .ms-btn.ms-btn-primary.ms-active:hover {
+    background-color: #449d44;
+    border-color: #398439;
+}
+
+.StyleSwitcher div[data-name=Header] label.ng-binding:hover {
+    background-color: #e6e6e6;
+    border-color: #adadad;
+    color: #333;
+}
+
+.StyleSwitcher div[data-name=Header] label.active:hover {
+    background-color: #5cb85c;
+    color: #fff !important;
+    border-color: #4cae4c;
+}
+.StyleSwitcher ul.ms-nav.ms-nav-tabs.icongroup {
+    margin-left: 0px;
+}

@@ -1,0 +1,85 @@
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="..\\..\\CollectorsClub.Model\\Templates\\Context.Base.ttinclude"#>
+<#@ output extension=".js"#><#
+
+const string _inputFile = @"..\..\CollectorsClub.EntityFramework\Model.edmx";
+string _aplicacion = "CollectorsClub";
+Dictionary<string, MetadataGenerador.MetadataEntidad> _metadataEntidades = MetadataGenerador.ObtenerEntidades(_aplicacion);
+var _storeMetadata = LoadMetadata(_inputFile);
+var _textTransform = DynamicTextTransformation.Create(this);
+var _code = new CodeGenerationTools(this);
+var _ef = new MetadataTools(this);
+//var _itemCollection = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors).CreateEdmItemCollection(_inputFile);
+var _itemCollection = _storeMetadata.EdmItems;
+EntityContainer _container = _itemCollection.OfType<EntityContainer>().FirstOrDefault();
+var _typeMapper = new TypeMapper(_code, _ef, _container, _storeMetadata, _textTransform.Errors);
+var	_fileManager = EntityFrameworkTemplateFileManager.Create(this);
+var _codeStringGenerator = new CodeStringGenerator(_code, _typeMapper, _ef);
+var _codeJSGenerator = new CodeJSGenerator(_code, _typeMapper, _ef);
+var _modulo = "Editor";
+
+if (!_typeMapper.VerifyCaseInsensitiveTypeUniqueness(_typeMapper.GetAllGlobalItems(_itemCollection), _inputFile)) {
+	return string.Empty;
+}
+
+MetadataGenerador.IncluirEntidadesNoExistentesEnFramework(_metadataEntidades, _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection).ToList(), _typeMapper);
+foreach (var _entity in _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection)) {
+  _fileManager.StartNewFile(_entity.Name + _modulo + "System.js"); 
+  IEnumerable<EdmProperty> propertiesWithDefaultValues = _typeMapper.GetPropertiesWithDefaultValues(_entity);
+  IEnumerable<NavigationProperty> collectionNavigationProperties = _typeMapper.GetCollectionNavigationProperties(_entity);
+  IEnumerable<NavigationProperty> navigationProperties = _typeMapper.GetNavigationProperties(_entity);
+  IEnumerable<EdmProperty> complexProperties = _typeMapper.GetComplexProperties(_entity);
+  IEnumerable<EdmProperty> simpleProperties = _typeMapper.GetSimpleProperties(_entity);
+  IEnumerable<EdmMember> _properties = _typeMapper.GetProperties(_entity);
+	IEnumerable<MetadataGenerador.MetadataPropiedad> _propiedadesFormulario = MetadataGenerador.AgruparPropiedadesPaneles(_metadataEntidades[_entity.Name].PanelesFormulario).Values.Where(p => p.Visible);
+	bool _incluirArchivosCargaArchivos = _propiedadesFormulario.Any(p => p.TipoCampo == MetadataGenerador.TipoCampo.Texto_CargaArchivo);
+	bool _incluirArchivosEditorHtml = _propiedadesFormulario.Any(p => p.TipoCampo == MetadataGenerador.TipoCampo.Texto_Editor);
+	IEnumerable<MetadataGenerador.MetadataPropiedad> _propiedadesRelaciones = MetadataGenerador.AgruparPropiedadesPaneles(_metadataEntidades[_entity.Name].PanelesFormulario).Values.Where(p => p.Visible && MetadataGenerador.EsTipoCampoRelacion1_N(p.TipoCampo)).Union(MetadataGenerador.AgruparPropiedadesPaneles(_metadataEntidades[_entity.Name].PanelesFiltro).Values.Where(p => p.Visible && MetadataGenerador.EsTipoCampoRelacion(p.TipoCampo)), new MetadataGenerador.MetadataPropiedadComparer(_properties, _typeMapper));
+	bool _tieneAutocomplete = _propiedadesRelaciones.Any(p => (p.TipoCampo == MetadataGenerador.TipoCampo.Relacion1_N_Autocomplete || p.TipoCampo == MetadataGenerador.TipoCampo.Relacion1_N_AutocompleteConBuscador || p.TipoCampo == MetadataGenerador.TipoCampo.Relacion1_N_AutocompleteConBuscadorYEtiqueta)); #>
+define(['Globales/BaseSystem', 'Globales/Core.Utils'<# if (_tieneAutocomplete) { #>, 'Plugins/autocomplete/knockout-jqAutocomplete.min'<# } #>, 'partials/<#= _code.Escape(_entity.Name) + _modulo#>ViewModel', 'use!porto/js/skin'<#= (_incluirArchivosCargaArchivos ? ", 'dojo/order!global/FileUpload/jquery.ui.widget', 'dojo/order!global/FileUpload/jquery.iframe-transport', 'dojo/order!global/FileUpload/jquery.fileupload'" : string.Empty)#><#= (_incluirArchivosEditorHtml ? ", 'ParametrosGlobales', 'dojo/order!Plugins/ckeditor/ckeditor'" : string.Empty) #>], function (baseSystem, utils<# if (_tieneAutocomplete) { #>, autoComplete<# } #>, viewModel, skin<#= (_incluirArchivosCargaArchivos ? ", fileUploadJqueryUiWidget, fileUploadJqueryIframeTransport, fileUpload" : string.Empty)#><#= (_incluirArchivosEditorHtml ? ", parametrosGlobales, ckeditor" : string.Empty) #>) {
+	try {
+		return function <#=_code.Escape(_entity)#><#= _modulo #>System($, ko, settings) {
+			var self = this;
+			self.settings = $.extend({}, settings);
+			self.settings.System = self;
+			self.Entidad = '<#=_code.Escape(_entity)#>';
+			self.Recursos = {},
+			self.Repositorio = {};
+			self.ViewModel;
+			self.RutaRecursos = self.settings.ApplicationPath + '/DesktopModules/_extension/Recursos.aspx?Ruta=DesktopModules__<#= _aplicacion #>__Editores__App_LocalResources&Modulo=<#=_code.Escape(_entity)#><#= _modulo #>View';
+
+			self.init = function (element) { return baseSystem.init($, ko, self, element); }
+			self.IncluirSelectorColumnas = function (viewModel, containerElement) { baseSystem.IncluirSelectorColumnas($, ko, self, viewModel, containerElement); }
+			self.GuardarColumnasSeleccionadasEnRepositorio = function (columnas) { baseSystem.GuardarColumnasSeleccionadasEnRepositorio(self, columnas); }
+			self.ObtenerColumnasSeleccionadasDeRepositorio = function () { return baseSystem.ObtenerColumnasSeleccionadasDeRepositorio(self); }
+			self.GuardarRegistrosFijosEnRepositorio = function (registros) { baseSystem.GuardarRegistrosFijosEnRepositorio(self, registros); }
+			self.ObtenerRegistrosFijosDeRepositorio = function () { return baseSystem.ObtenerRegistrosFijosDeRepositorio(self); }
+			self.GuardarFiltroEnRepositorio = function (filtro) { baseSystem.GuardarFiltroEnRepositorio(self, filtro); }
+			self.ObtenerFiltroDeRepositorio = function () { return baseSystem.ObtenerFiltroDeRepositorio(self); }
+
+<# if (_incluirArchivosEditorHtml) { #>
+			require(['Plugins/ckeditor/adapters/jquery', (parametrosGlobales.ApplicationPath == '/' ? '' : parametrosGlobales.ApplicationPath) + '/js/AMD/Plugins/ckeditor/lang/es.js?t=E8PB', (parametrosGlobales.ApplicationPath == '/' ? '' : parametrosGlobales.ApplicationPath) + '/js/AMD/Plugins/ckeditor/styles.js?t=E8PB'], function (jqueryAdapter, lang, styles) {
+				try {
+<# } #>
+					// OLL ahora el init siempre retorna true. Ver como reconocer que el require del viewModel ha fallado. Un try catch?
+					if (!self.init(self.settings.Contenedor)) {
+						self.settings.MostrarMensaje('#' + self.settings.ErrorContainer, self.settings.MensajeErrorCarga, 'Error', false);
+					}
+<# if (_incluirArchivosEditorHtml) { #>
+				} catch (excepcion) {
+					console.log(excepcion);
+				}
+			});
+<# } #>
+		}
+	} catch (excepcion) {
+		console.log(excepcion);
+	}
+});
+<#
+}
+
+_fileManager.Process();
+#>	 

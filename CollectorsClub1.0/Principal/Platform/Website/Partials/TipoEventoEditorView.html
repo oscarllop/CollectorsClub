@@ -1,0 +1,394 @@
+<div id="__id__partialContenedorInterno" class="dnnForm dnnDatabase dnnClear contenedorNuevoFormatoListadoFormulario" style="display: none">
+	<fieldset>
+		<div id="PanelListado" data-bind="visible: MostrarListado">
+			<div id="Cargando" data-bind="visible: Cargando">
+				<img src="~/images/Extension/ajax-loader.gif" />
+				<span data-bind="text: TraduccionCampos.get('Cargando_Text')()"></span>
+			</div>
+			<div id="TipoEventoEditordvFiltrosFijados" style="display: none;">
+				<ul class="ulFiltroFijado">
+					<li class="pestanyaFijada">
+						<img src="~/images/Extension/Search.png" alt="Buscar" height="22" />
+						<img src="~/images/Extension/pin.png" alt="Fijar" data-bind="click: function () { MostrarFiltroFijado(false) }" class="imgPinFijado" />
+					</li>
+				</ul>
+				<div class="dvContenidoFiltroFijado">
+					<div id="TipoEventoEditordvFiltrosFijadosContenido">
+					</div>
+					<div style="clear: both;"></div>
+						
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			<div id="TipoEventoEditortabs" class="tabs" style="margin-top: 20px;">
+				<ul>
+					<li id="TipoEventoEditormostrarFiltro">
+						<a href="#TipoEventoEditorfiltro">
+							<img src="~/images/Extension/Search.png" data-bind="attr: { alt: TraduccionCampos.get('Buscar_Text')(), title: TraduccionCampos.get('Buscar_Text')() }" height="22" />
+						</a>
+						<img src="~/images/Extension/pin.png" alt="Fijar" class="imgPinSinFijar" data-bind="click: function () { MostrarFiltroFijado(true) }" />
+					</li>
+					<li>
+						<a href="#TipoEventoEditorlistado" id="btnMenuListado">
+							<img src="~/images/Extension/Table.png" data-bind="attr: { alt: TraduccionCampos.get('Listado_Text')(), title: TraduccionCampos.get('Listado_Text')() }" height="22" />
+						</a>
+					</li>
+					<li data-bind="visible: settings.PermitirCrear">
+						<a href="#nuevo" data-bind="click: New">
+							<img src="~/images/Extension/New.png" data-bind="attr: { alt: TraduccionCampos.get('Nuevo_Text')(), title: TraduccionCampos.get('Nuevo_Text')() }" height="22" />
+						</a>
+					</li>
+					<li>
+						<a href="#refescar" data-bind="click: Refrescar">
+							<img src="~/images/Extension/Refresh.png" data-bind="attr: { alt: TraduccionCampos.get('Refrescar_Text')(), title: TraduccionCampos.get('Refrescar_Text')() }" height="22" />
+						</a>
+					</li>
+					<li data-bind="visible: settings.PermitirExportarAExcel">
+						<a href="#refescar" data-bind="click: ExportarAExcel">
+							<img src="~/images/Extension/Excel.gif" data-bind="attr: { alt: TraduccionCampos.get('ExportarExcel_Text')(), title: TraduccionCampos.get('ExportarExcel_Title')() }" height="22" />
+						</a>
+					</li>
+					<li class="separator" />
+					<li data-bind="visible: HayRegistrosSeleccionados() && settings.PermitirBorrar">
+						<a href="#borrar" data-bind="click: DeleteSelected">
+							<img src="~/images/Extension/Delete.png" data-bind="attr: { alt: TraduccionCampos.get('Borrar_Text')(), title: TraduccionCampos.get('Borrar_Text')() }" height="22" />
+						</a>
+					</li>
+					<li data-bind="visible: HayRegistrosSeleccionados() && settings.PermitirCopiar">
+						<a href="#borrar" data-bind="click: MostrarDialogoCopia">
+							<img src="~/images/Extension/Copy.gif" data-bind="attr: { alt: TraduccionCampos.get('Copiar_Text')(), title: TraduccionCampos.get('Copiar_Text')() }" height="22" />
+						</a>
+					</li>
+					<li data-bind="visible: HayRegistrosSeleccionados() && settings.PermitirEdicionMultiple">
+						<a href="#borrar" data-bind="click: MostrarDialogoEdicionMultiple">
+							<img src="~/images/Extension/EditMultiple.png" data-bind="attr: { alt: TraduccionCampos.get('EdicionMultiple_Text')(), title: TraduccionCampos.get('EdicionMultiple_Text')() }" height="22" />
+						</a>
+					</li>
+				</ul>
+				<div id="TipoEventoEditorfiltro" data-bind="with: Filtro" class="filtro">
+					<div id="TipoEventoEditorcontenidoFiltro">
+						<div data-bind="visible: ($parent.Registros().length + $parent.IdsRegistrosFijos.length <= 0) && $parent.ListadoCargado()" class="MensajeNoExistenRegistros">
+							<span data-bind="text: $parent.TraduccionCampos.get('MensajeNoExistenRegistros_Text')()"></span>
+						</div>
+								<div class="container">
+									<div class="row">
+										<div class="form-group col-md-4">
+											<label data-bind="text: $parent.TraduccionCampos.get('IdDesde_Text')() + ':'"></label>
+											<input type="number" class="form-control" data-bind="textInput: IdDesde, enable: $parent.HabilitarFiltro().Id, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+										</div>
+										<div class="form-group col-md-4">
+											<label data-bind="text: $parent.TraduccionCampos.get('IdHasta_Text')() + ':'"></label>
+											<input type="number" class="form-control" data-bind="textInput: IdHasta, enable: $parent.HabilitarFiltro().Id, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+										</div>
+										<div class="form-group col-md-4">
+											<label data-bind="text: $parent.TraduccionCampos.get('Codigo_Text')() + ':'"></label>
+											<input type="text" class="form-control" data-bind="textInput: Codigo, enable: $parent.HabilitarFiltro().Codigo, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+										</div>
+									</div>
+									<div class="row">
+										<div class="form-group col-md-4">
+											<label data-bind="text: $parent.TraduccionCampos.get('OrdenDesde_Text')() + ':'"></label>
+											<input type="number" class="form-control" data-bind="textInput: OrdenDesde, enable: $parent.HabilitarFiltro().Orden, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+										</div>
+										<div class="form-group col-md-4">
+											<label data-bind="text: $parent.TraduccionCampos.get('OrdenHasta_Text')() + ':'"></label>
+											<input type="number" class="form-control" data-bind="textInput: OrdenHasta, enable: $parent.HabilitarFiltro().Orden, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+										</div>
+										<div class="form-group col-md-4">
+											<label data-bind="text: $parent.TraduccionCampos.get('Cultura_Text')() + ':'"></label>
+											<input type="text" class="form-control" data-bind="textInput: Cultura, enable: $parent.HabilitarFiltro().Cultura, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+										</div>
+									</div>
+									<div class="row">
+										<div class="form-group col-md-4">
+											<label data-bind="text: $parent.TraduccionCampos.get('IdMarca_Text')() + ':'"></label>
+											<div class="input-group">
+												<span class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
+												<select class="form-control" data-bind="options: $parent.Marcas, optionsText: 'Nombre', optionsValue: 'Id', value: IdMarca, optionsCaption: $parent.TraduccionCampos.get('Todos_Text')(), enable: $parent.HabilitarFiltro().IdMarca, event: { change: function () { $parent.FiltroModificado(true); } }, valueAllowUnset: true"></select>
+											</div>
+										</div>
+										<div class="form-group col-md-4">
+											<label data-bind="text: $parent.TraduccionCampos.get('Nombre_Text')() + ':'"></label>
+											<input type="text" class="form-control" data-bind="textInput: Nombre, enable: $parent.HabilitarFiltro().Nombre, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+										</div>
+									</div>
+								</div>
+						<ul class="dnnActions dnnClear">
+							<li>
+								<a data-bind="click: $parent.Buscar, text: $parent.TraduccionCampos.get('Buscar_Text')()" class="dnnPrimaryAction"></a>
+							</li>
+							<li>
+								<a data-bind="click: $parent.RestablecerFiltroPorDefecto, text: $parent.TraduccionCampos.get('RestablecerFiltroPorDefecto_Text')()" class="dnnPrimaryAction"></a>
+							</li>
+						</ul>
+						<div class="dnnFormMessage dnnFormMessageFijado" data-bind="visible: $parent.FiltroModificado">
+							<span data-bind="text: $parent.TraduccionCampos.get('FiltroModificado_Text')()"></span>
+						</div>
+					</div>
+				</div>
+				<div id="TipoEventoEditorlistado">
+					<div data-bind="visible: (Registros().length + IdsRegistrosFijos.length <= 0) && ListadoCargado()" class="MensajeNoExistenRegistros">
+						<span data-bind="text: TraduccionCampos.get('MensajeNoExistenRegistros_Text')() "></span>
+					</div>
+					<div id="contenedorListadoTipoEventoEditor" class="contenedorListado">
+						<table class="dnnGrid listado scroll" data-bind="visible: (Registros().length + IdsRegistrosFijos.length > 0)" width="100%">
+							<thead>
+								<tr class="dnnGridHeader">
+									<th class="columnaCheckbox">
+										<img data-bind="attr: { 'src': '~/images/Extension/' + (ColumnasOcultasVisibles() ? 'Ocultar' : 'Mostrar') + 'ColumnasOcultas.png' }, click: MostrarOcultarColumnas" class="mostrarOcultarColumnas" />
+										<input type="checkbox" data-bind="checked: SeleccionarTodos, click: ActualizarSeleccion" />
+									</th>
+									<!-- OLL: pongo el data-bind en un span para que no elimine el selector de columnas -->
+									<th data-bind="visible: ColumnaVisible('Id'), click: function () { Ordenar('Id') }, attr: { 'class': ColumnaOculta('Id') ? 'columnaOculta' : 'columnaVisible' }" style="cursor: pointer">
+										<span data-bind="text: TraduccionCampos.get('Id_Text')()"></span>
+										<div data-bind="visible: ColumnasOcultasVisibles, click: function () { MostrarOcultarColumna('Id') }, clickBubble: false, attr: { 'class': 'mostrarOcultarColumna ' + (ColumnaOculta('Id') ? 'columnaOculta' : 'columnaVisible') }" />
+									</th>
+									<th data-bind="visible: ColumnaVisible('Codigo'), click: function () { Ordenar('Codigo') }, attr: { 'class': ColumnaOculta('Codigo') ? 'columnaOculta' : 'columnaVisible' }" style="cursor: pointer">
+										<span data-bind="text: TraduccionCampos.get('Codigo_Text')()"></span>
+										<div data-bind="visible: ColumnasOcultasVisibles, click: function () { MostrarOcultarColumna('Codigo') }, clickBubble: false, attr: { 'class': 'mostrarOcultarColumna ' + (ColumnaOculta('Codigo') ? 'columnaOculta' : 'columnaVisible') }" />
+									</th>
+									<th data-bind="visible: ColumnaVisible('Orden'), click: function () { Ordenar('Orden') }, attr: { 'class': ColumnaOculta('Orden') ? 'columnaOculta' : 'columnaVisible' }" style="cursor: pointer">
+										<span data-bind="text: TraduccionCampos.get('Orden_Text')()"></span>
+										<div data-bind="visible: ColumnasOcultasVisibles, click: function () { MostrarOcultarColumna('Orden') }, clickBubble: false, attr: { 'class': 'mostrarOcultarColumna ' + (ColumnaOculta('Orden') ? 'columnaOculta' : 'columnaVisible') }" />
+									</th>
+									<th data-bind="visible: ColumnaVisible('IdMarca'), click: function () { Ordenar('IdMarca') }, attr: { 'class': ColumnaOculta('IdMarca') ? 'columnaOculta' : 'columnaVisible' }" style="cursor: pointer">
+										<span data-bind="text: TraduccionCampos.get('IdMarca_Text')()"></span>
+										<div data-bind="visible: ColumnasOcultasVisibles, click: function () { MostrarOcultarColumna('IdMarca') }, clickBubble: false, attr: { 'class': 'mostrarOcultarColumna ' + (ColumnaOculta('IdMarca') ? 'columnaOculta' : 'columnaVisible') }" />
+									</th>
+									<th data-bind="visible: ColumnaVisible('Marca'), click: function () { Ordenar('Marca') }, attr: { 'class': ColumnaOculta('Marca') ? 'columnaOculta' : 'columnaVisible' }" style="cursor: pointer">
+										<span data-bind="text: TraduccionCampos.get('Marca_Text')()"></span>
+										<div data-bind="visible: ColumnasOcultasVisibles, click: function () { MostrarOcultarColumna('Marca') }, clickBubble: false, attr: { 'class': 'mostrarOcultarColumna ' + (ColumnaOculta('Marca') ? 'columnaOculta' : 'columnaVisible') }" />
+									</th>
+									<th data-bind="visible: ColumnaVisible('Nombre'), click: function () { Ordenar('Nombre') }, attr: { 'class': ColumnaOculta('Nombre') ? 'columnaOculta' : 'columnaVisible' }" style="cursor: pointer">
+										<span data-bind="text: TraduccionCampos.get('Nombre_Text')()"></span>
+										<div data-bind="visible: ColumnasOcultasVisibles, click: function () { MostrarOcultarColumna('Nombre') }, clickBubble: false, attr: { 'class': 'mostrarOcultarColumna ' + (ColumnaOculta('Nombre') ? 'columnaOculta' : 'columnaVisible') }" />
+									</th>
+								</tr>
+							</thead>
+							<tbody data-bind="template: { name: 'TipoEventoEditor_registrofijo-template', foreach: RegistrosFijos }" class="registrosfijos">
+							</tbody>
+							<tbody data-bind="template: { name: 'TipoEventoEditor_registro-template', foreach: Registros }">
+							</tbody>
+							<tfoot>
+								<tr class="dnnGridFooter">
+									<td colspan="7"></td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+					<div style="min-height: 30px">
+						<div style="float: right; height: 30px" data-bind="visible: TotalRegistros() > 0">
+							<label>Visualizando <span data-bind="text: RegistrosCargados"></span> registros de <span data-bind="text: TotalRegistros"></span></label>
+						</div>
+						<ul class="dnnActions dnnClear" data-bind="visible: TotalRegistros() > RegistrosCargados()">
+							<li>
+								<a data-bind="click: VerMas, text: TraduccionCampos.get('VerMas_Text')()" class="dnnPrimaryAction"></a>
+							</li>
+							<div class="form-group col-md-2">
+								<!--<label data-bind="text: $parent.TraduccionCampos.get('FechaPrimerAcceso_Text')() + ':'"></label>-->
+								<div class="input-group">
+									<span class="input-group-addon">Cantidad:</span>
+									<select class="form-control" data-bind="options: TamanyosPagina, value: TamanyoPagina"></select>
+								</div>
+							</div>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="TipoEventoEditorPanelFormulario" class="panelformulario" data-bind="visible: MostrarFormulario">
+			<div id="__id__partialContenedorCargandoFormulario" class="ContenedorCargando" style="height: 50px; width: 50px;" data-elementoReferencia="TipoEventoEditorPanelFormulario"></div>
+			<div id="CargandoFormulario" data-bind="visible: CargandoFormulario">
+				<img src="~/images/Extension/ajax-loader.gif" data-bind="attr: { alt: TraduccionCampos.get('CargandoFormulario_Text')() }" />
+				<span data-bind="text: TraduccionCampos.get('CargandoFormulario_Text')()"></span>
+			</div>
+			<div class="Formulario" data-bind="with: Registro">
+				<div data-bind="validationOptions: { 'messageTemplate': 'MensajeTooltipTemplate', 'decorateInputElement': true, 'errorElementClass': 'has-error', insertMessages: false }">
+							<div class="container">
+								<div class="row">
+									<div class="form-group col-md-2" data-bind="visible: $parent.MostrarElemento().Id, validationElement: Id">
+										<label data-bind="text: $parent.TraduccionCampos.get('Id_Text')() + ':'"></label>
+										<input type="number" class="form-control" data-bind="textInput: Id, enable: $parent.HabilitarElemento().Id, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } } }" />
+										<div data-bind="validationMessageWithTemplate: Id"></div>
+									</div>
+									<div class="form-group col-md-4" data-bind="visible: $parent.MostrarElemento().Codigo, validationElement: Codigo">
+										<label data-bind="text: $parent.TraduccionCampos.get('Codigo_Text')() + ':'"></label>
+										<input type="text" class="form-control" data-bind="value: Codigo, enable: $parent.HabilitarElemento().Codigo, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } } }" />
+										<div data-bind="validationMessageWithTemplate: Codigo"></div>
+									</div>
+									<div class="form-group col-md-3" data-bind="visible: $parent.MostrarElemento().Orden, validationElement: Orden">
+										<label data-bind="text: $parent.TraduccionCampos.get('Orden_Text')() + ':'"></label>
+										<input type="number" class="form-control" data-bind="textInput: Orden, enable: $parent.HabilitarElemento().Orden, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } } }" />
+										<div data-bind="validationMessageWithTemplate: Orden"></div>
+									</div>
+									<div class="form-group col-md-4" data-bind="visible: $parent.MostrarElemento().IdMarca, validationElement: IdMarca">
+										<label data-bind="text: $parent.TraduccionCampos.get('IdMarca_Text')() + ':'"></label>
+										<div class="input-group">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
+											<select class="form-control" data-bind="options: $parent.Marcas, optionsText: 'Nombre', optionsValue: 'Id', value: IdMarca, optionsCaption: $parent.TraduccionCampos.get('Seleccionar_Text')(), enable: $parent.HabilitarElemento().IdMarca, valueAllowUnset: true"></select>
+										</div>
+										<div data-bind="validationMessageWithTemplate: IdMarca"></div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-md-12" data-bind="visible: $parent.MostrarElemento().Nombre, validationElement: Nombre">
+										<label data-bind="text: $parent.TraduccionCampos.get('Nombre_Text')() + ':'"></label>
+										<input type="text" class="form-control" data-bind="value: Nombre, enable: $parent.HabilitarElemento().Nombre, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } } }" />
+										<div data-bind="validationMessageWithTemplate: Nombre"></div>
+									</div>
+								</div>
+							</div>
+				
+				</div>
+				<ul class="dnnActions dnnClear" data-bind="visible: $parent.MostrarAcciones">
+					<li>
+						<a data-bind="click: $parent.Update, text: $parent.TraduccionCampos.get('Guardar_Text')(), visible: $parent.settings.PermitirGuardar" class="dnnPrimaryAction"></a>
+					</li>
+					<li>
+						<a data-bind="click: $parent.Cancel, text: $parent.TraduccionCampos.get('Cancelar_Text')()" class="dnnSecondaryAction"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="TipoEventoEditorFormularioCopia" class="panelformulario" data-bind="visible: MostrarFormularioCopia">
+			<div id="__id__partialContenedorCargandoFormularioCopia" class="ContenedorCargando" style="height: 50px; width: 50px;" data-elementoReferencia="TipoEventoEditorFormularioCopia"></div>
+			<div class="Formulario" data-bind="with: RegistroCopia">
+				<div data-bind="validationOptions: { insertMessages: false }">
+							<div class="container">
+								<div class="row">
+									<div class="form-group col-md-4" data-bind="visible: $parent.MostrarElemento().Codigo">
+										<label data-bind="text: $parent.TraduccionCampos.get('Codigo_Text')() + ':'"></label>
+										<input type="text" class="form-control" data-bind="value: Codigo, enable: $parent.HabilitarElemento().Codigo, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } } }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+									</div>
+									<div class="form-group col-md-3" data-bind="visible: $parent.MostrarElemento().Orden">
+										<label data-bind="text: $parent.TraduccionCampos.get('Orden_Text')() + ':'"></label>
+										<input type="number" class="form-control" data-bind="textInput: Orden, enable: $parent.HabilitarElemento().Orden, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } } }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+									</div>
+									<div class="form-group col-md-12" data-bind="visible: $parent.MostrarElemento().Nombre">
+										<label data-bind="text: $parent.TraduccionCampos.get('Nombre_Text')() + ':'"></label>
+										<input type="text" class="form-control" data-bind="value: Nombre, enable: $parent.HabilitarElemento().Nombre, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } } }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+									</div>
+								</div>
+							</div>
+				</div>
+				<ul class="dnnActions dnnClear" data-bind="visible: $parent.MostrarAcciones">
+					<li>
+						<a data-bind="click: $parent.CopiarSeleccionados, text: $parent.TraduccionCampos.get('Copiar_Text')(), visible: $parent.settings.PermitirCopiar" class="dnnPrimaryAction"></a>
+					</li>
+					<li>
+						<a data-bind="click: $parent.CancelarCopiar, text: $parent.TraduccionCampos.get('Cancelar_Text')()" class="dnnSecondaryAction"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="TipoEventoEditorFormularioEdicionMultiple" class="panelformulario" data-bind="visible: MostrarFormularioEdicionMultiple">
+			<div id="__id__partialContenedorCargandoFormularioEdicionMultiple" class="ContenedorCargando" style="height: 50px; width: 50px;" data-elementoReferencia="TipoEventoEditorFormularioEdicionMultiple"></div>
+			<div class="Formulario" data-bind="with: RegistroEdicionMultiple">
+				<div data-bind="validationOptions: { insertMessages: false }">
+							<div class="container">
+								<div class="row">
+									<div class="form-group col-md-4" data-bind="visible: $parent.MostrarElemento().Codigo">
+										<label data-bind="text: $parent.TraduccionCampos.get('Codigo_Text')() + ':'"></label>
+										<input type="text" class="form-control" data-bind="value: Codigo, enable: $parent.HabilitarElemento().Codigo, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } } }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+									</div>
+									<div class="form-group col-md-3" data-bind="visible: $parent.MostrarElemento().Orden">
+										<label data-bind="text: $parent.TraduccionCampos.get('Orden_Text')() + ':'"></label>
+										<input type="number" class="form-control" data-bind="textInput: Orden, enable: $parent.HabilitarElemento().Orden, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } } }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+									</div>
+									<div class="form-group col-md-12" data-bind="visible: $parent.MostrarElemento().Nombre">
+										<label data-bind="text: $parent.TraduccionCampos.get('Nombre_Text')() + ':'"></label>
+										<input type="text" class="form-control" data-bind="value: Nombre, enable: $parent.HabilitarElemento().Nombre, event: { keypress: function (data, event) { if (event.keyCode == 13) { $parent.Update(data); } else { return true; } } }, attr: { 'placeholder': $parent.TraduccionCampos.get('MantenerValorCampo_Text')() }" />
+									</div>
+								</div>
+							</div>
+				</div>
+				<ul class="dnnActions dnnClear" data-bind="visible: $parent.MostrarAcciones">
+					<li>
+						<a data-bind="click: $parent.EditarSeleccionados, text: $parent.TraduccionCampos.get('EdicionMultiple_Text')(), visible: $parent.settings.PermitirEdicionMultiple" class="dnnPrimaryAction"></a>
+					</li>
+					<li>
+						<a data-bind="click: $parent.CancelarEdicionMultiple, text: $parent.TraduccionCampos.get('Cancelar_Text')()" class="dnnSecondaryAction"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</fieldset>
+</div>
+<script type="text/html" id="TipoEventoEditor_registrofijo-template">
+	<tr data-bind="attr: { 'class': $index() % 2 == 0 ? 'dnnGridItem' : 'dnnGridAltItem' }" class="dnnGridItem">
+		<td class="columnaCheckbox">
+			<input type="checkbox" data-bind="checked: RegistroSeleccionado" />
+		</td>
+		<td data-bind="visible: $parent.ColumnaVisible('Id'), click: $parent.Select">
+			<span data-bind="text: Id" />
+			<span class="glyphicon glyphicon-pushpin unpin" aria-hidden="true" data-bind="click: $parent.LiberarRegistro, clickBubble: false"></span>
+		</td>
+		<td data-bind="visible: $parent.ColumnaVisible('Codigo'), click: $parent.Select">
+			<span data-bind="text: Codigo" />
+		</td>
+		<td data-bind="visible: $parent.ColumnaVisible('Orden'), click: $parent.Select">
+			<span data-bind="text: Orden" />
+		</td>
+		<td data-bind="visible: $parent.ColumnaVisible('IdMarca'), click: $parent.Select">
+			<span data-bind="text: IdMarca" />
+		</td>
+		<td data-bind="visible: $parent.ColumnaVisible('Marca'), click: $parent.Select">
+			<span data-bind="text: Marca" />
+		</td>
+		<td data-bind="visible: $parent.ColumnaVisible('Nombre'), click: $parent.Select">
+			<span data-bind="text: Nombre" />
+		</td>
+	</tr>
+</script>
+<script type="text/html" id="TipoEventoEditor_registro-template">
+	<tr data-bind="attr: { 'class': $index() % 2 == 0 ? 'dnnGridItem' : 'dnnGridAltItem' }" class="dnnGridItem">
+		<td class="columnaCheckbox">
+			<input type="checkbox" data-bind="checked: RegistroSeleccionado" />
+		</td>
+		<td data-bind="visible: $parent.ColumnaVisible('Id'), click: $parent.Select">
+			<span data-bind="text: Id" />
+			<span class="glyphicon glyphicon-pushpin pin" aria-hidden="true" data-bind="click: $parent.FijarRegistro, clickBubble: false"></span>
+		</td>
+		<td data-bind="visible: $parent.ColumnaVisible('Codigo'), click: $parent.Select">
+			<span data-bind="text: Codigo" />
+		</td>
+		<td data-bind="visible: $parent.ColumnaVisible('Orden'), click: $parent.Select">
+			<span data-bind="text: Orden" />
+		</td>
+		<td data-bind="visible: $parent.ColumnaVisible('IdMarca'), click: $parent.Select">
+			<span data-bind="text: IdMarca" />
+		</td>
+		<td data-bind="visible: $parent.ColumnaVisible('Marca'), click: $parent.Select">
+			<span data-bind="text: Marca" />
+		</td>
+		<td data-bind="visible: $parent.ColumnaVisible('Nombre'), click: $parent.Select">
+			<span data-bind="text: Nombre" />
+		</td>
+	</tr>
+</script>
+<script id="MensajeTooltipTemplate" type="text/html">
+	<div class="mensaje-tooltip mensaje-tooltip-secondary" data-bind="visible: field.isModified() && !field.isValid()">
+		<div class="mensaje-tooltip-arrow-up"></div>
+		<blockquote>
+			<p data-bind="text: field.error"></p>
+		</blockquote>
+	</div>
+</script>
+<script type="text/javascript">
+	window.__id__partial = {
+		Iniciar: function (parametros, partials) {
+			try {
+				//_viewModelListado = {
+				//	Registros: parametros.ViewModel,
+				//	Select: function (registro, evento) {
+				//		if (typeof (parametros.Eventos.SelectedIndexChanged) !== 'undefined') { parametros.Eventos.SelectedIndexChanged(registro); }
+				//	}
+				//}
+				//ko.applyBindings(_viewModelListado, $('#__id__modulo_Contenedor')[0]);
+				partials.IniciarPartial(parametros.IdModulo + 'System', parametros, [], []);
+			} catch (excepcion) {
+				console.log(excepcion);
+			}
+		}
+	}
+</script>

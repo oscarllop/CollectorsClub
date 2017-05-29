@@ -1,0 +1,52 @@
+﻿/* Icons */
+.featured-icon {
+	background: #CCC;
+	border-radius: 35px;
+	color: #FFF;
+	display: inline-block;
+	height: 35px;
+	line-height: 35px;
+	margin-right: 10px;
+	position: relative;
+	text-align: center;
+	top: 5px;
+	width: 35px;
+}
+
+.featured-icon i,
+.featured-icon em {
+	color: #FFF;
+	font-size: 0.9em;
+	font-weight: normal;
+}
+
+.sample-icon-list .sample-icon a {
+    display: block;
+    color: #222222;
+    line-height: 32px;
+    height: 32px;
+    padding-left: 10px;
+    border-radius: 4px;
+    font-size: 11px;
+}
+
+.sample-icon-list .sample-icon a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+.sample-icon-list .sample-icon a:hover {
+    background-color: #0088cc;
+}
+
+.sample-icon-list .sample-icon a:hover .fa, .sample-icon-list .sample-icon a:hover .icons {
+    font-size: 28px;
+    vertical-align: -6px;
+}
+
+.sample-icon-list .sample-icon a .fa, .sample-icon-list .sample-icon a .icons {
+    width: 32px;
+    font-size: 14px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 10px;
+}

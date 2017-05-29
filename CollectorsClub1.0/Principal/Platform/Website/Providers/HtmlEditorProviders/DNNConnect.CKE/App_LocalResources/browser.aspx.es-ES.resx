@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="$this.DefaultModifiers" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Privado</value>
+  </data>
+  <data name="$this.TrayAutoArrange" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Sí</value>
+  </data>
+  <data name="$this.TrayLargeIcon" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">No</value>
+  </data>
+  <data name="absLnk.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">URL absoluta  - &lt;em&gt;'http://www.MyWebsite.com/Images/MyImage.jpg'&lt;/em&gt;</value>
+  </data>
+  <data name="AddFiles.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Añadir archivos</value>
+  </data>
+  <data name="AreYouSure.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">¿Está seguro que desea eliminar este archivo?</value>
+  </data>
+  <data name="BrowserModus.Image.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Imagen</value>
+  </data>
+  <data name="BrowserModus.Link.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Enlace</value>
+  </data>
+  <data name="chkAspect.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Mantener ratio de aspecto</value>
+  </data>
+  <data name="chkHumanFriendy.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">URL amigable</value>
+  </data>
+  <data name="cmdCancel.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Cerrar ventana</value>
+  </data>
+  <data name="cmdClose.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">OK</value>
+  </data>
+  <data name="cmdCreate.Help" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Crear una nueva carpeta</value>
+  </data>
+  <data name="cmdCreate.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Crear una nueva carpeta</value>
+  </data>
+  <data name="cmdCreateCancel.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Cancelar</value>
+  </data>
+  <data name="cmdCreateFolder.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Crear</value>
+  </data>
+  <data name="cmdCrop.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Recortar</value>
+  </data>
+  <data name="cmdCropCancel.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Cancelar cambios</value>
+  </data>
+  <data name="cmdCropNow.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Crear una nueva imagen</value>
+  </data>
+  <data name="cmdDelete.Help" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Eliminar el archivo seleccionado.</value>
+  </data>
+  <data name="cmdDelete.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Eliminar archivo</value>
+  </data>
+  <data name="cmdDownload.Help" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Descargar el archivo seleccionado.</value>
+  </data>
+  <data name="cmdDownload.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Descargar archivo</value>
+  </data>
+  <data name="cmdResize2.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Redimensionar</value>
+  </data>
+  <data name="cmdResizeCancel.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Cancelar cambios</value>
+  </data>
+  <data name="cmdResizeNow.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Redimensionar</value>
+  </data>
+  <data name="cmdResizer.Help" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Editar la imagen seleccionada.</value>
+  </data>
+  <data name="cmdResizer.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Editor de imágenes</value>
+  </data>
+  <data name="cmdRotate.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Girar</value>
+  </data>
+  <data name="cmdUpload.Help" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Cargar un archivo nuevo.</value>
+  </data>
+  <data name="cmdUpload.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Cargar archivo</value>
+  </data>
+  <data name="cmdUploadCancel.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Cancelar carga</value>
+  </data>
+  <data name="cmdUploadNow.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Cargar</value>
+  </data>
+  <data name="cmdZoom.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Ampliar</value>
+  </data>
+  <data name="Created.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Fecha creación</value>
+  </data>
+  <data name="DetailView.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Vista detalle</value>
+  </data>
+  <data name="DetailViewTitle.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Muestra los archivos con una previsualización grande, nombre del archivo e información del archivo.</value>
+  </data>
+  <data name="DropHere.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Soltar archivos aquí</value>
+  </data>
+  <data name="Error1.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">No tiene permisos para realizar esta tarea.</value>
+  </data>
+  <data name="Error2.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">La extensión del archivo no está permitida.</value>
+  </data>
+  <data name="Error3.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">La extensión del archivo no está permitida.</value>
+  </data>
+  <data name="Error4.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">No tiene permisos para ver esta carpeta.</value>
+  </data>
+  <data name="Error5.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">No se ha seleccionado ningún archivo.</value>
+  </data>
+  <data name="ExtraTabOptions.Text" lastModified="2015-12-27 10:49:09">
+    <value xml:space="preserve">Opciones</value>
+  </data>
+  <data name="FileLink.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Enlace de archivo</value>
+  </data>
+  <data name="FileSizeRestriction.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">El límite de carga de archivos es {0} MB. &lt;br/&gt; Las extensiones permitidas son: "{1}"</value>
+  </data>
+  <data name="FileToBig.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Archivo demasiado grande.</value>
+  </data>
+  <data name="FileToBigMessage.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">El archivo que intenta cargar es demasiado grande.</value>
+  </data>
+  <data name="FirstPage.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Primera página</value>
+  </data>
+  <data name="GoTo.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Ir a</value>
+  </data>
+  <data name="IconsView.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Vista de iconos</value>
+  </data>
+  <data name="IconsViewTitle.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Muestra los archivos con un mosaico de previsualización de imágenes.</value>
+  </data>
+  <data name="imgOriginal.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Imagen original (escalada al tamaño de pantalla)</value>
+  </data>
+  <data name="imgResized.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Previsualización de la imagen redimensionada (escalada al tamaño de pantalla)</value>
+  </data>
+  <data name="LabelAnchor.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Seleccione un enlace de la página:</value>
+  </data>
+  <data name="LabelTabLanguage.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Parámetro de idioma adicional:</value>
+  </data>
+  <data name="LastPage.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Última página</value>
+  </data>
+  <data name="lblBrowserModus.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Modo navegador: {0}</value>
+  </data>
+  <data name="lblChoosetab.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Seleccione una página:</value>
+  </data>
+  <data name="lblClearPreview.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Limpiar previsualización:</value>
+  </data>
+  <data name="lblConFiles.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Archivos incluidos:</value>
+  </data>
+  <data name="lblCropInfo.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Aquí puede ver la nueva imagen editada</value>
+  </data>
+  <data name="lblCurrent.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Directorio actual</value>
+  </data>
+  <data name="lblHeight.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Nueva altura:</value>
+  </data>
+  <data name="lblImgQuality.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Calidad imagen (compresión):</value>
+  </data>
+  <data name="lblNewFoldName.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Nombre nueva carpeta:</value>
+  </data>
+  <data name="lblOriginal.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Original:</value>
+  </data>
+  <data name="lblOtherTools.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Otras herramientas:</value>
+  </data>
+  <data name="lblPreview.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Previsualización:</value>
+  </data>
+  <data name="lblResizeHeader.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Editor imagen: Redimensionar</value>
+  </data>
+  <data name="lblResizeHeader2.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Editor imagen: Recortar, ampliar, girar</value>
+  </data>
+  <data name="lblShowPreview.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Mostrar previsualización</value>
+  </data>
+  <data name="lblSubDirs.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Carpetas:</value>
+  </data>
+  <data name="lblThumbName.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Nombre nuevo archivo:</value>
+  </data>
+  <data name="lblUrlType.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Seleccione el tipo de URL:</value>
+  </data>
+  <data name="lblWidth.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Nuevo ancho:</value>
+  </data>
+  <data name="ListView.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Vista de lista</value>
+  </data>
+  <data name="ListViewTitle.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Muestra una previsualización pequeña, el nombre del archivo e información del archivo.</value>
+  </data>
+  <data name="lnkAbsClick.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">URL absoluta segura - &lt;em&gt;'http://www.MyWebsite.com/LinkClick.aspx?fileticket=xyz'&lt;/em&gt;</value>
+  </data>
+  <data name="lnkClick.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">URL relativa segura - &lt;em&gt;'/LinkClick.aspx?fileticket=xyz'&lt;/em&gt;</value>
+  </data>
+  <data name="NextPage.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Siguente página</value>
+  </data>
+  <data name="None.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Ninguno</value>
+  </data>
+  <data name="OverrideFile.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">¿Quiere sobreescribir el archivo si ya existe? En otro caso, se creará un archivo con el mismo nombre añadiendo "_1".</value>
+  </data>
+  <data name="PageLink.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Enlace de página</value>
+  </data>
+  <data name="PreviousPage.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Página anterior</value>
+  </data>
+  <data name="relLnk.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">URL relativa - &lt;em&gt;'/Images/MyImage.jpg'&lt;/em&gt;</value>
+  </data>
+  <data name="RootFolder.Text" lastModified="2016-03-17 07:43:56">
+    <value xml:space="preserve">Carpeta raíz</value>
+  </data>
+  <data name="Size.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Tamaño</value>
+  </data>
+  <data name="SortAscending.Help" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Ordenar archivos según nombre de forma ascendente</value>
+  </data>
+  <data name="SortAscending.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Orden ascendente</value>
+  </data>
+  <data name="SortDescending.Help" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Ordenar archivos según nombre de forma descendente</value>
+  </data>
+  <data name="SortDescending.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Orden descendente</value>
+  </data>
+  <data name="SpaceUsed.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Tamaño utilizado: {0} de {1}</value>
+  </data>
+  <data name="StartUploads.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Iniciar carga</value>
+  </data>
+  <data name="Syncronize.Help" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Sincronizar la carpeta con la base de datos</value>
+  </data>
+  <data name="Syncronize.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Sincronizar carpeta</value>
+  </data>
+  <data name="TrackClicks.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Guardar el número de veces que se pulsa el enlace:</value>
+  </data>
+  <data name="UnlimitedSpace.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">[sin límite]</value>
+  </data>
+  <data name="Wait.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Espere...</value>
+  </data>
+  <data name="WaitMessage.Text" lastModified="2015-12-27 12:04:13">
+    <value xml:space="preserve">Cargando la página y rastreando enlaces.</value>
+  </data>
+</root>

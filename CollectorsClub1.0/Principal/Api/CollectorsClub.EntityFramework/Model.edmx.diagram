@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="88bed04b4d824ec1ba3d11f935b0bc8d" Name="Diagram1" >
+        <EntityTypeShape EntityType="CollectorsClubModel.Calendario" Width="1.5" PointX="7.5" PointY="33.875" />
+        <EntityTypeShape EntityType="CollectorsClubModel.Calendario_Idioma" Width="1.5" PointX="9.75" PointY="36.375" />
+        <EntityTypeShape EntityType="CollectorsClubModel.Entidad" Width="1.5" PointX="3" PointY="31.625" />
+        <EntityTypeShape EntityType="CollectorsClubModel.Entidad_Idioma" Width="1.5" PointX="5.25" PointY="31.875" />
+        <EntityTypeShape EntityType="CollectorsClubModel.EstadoCalendario" Width="1.5" PointX="3" PointY="56" />
+        <EntityTypeShape EntityType="CollectorsClubModel.EstadoCalendario_Idioma" Width="1.5" PointX="5.25" PointY="56.25" />
+        <EntityTypeShape EntityType="CollectorsClubModel.Fabricante" Width="1.5" PointX="3" PointY="52.875" />
+        <EntityTypeShape EntityType="CollectorsClubModel.Fabricante_Idioma" Width="1.5" PointX="5.25" PointY="53.125" />
+        <EntityTypeShape EntityType="CollectorsClubModel.SubcategoriaCalendario" Width="1.5" PointX="5.25" PointY="23" />
+        <EntityTypeShape EntityType="CollectorsClubModel.SubcategoriaCalendario_Idioma" Width="1.5" PointX="7.5" PointY="20.375" />
+        <EntityTypeShape EntityType="CollectorsClubModel.Usuario" Width="1.5" PointX="3" PointY="59.125" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Calendarios_Entidades" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Calendarios_Entidades_IdEntidadContratante" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Calendarios_EstadosCalendario" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Calendarios_Fabricantes" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Calendarios_Idiomas_Calendarios" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Calendarios_SubcategoriasCalendario" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Calendarios_Usuarios" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Entidades_Idiomas_Entidades" />
+        <AssociationConnector Association="CollectorsClubModel.FK_EstadosCalendario_Idiomas_EstadosCalendario" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Fabricantes_Idiomas_Fabricantes" />
+        <AssociationConnector Association="CollectorsClubModel.FK_SubcategoriasCalendario_Idiomas_SubcategoriasCalendario" />
+        <EntityTypeShape EntityType="CollectorsClubModel.CategoriaFoto" Width="1.5" PointX="3" PointY="27.875" />
+        <EntityTypeShape EntityType="CollectorsClubModel.CategoriaFoto_Idioma" Width="1.5" PointX="5.25" PointY="28.375" />
+        <EntityTypeShape EntityType="CollectorsClubModel.Foto" Width="1.5" PointX="8.25" PointY="28.75" />
+        <EntityTypeShape EntityType="CollectorsClubModel.Foto_Idioma" Width="1.5" PointX="10.5" PointY="29.375" />
+        <EntityTypeShape EntityType="CollectorsClubModel.SolicitudContacto" Width="1.5" PointX="3" PointY="38" />
+        <EntityTypeShape EntityType="CollectorsClubModel.Video" Width="1.5" PointX="3" PointY="41.5" />
+        <EntityTypeShape EntityType="CollectorsClubModel.Video_Idioma" Width="1.5" PointX="5.25" PointY="41.75" />
+        <AssociationConnector Association="CollectorsClubModel.FK_CategoriasFotos_Idiomas_CategoriasFotos" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Fotos_CategoriasFotos" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Fotos_Idiomas_Fotos" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Videos_Idiomas_Videos" />
+        <EntityTypeShape EntityType="CollectorsClubModel.Marca" Width="1.5" PointX="0.75" PointY="27.375" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Calendarios_Marcas" />
+        <AssociationConnector Association="CollectorsClubModel.FK_CategoriasFotos_Marcas" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Entidades_Marcas" />
+        <AssociationConnector Association="CollectorsClubModel.FK_EstadosCalendario_Marcas" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Fabricantes_Marcas" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Fotos_Marcas" />
+        <AssociationConnector Association="CollectorsClubModel.FK_SolicitudesContacto_Marcas" />
+        <AssociationConnector Association="CollectorsClubModel.FK_SubcategoriasCalendario_Marcas" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Usuarios_Marcas" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Videos_Marcas" />
+        <EntityTypeShape EntityType="CollectorsClubModel.Evento" Width="1.5" PointX="8.25" PointY="23.75" />
+        <EntityTypeShape EntityType="CollectorsClubModel.Evento_Idioma" Width="1.5" PointX="10.5" PointY="24.5" />
+        <EntityTypeShape EntityType="CollectorsClubModel.TipoEvento" Width="1.5" PointX="3" PointY="19.875" />
+        <EntityTypeShape EntityType="CollectorsClubModel.TipoEvento_Idioma" Width="1.5" PointX="5.25" PointY="20.25" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Eventos_Idiomas_Eventos" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Eventos_Marcas" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Eventos_TiposEvento" />
+        <AssociationConnector Association="CollectorsClubModel.FK_TiposEvento_Marcas" />
+        <AssociationConnector Association="CollectorsClubModel.FK_TiposEvento_Idiomas_TiposEvento" />
+        <EntityTypeShape EntityType="CollectorsClubModel.CategoriaCalendario" Width="1.5" PointX="3" PointY="13.125" />
+        <EntityTypeShape EntityType="CollectorsClubModel.CategoriaCalendario_Idioma" Width="1.5" PointX="5.25" PointY="13.375" />
+        <AssociationConnector Association="CollectorsClubModel.FK_SubcategoriasCalendario_CategoriasCalendario" />
+        <AssociationConnector Association="CollectorsClubModel.FK_CategoriasCalendario_Idiomas_CategoriasCalendario" />
+        <AssociationConnector Association="CollectorsClubModel.FK_CategoriasCalendario_Marcas" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Calendarios_CategoriasCalendario" />
+        <EntityTypeShape EntityType="CollectorsClubModel.TipoColeccionCalendario" Width="1.5" PointX="3" PointY="34.875" />
+        <EntityTypeShape EntityType="CollectorsClubModel.TipoColeccionCalendario_Idioma" Width="1.5" PointX="5.25" PointY="35.125" />
+        <AssociationConnector Association="CollectorsClubModel.FK_Calendarios_TiposColeccionCalendario" />
+        <AssociationConnector Association="CollectorsClubModel.FK_TiposColeccionCalendario_Marcas" />
+        <AssociationConnector Association="CollectorsClubModel.FK_TiposColeccionCalendario_Idiomas_TiposColeccionCalendario" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,55 @@
+﻿<div id="__id__partialContenedorInterno" style="display: none">
+	<aside class="sidebar">
+		<ul class="nav nav-list mb-xlg" data-bind="foreach: Registros">
+			<li data-bind="attr: { 'class': (PaginaActual ? 'active': '') }">
+				<a data-bind="attr: { 'href': Url }, html: Nombre"></a>
+				<ul data-bind="foreach: Registros">
+					<li data-bind="attr: { 'class': (PaginaActual ? 'active': '') }">
+						<a data-bind="attr: { 'href': Url, 'target' : (VerEnNuevaVentana ? '_blank' : '_self') }, html: Nombre"></a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</aside>
+</div>
+<script type="text/javascript">
+	var __id_partialParametros = null;
+	var __id_partialTimeoutActualizarActivado = false;
+	window.__id__partial = {
+		Iniciar: function (parametros, partials) {
+			__id_partialParametros = parametros;
+			try {
+				partials.IniciarPartial(parametros.IdModulo + 'System', parametros, [], []);
+			} catch (excepcion) {
+				console.log(excepcion);
+			}
+		},
+		Actualizar: function (parametros, partials) {
+			__id_partialParametros = parametros;
+			try {
+				// TODO: OLL: Revisar esto. Es feo feo, pero no se me ocurre otra manera ahora.
+				var _llamadaRecursiva = function () {
+					if (typeof (GlobalViewModels['__id__partialViewModel']) === 'undefined') {
+						setTimeout(_llamadaRecursiva, 100);
+					} else {
+						__id_partialTimeoutActualizarActivado = false;
+						_actualizarViewModel();
+					}
+				}
+
+				var _actualizarViewModel = function () {
+					GlobalViewModels['__id__partialViewModel'].Actualizar(__id_partialParametros);
+				}
+
+				if (typeof (GlobalViewModels['__id__partialViewModel']) === 'undefined') {
+					if (!__id_partialTimeoutActualizarActivado) { __id_partialTimeoutActualizarActivado = true; setTimeout(_llamadaRecursiva, 100); }
+				} else {
+					__id_partialTimeoutActualizarActivado = false;
+					_actualizarViewModel();
+				}
+			} catch (excepcion) {
+				console.log(excepcion);
+			}
+		}
+	}
+</script>

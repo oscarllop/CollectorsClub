@@ -1,0 +1,29 @@
+<dotnetnuke version="3.0" type="Module">
+  <folders>
+    <folder>
+      <name>CollectorsClub.Calendarios</name>
+      <friendlyname>CollectorsClub - Calendarios</friendlyname>
+      <modulename>CollectorsClub.Calendarios</modulename>
+      <description>CollectorsClub - Calendarios</description>
+      <version>01.00.00</version>
+      <modules>
+        <module>
+          <friendlyname>CollectorsClub - Calendarios</friendlyname>
+          <cachetime>0</cachetime>
+          <controls>
+            <control>
+              <src>DesktopModules/CollectorsClub/Editores/Calendarios.ascx</src>
+              <type>View</type>
+              <helpurl></helpurl>
+            </control>
+          </controls>
+        </module>
+      </modules>
+      <files>
+        <file>
+          <name>Calendarios.ascx</name>
+        </file>
+      </files>
+    </folder>
+  </folders>
+</dotnetnuke>

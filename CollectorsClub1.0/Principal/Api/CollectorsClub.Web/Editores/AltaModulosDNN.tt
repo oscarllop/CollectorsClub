@@ -1,0 +1,237 @@
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="..\\..\\CollectorsClub.Model\\Templates\\Context.Base.ttinclude"#><#@ output extension=".sql"#><#
+
+const string _inputFile = @"..\..\CollectorsClub.EntityFramework\Model.edmx";
+string _rutaControl = "[G]Skins/Porto/CollectorsClub-Inner.ascx";
+string _aplicacion = "CollectorsClub";
+string _versionDNN = "9.0.1";
+Dictionary<string, MetadataGenerador.MetadataEntidad> _metadataEntidades = MetadataGenerador.ObtenerEntidades(_aplicacion);
+var _storeMetadata = LoadMetadata(_inputFile);
+var _textTransform = DynamicTextTransformation.Create(this);
+var _code = new CodeGenerationTools(this);
+var _ef = new MetadataTools(this);
+//var _itemCollection = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors).CreateEdmItemCollection(_inputFile);
+var _itemCollection = _storeMetadata.EdmItems;
+EntityContainer _container = _itemCollection.OfType<EntityContainer>().FirstOrDefault();
+var _typeMapper = new TypeMapper(_code, _ef, _container, _storeMetadata, _textTransform.Errors);
+var _codeSQLGenerator = new CodeSQLGenerator(_code, _typeMapper, _ef, _storeMetadata);
+if (_container == null) {
+    return string.Empty;
+} #>
+
+<# MetadataGenerador.IncluirEntidadesNoExistentesEnFramework(_metadataEntidades, _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection).ToList(), _typeMapper);
+	 foreach (var _entity in _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection)) { 
+		IEnumerable<EdmMember> _simpleProperties = _typeMapper.GetSimpleProperties(_entity);
+		IEnumerable<EdmMember> _visibleProperties = _typeMapper.GetVisibleProperties(_entity);
+		IEnumerable<EdmMember> _keyProperties = _typeMapper.GetKeyProperties(_entity);
+		List<EdmMember> _procedureParameterProperties = _codeSQLGenerator.GetQueryParameterProperties(_visibleProperties, _simpleProperties); 
+		EntitySet _entitySet = (EntitySet) _container.BaseEntitySets.Where(es => es.ElementType.Name == _entity.Name).FirstOrDefault(); 
+		//string _nombreEntidad = _code.Escape(_entity);
+		string _nombreEntidad = _code.Escape(_entitySet); #>
+------------------------------- Inicio script del módulo <#= _nombreEntidad #>  ------------------------------
+USE CollectorsClubDNN;
+GO
+
+declare @NombrePaginaPadre as nvarchar(50) = 'Mantenimiento'
+declare @TabIdMantenimientos as int = (SELECT TabId FROM dnn_tabs WHERE TabName = @NombrePaginaPadre AND [Level] = 0)
+declare @PortalId as int = 0
+declare @UserIdHost as int = 1
+declare @RoleIdHost as int = -2
+declare @RoleIdAdministrador as int = 0 -- OLL en GA no quiero que lo vean los Administradores, solo Host, Sino pondría el 5
+declare @NivelEditores as int = 1
+declare @Fecha as datetime = GetDate()
+declare @SkinSrc as nvarchar(100) = '<#= _rutaControl #>'
+
+declare @TabContentItemId as int
+declare @TabId as int
+declare @PackageId as int
+declare @DesktopModuleContentItemId as int
+declare @DesktopModuleId as int
+declare @ModuleDefinitionId as int
+declare @PortalDesktopModuleId as int
+declare @ModuleContentItemId as int
+declare @ModuleId as int
+declare @TabModuleId as int
+
+
+if not exists(SELECT ContentItemId FROM dnn_ContentItems WHERE Content = '<#= _nombreEntidad #>')
+begin 
+	INSERT INTO dnn_ContentItems (Content, ContentTypeID, TabID, ModuleID, ContentKey, Indexed, CreatedByUserID, CreatedOnDate, LastModifiedByUserID, LastModifiedOnDate)
+	VALUES ('<#= _nombreEntidad #>', 1, -1, -1, null, 0, @UserIdHost, @Fecha, @UserIdHost, @Fecha)
+
+	set @TabContentItemId = SCOPE_IDENTITY()
+
+<# if (_versionDNN == "7.3.2") { #>
+	INSERT INTO dnn_Tabs (ContainerSrc, ContentItemID, CreatedByUserID, CreatedOnDate, CultureCode, DefaultLanguageGuid, Description, DisableLink, EndDate, IconFile, IconFileLarge, IsDeleted, IsSecure, IsVisible, KeyWords, LastModifiedByUserID, LastModifiedOnDate, Level, LocalizedVersionGuid, PageHeadText, ParentId, PermanentRedirect, PortalID, RefreshInterval, SiteMapPriority, SkinSrc, StartDate, TabName, TabOrder, TabPath, Title, UniqueId, Url, VersionGuid)
+	VALUES (null, @TabContentItemId, @UserIdHost, @Fecha, null, null, '', 0, null, '', '', 0, 0, 1, '', @UserIdHost, @Fecha, @NivelEditores, NewId(), null, @TabIdMantenimientos, 0, @PortalId, null, 0.5, @SkinSrc, null, '<#= _nombreEntidad #>', 3, '//' + @NombrePaginaPadre + '//<#= _nombreEntidad #>', '', NewId(), '', NewId())
+<# } else { #>
+	INSERT INTO dnn_Tabs (ContainerSrc, ContentItemID, CreatedByUserID, CreatedOnDate, CultureCode, DefaultLanguageGuid, Description, DisableLink, EndDate, IconFile, IconFileLarge, IsDeleted, IsSecure, IsVisible, KeyWords, LastModifiedByUserID, LastModifiedOnDate, Level, LocalizedVersionGuid, PageHeadText, ParentId, PermanentRedirect, PortalID, RefreshInterval, SiteMapPriority, SkinSrc, StartDate, TabName, TabOrder, TabPath, Title, UniqueId, Url, VersionGuid, HasBeenPublished, IsSystem)
+	VALUES (null, @TabContentItemId, @UserIdHost, @Fecha, null, null, '', 0, null, '', '', 0, 0, 1, '', @UserIdHost, @Fecha, @NivelEditores, NewId(), null, @TabIdMantenimientos, 0, @PortalId, null, 0.5, @SkinSrc, null, '<#= _nombreEntidad #>', 3, '//' + @NombrePaginaPadre + '//<#= _nombreEntidad #>', '', NewId(), '', NewId(), 1, 0)
+<# } #>
+
+	set @TabId = SCOPE_IDENTITY()
+
+	UPDATE dnn_ContentItems SET TabId = @TabId WHERE ContentItemID = @TabContentItemId
+
+	INSERT INTO dnn_TabSettings (TabID, SettingName, SettingValue, CreatedByUserID, CreatedOnDate, LastModifiedByUserID, LastModifiedOnDate)
+	VALUES (@TabId, 'AllowIndex', 'True', @UserIdHost, @Fecha, @UserIdHost, @Fecha)
+	INSERT INTO dnn_TabSettings (TabID, SettingName, SettingValue, CreatedByUserID, CreatedOnDate, LastModifiedByUserID, LastModifiedOnDate)
+	VALUES (@TabId, 'LinkNewWindow', 'False', @UserIdHost, @Fecha, @UserIdHost, @Fecha)
+
+	INSERT INTO dnn_TabPermission (TabID, PermissionID, AllowAccess, RoleID, UserID, CreatedByUserID, CreatedOnDate, LastModifiedByUserID, LastModifiedOnDate)
+	VALUES (@TabId, 3, 1, @RoleIdHost, null, @UserIdHost, @Fecha, @UserIdHost, @Fecha)
+	INSERT INTO dnn_TabPermission (TabID, PermissionID, AllowAccess, RoleID, UserID, CreatedByUserID, CreatedOnDate, LastModifiedByUserID, LastModifiedOnDate)
+	VALUES (@TabId, 4, 1, @RoleIdHost, null, @UserIdHost, @Fecha, @UserIdHost, @Fecha)
+	INSERT INTO dnn_TabPermission (TabID, PermissionID, AllowAccess, RoleID, UserID, CreatedByUserID, CreatedOnDate, LastModifiedByUserID, LastModifiedOnDate)
+	VALUES (@TabId, 3, 1, @RoleIdAdministrador, null, @UserIdHost, @Fecha, @UserIdHost, @Fecha)
+
+	INSERT INTO dnn_Packages (
+		CreatedByUserID, 
+		CreatedOnDate, 
+		Description, 
+		Email, 
+		FriendlyName, 
+		IsSystemPackage, 
+		LastModifiedByUserID, 
+		LastModifiedOnDate, 
+		License, 
+		Manifest, 
+		Name, 
+		Organization, 
+		Owner,
+		PackageType, 
+		PortalID, 
+		ReleaseNotes, 
+		Url, 
+		Version
+	) VALUES (
+		@UserIdHost, 
+		@Fecha, 
+		'Mantenimiento <#= _nombreEntidad #>', 
+		'', 
+		'Mantenimiento <#= _nombreEntidad #>', 
+		0, 
+		@UserIdHost, 
+		@Fecha, 
+		'El archivo de instalación no contiene información de la licencia. Verifique con el vendedor los detalles de la licencia.', 
+		'<package name="CollectorsClub.Editor<#= _nombreEntidad #>" type="Module" version="1.0.0">
+		<friendlyName>CollectorsClub - Mantenimiento <#= _nombreEntidad #></friendlyName>
+		<description>CollectorsClub - Mantenimiento <#= _nombreEntidad #></description>
+		<iconFile />
+		<owner>
+			<name>CollectorsClub</name>
+			<organization />
+			<url />
+			<email />
+		</owner>
+		<license>El archivo de instalación no contiene información de la licencia. Verifique con el vendedor los detalles de la licencia.</license>
+		<releaseNotes />
+		<components>
+			<component type="Module">
+				<desktopModule>
+					<moduleName>CollectorsClub.Editor<#= _nombreEntidad #></moduleName>
+					<foldername>CollectorsClub.Editor<#= _nombreEntidad #></foldername>
+					<businessControllerClass />
+					<supportedFeatures />
+					<moduleDefinitions>
+						<moduleDefinition>
+							<friendlyName>CollectorsClub - Mantenimiento <#= _nombreEntidad #></friendlyName>
+							<definitionName>CollectorsClub - Mantenimiento <#= _nombreEntidad #></definitionName>
+							<defaultCacheTime>0</defaultCacheTime>
+							<moduleControls>
+								<moduleControl>
+									<controlKey />
+									<controlSrc>DesktopModules/CollectorsClub/Editores/<#=_code.Escape(_entity)#>EditorView.ascx</controlSrc>
+									<supportsPartialRendering>False</supportsPartialRendering>
+									<controlTitle />
+									<controlType>View</controlType>
+									<iconFile />
+									<helpUrl />
+									<supportsPopUps>False</supportsPopUps>
+									<viewOrder>0</viewOrder>
+								</moduleControl>
+							</moduleControls>
+						</moduleDefinition>
+					</moduleDefinitions>
+				</desktopModule>
+			</component>
+			<component type="File">
+				<files>
+					<basePath>DesktopModules\CollectorsClub\Editores</basePath>
+					<file>
+						<name><#=_code.Escape(_entity)#>EditorView.ascx</name>
+						<sourceFileName><#=_code.Escape(_entity)#>EditorView.ascx</sourceFileName>
+					</file>
+				</files>
+			</component>
+		</components>
+	</package>', 
+		'CollectorsClub.Editor<#= _nombreEntidad #>', 
+		'', 
+		'CollectorsClub',
+		'Module', 
+		@PortalId, 
+		'Este paquete no tiene notas de la versión', 
+		'', 
+		'1.0.0'
+	)
+	set @PackageId = SCOPE_IDENTITY()
+
+	INSERT INTO dnn_ContentItems (Content, ContentTypeID, TabID, ModuleID, ContentKey, Indexed, CreatedByUserID, CreatedOnDate, LastModifiedByUserID, LastModifiedOnDate)
+	VALUES ('Mantenimiento <#= _nombreEntidad #>', 3, -1, -1, '', 0, @UserIdHost, @Fecha, @UserIdHost, @Fecha)
+
+	set @DesktopModuleContentItemId = SCOPE_IDENTITY()
+
+	INSERT INTO dnn_DesktopModules (BusinessControllerClass, CompatibleVersions, ContentItemId, CreatedByUserID, CreatedOnDate, Dependencies, Description, FolderName, FriendlyName, IsAdmin, IsPremium, LastModifiedByUserID, LastModifiedOnDate, ModuleName, PackageID, Permissions, Shareable, SupportedFeatures, Version)
+	VALUES ('', null, @DesktopModuleContentItemId, @UserIdHost, @Fecha, null, 'Mantenimiento <#= _nombreEntidad #>', 'CollectorsClub.Editor<#= _nombreEntidad #>', 'Mantenimiento <#= _nombreEntidad #>', 0, 0, @UserIdHost, @Fecha, 'CollectorsClub.Editor<#= _nombreEntidad #>', @PackageId, null, 0, 0, '01.00.00')
+
+	set @DesktopModuleId = SCOPE_IDENTITY()
+
+	INSERT INTO dnn_ModuleDefinitions (CreatedByUserID, CreatedOnDate, DefaultCacheTime, DefinitionName, DesktopModuleID, FriendlyName, LastModifiedByUserID, LastModifiedOnDate)
+	VALUES (@UserIdHost, @Fecha, 0, 'Mantenimiento <#= _nombreEntidad #>', @DesktopModuleId, 'Mantenimiento <#= _nombreEntidad #>', @UserIdHost, @Fecha)
+
+	set @ModuleDefinitionId = SCOPE_IDENTITY()
+
+	INSERT INTO dnn_PortalDesktopModules (CreatedByUserID, CreatedOnDate, DesktopModuleID, LastModifiedByUserID, LastModifiedOnDate, PortalID)
+	VALUES (@UserIdHost, @Fecha, @DesktopModuleId, @UserIdHost, @Fecha, @PortalId)
+
+	set @PortalDesktopModuleId = SCOPE_IDENTITY()
+
+	INSERT INTO dnn_DesktopModulePermission (AllowAccess, CreatedByUserID, CreatedOnDate, LastModifiedByUserID, LastModifiedOnDate, PermissionID, PortalDesktopModuleID, RoleID, UserID)
+	VALUES (1, @UserIdHost, @Fecha, @UserIdHost, @Fecha, 7, @PortalDesktopModuleId, @RoleIdHost, null)
+
+	INSERT INTO dnn_ModuleControls (ControlKey, ControlSrc, ControlTitle, ControlType, CreatedByUserID, CreatedOnDate, HelpUrl, IconFile, LastModifiedByUserID, LastModifiedOnDate, ModuleDefID, SupportsPartialRendering, SupportsPopUps, ViewOrder)
+	VALUES (null, 'DesktopModules/CollectorsClub/Editores/<#=_code.Escape(_entity)#>EditorView.ascx', null, 0, @UserIdHost, @Fecha, null, null, @UserIdHost, @Fecha, @ModuleDefinitionId, 0, 0, 0)
+
+	INSERT INTO dnn_ContentItems (Content, ContentTypeID, TabID, ModuleID, ContentKey, Indexed, CreatedByUserID, CreatedOnDate, LastModifiedByUserID, LastModifiedOnDate)
+	VALUES ('Mantenimiento <#= _nombreEntidad #>', 2, @TabId, -1, null, 0, @UserIdHost, @Fecha, @UserIdHost, @Fecha)
+
+	set @ModuleContentItemId = SCOPE_IDENTITY()
+
+	INSERT INTO dnn_Modules (AllTabs, ContentItemID, CreatedByUserID, CreatedOnDate, EndDate, InheritViewPermissions, IsDeleted, IsShareable, IsShareableViewOnly, LastContentModifiedOnDate, LastModifiedByUserID, LastModifiedOnDate, ModuleDefID, PortalID, StartDate)
+	VALUES (0, @ModuleContentItemId, @UserIdHost, @Fecha, null, 1, 0, 1, 1, null, @UserIdHost, @Fecha, @ModuleDefinitionId, @PortalId, null)
+
+	set @ModuleId = SCOPE_IDENTITY()
+
+	UPDATE dnn_ContentItems SET ModuleId = @ModuleId WHERE ContentItemID = @ModuleContentItemId
+
+	INSERT INTO dnn_TabModules (Alignment, Border, CacheMethod, CacheTime, Color, ContainerSrc, CreatedByUserID, CreatedOnDate, CultureCode, DefaultLanguageGuid, DisplayPrint, DisplaySyndicate, DisplayTitle, Footer, Header, IconFile, IsDeleted, IsWebSlice,LastModifiedByUserID, LastModifiedOnDate, LocalizedVersionGuid, ModuleID, ModuleOrder, ModuleTitle, PaneName, TabID, UniqueId, VersionGuid, Visibility, WebSliceExpiryDate, WebSliceTitle, WebSliceTTL)
+	VALUES (null, null, null, 0, null, null, @UserIdHost, @Fecha, '', null, 0, 0, 0, null, null, null, 0, 0, @UserIdHost, @Fecha, NewId(), @ModuleId, 3, 'Mantenimiento <#= _nombreEntidad #>', 'ContentPane', @TabId, NewId(), NewId(), 2, null, '', 0)
+
+	set @TabModuleId = SCOPE_IDENTITY()
+
+	-- DNN No le crea ningún permiso
+	--INSERT INTO dnn_TabModuleSettings (CreatedByUserID, CreatedOnDate, LastModifiedByUserID, LastModifiedOnDate, SettingName, SettingValue, TabModuleID)
+	--VALUES (@UserIdHost, @Fecha, @UserIdHost, @Fecha, '', '', @TabModuleId)
+
+	INSERT INTO dnn_ModulePermission (AllowAccess, CreatedByUserID, CreatedOnDate, LastModifiedByUserID, LastModifiedOnDate, ModuleID, PermissionID, PortalID, RoleID, UserID)
+	VALUES (1, @UserIdHost, @Fecha, @UserIdHost, @Fecha, @ModuleId, 2, @PortalId, @RoleIdHost, null)
+
+	-- DNN No le crea ningún permiso
+	--INSERT INTO dnn_ModuleSettings (CreatedByUserID, CreatedOnDate, LastModifiedByUserID, LastModifiedOnDate, ModuleID, SettingName, SettingValue) 
+	--VALUES (@UserIdHost, @Fecha, @UserIdHost, @Fecha, @ModuleId, '', '') 
+end
+------------------------------- Fin script del módulo <#= _nombreEntidad #>  ------------------------------
+
+<# } #>

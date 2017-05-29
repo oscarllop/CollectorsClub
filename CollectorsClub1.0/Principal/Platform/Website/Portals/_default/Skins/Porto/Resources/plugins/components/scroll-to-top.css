@@ -1,0 +1,275 @@
+﻿/* Scroll to Top */
+html .scroll-to-top {
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	background: #404040;
+	border-radius: 7px 7px 0 0;
+	bottom: 0px;
+	color: #FFF;
+	display: block;
+	height: 9px;
+	opacity: 0;
+	padding: 13px 10px 35px;
+	position: fixed;
+	right: 10px;
+	text-align: center;
+	text-decoration: none;
+	min-width: 49px;
+	z-index: 1040;
+}
+
+html .scroll-to-top:hover {
+	filter: alpha(opacity=100);
+	opacity: 1;
+}
+
+html .scroll-to-top.visible {
+	filter: alpha(opacity=75);
+	opacity: 0.75;
+}
+
+html .scroll-to-top span {
+	display: inline-block;
+	padding: 0 5px;
+}
+
+html.ie11 .scroll-to-top {
+	right: 25px;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+	html .scroll-to-top.hidden-mobile {
+		display: none !important;
+	}
+}
+
+@-webkit-keyframes animateLoader {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+
+	100% {
+		-webkit-transform: rotate(220deg);
+	}
+}
+
+@-moz-keyframes animateLoader {
+	0% {
+		-moz-transform: rotate(0deg);
+	}
+
+	100% {
+		-moz-transform: rotate(220deg);
+	}
+}
+
+@-o-keyframes animateLoader {
+	0% {
+		-o-transform: rotate(0deg);
+	}
+
+	100% {
+		-o-transform: rotate(220deg);
+	}
+}
+
+@keyframes animateLoader {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(220deg);
+	}
+}
+
+@-webkit-keyframes animateLoaderAfterWhite {
+	0% {
+		box-shadow: 0 0 0 6px #FFF inset;
+		-webkit-transform: rotate(-140deg);
+	}
+
+	50% {
+		box-shadow: 0 0 0 2px #FFF inset;
+	}
+
+	100% {
+		box-shadow: 0 0 0 6px #FFF inset;
+		-webkit-transform: rotate(140deg);
+	}
+}
+
+@-moz-keyframes animateLoaderAfterWhite {
+	0% {
+		box-shadow: 0 0 0 6px #FFF inset;
+		-moz-transform: rotate(-140deg);
+	}
+
+	50% {
+		box-shadow: 0 0 0 2px #FFF inset;
+	}
+
+	100% {
+		box-shadow: 0 0 0 6px #FFF inset;
+		-moz-transform: rotate(140deg);
+	}
+}
+
+@-o-keyframes animateLoaderAfterWhite {
+	0% {
+		box-shadow: 0 0 0 6px #FFF inset;
+		-o-transform: rotate(-140deg);
+	}
+
+	50% {
+		box-shadow: 0 0 0 2px #FFF inset;
+	}
+
+	100% {
+		box-shadow: 0 0 0 6px #FFF inset;
+		-o-transform: rotate(140deg);
+	}
+}
+
+@keyframes animateLoaderAfterWhite {
+	0% {
+		box-shadow: 0 0 0 6px #FFF inset;
+		transform: rotate(-140deg);
+	}
+
+	50% {
+		box-shadow: 0 0 0 2px #FFF inset;
+	}
+
+	100% {
+		box-shadow: 0 0 0 6px #FFF inset;
+		transform: rotate(140deg);
+	}
+}
+
+@-webkit-keyframes animateLoaderAfterBlack {
+	0% {
+		box-shadow: 0 0 0 6px #999 inset;
+		-webkit-transform: rotate(-140deg);
+	}
+
+	50% {
+		box-shadow: 0 0 0 2px #999 inset;
+	}
+
+	100% {
+		box-shadow: 0 0 0 6px #999 inset;
+		-webkit-transform: rotate(140deg);
+	}
+}
+
+@-moz-keyframes animateLoaderAfterBlack {
+	0% {
+		box-shadow: 0 0 0 6px #999 inset;
+		-moz-transform: rotate(-140deg);
+	}
+
+	50% {
+		box-shadow: 0 0 0 2px #999 inset;
+	}
+
+	100% {
+		box-shadow: 0 0 0 6px #999 inset;
+		-moz-transform: rotate(140deg);
+	}
+}
+
+@-o-keyframes animateLoaderAfterBlack {
+	0% {
+		box-shadow: 0 0 0 6px #999 inset;
+		-o-transform: rotate(-140deg);
+	}
+
+	50% {
+		box-shadow: 0 0 0 2px #999 inset;
+	}
+
+	100% {
+		box-shadow: 0 0 0 6px #999 inset;
+		-o-transform: rotate(140deg);
+	}
+}
+
+@keyframes animateLoaderAfterBlack {
+	0% {
+		box-shadow: 0 0 0 6px #999 inset;
+		transform: rotate(-140deg);
+	}
+
+	50% {
+		box-shadow: 0 0 0 2px #999 inset;
+	}
+
+	100% {
+		box-shadow: 0 0 0 6px #999 inset;
+		transform: rotate(140deg);
+	}
+}
+
+.loading-overlay-showing {
+	overflow: hidden;
+}
+
+.loading-overlay-showing > .loading-overlay {
+	opacity: 1;
+	visibility: visible;
+	-webkit-transition-delay: 0;
+	-moz-transition-delay: 0;
+	transition-delay: 0;
+}
+
+.loading-overlay {
+	-webkit-transition: visibility 0s ease-in-out 0.5s, opacity 0.5s ease-in-out;
+	-moz-transition: visibility 0s ease-in-out 0.5s, opacity 0.5s ease-in-out;
+	transition: visibility 0s ease-in-out 0.5s, opacity 0.5s ease-in-out;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	opacity: 0;
+	right: 0;
+	top: 0;
+	visibility: hidden;
+	background: #FFF;
+}
+
+.loading-overlay .loader {
+	-webkit-animation: animateLoader 1s linear infinite;
+	-moz-animation: animateLoader 1s linear infinite;
+	animation: animateLoader 1s linear infinite;
+	clip: rect(0, 30px, 30px, 15px);
+	height: 30px;
+	left: 50%;
+	margin-left: -15px;
+	margin-top: -15px;
+	position: absolute;
+	text-align: left;
+	top: 50%;
+	width: 30px;
+}
+
+.loading-overlay .loader:after {
+	border-radius: 50%;
+	clip: rect(0, 30px, 30px, 15px);
+	content: '';
+	height: 30px;
+	position: absolute;
+	width: 30px;
+}
+
+html:not(.dark) .loading-overlay .loader:after {
+	-webkit-animation: animateLoaderAfterBlack 1s ease-in-out infinite;
+	-moz-animation: animateLoaderAfterBlack 1s ease-in-out infinite;
+	animation: animateLoaderAfterBlack 1s ease-in-out infinite;
+}
+
+body > .loading-overlay {
+	position: fixed;
+	z-index: 999999;
+}

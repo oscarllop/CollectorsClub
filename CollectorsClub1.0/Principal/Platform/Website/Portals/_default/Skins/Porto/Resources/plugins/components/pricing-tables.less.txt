@@ -1,0 +1,51 @@
+﻿
+@import "../variables.less.txt";
+
+.pricing-table {
+	text-align: center;
+}
+
+.pricing-table .plan {
+	background: @HSBackgroundColor;
+	border-radius: @BSBorderRadius;
+	color: @FSColor;
+	
+}
+
+.pricing-table li {
+	border-top: @BSBorderStyle;
+	
+}
+.pricing-table h3 {
+	background-color:@HSBackgroundColor;
+	border-radius: @HSBorder;
+	font-size: @HSFontSize;
+}
+.pricing-table h3 .desc {
+	color: @HSColor;
+}
+.pricing-table h3 span {
+	background: @HSBackgroundColor;
+	border: @HSBorder;
+	border-radius: @BSBorderRadius;
+	box-shadow:@BBoxShadow;
+	color:@HSColor;
+	
+}
+.pricing-table .most-popular h3 {
+	background-color: @HSBackgroundColor;
+	color: @HSColor;
+	
+}
+
+.pricing-table .most-popular h3 .desc {
+	color: @HSColor;
+}
+.pricing-table .plan-ribbon {
+	font-size: @FSFontSize;
+	text-align: @HSTextAlign;
+}
+.pricing-table.pricing-table-sm h3 span {
+	box-shadow: @BBoxShadow;
+	
+}

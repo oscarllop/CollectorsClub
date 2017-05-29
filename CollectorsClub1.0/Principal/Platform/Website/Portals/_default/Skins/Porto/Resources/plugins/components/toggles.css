@@ -1,0 +1,192 @@
+﻿/* Toggles */
+.toggle {
+	margin: 10px 0 20px;
+	position: relative;
+	clear: both;
+}
+
+.toggle .toggle {
+	margin: 10px 0 0;
+}
+
+.toggle > input {
+	cursor: pointer;
+	filter: alpha(opacity=0);
+	height: 45px;
+	margin: 0;
+	opacity: 0;
+	position: absolute;
+	width: 100%;
+	z-index: 2;
+}
+
+.toggle > label {
+	-webkit-transition: all 0.15s ease-out;
+	-moz-transition: all 0.15s ease-out;
+	transition: all 0.15s ease-out;
+	background: #F4F4F4;
+	border-left: 3px solid #CCC;
+	border-radius: 5px;
+	color: #CCC;
+	display: block;
+	font-size: 1.1em;
+	min-height: 20px;
+	padding: 12px 20px 12px 10px;
+	position: relative;
+	cursor: pointer;
+	font-weight: 400;
+}
+
+.toggle > label:-moz-selection {
+	background: none;
+}
+
+.toggle > label em.fa-minus {
+	display: none;
+}
+
+.toggle > label em.fa-plus {
+	display: inline;
+}
+
+.toggle > label:selection {
+	background: none;
+}
+
+.toggle > label:before {
+	border: 6px solid transparent;
+	border-left-color: inherit;
+	content: '';
+	margin-top: -6px;
+	position: absolute;
+	right: 4px;
+	top: 50%;
+}
+
+.toggle > label:hover {
+	background: #f5f5f5;
+}
+
+.toggle > label + p {
+	color: #999;
+	display: block;
+	overflow: hidden;
+	padding-left: 30px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	height: 25px;
+}
+
+.toggle > label i,
+.toggle > label em {
+	font-size: 0.7em;
+	margin-right: 8px;
+	position: relative;
+	top: -1px;
+}
+
+.toggle > .toggle-content {
+	display: none;
+}
+
+.toggle > .toggle-content > p {
+	margin-bottom: 0;
+	padding: 10px 0;
+}
+
+.toggle.active i.fa-minus,
+.toggle.active em.fa-minus {
+	display: inline;
+}
+
+.toggle.active i.fa-plus,
+.toggle.active em.fa-plus {
+	display: none;
+}
+
+.toggle.active > label {
+	background: #F4F4F4;
+	border-color: #CCC;
+}
+
+.toggle.active > label:before {
+	border: 6px solid transparent;
+	border-top-color: #FFF;
+	margin-top: -3px;
+	right: 10px;
+}
+
+.toggle.active > p {
+	white-space: normal;
+}
+
+.toggle > p.preview-active {
+	height: auto;
+	white-space: normal;
+}
+
+.toggle.toggle-sm .toggle > label {
+	font-size: 0.9em;
+	padding: 6px 20px 6px 10px;
+}
+
+.toggle.toggle-sm .toggle > .toggle-content > p {
+	font-size: 0.9em;
+}
+
+.toggle.toggle-lg .toggle > label {
+	font-size: 1.1em;
+	padding: 16px 20px 16px 20px;
+}
+
+.toggle.toggle-lg .toggle > .toggle-content > p {
+	font-size: 1.1em;
+}
+
+.toggle.toggle-simple .toggle > label {
+	border-radius: 0;
+	border: 0;
+	background: transparent;
+	color: #777777;
+	padding-left: 32px;
+	margin-bottom: -10px;
+	font-size: 1em;
+	font-weight: 600;
+	color: #1d2127;
+}
+
+.toggle.toggle-simple .toggle > label:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	display: block;
+	width: 24px;
+	height: 24px;
+	background: #CCC;
+	top: 50%;
+	margin-top: -12px;
+	border-radius: 3px;
+	z-index: 1;
+}
+
+.toggle.toggle-simple .toggle > label:before {
+	border: 0;
+	left: 7px;
+	right: auto;
+	margin-top: 0;
+	top: 12px;
+	font-family: FontAwesome;
+	content: "\f067";
+	z-index: 2;
+	color: #FFF;
+	font-size: 13px;
+}
+
+.toggle.toggle-simple .toggle.active > label {
+	background: transparent;
+	color: #1d2127;
+}
+
+.toggle.toggle-simple .toggle.active > label:before {
+	content: "\f068";
+}

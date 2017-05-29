@@ -1,0 +1,628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <!--DOTWARE TST S.L.-->
+  <data name="AddMissingLanguages.Text">
+    <value xml:space="preserve">Añadir idiomas que faltan</value>
+  </data>
+  <data name="AddMultiplePages.Text">
+    <value xml:space="preserve">Añadir múltiples páginas</value>
+  </data>
+  <data name="AddPage.Text">
+    <value xml:space="preserve">Añadir página</value>
+  </data>
+  <data name="AddPages.Text">
+    <value xml:space="preserve">Añadir páginas</value>
+  </data>
+  <data name="AddUrl.Text">
+    <value xml:space="preserve">Añadir URL</value>
+  </data>
+  <data name="Advanced.Text">
+    <value xml:space="preserve">Avanzado</value>
+  </data>
+  <data name="AllowIndexing.Text">
+    <value xml:space="preserve">Permitir indexación</value>
+  </data>
+  <data name="AllowIndexing_tooltip.Text">
+    <value xml:space="preserve">Indique si esta página podrá ser indexada por los buscadores. Se utilizan los valores INDEX/NOINDEX del meta tag ROBOTS.</value>
+  </data>
+  <data name="AnErrorOccurred.Text">
+    <value xml:space="preserve">Se ha producido un error.</value>
+  </data>
+  <data name="Appearance.Text">
+    <value xml:space="preserve">Apariencia</value>
+  </data>
+  <data name="BackToPages.Text">
+    <value xml:space="preserve">Volver a la lista de páginas</value>
+  </data>
+  <data name="BackToPageSettings.Text">
+    <value xml:space="preserve">Volver a la configuración de página</value>
+  </data>
+  <data name="BadTemplate.Text">
+    <value xml:space="preserve">La plantilla no es un documento xml válido. Seleccione una plantilla distinta y vuelva a intentarlo.</value>
+  </data>
+  <data name="BranchParent.Text">
+    <value xml:space="preserve">Página principal</value>
+  </data>
+  <data name="BulkPageResponseTotalMessage.Text">
+    <value xml:space="preserve">Se han creado [PAGES_CREATED] páginas de [PAGES_TOTAL].</value>
+  </data>
+  <data name="BulkPageSettings.Text">
+    <value xml:space="preserve">Configuración masiva de páginas</value>
+  </data>
+  <data name="BulkPagesLabel.Text">
+    <value xml:space="preserve">Una página por línea, añada "&gt;" al principio para crear una jerarquía.</value>
+  </data>
+  <data name="BulkPagesToAdd.Text">
+    <value xml:space="preserve">Creación masiva de páginas</value>
+  </data>
+  <data name="CacheDuration.Text">
+    <value xml:space="preserve">Duración en la caché (segundos)</value>
+  </data>
+  <data name="CacheDuration_tooltip.Text">
+    <value xml:space="preserve">Indique la duración (en segundos) de la página en la caché.</value>
+  </data>
+  <data name="CacheSettings.Text">
+    <value xml:space="preserve">Configuración de caché</value>
+  </data>
+  <data name="Cancel.Text">
+    <value xml:space="preserve">Cancelar</value>
+  </data>
+  <data name="CancelWithoutSaving.Text">
+    <value xml:space="preserve">¿Está seguro que desea cerrar? Los cambios sin guardar se perderán.</value>
+  </data>
+  <data name="CannotCopyPermissionsToDescendantPages.Text">
+    <value xml:space="preserve">No tiene permisos para copiar los permisos a las páginas descendientes.</value>
+  </data>
+  <data name="ChangesNotSaved.Text">
+    <value xml:space="preserve">Los cambios no se han guardado</value>
+  </data>
+  <data name="CopyAppearanceToDescendantPages.Text">
+    <value xml:space="preserve">Copiar la apariencia a descendientes</value>
+  </data>
+  <data name="CopyAppearanceToDescendantPagesSuccess.Text">
+    <value xml:space="preserve">La apariencia se ha copiado a las páginas descendientes</value>
+  </data>
+  <data name="CopyModule.Text">
+    <value xml:space="preserve">Copiar módulo</value>
+  </data>
+  <data name="CopyPermissionsToDescendantPages.Text">
+    <value xml:space="preserve">Copiar permisos a páginas descendientes</value>
+  </data>
+  <data name="CopyPermissionsToDescendantPagesSuccess.Text">
+    <value xml:space="preserve">Los permisos se han copiado a las páginas descendientes</value>
+  </data>
+  <data name="Created.Text">
+    <value xml:space="preserve">Creado</value>
+  </data>
+  <data name="CreatedValue.Text">
+    <value xml:space="preserve">[CREATEDDATE] por [CREATEDUSER]</value>
+  </data>
+  <data name="CustomUrlPathCleaned.Error">
+    <value xml:space="preserve">La URL de la página contenía caracteres inválidos que se han eliminado. Pulse el botón Actualizar de nuevo para aceptar los cambios realizados.&lt;br/&gt;Atención. Puede ver la lista de caracteres inválidos a continuación: &lt;br/&gt;&lt;&gt;\?:&amp;=+|%# </value>
+  </data>
+  <data name="Default.Text">
+    <value xml:space="preserve">[Idioma predeterminado]</value>
+  </data>
+  <data name="Delete.Text">
+    <value xml:space="preserve">Eliminar</value>
+  </data>
+  <data name="DeleteModuleConfirm.Text">
+    <value xml:space="preserve">¿Está seguro que desea eliminar el módulo "[MODULETITLE]" de esta página?</value>
+  </data>
+  <data name="DeletePageConfirm.Text">
+    <value xml:space="preserve">&lt;p&gt;Confirme que desea eliminar esta página&lt;/p&gt;</value>
+  </data>
+  <data name="DeletePageModuleSuccess.Text">
+    <value xml:space="preserve">El módulo "[MODULETITLE]" se ha eliminado</value>
+  </data>
+  <data name="Description.Label">
+    <value xml:space="preserve">Descripción</value>
+  </data>
+  <data name="Detached.Text">
+    <value xml:space="preserve">Desvinculado {0}</value>
+  </data>
+  <data name="Details.Text">
+    <value xml:space="preserve">Detalles</value>
+  </data>
+  <data name="DisplayInMenu.Text">
+    <value xml:space="preserve">Mostrar en el menú</value>
+  </data>
+  <data name="DisplayInMenuTooltip.Text">
+    <value xml:space="preserve">Puede elegir entre incluir o no esta página en el menú principal. Si la página no está incluida en el menú, podrá enlazarla utilizando su URL.</value>
+  </data>
+  <data name="DragInvalid.Text">
+    <value xml:space="preserve">No puede arrastar una página como hija de si misma.</value>
+  </data>
+  <data name="DragPageTooltip.Text">
+    <value xml:space="preserve">Arrastar la página a la posición</value>
+  </data>
+  <data name="DuplicatePage.Text">
+    <value xml:space="preserve">Duplicar página</value>
+  </data>
+  <data name="DuplicateUrl.Error">
+    <value xml:space="preserve">La URL ya se utiliza en otra página.</value>
+  </data>
+  <data name="Edit.Text">
+    <value xml:space="preserve">Editar</value>
+  </data>
+  <data name="EmptyTabName.Text">
+    <value xml:space="preserve">El nombre de la página está vacío</value>
+  </data>
+  <data name="EnableScheduling.Text">
+    <value xml:space="preserve">Activar programador</value>
+  </data>
+  <data name="EnableSchedulingTooltip.Text">
+    <value xml:space="preserve">Activar la programación de visualización de la página</value>
+  </data>
+  <data name="EndDate.Text">
+    <value xml:space="preserve">Final final</value>
+  </data>
+  <data name="Error_EmptyTabName.Text">
+    <value xml:space="preserve">Tiene que introducir el nombre de la página.</value>
+  </data>
+  <data name="Error_PathDuplicateWithAlias.Text">
+    <value xml:space="preserve">Hay un alias del sitio igual que el nombre de la página.</value>
+  </data>
+  <data name="Error_StartDateAfterEndDate.Text">
+    <value xml:space="preserve">La fecha de inicio no puede ser posterior a la fecha final.</value>
+  </data>
+  <data name="Error_TabExists.Text">
+    <value xml:space="preserve">El nombre de página que eligió ya se está usando por otra página en el mismo nivel en la jerarquía de páginas.</value>
+  </data>
+  <data name="Error_TabRecycled.Text">
+    <value xml:space="preserve">Ya existe una página con el mismo nombre en la papelera de reciclaje. Para restaurar esta página utilice la papelera de reciclaje.</value>
+  </data>
+  <data name="Error_UrlPathCleaned.Text">
+    <value xml:space="preserve">La URL de la página contien caracteres inválidos.&lt;br/&gt;Atención. Puede ver la lista de caracteres inválidos a continuación: &lt;br/&gt;&lt;&gt;\?:&amp;=+|%# </value>
+  </data>
+  <data name="Error_UrlPathNotUnique.Text">
+    <value xml:space="preserve">La URL proporcionada no está disponible, ya existe otra página que utiliza la misma URL.</value>
+  </data>
+  <data name="ErrorPages.Text">
+    <value xml:space="preserve">Tiene que seleccionar al menos una página para exportar.</value>
+  </data>
+  <data name="Exclude.Text">
+    <value xml:space="preserve">Excluir</value>
+  </data>
+  <data name="ExcludeParamsInCacheValidation.Text">
+    <value xml:space="preserve">Excluir parámetros de la validación de la caché</value>
+  </data>
+  <data name="ExcludeParamsInCacheValidation_tooltip.Text">
+    <value xml:space="preserve">Lista de nombres de parámetros de URL (separados por comas) que se excluirán de las variaciones de las páginas en caché. Este parámetro sólo es válido cuando se ha seleccionado Incluir los parámetros del URL en las variaciones de páginas en caché.</value>
+  </data>
+  <data name="Existing.Text">
+    <value xml:space="preserve">Existente</value>
+  </data>
+  <data name="ExistingPage.Text">
+    <value xml:space="preserve">Página existente</value>
+  </data>
+  <data name="ExistingPageTooltip.Text">
+    <value xml:space="preserve">Redirigir a una página del sitio.</value>
+  </data>
+  <data name="ExportedMessage.Text">
+    <value xml:space="preserve">Se ha creado la plantilla de página en {0}</value>
+  </data>
+  <data name="ExternalUrl.Text">
+    <value xml:space="preserve">URL externa</value>
+  </data>
+  <data name="ExternalUrlTooltip.Text">
+    <value xml:space="preserve">Redirigir a una URL externa.</value>
+  </data>
+  <data name="File.Text">
+    <value xml:space="preserve">Archivo</value>
+  </data>
+  <data name="Folder.Text">
+    <value xml:space="preserve">Carpeta</value>
+  </data>
+  <data name="FolderTooltip.Text">
+    <value xml:space="preserve">Seleccione la carpeta donde quiera guardar la plantilla.</value>
+  </data>
+  <data name="GeneratedBy.Text">
+    <value xml:space="preserve">Generado por</value>
+  </data>
+  <data name="Hidden.Text">
+    <value xml:space="preserve">Esta página no se muestra en el menú</value>
+  </data>
+  <data name="HomeDirectory.Label">
+    <value xml:space="preserve">Carpeta de inicio</value>
+  </data>
+  <data name="Include.Text">
+    <value xml:space="preserve">Incluir</value>
+  </data>
+  <data name="IncludeContent.Text">
+    <value xml:space="preserve">Incluir contenido</value>
+  </data>
+  <data name="IncludeContentTooltip.Text">
+    <value xml:space="preserve">Active esta opción para incluir el contenido de los módulos.</value>
+  </data>
+  <data name="IncludeExcludeParams.Text">
+    <value xml:space="preserve">Incluir / excluir parámetros</value>
+  </data>
+  <data name="IncludeExcludeParams_tooltip.Text">
+    <value xml:space="preserve">Si marca Incluir, todas las variaciones de los parámetros de URL generarán un nuevo elemento en la caché. Si marca excluir, los parámetros de URL no se utilitzarán para guardar variaciones de la página.</value>
+  </data>
+  <data name="IncludeParamsInCacheValidation.Text">
+    <value xml:space="preserve">Incluir parámetros de la validación de la caché</value>
+  </data>
+  <data name="IncludeParamsInCacheValidation_tooltip.Text">
+    <value xml:space="preserve">Lista de nombres de parámetros de URL (separados por comas) que se incluirán de las variaciones de las páginas en caché. Este parámetro sólo es válido cuando se ha seleccionado Excluir los parámetros del URL en las variaciones de páginas en caché.</value>
+  </data>
+  <data name="InvalidRequest.Error">
+    <value xml:space="preserve">La petición no es válida</value>
+  </data>
+  <data name="InvalidTabName.Text">
+    <value xml:space="preserve">{0} no es un título de página válido.</value>
+  </data>
+  <data name="Keywords.Text">
+    <value xml:space="preserve">Palabras clave</value>
+  </data>
+  <data name="Layout.Text">
+    <value xml:space="preserve">Diseño</value>
+  </data>
+  <data name="MakeNeutral.ErrorMessage">
+    <value xml:space="preserve">La página no se puede convertir a neutra puesto que tiene páginas descendientes.</value>
+  </data>
+  <data name="MakeNeutralWarning.Text">
+    <value xml:space="preserve">Esta acción borrará todas las traducciones de la página y solo se mantendrá la versión de la página en el idioma predeterminado. ¿Está seguro que desea continuar?</value>
+  </data>
+  <data name="MakePageNeutral.Text">
+    <value xml:space="preserve">Convertir en página neutra</value>
+  </data>
+  <data name="MakePagesTranslatable.Text">
+    <value xml:space="preserve">Marcar como traducible</value>
+  </data>
+  <data name="ModuleDeleted.Text">
+    <value xml:space="preserve">Este módulo está borrado y se encuentra en la papelera.</value>
+  </data>
+  <data name="ModuleInfo.Text">
+    <value xml:space="preserve">Módulo: {0}&lt;br/&gt;Título: {1}&lt;br/&gt;Panel: {2}</value>
+  </data>
+  <data name="ModuleInfoForNonAdmins.Text">
+    <value xml:space="preserve">No tiene permisos para editar el título de este módulo.</value>
+  </data>
+  <data name="Modules.Text">
+    <value xml:space="preserve">Módulos</value>
+  </data>
+  <data name="ModuleSettings.Text">
+    <value xml:space="preserve">Configuración del módulo</value>
+  </data>
+  <data name="ModulesOnThisPage.Text">
+    <value xml:space="preserve">Módulos de la página</value>
+  </data>
+  <data name="More.Text">
+    <value xml:space="preserve">Más</value>
+  </data>
+  <data name="Name.Text">
+    <value xml:space="preserve">Nombre</value>
+  </data>
+  <data name="NameTooltip.Text">
+    <value xml:space="preserve">Nombre de la página. El texto que introduzca se mostrará en el menú del sitio.</value>
+  </data>
+  <data name="nav_Pages.Text">
+    <value xml:space="preserve">Páginas</value>
+  </data>
+  <data name="NeutralPageClickButton.Text">
+    <value xml:space="preserve">Para cambiar a una página traducible, pulse el botón.</value>
+  </data>
+  <data name="NeutralPageText.Text">
+    <value xml:space="preserve">Esta página esta configurada como "neutra". Esto significa que la página se visualizará en todos los idiomas del sitio con el mismo contenido. La páginas neutras no se pueden traducir.</value>
+  </data>
+  <data name="NewContentMessage.Body">
+    <value xml:space="preserve">La siguiente página tiene nuevo contenido listo para traducir.&lt;br/&gt;Página: &lt;a href='{1}'&gt;{0}&lt;/a&gt;&lt;br/&gt;{2}</value>
+  </data>
+  <data name="NewContentMessage.Subject">
+    <value xml:space="preserve">Nuevo contenido listo para traducir</value>
+  </data>
+  <data name="NoContainers.Text">
+    <value xml:space="preserve">Este tema no tiene ningún Container</value>
+  </data>
+  <data name="NoLayouts.Text">
+    <value xml:space="preserve">Este tema no tiene ningún diseño</value>
+  </data>
+  <data name="NoModules.Text">
+    <value xml:space="preserve">Esta página no tienen ningún módulo</value>
+  </data>
+  <data name="None.Text">
+    <value xml:space="preserve">Ninguno</value>
+  </data>
+  <data name="NoneSpecified.Text">
+    <value xml:space="preserve">Sin especificar</value>
+  </data>
+  <data name="NotActive.Text">
+    <value xml:space="preserve">[Idioma no activo]</value>
+  </data>
+  <data name="NotEmptyNameError.Text">
+    <value xml:space="preserve">El campo es obligatorio</value>
+  </data>
+  <data name="NoThemes.Text">
+    <value xml:space="preserve">El sitio no tiene ningún tema</value>
+  </data>
+  <data name="NoThemeSelectedForContainers.Text">
+    <value xml:space="preserve">Seleccione un tema para ver sus containers</value>
+  </data>
+  <data name="NoThemeSelectedForLayouts.Text">
+    <value xml:space="preserve">Seleccione un tema para ver sus diseños</value>
+  </data>
+  <data name="NotifyModalHeader.Text">
+    <value xml:space="preserve">Enviar notificación a los traductores</value>
+  </data>
+  <data name="NotifyModalPlaceholder.Text">
+    <value xml:space="preserve">Introduzca el mensaje para enviar a los traductores</value>
+  </data>
+  <data name="NotifyTranslators.Text">
+    <value xml:space="preserve">Notificar a traductores</value>
+  </data>
+  <data name="NotTranslated.Text">
+    <value xml:space="preserve">No traducido {0}</value>
+  </data>
+  <data name="OpenLinkInNewWindow.Text">
+    <value xml:space="preserve">Abrir el enlace en una nueva ventana</value>
+  </data>
+  <data name="OpenLinkInNewWindowTooltip.Text">
+    <value xml:space="preserve">Abrir el enlace en una nueva ventana del navegador</value>
+  </data>
+  <data name="OutputCacheProvider.Text">
+    <value xml:space="preserve">Proveedor de caché</value>
+  </data>
+  <data name="OutputCacheProvider_tooltip.Text">
+    <value xml:space="preserve">Seleccione el proveedor a usar en esta página.</value>
+  </data>
+  <data name="page_name_tooltip">
+    <value xml:space="preserve">Nombre de la página</value>
+  </data>
+  <data name="page_title_tooltip">
+    <value xml:space="preserve">Título de la página</value>
+  </data>
+  <data name="PageContainer.Text">
+    <value xml:space="preserve">Container de la página</value>
+  </data>
+  <data name="PageContainerTooltip.Text">
+    <value xml:space="preserve">El container seleccionado se aplicará a todos los módulos de la página.</value>
+  </data>
+  <data name="PageDeletedMessage.Text">
+    <value xml:space="preserve">La página se ha eliminado.</value>
+  </data>
+  <data name="PageHeaderTags.Text">
+    <value xml:space="preserve">Etiquetas de cabecera de la página</value>
+  </data>
+  <data name="PageHeaderTags_tooltip.Text">
+    <value xml:space="preserve">Indique las etiquetas ("META tags") que desee incluir en la cabecera de la página (etiqueta "HEAD" del HTML de la página)</value>
+  </data>
+  <data name="PageLayoutTooltip.Text">
+    <value xml:space="preserve">El diseño seleccionado se aplicará a esta página.</value>
+  </data>
+  <data name="PageParent.Text">
+    <value xml:space="preserve">Página madre</value>
+  </data>
+  <data name="Pages_Seo_DeleteWarningMessage.Text">
+    <value xml:space="preserve">¿Está seguro que desea eliminar esta URL?</value>
+  </data>
+  <data name="Pages_Seo_GeneratedByAutomatic.Text">
+    <value xml:space="preserve">Automático</value>
+  </data>
+  <data name="Pages_Seo_QueryString.Help">
+    <value xml:space="preserve">Añada un parámetro opcional a la URL para redirigir para validar las URL con la ruta y los parámetros. El parámetro de la URL es la parte que sigue al primer "?", por ejemplo www.ejemplo.com/ruta-de-redireccion?id=123</value>
+  </data>
+  <data name="Pages_Seo_QueryString.Text">
+    <value xml:space="preserve">Parámetro URL</value>
+  </data>
+  <data name="Pages_Seo_SelectedAliasUsage.Help">
+    <value xml:space="preserve">Si el alias seleccionado es diferente del primario, indique el tipo de uso.</value>
+  </data>
+  <data name="Pages_Seo_SelectedAliasUsage.Text">
+    <value xml:space="preserve">Uso del alias seleccionado</value>
+  </data>
+  <data name="Pages_Seo_SelectedAliasUsageOptionPageAndChildPages.Text">
+    <value xml:space="preserve">Página y descendientes</value>
+  </data>
+  <data name="Pages_Seo_SelectedAliasUsageOptionSameAsParent.Text">
+    <value xml:space="preserve">Igual que la página madre</value>
+  </data>
+  <data name="Pages_Seo_SelectedAliasUsageOptionThisPageOnly.Text">
+    <value xml:space="preserve">Sólo esta página</value>
+  </data>
+  <data name="Pages_Seo_SiteAlias.Help">
+    <value xml:space="preserve">Seleccione el alias de la página.</value>
+  </data>
+  <data name="Pages_Seo_SiteAlias.Text">
+    <value xml:space="preserve">Alias</value>
+  </data>
+  <data name="Pages_Seo_UrlPath.Help">
+    <value xml:space="preserve">Indique la ruta de la URL. No introduzca http:// o el alias del sitio.</value>
+  </data>
+  <data name="Pages_Seo_UrlPath.Text">
+    <value xml:space="preserve">Ruta URL</value>
+  </data>
+  <data name="Pages_Seo_UrlType.Help">
+    <value xml:space="preserve">"Activa" indica que la URL se utilizará como la URL de la página y devolverá el código HTTP 200. "Redirección" indica que la URL introducida se redirigirá a la URL activa de la página actual.</value>
+  </data>
+  <data name="Pages_Seo_UrlType.Text">
+    <value xml:space="preserve">Tipo de URL</value>
+  </data>
+  <data name="PageSettings.Text">
+    <value xml:space="preserve">Configuración de la página</value>
+  </data>
+  <data name="PageStyleSheet.Text">
+    <value xml:space="preserve">Hoja de estilos de la página</value>
+  </data>
+  <data name="PageStyleSheetTooltip.Text">
+    <value xml:space="preserve">Esta hoja de estilos se cargará únicamente para esta página. El archivo tiene que encontrarse en la carpeta raíz o una subcarpeta dentro de las carpetas del sitio.</value>
+  </data>
+  <data name="PageTheme.Text">
+    <value xml:space="preserve">Tema de la página</value>
+  </data>
+  <data name="PageThemeTooltip.Text">
+    <value xml:space="preserve">El tema seleccionado se aplicará a esta página.</value>
+  </data>
+  <data name="PageType.Text">
+    <value xml:space="preserve">Tipo de página</value>
+  </data>
+  <data name="PageUpdatedMessage.Text">
+    <value xml:space="preserve">La página se ha actualizado</value>
+  </data>
+  <data name="PathDuplicateWithAlias.Text">
+    <value xml:space="preserve">Ya existe alias del sitio con el mismo nombre que ha entrado en la ruta de la página.</value>
+  </data>
+  <data name="Pending.Text">
+    <value xml:space="preserve">Arrastre la página a la situación deseada.</value>
+  </data>
+  <data name="PermanentRedirect.Text">
+    <value xml:space="preserve">Redirección permanente</value>
+  </data>
+  <data name="PermanentRedirectTooltip.Text">
+    <value xml:space="preserve">Active esta opción para indicar a los navegadores que la página se ha movido permanentemente. Esto permitirá a los buscadores actualizar sus índices para apuntar a la nueva dirección. Esta opción no se tiene en cuenta si el tipo de enlace es ninguno.</value>
+  </data>
+  <data name="Permissions.Text">
+    <value xml:space="preserve">Permisos</value>
+  </data>
+  <data name="PleaseSelectLayoutContainer.Text">
+    <value xml:space="preserve">Tiene que seleccionar un diseño y un container para realizar esta acción.</value>
+  </data>
+  <data name="PreviewThemeLayoutAndContainer.Text">
+    <value xml:space="preserve">Previsualizar el diseño y container</value>
+  </data>
+  <data name="PublishedCheckbox.Text">
+    <value xml:space="preserve">Publicada</value>
+  </data>
+  <data name="Reference.Text">
+    <value xml:space="preserve">Referencia a {0}</value>
+  </data>
+  <data name="ReferenceDefault.Text">
+    <value xml:space="preserve">Referencia idioma predeterminado {0}</value>
+  </data>
+  <data name="Save.Text">
+    <value xml:space="preserve">Guardar</value>
+  </data>
+  <data name="SaveAsTemplate.Text">
+    <value xml:space="preserve">Guardar como plantilla</value>
+  </data>
+  <data name="Search.Text">
+    <value xml:space="preserve">Buscar</value>
+  </data>
+  <data name="SearchFolders.Text">
+    <value xml:space="preserve">Buscar carpetas</value>
+  </data>
+  <data name="SecureConnection.Text">
+    <value xml:space="preserve">Conexión segura</value>
+  </data>
+  <data name="SecureConnection_tooltip.Text">
+    <value xml:space="preserve">Indique si hay que forzar una conexión segura (SSL) para mostrar la página. Esta opción sólo se activará si el administrador ha habilitado SSL en la configuración del sitio.</value>
+  </data>
+  <data name="Security.Text">
+    <value xml:space="preserve">Seguridad</value>
+  </data>
+  <data name="SEO.Text">
+    <value xml:space="preserve">S.E.O.</value>
+  </data>
+  <data name="SetPageContainer.Text">
+    <value xml:space="preserve">establecer container de página</value>
+  </data>
+  <data name="SetPageLayout.Text">
+    <value xml:space="preserve">establecer diseño de página</value>
+  </data>
+  <data name="SetPageTheme.Text">
+    <value xml:space="preserve">establecer tema de página</value>
+  </data>
+  <data name="Settings.Text">
+    <value xml:space="preserve">Configuración</value>
+  </data>
+  <data name="Site.Text">
+    <value xml:space="preserve">Sitio</value>
+  </data>
+  <data name="SiteDetails_Pages.Text">
+    <value xml:space="preserve">Páginas</value>
+  </data>
+  <data name="SitemapPriority.Text">
+    <value xml:space="preserve">Prioridad sitemap</value>
+  </data>
+  <data name="SitemapPriority_tooltip.Text">
+    <value xml:space="preserve">Introduzca la prioridad deseada (entre 0 y 1.0). Esto ayuda a determinar cómo esta página ha sido calificada por Google con respecto a otras páginas en su sitio (0,5 es el valor predeterminado).</value>
+  </data>
+  <data name="Standard.Text">
+    <value xml:space="preserve">Estándar</value>
+  </data>
+  <data name="StartDate.Text">
+    <value xml:space="preserve">Fecha inicio</value>
+  </data>
+  <data name="Status.Text">
+    <value xml:space="preserve">Estado</value>
+  </data>
+  <data name="System.Text">
+    <value xml:space="preserve">Sistema</value>
+  </data>
+  <data name="TabExists.Text">
+    <value xml:space="preserve">El nombre de página que eligió ya se está usando por otra página en el mismo nivel en la jerarquía de páginas.</value>
+  </data>
+  <data name="TabRecycled.Text">
+    <value xml:space="preserve">Ya existe una página con el mismo nombre en la papelera de reciclaje. Para restaurar esta página utilice la papelera de reciclaje.</value>
+  </data>
+  <data name="Tags.Text">
+    <value xml:space="preserve">Etiquetas</value>
+  </data>
+  <data name="TemplateDescriptionTooltip.Text">
+    <value xml:space="preserve">Introduzca una descripción para esta plantilla.</value>
+  </data>
+  <data name="TemplateName.Text">
+    <value xml:space="preserve">Nombre de la plantilla</value>
+  </data>
+  <data name="TemplateNameTooltip.Text">
+    <value xml:space="preserve">Introduzca un nombre para la plantilla de página.</value>
+  </data>
+  <data name="Title.Label">
+    <value xml:space="preserve">Título</value>
+  </data>
+  <data name="TitleTooltip.Text">
+    <value xml:space="preserve">Introduzca el título de la página. El título se mostrará en el título de la ventana del navegador.</value>
+  </data>
+  <data name="TopPage.Text">
+    <value xml:space="preserve">Página superior</value>
+  </data>
+  <data name="Translated.Text">
+    <value xml:space="preserve">Traducido {0}</value>
+  </data>
+  <data name="TranslatedCheckbox.Text">
+    <value xml:space="preserve">Traducido</value>
+  </data>
+  <data name="TranslationMessageConfirmMessage.Error">
+    <value xml:space="preserve">Se ha producido un error al enviar la notificación a los traductores.</value>
+  </data>
+  <data name="TranslationMessageConfirmMessage.Text">
+    <value xml:space="preserve">Se ha enviado la notificación a los traductores.</value>
+  </data>
+  <data name="UpdateLocalization.Text">
+    <value xml:space="preserve">Actualizar traducción</value>
+  </data>
+  <data name="Url.Text">
+    <value xml:space="preserve">URL</value>
+  </data>
+  <data name="UrlPathNotUnique.Error">
+    <value xml:space="preserve">La URL proporcionada no está disponible. Si desea aceptar la propuesta alternativa, pulse Guardar.</value>
+  </data>
+  <data name="UrlsForThisPage.Text">
+    <value xml:space="preserve">URLs de la página</value>
+  </data>
+  <data name="UrlType.Text">
+    <value xml:space="preserve">Tipo de URL</value>
+  </data>
+  <data name="VaryByLimit.Text">
+    <value xml:space="preserve">Límite de variaciones</value>
+  </data>
+  <data name="VaryByLimit_tooltip.Text">
+    <value xml:space="preserve">Introduzca el número máximo de variaciones en la caché para esta página. Esta opción puede prevenir potenciales ataques de denegación de servicio.</value>
+  </data>
+  <data name="View.Text">
+    <value xml:space="preserve">Ver</value>
+  </data>
+</root>

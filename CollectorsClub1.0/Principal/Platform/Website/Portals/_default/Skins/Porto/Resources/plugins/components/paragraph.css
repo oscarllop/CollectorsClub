@@ -1,0 +1,31 @@
+/* Paragraphs */
+p {
+	color: #777777;
+	line-height: 24px;
+	margin: 0 0 20px;
+}
+
+p.featured {
+	font-size: 1.6em;
+	line-height: 1.5em;
+}
+
+p.short {
+	margin-bottom: 0;
+}
+
+p.tall {
+	margin-bottom: 20px;
+}
+
+p.taller {
+	margin-bottom: 40px;
+}
+
+p .alternative-font {
+	display: inline-block;
+	margin-top: -15px;
+	position: relative;
+	top: 3px;
+	margin-bottom: -6px;
+}

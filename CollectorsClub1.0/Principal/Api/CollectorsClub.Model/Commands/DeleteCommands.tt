@@ -1,0 +1,50 @@
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="..\\Templates\\Context.Base.ttinclude"#>
+<#@ output extension=".cs"#>
+<#
+
+const string _inputFile = @"..\..\CollectorsClub.EntityFramework\Model.edmx";
+var _storeMetadata = LoadMetadata(_inputFile);
+var _textTransform = DynamicTextTransformation.Create(this);
+var _code = new CodeGenerationTools(this);
+var _ef = new MetadataTools(this);
+//var _itemCollection = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors).CreateEdmItemCollection(_inputFile);
+var _itemCollection = _storeMetadata.EdmItems;
+EntityContainer _container = _itemCollection.OfType<EntityContainer>().FirstOrDefault();
+var _typeMapper = new TypeMapper(_code, _ef, _container, _storeMetadata, _textTransform.Errors);
+var	_fileManager = EntityFrameworkTemplateFileManager.Create(this);
+var _codeStringGenerator = new CodeStringGenerator(_code, _typeMapper, _ef);
+ 
+if (!_typeMapper.VerifyCaseInsensitiveTypeUniqueness(_typeMapper.GetAllGlobalItems(_itemCollection), _inputFile)) {
+    return string.Empty;
+}
+
+WriteHeader(_codeStringGenerator, _fileManager);
+
+foreach (var _entity in _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection)) {
+    _fileManager.StartNewFile("Delete" + _entity.Name + "Command.cs");
+#>
+<#= _codeStringGenerator.UsingDirectives(inHeader: false, otherNamespaces: new string[] { "CollectorsClub.Data.Command" })#>
+<# BeginNamespace(_code, "Commands"); #>
+
+<#= _codeStringGenerator.ClassOpening(_entity, "Delete{2}Command", "ICommand")#> {
+<# var simpleProperties = _typeMapper.GetKeyProperties(_entity);
+    if (simpleProperties.Any()) { #>
+	public Delete<#=_code.Escape(_entity)#>Command(<#= _codeStringGenerator.ConstructorParameters(_entity, simpleProperties)#>) {
+<#		foreach (EdmProperty edmProperty in simpleProperties) { #>
+		<#=_codeStringGenerator.ObjectPropertyAssign(edmProperty, string.Empty, "this", true)#>
+<#		} #>
+	}
+
+<#		foreach (var edmProperty in simpleProperties) { #>
+	<#=_codeStringGenerator.Property(edmProperty)#>
+<#		} #>
+<#	} #>
+}
+<#
+	EndNamespace(_code);
+}
+_fileManager.Process();
+
+#>

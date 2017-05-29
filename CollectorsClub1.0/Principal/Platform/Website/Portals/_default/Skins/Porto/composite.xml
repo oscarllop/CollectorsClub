@@ -1,0 +1,403 @@
+﻿<root>
+  <components>
+
+    <component type="Composite" name="modernizr" category="" description="">
+      <JavaScript key="baseJSInclude" src="Resources\plugins\modernizr\modernizr.js" />
+    </component>
+
+    <component type="Composite" name="fontawesome" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\fontawesome\font-awesome.css" />
+    </component>
+
+    <component type="Composite" name="deprecated" category="" description="">     
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\deprecated\custom.css" />
+    </component>
+
+    <component type="Composite" name="bootstrap" description="">
+      <JavaScript key="baseJSInclude" src="Resources\plugins\bootstrap\bootstrap.js" />
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\bootstrap\bootstrap.css" />
+    </component>
+    <component type="Composite" name="default" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\theme.css" />
+    </component>
+
+    <component type="Composite" name="heading" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\heading.css" />
+      <shortcodes>
+        <shortcode name="Headings"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="blockquote" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\blockquote.css" />
+      <shortcodes>
+        <shortcode name="Blockquotes"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="paragraph" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\paragraph.css" />
+    </component>
+
+    <component type="Composite" name="links" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\links.css" />
+    </component>
+
+    <component type="Composite" name="dropcaps" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\dropcaps.css" />
+
+    </component>
+
+    <component type="Composite" name="alternative-font-style" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\alternative-font-style.css" />
+    </component>
+
+    <component type="Composite" name="navs" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\navs.css" />
+    </component>
+
+    <component type="Composite" name="buttons" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\buttons.css" />
+      <shortcodes>
+        <shortcode name="Buttons"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="labels" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\labels.css" />
+      <shortcodes>
+        <shortcode name="Labels"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="forms" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\forms.css" />
+      <shortcodes>
+        <shortcode name="Forms"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="captcha" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\captcha.css" />
+    </component>
+
+    <component type="Composite" name="tables" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\tables.css" />
+      <shortcodes>
+        <shortcode name="Tables"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="icons" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\icons.css" />
+      <shortcodes>
+        <shortcode name="Icons"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="fontawesomelist" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\font-awesome-list.css" />
+    </component>
+
+    <component type="Composite" name="thumbnails" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\thumbnails.css" />
+    </component>
+
+    <component type="Composite" name="imagegallery" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\image-gallery.css" />
+      <JavaScript key="baseJSInclude" src="Resources\plugins\magnific-popup\jquery.magnific-popup.min.js" />
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\magnific-popup\magnific-popup.css" />
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\magnific-popup.css" />
+      <JavaScript key="baseJSInit" src="Resources\plugins\magnific-popup\init.js" />
+      <JavaScript key="baseJSInit" src="Resources\plugins\common\examples.lightboxes.js" />
+      <shortcodes>
+        <shortcode name="Lightbox"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="thumbnailgallery" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\thumbnail-gallery.css" />
+    </component>
+
+    <component type="Composite" name="verticalmenu" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\verticalmenu.css" />
+    </component>
+
+    <component type="Composite" name="masonry" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\masonry.css" />
+    </component>
+
+    <component type="Composite" name="list" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\list.css" />
+      <shortcodes>
+        <shortcode name="Lists"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="sitemap" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\sitemap.css" />
+    </component>
+    <component type="Composite" name="accordion" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\accordion.css" />
+      <shortcodes>
+        <shortcode name="Accordions"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="tabs" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\tabs.css" />
+      <shortcodes>
+        <shortcode name="Tabs"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="toggles" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\toggles.css" />
+      <shortcodes>
+        <shortcode name="Toggles"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="popup" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\popup.css" />
+    </component>
+
+    <component type="Composite" name="dialog" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\dialog.css" />
+      <shortcodes>
+        <shortcode name="Modals"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="whitepopupblock" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\white-popup-block.css" />
+    </component>
+
+    <component type="Composite" name="miscellaneous" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\miscellaneous.css" />
+    </component>
+
+    <component type="Composite" name="cursor" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\cursor.css" />
+    </component>
+
+    <component type="Composite" name="clearfix" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\clearfix.css" />
+    </component>
+
+    <component type="Composite" name="pagination" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\pagination.css" />
+    </component>
+
+    <component type="Composite" name="readmore" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\readmore.css" />
+    </component>
+
+    <component type="Composite" name="offsetanchor" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\offset-anchor.css" />
+    </component>
+
+    <component type="Composite" name="showgrid" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\show-grid.css" />
+    </component>
+
+    <component type="Composite" name="alerts" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\alerts.css" />
+      <shortcodes>
+        <shortcode name="Alerts"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="embedresponsive" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\embed-responsive.css" />
+    </component>
+
+    <component type="Composite" name="contentgrid" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\content-grid.css" />
+    </component>
+
+    <component type="Composite" name="dividers" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\dividers.css" />
+      <shortcodes>
+        <shortcode name="Dividers"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="sort" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\sort.css" />
+    </component>
+
+    <component type="Composite" name="pricingtables" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\pricing-tables.css" />
+      <shortcodes>
+        <shortcode name="Pricing Tables"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="iconfeatured" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\icon-featured.css" />
+    </component>
+
+    <component type="Composite" name="featuredbox" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\featured-box.css" />
+    </component>
+
+    <component type="Composite" name="featurebox" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\feature-box.css" />
+    </component>
+
+    <component type="Composite" name="thumbInfo" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\thumbInfo.css" />
+    </component>
+
+    <component type="Composite" name="timeline" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\timeline.css" />
+    </component>
+
+    <component type="Composite" name="testimonials" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\testimonials.css" />
+      <shortcodes>
+        <shortcode name="Testimonials"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="social-icons" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\social-icons.css" />
+    </component>
+
+    <component type="Composite" name="arrows" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\arrows.css" />
+      <shortcodes>
+        <shortcode name="Arrows"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="calltoaction" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\call-to-action.css" />
+      <shortcodes>
+        <shortcode name="Call to Action"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="circularbars" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\circular-bars.css" />
+      <JavaScript key="baseJSInclude" src="Resources\plugins\jquery.easing\jquery.easing.min.js" />
+      <JavaScript key="baseJSInclude" src="Resources\plugins\jquery.appear\jquery.appear.min.js" />
+      <JavaScript key="baseJSInit" src="Resources\plugins\jquery.appear\init.js" />
+      <shortcodes>
+        <shortcode name="Animations"></shortcode>
+        <shortcode name="Progress Bar"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="progress" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\progress.css" />
+      <shortcodes>
+        <shortcode name="Progress Bar"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="counters" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\counters.css"/>
+      <shortcodes>
+        <shortcode name="Counters"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="wordrotator" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\wordRotate.css"/>
+      <shortcodes>
+        <shortcode name="Word Rotator"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="scrolltotop" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\scroll-to-top.css" />
+    </component>
+
+    <component type="Composite" name="portfolio" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\portfolio.css" />
+    </component>
+
+    <component type="Composite" name="teamlist" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\team-list.css" />
+    </component>
+
+    <component type="Composite" name="history" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\history.css" />
+    </component>
+
+    <component type="Composite" name="searchresults" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\search-results.css" />
+    </component>
+
+    <component type="Composite" name="googlemap" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\maps.css" />
+      <JavaScript key="baseJSInclude" src="Resources\plugins\jquery.gmap\jquery.gmap.min.js" />
+      <shortcodes>
+        <shortcode name="Google Maps"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="default" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\theme-blog.css" />
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\theme-shop.css" />
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\theme-animate.css" />
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\custom.css" />
+    </component>
+
+    <component type="Composite" name="common" category="" description="">
+      <JavaScript key="baseJSInclude" src="Resources\plugins\common\common.min.js" />
+      <JavaScript key="baseJSInit" src="Resources\plugins\common\init.js" />
+    </component>
+
+    <component type="Composite" name="jquery.stellar" category="" description="">
+      <JavaScript key="baseJSInclude" src="Resources\plugins\jquery.stellar\jquery.stellar.min.js" />
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\video.css" />
+      <JavaScript key="baseJSInclude" src="Resources\plugins\vide\vide.min.js" />
+      <JavaScript key="baseJSInit" src="Resources\plugins\vide\init.js" />
+      <shortcodes>
+        <shortcode name="Sections &amp; Parallax"></shortcode>
+      </shortcodes>
+    </component>
+
+    <component type="Composite" name="jqueryeasypiechart" category="" description="">
+      <JavaScript key="baseJSInclude" src="Resources\plugins\jquery.easy-pie-chart\jquery.easy-pie-chart.min.js" />
+      <JavaScript key="baseJSInit" src="Resources\plugins\jquery.easy-pie-chart\init.js" />
+    </component>
+
+    <component type="Composite" name="isotope" category="" description="">
+      <JavaScript key="baseJSInclude" src="Resources\plugins\isotope\jquery.isotope.js" />
+      <JavaScript key="baseJSInit" src="Resources\plugins\isotope\init.js" />
+    </component>
+    
+    <component type="Composite" name="owlcarousel" category="" description="">
+      <JavaScript key="baseJSInclude" src="Resources\plugins\owlcarousel\owl.carousel.min.js" />
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\owlcarousel\owl.carousel.css" />
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\owlcarousel\owl.theme.default.css" />
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\owlcarousel\owl.theme.green.css" />
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\components\owl-carousel.css"/>
+      <JavaScript key="baseJSInit" src="Resources\plugins\owlcarousel\init.js" />
+      <shortcodes>
+        <shortcode name="Carousel"></shortcode>
+      </shortcodes>
+    </component>
+    
+    <component type="Composite" name="simple-line-icons" category="" description="">
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\simple-line-icons\simple-line-icons.css" />
+    </component>
+    
+    <component type="Composite" name="jflickrfeed" category="" description="">
+      <JavaScript key="baseJSInclude" src="Resources\plugins\jflickrfeed\jflickrfeed.min.js" />
+      <JavaScript key="baseJSInit" src="Resources\plugins\jflickrfeed\init.js" />
+      <shortcodes>
+        <shortcode name="Flickr Feed"></shortcode>
+      </shortcodes>
+    </component>
+    <component type="Composite" name="circleflipslideshow" category="" description="">
+      <JavaScript key="baseJSInclude" src="Resources\plugins\circle-flip-slideshow\jquery.flipshow.min.js" />
+      <Stylesheet key="baseCSSInclude" src="Resources\plugins\circle-flip-slideshow\component.css" />
+      <JavaScript key="baseJSInit" src="Resources\plugins\circle-flip-slideshow\init.js" />
+    </component>
+  </components>
+</root>

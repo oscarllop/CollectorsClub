@@ -1,0 +1,19 @@
+﻿@import "../variables.less.txt";
+
+.modal-header {
+    background-color: @HSBackgroundColor;
+    color: @HSColor;
+    text-align: @HSTextAlign;
+    border: @HSBorder;
+    font-size: @HSFontSize;
+    font-weight: @HSFontWeight;
+}
+
+.modal-content {
+    border-width: @BSBorderWidth;
+    border-style: @BSBorderStyle; 
+    border-color: @BSBorderThemeMode;
+    border-radius: @BSBorderRadius;
+    box-shadow: @BBoxShadow;
+}
+

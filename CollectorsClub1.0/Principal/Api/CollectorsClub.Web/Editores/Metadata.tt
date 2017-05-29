@@ -1,0 +1,78 @@
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="..\\..\\CollectorsClub.Model\\Templates\\Context.Base.ttinclude"#><#@ output extension=".sql"#><#
+
+const string _inputFile = @"..\..\CollectorsClub.EntityFramework\Model.edmx";
+string _aplicacion = "CollectorsClub";
+Dictionary<string, MetadataGenerador.MetadataEntidad> _metadataEntidades = MetadataGenerador.ObtenerEntidades(_aplicacion);
+var _storeMetadata = LoadMetadata(_inputFile);
+var _textTransform = DynamicTextTransformation.Create(this);
+var _code = new CodeGenerationTools(this);
+var _ef = new MetadataTools(this);
+//var _itemCollection = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors).CreateEdmItemCollection(_inputFile);
+var _itemCollection = _storeMetadata.EdmItems;
+EntityContainer _container = _itemCollection.OfType<EntityContainer>().FirstOrDefault();
+var _typeMapper = new TypeMapper(_code, _ef, _container, _storeMetadata, _textTransform.Errors);
+var _codeSQLGenerator = new CodeSQLGenerator(_code, _typeMapper, _ef, _storeMetadata);
+if (_container == null) {
+    return string.Empty;
+} #>
+USE GeneradorMetadata;
+GO
+
+declare @IdEntidad as smallint
+
+<# MetadataGenerador.IncluirEntidadesNoExistentesEnFramework(_metadataEntidades, _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection).ToList(), _typeMapper);
+	 foreach (var _entity in _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection)) { 
+	  IEnumerable<EdmMember> _simpleProperties = _typeMapper.GetSimpleProperties(_entity);
+	  IEnumerable<EdmMember> _visibleProperties = _typeMapper.GetVisibleProperties(_entity);
+	  IEnumerable<EdmMember> _keyProperties = _typeMapper.GetKeyProperties(_entity);
+		List<EdmMember> _procedureParameterProperties = _codeSQLGenerator.GetQueryParameterProperties(_visibleProperties, _simpleProperties); #>
+------------------------------- Inicio script del módulo <#=_code.Escape(_entity)#>  ------------------------------
+
+set @IdEntidad  = (SELECT Id FROM Entidades WHERE Aplicacion = '<#=_aplicacion#>' AND Nombre = '<#=_code.Escape(_entity)#>')
+if (@IdEntidad IS NULL)
+begin
+	INSERT INTO Entidades (Aplicacion, Nombre) VALUES ('<#=_aplicacion#>', '<#=_code.Escape(_entity)#>')	
+	set @IdEntidad = Scope_Identity()
+end
+
+<# foreach (EdmProperty _property in _typeMapper.GetSimpleProperties(_entity)) {
+		short _tipoCampoFiltro = (short) MetadataGenerador.ObtenerTipoCampoFiltro(MetadataGenerador.BuscarPropiedad(_metadataEntidades[_entity.Name].PanelesFiltro, _property), _typeMapper, _entity, _property);
+		short _tipoCampoListado = (short) MetadataGenerador.ObtenerTipoCampoListado(MetadataGenerador.BuscarPropiedad(_metadataEntidades[_entity.Name].PanelesListado, _property), _typeMapper, _entity, _property);
+		short _tipoCampoFormulario = (short) MetadataGenerador.ObtenerTipoCampoFormulario(MetadataGenerador.BuscarPropiedad(_metadataEntidades[_entity.Name].PanelesFormulario, _property), _typeMapper, _entity, _property);
+		short _tipoCampoFormularioCopia = (short) MetadataGenerador.ObtenerTipoCampoFormularioCopia(MetadataGenerador.BuscarPropiedad(_metadataEntidades[_entity.Name].PanelesFormularioCopia, _property), _typeMapper, _entity, _property);
+		short _tipoCampoFormularioEdicionMultiple = (short) MetadataGenerador.ObtenerTipoCampoFormularioEdicionMultiple(MetadataGenerador.BuscarPropiedad(_metadataEntidades[_entity.Name].PanelesFormularioEdicionMultiple, _property), _typeMapper, _entity, _property);
+#> 
+if not exists (SELECT * FROM Propiedades WHERE Aplicacion = '<#=_aplicacion#>' AND IdEntidad = @IdEntidad AND EntidadAnt = '<#=_code.Escape(_entity)#>' AND Propiedad = '<#=_code.Escape(_property)#>')
+begin
+	INSERT INTO Propiedades (Aplicacion, IdEntidad, EntidadAnt, Propiedad, Literal, IdTipoCampoFiltro, IdTipoCampoListado, IdTipoCampoFormulario, IdTipoCampoFormularioCopia, IdTipoCampoFormularioEdicionMultiple, SoloLecturaInsercion, SoloLecturaEdicion) VALUES ('<#=_aplicacion#>', @IdEntidad, '<#=_code.Escape(_entity)#>', '<#=_code.Escape(_property)#>', '<#=_code.Escape(_property)#>', <#= _tipoCampoFiltro #>, <#= _tipoCampoListado #>, <#= _tipoCampoFormulario #>, <#= _tipoCampoFormularioCopia #>, <#= _tipoCampoFormularioEdicionMultiple #>, <#= (_property.Name == "Id" || _property.Name == "FechaAlta" || _property.Name == "FechaUltimaModificacion" || _property.Name == "UsuarioAlta" || _property.Name == "UsuarioUltimaModificacion" || _property.Name == "Marca" || _property.Name == "IdMarca" ? 1 : 0) #>, <#= (_property.Name == "Id" || _property.Name == "FechaAlta" || _property.Name == "FechaUltimaModificacion" || _property.Name == "UsuarioAlta" || _property.Name == "UsuarioUltimaModificacion" || _property.Name == "Marca" || _property.Name == "IdMarca" ? 1 : 0) #>);
+end
+<# } #>
+<# foreach (NavigationProperty _property in _typeMapper.GetSimpleNavigationProperties(_entity)) {
+		short _tipoCampoFiltro = (short) MetadataGenerador.ObtenerTipoCampoFiltro(MetadataGenerador.BuscarPropiedad(_metadataEntidades[_entity.Name].PanelesFiltro, _property), _typeMapper, _entity, _property);
+		short _tipoCampoListado = (short) MetadataGenerador.ObtenerTipoCampoListado(MetadataGenerador.BuscarPropiedad(_metadataEntidades[_entity.Name].PanelesListado, _property), _typeMapper, _entity, _property);
+		short _tipoCampoFormulario = (short) MetadataGenerador.ObtenerTipoCampoFormulario(MetadataGenerador.BuscarPropiedad(_metadataEntidades[_entity.Name].PanelesFormulario, _property), _typeMapper, _entity, _property);
+		short _tipoCampoFormularioCopia = (short) MetadataGenerador.ObtenerTipoCampoFormularioCopia(MetadataGenerador.BuscarPropiedad(_metadataEntidades[_entity.Name].PanelesFormularioCopia, _property), _typeMapper, _entity, _property);
+		short _tipoCampoFormularioEdicionMultiple = (short) MetadataGenerador.ObtenerTipoCampoFormularioEdicionMultiple(MetadataGenerador.BuscarPropiedad(_metadataEntidades[_entity.Name].PanelesFormularioEdicionMultiple, _property), _typeMapper, _entity, _property);
+#> 
+if not exists (SELECT * FROM Propiedades WHERE Aplicacion = '<#=_aplicacion#>' AND IdEntidad = @IdEntidad AND EntidadAnt = '<#=_code.Escape(_entity)#>' AND Propiedad = '<#=_code.Escape(_property)#>')
+begin
+	INSERT INTO Propiedades (Aplicacion, IdEntidad, EntidadAnt, Propiedad, Literal, IdTipoCampoFiltro, IdTipoCampoListado, IdTipoCampoFormulario, IdTipoCampoFormularioCopia, IdTipoCampoFormularioEdicionMultiple, VisibleEnFiltro, VisibleEnListado, VisibleEnFormulario) VALUES ('<#=_aplicacion#>', @IdEntidad, '<#=_code.Escape(_entity)#>', '<#=_code.Escape(_property)#>', '<#=_code.Escape(_property)#>', <#= _tipoCampoFiltro #>, <#= _tipoCampoListado #>, <#= _tipoCampoFormulario #>, <#= _tipoCampoFormularioCopia #>, <#= _tipoCampoFormularioEdicionMultiple #>, 0, 1, 0);
+end
+<# } #>
+<# foreach (NavigationProperty _property in _typeMapper.GetCollectionNavigationProperties(_entity)) {
+		short _tipoCampoFiltro = (short) MetadataGenerador.ObtenerTipoCampoFiltro(MetadataGenerador.BuscarPropiedad(_metadataEntidades[_entity.Name].PanelesFiltro, _property), _typeMapper, _entity, _property);
+		short _tipoCampoListado = (short) MetadataGenerador.ObtenerTipoCampoListado(MetadataGenerador.BuscarPropiedad(_metadataEntidades[_entity.Name].PanelesListado, _property), _typeMapper, _entity, _property);
+		short _tipoCampoFormulario = (short) MetadataGenerador.ObtenerTipoCampoFormulario(MetadataGenerador.BuscarPropiedad(_metadataEntidades[_entity.Name].PanelesFormulario, _property), _typeMapper, _entity, _property);
+		short _tipoCampoFormularioCopia = (short) MetadataGenerador.ObtenerTipoCampoFormularioCopia(MetadataGenerador.BuscarPropiedad(_metadataEntidades[_entity.Name].PanelesFormularioCopia, _property), _typeMapper, _entity, _property);
+		short _tipoCampoFormularioEdicionMultiple = (short) MetadataGenerador.ObtenerTipoCampoFormularioEdicionMultiple(MetadataGenerador.BuscarPropiedad(_metadataEntidades[_entity.Name].PanelesFormularioEdicionMultiple, _property), _typeMapper, _entity, _property);
+#>
+if not exists (SELECT * FROM Propiedades WHERE Aplicacion = '<#=_aplicacion#>' AND IdEntidad = @IdEntidad AND EntidadAnt = '<#=_code.Escape(_entity)#>' AND Propiedad = '<#=_code.Escape(_property)#>')
+begin
+	INSERT INTO Propiedades (Aplicacion, IdEntidad, EntidadAnt, Propiedad, Literal, IdTipoCampoFiltro, IdTipoCampoListado, IdTipoCampoFormulario, IdTipoCampoFormularioCopia, IdTipoCampoFormularioEdicionMultiple, VisibleEnFiltro, VisibleEnListado, VisibleEnFormulario, PermitirCrear, PermitirGuardar, PermitirBorrar, BusquedaAutomatica, IdModoInicio, HabilitarFiltro) VALUES ('<#=_aplicacion#>', @IdEntidad,'<#=_code.Escape(_entity)#>', '<#=_code.Escape(_property)#>', '<#=_code.Escape(_property)#>', <#= _tipoCampoFiltro #>, <#= _tipoCampoListado #>, <#= _tipoCampoFormulario #>, <#= _tipoCampoFormularioCopia #>, <#= _tipoCampoFormularioEdicionMultiple #>, 0, 0, 0, 1, 1, 1, 1, 1, <#= (_property.Name == "IdMarca" ? 0 : 1) #>);
+end
+<# } #>
+------------------------------- Fin script del módulo <#=_code.Escape(_entity)#>  ------------------------------
+
+<# } #>

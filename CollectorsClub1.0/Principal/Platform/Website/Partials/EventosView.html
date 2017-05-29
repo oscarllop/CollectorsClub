@@ -1,0 +1,98 @@
+﻿<div id="__id__partialContenedorInterno" style="display: none">
+	<div class="disenyointerior Eventos" data-bind="foreach: RegistrosPorFecha">
+		<div class="cabecera">
+			<div class="divider divider-solid">
+				<em class="fa fa-chevron-up"></em>
+			</div>
+			<div class="feature-box">
+				<div class="feature-box-icon">
+					<em class="fa fa-book"></em>
+				</div>
+				<div class="feature-box-info">
+					<h4 class="mb-sm nombre" data-bind="html: $parent.FormatearFecha(Fecha, $parent.CadenaFormatoFecha(Fecha, 'Largo', $parent.settings.Cultura), null)"></h4>
+				</div>
+			</div>
+			<div class="divider divider-solid inferior">
+				<em class="fa fa-chevron-down"></em>
+			</div>
+		</div>
+		<div class="featured-boxes featured-boxes-style-8">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="featured-box featured-box-primary featured-box-text-left">
+						<div class="box-content">
+							<div class="row">
+								<div class="col-md-12">
+									<table class="table">
+										<thead>
+											<tr>
+												<th data-bind="text: $parent.TraduccionCampos.get('Fecha_Text')()"></th>
+												<th data-bind="text: $parent.TraduccionCampos.get('Hora_Text')()"></th>
+												<th data-bind="text: $parent.TraduccionCampos.get('Ubicacion_Text')()"></th>
+												<th data-bind="text: $parent.TraduccionCampos.get('Descripcion_Text')()"></th>
+											</tr>
+										</thead>
+										<tbody data-bind="foreach: Registros">
+											<tr>
+												<td class="fecha" data-bind="text: $parents[1].FormatearFecha(Fecha, $parents[1].CadenaFormatoFecha(Fecha, 'Corto', $parents[1].settings.Cultura), null)"></td>
+												<td class="hora" data-bind="text: $parents[1].FormatearFecha(HoraInicio, $parents[1].CadenaFormatoHora(HoraInicio, 'Corto', $parents[1].settings.Cultura), $parents[1].CadenaFormatoHora(HoraInicio, 'Largo', $parents[1].settings.Cultura)) + ' - ' + $parents[1].FormatearFecha(HoraFin, $parents[1].CadenaFormatoHora(HoraFin, 'Corto', $parents[1].settings.Cultura), $parents[1].CadenaFormatoHora(HoraFin, 'Largo', $parents[1].settings.Cultura))"></td>
+												<td class="ubicacion" data-bind="html: Ubicacion"></td>
+												<td class="descripcion">
+													<p data-bind="visible: $parents[1].CadenaVacia(DescripcionPatrocinador), html: DescripcionPatrocinador"></p>
+													<p data-bind="visible: $parents[1].CadenaVacia(Nombre), html: Nombre" style="font-weight: bold"></p>
+													<p data-bind="visible: $parents[1].CadenaVacia(DescripcionCorta), html: DescripcionCorta"></p>
+													<p data-bind="visible: $parents[1].CadenaVacia(Descripcion), html: Descripcion"></p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var __id_partialParametros = null;
+	var __id_partialTimeoutActualizarActivado = false;
+	window.__id__partial = {
+		Iniciar: function (parametros, partials) {
+			__id_partialParametros = parametros;
+			try {
+				partials.IniciarPartial(parametros.IdModulo + 'System', parametros, [], []);
+			} catch (excepcion) {
+				console.log(excepcion);
+			}
+		},
+		Actualizar: function (parametros, partials) {
+			__id_partialParametros = parametros;
+			try {
+				// TODO: OLL: Revisar esto. Es feo feo, pero no se me ocurre otra manera ahora.
+				var _llamadaRecursiva = function () {
+					if (typeof (GlobalViewModels['__id__partialViewModel']) === 'undefined') {
+						setTimeout(_llamadaRecursiva, 100);
+					} else {
+						__id_partialTimeoutActualizarActivado = false;
+						_actualizarViewModel();
+					}
+				}
+
+				var _actualizarViewModel = function () {
+					GlobalViewModels['__id__partialViewModel'].Actualizar(__id_partialParametros);
+				}
+
+				if (typeof (GlobalViewModels['__id__partialViewModel']) === 'undefined') {
+					if (!__id_partialTimeoutActualizarActivado) { __id_partialTimeoutActualizarActivado = true; setTimeout(_llamadaRecursiva, 100); }
+				} else {
+					__id_partialTimeoutActualizarActivado = false;
+					_actualizarViewModel();
+				}
+			} catch (excepcion) {
+				console.log(excepcion);
+			}
+		}
+	}
+</script>

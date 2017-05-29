@@ -1,0 +1,15 @@
+/* Blockquote */
+
+blockquote {
+	font-size: 1em;
+}
+
+blockquote.with-borders {
+	border-radius: 6px;
+	border-top: 1px solid #DFDFDF;
+	border-bottom: 1px solid #DFDFDF;
+	border-left: 1px solid #ECECEC;
+	border-right: 1px solid #ECECEC;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
+	padding: 15px 20px;
+}

@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountSettings.Text">
+    <value xml:space="preserve">Configuración de la cuenta</value>
+  </data>
+  <data name="Add.Text">
+    <value xml:space="preserve">Añadir</value>
+  </data>
+  <data name="AddRolePlaceHolder.Text">
+    <value xml:space="preserve">Empieze a escribir para añadir un rol al usuario.</value>
+  </data>
+  <data name="All.Text">
+    <value xml:space="preserve">Todos</value>
+  </data>
+  <data name="Approved.Help">
+    <value xml:space="preserve">Indica si el usuario está autorizado en el sitio.</value>
+  </data>
+  <data name="Approved.Text">
+    <value xml:space="preserve">Autorizado:</value>
+  </data>
+  <data name="Authorized.Header">
+    <value xml:space="preserve">Estado</value>
+  </data>
+  <data name="Authorized.Text">
+    <value xml:space="preserve">Autorizado</value>
+  </data>
+  <data name="btnApply.Text">
+    <value xml:space="preserve">Aplicar</value>
+  </data>
+  <data name="btnCancel.Text">
+    <value xml:space="preserve">Cancelar</value>
+  </data>
+  <data name="btnCreate.Text">
+    <value xml:space="preserve">Crear</value>
+  </data>
+  <data name="btnCreateUser.Text">
+    <value xml:space="preserve">Añadir usuario</value>
+  </data>
+  <data name="btnSave.Text">
+    <value xml:space="preserve">Guardar</value>
+  </data>
+  <data name="Cancel.Text">
+    <value xml:space="preserve">Cancelar</value>
+  </data>
+  <data name="CannotAddUser.Text">
+    <value xml:space="preserve">Su configuración requiere a los usuarios que escriban una pregunta y respuesta para el recordatorio de contraseña. Esta configuración es incompatible con que el administrador pueda añadir usuarios, por lo que esta opción ha sido deshabilitada para este sitio.</value>
+  </data>
+  <data name="CannotChangePassword.Text">
+    <value xml:space="preserve">Su configuración require que introduzca una pregunta y respuesta para el recordatorio de contraseña. Cuando se activa esta opción, los administradores no pueden cambiar las contraseñas de los usuarios, por lo que esta opción se ha desactivado en esta web.</value>
+  </data>
+  <data name="ChangePassword.Text">
+    <value xml:space="preserve">Cambiar contraseña</value>
+  </data>
+  <data name="ChangeSuccessful.Text">
+    <value xml:space="preserve">La contraseña se ha cambiado</value>
+  </data>
+  <data name="cmdAuthorize.Text">
+    <value xml:space="preserve">Autorizar usuario</value>
+  </data>
+  <data name="cmdPassword.Text">
+    <value xml:space="preserve">Forzar cambio de contraseña</value>
+  </data>
+  <data name="cmdUnAuthorize.Text">
+    <value xml:space="preserve">Desautorizar usuario</value>
+  </data>
+  <data name="cmdUnLock.Text">
+    <value xml:space="preserve">Desbloquear cuenta</value>
+  </data>
+  <data name="cmUnlockUser.Text" lastModified="2017-02-05 14:53:54">
+    <value xml:space="preserve">Desbloquear usuario</value>
+  </data>
+  <data name="Confirm.Help">
+    <value xml:space="preserve">Vuelva a entrar la contraseña para confirmarla.</value>
+  </data>
+  <data name="Confirm.Required">
+    <value xml:space="preserve">Tiene que entrar la confirmación de la contraseña. </value>
+  </data>
+  <data name="Confirm.Text">
+    <value xml:space="preserve">Confirmación de contraseña:</value>
+  </data>
+  <data name="ConfirmMismatch.ErrorMessage">
+    <value xml:space="preserve">La contraseña y la confirmación tienen que coincidir.</value>
+  </data>
+  <data name="Created.Header">
+    <value xml:space="preserve">Creado</value>
+  </data>
+  <data name="CreatedDate.Help">
+    <value xml:space="preserve">Fecha de creación del usuario.</value>
+  </data>
+  <data name="CreatedDate.Text">
+    <value xml:space="preserve">Fecha de creación:</value>
+  </data>
+  <data name="Delete.Text">
+    <value xml:space="preserve">Eliminar</value>
+  </data>
+  <data name="Deleted.Text">
+    <value xml:space="preserve">Eliminados</value>
+  </data>
+  <data name="DeleteRole.Confirm">
+    <value xml:space="preserve">¿Está seguro que desea quitar el rol '{0}' a '{1}'?</value>
+  </data>
+  <data name="DeleteUser.Confirm">
+    <value xml:space="preserve">¿Está seguro que desea eliminar este usuario?</value>
+  </data>
+  <data name="DeleteUser.Text">
+    <value xml:space="preserve">Eliminar usuario</value>
+  </data>
+  <data name="DemoteFromSuperUser.Text">
+    <value xml:space="preserve">Convertir en usuario normal</value>
+  </data>
+  <data name="DemoteToRegularUser.Text">
+    <value xml:space="preserve">Convertir en usuario normal</value>
+  </data>
+  <data name="DisplayName.Help">
+    <value xml:space="preserve">Introduzca el nombre de visualización.</value>
+  </data>
+  <data name="DisplayName.RegExError">
+    <value xml:space="preserve">El nombre de visualización no es válido.</value>
+  </data>
+  <data name="DisplayName.Required">
+    <value xml:space="preserve">El nombre de visualización es obligatorio.</value>
+  </data>
+  <data name="DisplayName.Text">
+    <value xml:space="preserve">Nombre:</value>
+  </data>
+  <data name="Email.Header">
+    <value xml:space="preserve">Email</value>
+  </data>
+  <data name="Email.Help">
+    <value xml:space="preserve">Introduzca el email.</value>
+  </data>
+  <data name="Email.RegExError">
+    <value xml:space="preserve">Tiene que proporcionar un email válido.</value>
+  </data>
+  <data name="Email.Required">
+    <value xml:space="preserve">El email es obligatorio.</value>
+  </data>
+  <data name="Email.Text">
+    <value xml:space="preserve">Email:</value>
+  </data>
+  <data name="Expires.Header">
+    <value xml:space="preserve">Caduca</value>
+  </data>
+  <data name="FirstName.Help">
+    <value xml:space="preserve">Introduzca el nombre.</value>
+  </data>
+  <data name="FirstName.RegExError">
+    <value xml:space="preserve">El nombre no es válido.</value>
+  </data>
+  <data name="FirstName.Required">
+    <value xml:space="preserve">El nombre es obligatorio.</value>
+  </data>
+  <data name="FirstName.Text">
+    <value xml:space="preserve">Nombre:</value>
+  </data>
+  <data name="ForceChangePassword.Text">
+    <value xml:space="preserve">Forzar cambio de contraseña</value>
+  </data>
+  <data name="InSufficientPermissions.Text">
+    <value xml:space="preserve">No tiene los permisos necesarios para realizar esta acción.</value>
+  </data>
+  <data name="InvalidPasswordAnswer.Text">
+    <value xml:space="preserve">La respuesta de contraseña no es valida.</value>
+  </data>
+  <data name="IsDeleted.Help">
+    <value xml:space="preserve">Indica si el usuario está eliminado.</value>
+  </data>
+  <data name="IsDeleted.Text">
+    <value xml:space="preserve">Eliminado:</value>
+  </data>
+  <data name="IsOnLine.Help">
+    <value xml:space="preserve">Indica si el usuario está en linea en este momento.</value>
+  </data>
+  <data name="IsOnLine.Text">
+    <value xml:space="preserve">En línea:</value>
+  </data>
+  <data name="IsOwner.Text">
+    <value xml:space="preserve">Propietario</value>
+  </data>
+  <data name="LastActivityDate.Help">
+    <value xml:space="preserve">Fecha de la última actividad de este usuario.</value>
+  </data>
+  <data name="LastActivityDate.Text">
+    <value xml:space="preserve">Fecha de la última actividad:</value>
+  </data>
+  <data name="LastLockoutDate.Help">
+    <value xml:space="preserve">Fecha en la que este usuario fue bloqueado por última vez, después de demasiados inicios de sesión fallidos.</value>
+  </data>
+  <data name="LastLockoutDate.Text">
+    <value xml:space="preserve">Fecha del último bloqueo:</value>
+  </data>
+  <data name="LastLoginDate.Help">
+    <value xml:space="preserve">Fecha del ultimo inicio de sesión.</value>
+  </data>
+  <data name="LastLoginDate.Text">
+    <value xml:space="preserve">Fecha del último inicio de sesión:</value>
+  </data>
+  <data name="LastName.Help">
+    <value xml:space="preserve">Introduzca los apellidos.</value>
+  </data>
+  <data name="LastName.RegExError">
+    <value xml:space="preserve">El campo apellidos no es válido.</value>
+  </data>
+  <data name="LastName.Required">
+    <value xml:space="preserve">El campo apellidos es obligatorio.</value>
+  </data>
+  <data name="LastName.Text">
+    <value xml:space="preserve">Apellidos:</value>
+  </data>
+  <data name="LastPasswordChangeDate.Help">
+    <value xml:space="preserve">Fecha en la que el usuario cambió por última vez su contraseña.</value>
+  </data>
+  <data name="LastPasswordChangeDate.Text">
+    <value xml:space="preserve">Ultimo cambio de contraseña:</value>
+  </data>
+  <data name="LockedOut.Help">
+    <value xml:space="preserve">Indica si el usuario está bloqueado después de demasiados intentos fallidos de inicio de sesión.</value>
+  </data>
+  <data name="LockedOut.Text">
+    <value xml:space="preserve">Bloqueado:</value>
+  </data>
+  <data name="ManageProfile.title">
+    <value xml:space="preserve">Configuración de perfil</value>
+  </data>
+  <data name="ManageRoles.title">
+    <value xml:space="preserve">Roles del usuario</value>
+  </data>
+  <data name="ManageSettings.title">
+    <value xml:space="preserve">Cuentas de usuario</value>
+  </data>
+  <data name="Name.Header">
+    <value xml:space="preserve">Nombre</value>
+  </data>
+  <data name="nav_Users.Text">
+    <value xml:space="preserve">Usuarios</value>
+  </data>
+  <data name="Never.Text">
+    <value xml:space="preserve">Nunca</value>
+  </data>
+  <data name="NewConfirm.Help">
+    <value xml:space="preserve">Vuelva a entrar la contraseña para confirmarla.</value>
+  </data>
+  <data name="NewConfirm.Required">
+    <value xml:space="preserve">Tiene que entrar la confirmación de la contraseña. </value>
+  </data>
+  <data name="NewConfirm.Text">
+    <value xml:space="preserve">Confirmación de contraseña:</value>
+  </data>
+  <data name="NewConfirmMismatch.ErrorMessage">
+    <value xml:space="preserve">La contraseña y la confirmación tienen que coincidir.</value>
+  </data>
+  <data name="NewPassword.Help">
+    <value xml:space="preserve">Introduzca la contraseña.</value>
+  </data>
+  <data name="NewPassword.Required">
+    <value xml:space="preserve">Tiene que entrar la contraseña.</value>
+  </data>
+  <data name="NewPassword.Text">
+    <value xml:space="preserve">Nueva contraseña:</value>
+  </data>
+  <data name="NoRoles.Text">
+    <value xml:space="preserve">No se ha encontrado ningún rol.</value>
+  </data>
+  <data name="Notify.Text">
+    <value xml:space="preserve">Enviar un email al nuevo usuario.</value>
+  </data>
+  <data name="noUsers.Text">
+    <value xml:space="preserve">No se ha encontrado ningún usuario.</value>
+  </data>
+  <data name="OptionUnavailable.Text">
+    <value xml:space="preserve">La opción de reiniciar la contraseña no está actualmente disponible.</value>
+  </data>
+  <data name="Password.Help">
+    <value xml:space="preserve">Introduzca una contraseña para este usuario.</value>
+  </data>
+  <data name="Password.Required">
+    <value xml:space="preserve">Tiene que escribir una contraseña.</value>
+  </data>
+  <data name="Password.Text">
+    <value xml:space="preserve">Contraseña:</value>
+  </data>
+  <data name="PasswordInvalid.Text">
+    <value xml:space="preserve">Tiene que escribir una contraseña válida. Consulte con el administrador del sitio si no conoce los requisitos de las contraseñas.</value>
+  </data>
+  <data name="PasswordManagement.Text">
+    <value xml:space="preserve">Gestión de contraseñas</value>
+  </data>
+  <data name="PasswordResetFailed.Text">
+    <value xml:space="preserve">Su nueva contraseña no se ha acceptado por motivos de seguridad. Verifique que ha escogido una contraseña que no coincide con una anterior y que es lo suficientemente larga y compleja para satisfacer los requisitos de seguridad del sitio web.</value>
+  </data>
+  <data name="PasswordResetFailed_PasswordInHistory.Text">
+    <value xml:space="preserve">Su nueva contraseña no se ha aceptado por razones de seguridad. Verifique que escribe otra contraseña que no haya utilizado antes.</value>
+  </data>
+  <data name="PasswordSent.Text">
+    <value xml:space="preserve">Si los datos introducidos son correctos debería recibir un nuevo email con un enlace para reiniciar su contraseña.</value>
+  </data>
+  <data name="PromoteToSuperUser.Text">
+    <value xml:space="preserve">Convertir en superusuario</value>
+  </data>
+  <data name="Random.Help">
+    <value xml:space="preserve">Seleccione esta opción para generar una contraseña aleatoria.</value>
+  </data>
+  <data name="Random.Text">
+    <value xml:space="preserve">Contraseña aleatoria</value>
+  </data>
+  <data name="RegisterationFailed.Text">
+    <value xml:space="preserve">El registro ha fallado. Vuelva a intentarlo en unos minutos.</value>
+  </data>
+  <data name="RegisteredUsers.Text">
+    <value xml:space="preserve">Usuarios registrados</value>
+  </data>
+  <data name="RemoveUser.Confirm">
+    <value xml:space="preserve">¿Está seguro que desea eliminar este usuario de forma permanente?</value>
+  </data>
+  <data name="RemoveUser.Text">
+    <value xml:space="preserve">Eliminar permanentemente usuario</value>
+  </data>
+  <data name="ResetPassword.Text">
+    <value xml:space="preserve">Enviar enlace de reinicio de contraseña</value>
+  </data>
+  <data name="RestoreUser.Text">
+    <value xml:space="preserve">Restaurar usuario</value>
+  </data>
+  <data name="Role.Header">
+    <value xml:space="preserve">Rol</value>
+  </data>
+  <data name="RoleIsNotApproved.Text">
+    <value xml:space="preserve">No se puede asignar un rol que no está aprobado.</value>
+  </data>
+  <data name="Roles.Title">
+    <value xml:space="preserve">Roles</value>
+  </data>
+  <data name="rolesPageInfoText.Text">
+    <value xml:space="preserve">Página {0} de {1}</value>
+  </data>
+  <data name="rolesSummaryText.Text">
+    <value xml:space="preserve">Mostrando {0}-{1} de {2}</value>
+  </data>
+  <data name="SearchPlaceHolder.Text">
+    <value xml:space="preserve">Buscar usuarios</value>
+  </data>
+  <data name="SendEmail.Text">
+    <value xml:space="preserve">Enviar email</value>
+  </data>
+  <data name="ShowLabel.Text">
+    <value xml:space="preserve">Mostrar:</value>
+  </data>
+  <data name="Start.Header">
+    <value xml:space="preserve">Inicio</value>
+  </data>
+  <data name="SuperUsers.Text">
+    <value xml:space="preserve">Superusuarios</value>
+  </data>
+  <data name="UnAuthorized.Text">
+    <value xml:space="preserve">No autorizados</value>
+  </data>
+  <data name="UpdatePassword.Help">
+    <value xml:space="preserve">Indica si se ha forzado al usuario a cambiar su contraseña</value>
+  </data>
+  <data name="UpdatePassword.Text">
+    <value xml:space="preserve">Actualizar contraseña:</value>
+  </data>
+  <data name="UserAuthorized.Text">
+    <value xml:space="preserve">El usuario ha sido autorizado.</value>
+  </data>
+  <data name="UserCreated.Text">
+    <value xml:space="preserve">El usuario se ha creado.</value>
+  </data>
+  <data name="UserDeleted.Text">
+    <value xml:space="preserve">El usuario se ha eliminado.</value>
+  </data>
+  <data name="UserDeleteError.Text">
+    <value xml:space="preserve">No se ha podido eliminar el usuario.</value>
+  </data>
+  <data name="UserFolder.Help">
+    <value xml:space="preserve">Indica la carpeta donde se guardarán los archivos del usuario.</value>
+  </data>
+  <data name="UserFolder.Text">
+    <value xml:space="preserve">Carpeta del usuario:</value>
+  </data>
+  <data name="Username.Help">
+    <value xml:space="preserve">Introduzca el usuario. Tiene que tener al menos 5 caracteres y tiene que ser un valor alfanumérico.</value>
+  </data>
+  <data name="Username.RegExError">
+    <value xml:space="preserve">El nombre de usuario no es válido.</value>
+  </data>
+  <data name="Username.Required">
+    <value xml:space="preserve">El nombre de usuario es obligatorio.</value>
+  </data>
+  <data name="Username.Text">
+    <value xml:space="preserve">Usuario:</value>
+  </data>
+  <data name="UsernameNotUnique.Text">
+    <value xml:space="preserve">El nombre de usuario tiene que ser único.</value>
+  </data>
+  <data name="UserNotFound.Text">
+    <value xml:space="preserve">Usuario no encontrado.</value>
+  </data>
+  <data name="UserPasswordUpdateChanged.Text">
+    <value xml:space="preserve">El usuario debe actualizar su contraseña en el siguiente inicio de sesión</value>
+  </data>
+  <data name="UserRemoveError.Text">
+    <value xml:space="preserve">No se puede eliminar el usuario.</value>
+  </data>
+  <data name="UserRestored.Text">
+    <value xml:space="preserve">El usuario se ha restaurado.</value>
+  </data>
+  <data name="UserRestoreError.Text">
+    <value xml:space="preserve">No se puede restaurar el usuario.</value>
+  </data>
+  <data name="usersPageSizeOptionText.Text">
+    <value xml:space="preserve">{0} usuarios por página</value>
+  </data>
+  <data name="usersSummaryText.Text">
+    <value xml:space="preserve">Mostrando {0}-{1} de {2}</value>
+  </data>
+  <data name="UserUnAuthorized.Text">
+    <value xml:space="preserve">El usuario ha sido desautorizado.</value>
+  </data>
+  <data name="UserUnLocked.Text" lastModified="2017-02-05 15:54:26">
+    <value xml:space="preserve">Se ha desbloqueado el usuario.</value>
+  </data>
+  <data name="UserUnlockError.Text" lastModified="2017-02-05 15:54:26">
+    <value xml:space="preserve">No se ha podido desbloquear el usuario.</value>
+  </data>
+  <data name="UserUpdated.Text">
+    <value xml:space="preserve">El usuario se ha actualizado.</value>
+  </data>
+  <data name="ViewProfile.Text">
+    <value xml:space="preserve">Ver perfil</value>
+  </data>
+</root>

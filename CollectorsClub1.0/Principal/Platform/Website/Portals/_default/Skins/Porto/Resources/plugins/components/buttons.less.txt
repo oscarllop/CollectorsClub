@@ -1,0 +1,28 @@
+﻿@import "../variables.less.txt";
+
+.btn {
+    border-width: @BSBorderWidth;
+    border-style: @BSBorderStyle; 
+    border-color: @BSBorderThemeMode;
+    border-radius: @BSBorderRadius;
+    box-shadow: @BBoxShadow;
+}
+
+.btn:hover, 
+.btn:focus, .btn.focus {
+    color: @CHColor;
+    background-color: @CHBackgroundColor ;
+    border-color: @CHBorderColor;
+}
+
+html .btn-primary:active,
+html .btn-primary:focus,
+html .btn-secondary:active, 
+html .btn-secondary:focus,
+html .btn-tertiary:active, 
+html .btn-tertiary:focus,
+html .btn-quaternary:active, 
+html .btn-quaternary:focus {
+    border-color: @ASBorderColor;
+    background-color: @ASBackgroundColor;
+}

@@ -1,0 +1,84 @@
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="..\\Templates\\Context.Base.ttinclude"#><#
+
+const string _inputFile = @"..\..\CollectorsClub.EntityFramework\Model.edmx";
+var _storeMetadata = LoadMetadata(_inputFile);
+var _textTransform = DynamicTextTransformation.Create(this);
+var _code = new CodeGenerationTools(this);
+var _ef = new MetadataTools(this);
+//var _itemCollection = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors).CreateEdmItemCollection(_inputFile);
+var _itemCollection = _storeMetadata.EdmItems;
+EntityContainer _container = _itemCollection.OfType<EntityContainer>().FirstOrDefault();
+var _typeMapper = new TypeMapper(_code, _ef, _container, _storeMetadata, _textTransform.Errors);
+var	_fileManager = EntityFrameworkTemplateFileManager.Create(this);
+var _codeStringGenerator = new CodeStringGenerator(_code, _typeMapper, _ef);
+ 
+if (!_typeMapper.VerifyCaseInsensitiveTypeUniqueness(_typeMapper.GetAllGlobalItems(_itemCollection), _inputFile)) {
+	return string.Empty;
+}
+
+WriteHeader(_codeStringGenerator, _fileManager);
+
+foreach (var _entity in _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection)) {
+	_fileManager.StartNewFile(_entity.Name + "Configuration.cs");
+#>
+<#= _codeStringGenerator.UsingDirectives(inHeader: true, otherNamespaces: new string[] { "System.ComponentModel.DataAnnotations.Schema", "CollectorsClub.Model.Entities" })#>
+using System.Data.Entity.ModelConfiguration;
+using System.Linq;
+using System.Text;
+<# BeginNamespace(_code, "Configurations"); #>
+<#= _codeStringGenerator.ClassOpening(_entity, "{2}Configuration", "EntityTypeConfiguration<" + _code.Escape(_entity) + ">")#> {
+	public <#=_code.Escape(_entity)#>Configuration() {
+	<# var entitySet = (from meta in _container.BaseEntitySets
+											where meta.ElementType.Name == _entity.Name
+											select meta).FirstOrDefault(); #>
+	ToTable("<#=_code.Escape(entitySet.Name)#>");
+<# IEnumerable<EdmProperty> _keyProperties = _typeMapper.GetKeyProperties(_entity);	
+	if (_keyProperties.Count() > 0) { #>
+		HasKey(p => new { <# foreach (EdmProperty _property in _keyProperties) { #><# if (_keyProperties.FirstOrDefault() != _property) { #>, <# } #><#= _codeStringGenerator.PropertyAsMethodParameter(_property, "p") #><# } #> });
+<# } 
+	foreach (NavigationProperty _property in _typeMapper.GetNavigationProperties(_entity)) { 
+		AssociationType _associationType = (AssociationType) _property.RelationshipType;
+		Tuple<EntitySet, Dictionary<RelationshipEndMember, Dictionary<EdmMember, string>>> tupla; 
+		if (_storeMetadata.ManyToManyMappings.TryGetValue(_associationType, out tupla)) {
+				var _member = _property.ToEndMember.GetEntityType().NavigationProperties.Single(nv => (nv.RelationshipType == _property.RelationshipType) && (nv != _property));
+				
+			if (string.CompareOrdinal(_property.DeclaringType.Name, _member.DeclaringType.Name) < 0) {
+				string leftColumns = string.Join(", ", _typeMapper.GetKeyProperties((EntityType) _property.DeclaringType).Select(m => "\"" + tupla.Item2[_property.FromEndMember][m] + "\""));
+				string rightColumns = string.Join(", ", _typeMapper.GetKeyProperties((EntityType) _member.DeclaringType).Select(m => "\"" + tupla.Item2[_member.FromEndMember][m] + "\"")); #>
+		<#= string.Format("HasMany(p => p.{0}).WithMany(p => p.{1}).Map(m => {{ m.ToTable(\"{2}\"); m.MapLeftKey({3}); m.MapRightKey({4}); }});", _code.Escape(_property), _code.Escape(_member), _typeMapper.GetEntitySetTableName(tupla.Item1), leftColumns, rightColumns) #>
+<#		}
+		} else {
+			if (_associationType.ReferentialConstraints.Count > 0) {
+				EdmProperty _fromProperty = (_associationType.ReferentialConstraints[0].FromProperties.Count > 0 ?  _associationType.ReferentialConstraints[0].FromProperties[0] : null);
+				EdmProperty _toProperty = (_associationType.ReferentialConstraints[0].ToProperties.Count > 0 ? _associationType.ReferentialConstraints[0].ToProperties[0] : null);
+				NavigationProperty _fromNavigationProperty = (from np in _typeMapper.GetNavigationProperties((EntityType) _fromProperty.DeclaringType)
+																										where np.RelationshipType == _property.RelationshipType && np.Name != _property.Name
+																										select np).FirstOrDefault();
+				if (_toProperty != null && _property.DeclaringType == _toProperty.DeclaringType) { 
+					string _metodoPropiedadDestino = (_property.ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many ? "HasMany" : (_ef.IsNullable(_property.TypeUsage) ? "HasOptional" : "HasRequired"));
+					string _metodoPropiedadOrigen = (_property.FromEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many ? "WithMany" : (_ef.IsNullable(_fromNavigationProperty.TypeUsage) ? "WithOptional" : "WithRequiredPrincipal"));
+					string _claveForanea = string.Empty;
+					if (((AssociationType) _property.RelationshipType).ReferentialConstraints.Count > 0 && _property.FromEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many) {
+						_claveForanea = ".HasForeignKey(p => new { " + _codeStringGenerator.MethodParameters(_associationType.ReferentialConstraints[0].ToProperties, "p") + " })";
+					} 
+					if (_fromNavigationProperty != null) { #>
+		<#= string.Format("{0}(p => p.{1}).{2}(p => p.{3}){4};", _metodoPropiedadDestino, _property.Name, _metodoPropiedadOrigen, _fromNavigationProperty.Name, _claveForanea) #>
+<#				} else {
+						throw new ApplicationException("No se ha encontrado pripiedad origen de '" + _toProperty.Name + "' entre las entidades '" + _fromProperty.DeclaringType.Name + "' y '" + _toProperty.DeclaringType.Name);
+					}
+				}
+			}
+		}
+	}
+	foreach (EdmProperty _property in _typeMapper.GetSimpleProperties(_entity)) { #>
+		<#= _codeStringGenerator.PropertyTypeUsage(_storeMetadata, _entity, _property) #>
+<# } #>
+	}
+}
+<#
+	EndNamespace(_code);
+}
+_fileManager.Process();
+#>

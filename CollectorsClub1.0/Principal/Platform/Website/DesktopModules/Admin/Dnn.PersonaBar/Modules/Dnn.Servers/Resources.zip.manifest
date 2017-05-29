@@ -1,0 +1,24 @@
+﻿<dotnetnuke type="ResourceFile" version="5.0">
+  <files>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>Servers.resx</name>
+    </file>
+    <file>
+      <path>css/</path>
+      <name>Servers.css</name>
+    </file>
+    <file>
+      <path>scripts/bundles/</path>
+      <name>servers-bundle.js</name>
+    </file>
+    <file>
+      <path>scripts/</path>
+      <name>Servers.js</name>
+    </file>
+    <file>
+      <path />
+      <name>Servers.html</name>
+    </file>
+  </files>
+</dotnetnuke>

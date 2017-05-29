@@ -1,0 +1,67 @@
+﻿<div id="__id__partialContenedorInterno" style="display: none">
+	<div class="sort-destination lightbox manual Fotogaleria" data-bind="foreach: Grupos" data-sort-id="portfolio" data-plugin-options="{'delegate': 'a', 'type': 'image', 'gallery': {'enabled': true}}">
+		<div class="row">
+			<ul class="image-gallery" data-bind="foreach: Registros">
+				<li class="col-md-3 col-sm-6 col-xs-12 isotope-item fotos">
+					<div class="image-gallery-item">
+						<a data-bind="attr: { 'href': '~/Portals/0/_extension/Thumbnails/Fotos/' + NombreArchivoImagen, 'title': Descripcion }">
+							<div class="thumb-info">
+								<span class="thumb-info-wrapper">
+									<img class="img-responsive" data-bind="attr: { 'src': '~/Portals/0/_extension/Thumbnails/Fotos/' + NombreArchivoImagen, 'alt': Nombre, 'title': Nombre }" />
+									<span class="thumb-info-action-icon">
+										<em class="fa fa-camera"></em>
+									</span>
+								</span>
+							</div>
+						</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!--<span class="thumb-info-title">
+	<span class="thumb-info-inner" data-dind="html: Nombre">aaaa</span>
+	<span class="thumb-info-type" data-dind="html: Nombre">bbbb</span>
+</span>-->
+<script type="text/javascript">
+	var __id_partialParametros = null;
+	var __id_partialTimeoutActualizarActivado = false;
+	window.__id__partial = {
+		Iniciar: function (parametros, partials) {
+			__id_partialParametros = parametros;
+			try {
+				partials.IniciarPartial(parametros.IdModulo + 'System', parametros, [], []);
+			} catch (excepcion) {
+				console.log(excepcion);
+			}
+		},
+		Actualizar: function (parametros, partials) {
+			__id_partialParametros = parametros;
+			try {
+				// TODO: OLL: Revisar esto. Es feo feo, pero no se me ocurre otra manera ahora.
+				var _llamadaRecursiva = function () {
+					if (typeof (GlobalViewModels['__id__partialViewModel']) === 'undefined') {
+						setTimeout(_llamadaRecursiva, 100);
+					} else {
+						__id_partialTimeoutActualizarActivado = false;
+						_actualizarViewModel();
+					}
+				}
+
+				var _actualizarViewModel = function () {
+					GlobalViewModels['__id__partialViewModel'].Actualizar(__id_partialParametros);
+				}
+
+				if (typeof (GlobalViewModels['__id__partialViewModel']) === 'undefined') {
+					if (!__id_partialTimeoutActualizarActivado) { __id_partialTimeoutActualizarActivado = true; setTimeout(_llamadaRecursiva, 100); }
+				} else {
+					__id_partialTimeoutActualizarActivado = false;
+					_actualizarViewModel();
+				}
+			} catch (excepcion) {
+				console.log(excepcion);
+			}
+		}
+	}
+</script>

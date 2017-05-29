@@ -1,0 +1,10 @@
+﻿@import "../variables.less.txt";
+
+.list.list-icons.list-icons-style-2 li .fa {
+    border-width: @BSBorderWidth;
+    border-style: @BSBorderStyle; 
+    border-color: @BSBorderThemeMode;
+    border-radius: @BSBorderRadius;
+    box-shadow: @BBoxShadow;
+}
+

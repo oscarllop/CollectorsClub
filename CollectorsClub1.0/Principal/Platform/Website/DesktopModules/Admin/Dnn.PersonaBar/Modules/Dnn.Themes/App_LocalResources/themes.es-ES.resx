@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <!--DOTWARE TST S.L.-->
+  <data name="Apply.Text">
+    <value xml:space="preserve">Aplicar</value>
+  </data>
+  <data name="ApplyConfirm.Text">
+    <value xml:space="preserve">¿Está seguro que desea aplicar este tema?</value>
+  </data>
+  <data name="Cancel.Text">
+    <value xml:space="preserve">Cancelar</value>
+  </data>
+  <data name="Confirm.Text">
+    <value xml:space="preserve">Confirmar</value>
+  </data>
+  <data name="Container.Text">
+    <value xml:space="preserve">Container</value>
+  </data>
+  <data name="Containers.Text">
+    <value xml:space="preserve">Containers</value>
+  </data>
+  <data name="DeleteConfirm.Text">
+    <value xml:space="preserve">¿Está seguro que desea eliminar este tema?</value>
+  </data>
+  <data name="EditThemeAttributes.Text">
+    <value xml:space="preserve">Editar atributos del tema</value>
+  </data>
+  <data name="File.Text">
+    <value xml:space="preserve">Archivo</value>
+  </data>
+  <data name="Layout.Text">
+    <value xml:space="preserve">Diseño</value>
+  </data>
+  <data name="Layouts.Text">
+    <value xml:space="preserve">Diseños</value>
+  </data>
+  <data name="Localized.Text">
+    <value xml:space="preserve">Traducible</value>
+  </data>
+  <data name="nav_Themes.Text">
+    <value xml:space="preserve">Temas</value>
+  </data>
+  <data name="NoPermission.Text">
+    <value xml:space="preserve">No tiene los permisos necesarios para realizar esta acción.</value>
+  </data>
+  <data name="NoThemeFile.Text">
+    <value xml:space="preserve">No hay ningún archivo de tema.</value>
+  </data>
+  <data name="ParseThemePackage.Text">
+    <value xml:space="preserve">Procesar paquete de tema</value>
+  </data>
+  <data name="Portable.Text">
+    <value xml:space="preserve">Portable</value>
+  </data>
+  <data name="RestoreTheme.Text">
+    <value xml:space="preserve">[ Restaurar tema predeterminado ]</value>
+  </data>
+  <data name="RestoreThemeConfirm.Text">
+    <value xml:space="preserve">¿Está seguro que desea restaurra el tema predeterminado?</value>
+  </data>
+  <data name="SearchPlaceHolder.Text">
+    <value xml:space="preserve">Buscar</value>
+  </data>
+  <data name="SetEditContainer.Text">
+    <value xml:space="preserve">Container edición</value>
+  </data>
+  <data name="SetEditLayout.Text">
+    <value xml:space="preserve">Diseño edición</value>
+  </data>
+  <data name="SetSiteContainer.Text">
+    <value xml:space="preserve">Container sitio</value>
+  </data>
+  <data name="SetSiteLayout.Text">
+    <value xml:space="preserve">Diseño sitio</value>
+  </data>
+  <data name="Setting.Text">
+    <value xml:space="preserve">Configuración</value>
+  </data>
+  <data name="Settings.Text">
+    <value xml:space="preserve">Configuración</value>
+  </data>
+  <data name="SiteTheme.Text">
+    <value xml:space="preserve">Tema del sitio:</value>
+  </data>
+  <data name="StatusEdit.Text">
+    <value xml:space="preserve">E</value>
+  </data>
+  <data name="StatusSite.Text">
+    <value xml:space="preserve">S</value>
+  </data>
+  <data name="Successful.Text">
+    <value xml:space="preserve">Operación realizada</value>
+  </data>
+  <data name="Theme.Text">
+    <value xml:space="preserve">Tema</value>
+  </data>
+  <data name="ThemeNotFound.Text">
+    <value xml:space="preserve">No se puede encontrar el tema.</value>
+  </data>
+  <data name="Themes.Text">
+    <value xml:space="preserve">Temas</value>
+  </data>
+  <data name="Token.Text">
+    <value xml:space="preserve">Token</value>
+  </data>
+  <data name="UsePackageUninstall.Text">
+    <value xml:space="preserve">El tema se ha instalado como una extensión. Vaya a extensiones para desinstalarlo del sistema.</value>
+  </data>
+  <data name="Value.Text">
+    <value xml:space="preserve">Valor</value>
+  </data>
+</root>

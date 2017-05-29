@@ -1,0 +1,38 @@
+﻿/* Labels */
+.label-primary {
+	background-color: #cccccc;
+	color: white;
+}
+
+.label-success {
+	background-color: #47a447;
+	color: white;
+}
+
+.label-warning {
+	background-color: #ed9c28;
+	color: white;
+}
+
+.label-danger {
+	background-color: #d2322d;
+	color: white;
+}
+
+.label-info {
+	background-color: #5bc0de;
+	color: white;
+}
+
+.label-dark {
+	background-color: #1d2127;
+	color: white;
+}
+
+.label.label-sm {
+	font-size: 0.7em;
+}
+
+.label.label-lg {
+	font-size: 1em;
+}

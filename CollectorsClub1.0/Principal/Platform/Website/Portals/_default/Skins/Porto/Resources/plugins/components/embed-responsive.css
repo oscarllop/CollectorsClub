@@ -1,0 +1,10 @@
+﻿/* Embed Responsive */
+.embed-responsive.embed-soundcloud {
+	padding-bottom: 19.25%;
+}
+
+.embed-responsive.embed-responsive-borders {
+	border: 1px solid #DDD;
+	padding: 4px;
+	border-radius: 4px;
+}

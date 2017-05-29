@@ -1,0 +1,27 @@
+﻿@import "../variables.less.txt";
+
+.panel-default > .panel-heading {
+    background-color: @HSBackgroundColor;
+    color: @HSColor;
+    font-weight: @HSFontWeight;
+    font-size: @HSFontSize;
+}
+
+.panel {
+    border-width: @BSBorderWidth;
+    border-style: @BSBorderStyle; 
+    border-color: @BSBorderThemeMode;
+    border-radius: @BSBorderRadius;
+    box-shadow: @BBoxShadow;
+}
+
+.panel a.accordion-toggle:hover {
+    color: @CHColor;
+    background-color: @CHBackgroundColor;
+    border-color: @CHBorderColor;
+}
+
+.panel-group .panel-heading a {
+    color: @LTColor;
+    font-family: @LTFontFamily;
+}

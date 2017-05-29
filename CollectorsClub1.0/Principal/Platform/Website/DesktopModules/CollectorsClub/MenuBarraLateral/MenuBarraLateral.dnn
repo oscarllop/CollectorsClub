@@ -1,0 +1,29 @@
+<dotnetnuke version="3.0" type="Module">
+  <folders>
+    <folder>
+      <name>CollectorsClub.MenuBarraLateral</name>
+      <friendlyname>CollectorsClub - Menu Barra Lateral</friendlyname>
+      <modulename>CollectorsClub.MenuBarraLateral</modulename>
+      <description>CollectorsClub - Menu Barra Lateral</description>
+      <version>01.00.00</version>
+      <modules>
+        <module>
+          <friendlyname>CollectorsClub - Menu Barra Lateral</friendlyname>
+          <cachetime>0</cachetime>
+          <controls>
+            <control>
+              <src>DesktopModules/CollectorsClub/Editores/MenuBarraLateral.ascx</src>
+              <type>View</type>
+              <helpurl></helpurl>
+            </control>
+          </controls>
+        </module>
+      </modules>
+      <files>
+        <file>
+          <name>MenuBarraLateral.ascx</name>
+        </file>
+      </files>
+    </folder>
+  </folders>
+</dotnetnuke>

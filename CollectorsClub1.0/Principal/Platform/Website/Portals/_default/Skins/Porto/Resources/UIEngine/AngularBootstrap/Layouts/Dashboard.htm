@@ -1,0 +1,32 @@
+﻿<div class="row">
+    <div class="ms-col-md-12">
+        <div class="vertical-bar">
+            <div class="style-switcher-mode">
+                <ul class="ms-nav ms-nav-tabs icongroup">
+                    <li><a data-toggle="ms-pill" href="#New" onclick="return false;"  ng-click="bg_Click('')"  title="Themes" class="fa fa-clone"></a></li>
+                    <li ng-show="ShowStyleSwitcher()"><a data-toggle="ms-pill" href="#Basic" onclick="return false;" ng-click="bg_Click('')" title="Layout" class="fa fa-th-large"></a></li>
+                    <li ng-show="ShowStyleSwitcher()"><a data-toggle="ms-pill" href="#Colors" onclick="return false;" ng-click="bg_Click('')" title="Colors" class="fa fa-paint-brush"></a></li>
+                    <li ng-show="ShowStyleSwitcher()"><a data-toggle="ms-pill" href="#Social" onclick="return false;" ng-click="bg_Click('full')" title="Social Icons" class="fa fa-users"></a></li>
+                    <li ng-show="ShowStyleSwitcher()"><a data-toggle="ms-pill" href="#Components" onclick="return false;" ng-click="bg_Click('')" title="DNN Components" class="fa fa-sliders fnt-ic"></a></li>
+                    <li ng-show="ShowStyleSwitcher()"><a data-toggle="ms-pill" href="#ShortCodes" onclick="return false;" ng-click="bg_Click('middle')" title="Shortcodes" class="fa fa-code"></a></li>
+                    <li ng-show="ShowStyleSwitcher()"><a data-toggle="ms-pill" href="#Settings" onclick="return false" title="Settings" ng-click="bg_Click('')" class="fa fa-cog fnt-ic"></a></li>
+                </ul>
+                [uilayout:default]
+            </div>
+        </div>
+        <div id="styleSwitcher" class="style-switcher hidden-phone">
+            [uilayout:Theme]
+            <div class="ms-col-md-12 ms-tab-content">
+                [uilayout:New]
+                [uilayout:Basic]
+                [uilayout:Colors]
+                [uilayout:Social]
+                [uilayout:Components]
+                [uilayout:Settings]
+                [uilayout:ShortCodes]
+             
+            </div>
+
+        </div>
+    </div>
+</div>

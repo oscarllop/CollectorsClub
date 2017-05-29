@@ -1,0 +1,21 @@
+﻿@import "../variables.less.txt";
+
+//for blockquote
+h4{
+    font-size: @HSFontSize;
+    color:@HSColor;
+    font-weight:@HSFontWeight;
+    text-align:@HSTextAlign;
+}
+//call to action
+.btn-default:hover{
+    color: @CHColor;
+    background-color:@CHBorderColor;
+    border-color: @HSBorder;
+}
+//pricing table sign up button
+.btn-primary:hover{
+   border-color: @CHBorderColor;
+    background-color: @CHBorderColor;
+    color: @HSBorder;
+}

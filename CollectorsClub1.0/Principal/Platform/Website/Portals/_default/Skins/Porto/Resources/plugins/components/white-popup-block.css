@@ -1,0 +1,29 @@
+﻿/* White Popup Block */
+.white-popup-block {
+	background: #FFF;
+	padding: 20px 30px;
+	text-align: left;
+	max-width: 600px;
+	margin: 40px auto;
+	position: relative;
+}
+
+.white-popup-block.white-popup-block-xs {
+	max-width: 200px;
+}
+
+.white-popup-block.white-popup-block-sm {
+	max-width: 400px;
+}
+
+.white-popup-block.white-popup-block-md {
+	max-width: 600px;
+}
+
+.white-popup-block.white-popup-block-lg {
+	max-width: 900px;
+}
+
+body.lightbox-opened.sticky-menu-active header {
+	padding-right: 17px;
+}

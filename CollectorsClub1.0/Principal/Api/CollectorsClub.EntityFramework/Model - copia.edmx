@@ -1,0 +1,1926 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CollectorsClubEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Calendarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdSubcategoria" Type="smallint" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Anyo" Type="varchar" MaxLength="50" />
+          <Property Name="Serie" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdEntidad" Type="int" Nullable="false" />
+          <Property Name="NumeroRepetidos" Type="smallint" />
+          <Property Name="NumeroSerie" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdEstado" Type="smallint" />
+          <Property Name="DL" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdEntidadContratante" Type="int" />
+          <Property Name="Variante" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdFabricante" Type="int" />
+          <Property Name="PaginaWeb" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Imagen" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImagenEnBinario" Type="image" />
+          <Property Name="Visible" Type="bit" Nullable="false" />
+          <Property Name="IdMarca" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Calendarios_Idiomas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRegistro" Type="int" Nullable="false" />
+          <Property Name="Cultura" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Variante" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CategoriasFotos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="FechaUltimaModificacion" Type="datetime" />
+          <Property Name="Activa" Type="bit" Nullable="false" />
+          <Property Name="Orden" Type="smallint" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdMarca" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoriasFotos_Idiomas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRegistro" Type="int" Nullable="false" />
+          <Property Name="Cultura" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Entidades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdMarca" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Entidades_Idiomas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRegistro" Type="int" Nullable="false" />
+          <Property Name="Cultura" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadosCalendario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdMarca" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadosCalendario_Idiomas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRegistro" Type="smallint" Nullable="false" />
+          <Property Name="Cultura" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Eventos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="FechaUltimaModificacion" Type="datetime" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="HoraInicio" Type="time" Precision="7" Nullable="false" />
+          <Property Name="HoraFin" Type="time" Precision="7" Nullable="false" />
+          <Property Name="IdTipo" Type="smallint" Nullable="false" />
+          <Property Name="Activa" Type="bit" Nullable="false" />
+          <Property Name="IdMarca" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="750" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+          <Property Name="Ubicacion" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Eventos_Idiomas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRegistro" Type="int" Nullable="false" />
+          <Property Name="Cultura" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Ubicacion" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="750" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fabricantes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdMarca" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fabricantes_Idiomas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRegistro" Type="int" Nullable="false" />
+          <Property Name="Cultura" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fotos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="FechaUltimaModificacion" Type="datetime" />
+          <Property Name="NombreArchivoImagen" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Orden" Type="smallint" Nullable="false" />
+          <Property Name="Activa" Type="bit" Nullable="false" />
+          <Property Name="IdCategoria" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="750" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdMarca" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fotos_Idiomas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRegistro" Type="int" Nullable="false" />
+          <Property Name="Cultura" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="750" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marcas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SolicitudesContacto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="CorreoElectronico" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Asunto" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Contenido" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="FechaUltimaModificacion" Type="datetime" />
+          <Property Name="IdMarca" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubcategoriasCalendario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdMarca" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubcategoriasCalendario_Idiomas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRegistro" Type="smallint" Nullable="false" />
+          <Property Name="Cultura" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TiposEvento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Orden" Type="smallint" Nullable="false" />
+          <Property Name="IdMarca" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TiposEvento_Idiomas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRegistro" Type="smallint" Nullable="false" />
+          <Property Name="Cultura" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimerApellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SegundoApellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NombreDeUsuario" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="CorreoElectronico" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdMarca" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Videos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="FechaUltimaModificacion" Type="datetime" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Url" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IdMarca" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Videos_Idiomas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRegistro" Type="int" Nullable="false" />
+          <Property Name="Cultura" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Url" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Calendarios_Entidades">
+          <End Role="Entidades" Type="Self.Entidades" Multiplicity="1" />
+          <End Role="Calendarios" Type="Self.Calendarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendarios">
+              <PropertyRef Name="IdEntidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calendarios_Entidades_IdEntidadContratante">
+          <End Role="Entidades" Type="Self.Entidades" Multiplicity="0..1" />
+          <End Role="Calendarios" Type="Self.Calendarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendarios">
+              <PropertyRef Name="IdEntidadContratante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calendarios_EstadosCalendario">
+          <End Role="EstadosCalendario" Type="Self.EstadosCalendario" Multiplicity="0..1" />
+          <End Role="Calendarios" Type="Self.Calendarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosCalendario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendarios">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calendarios_Fabricantes">
+          <End Role="Fabricantes" Type="Self.Fabricantes" Multiplicity="0..1" />
+          <End Role="Calendarios" Type="Self.Calendarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabricantes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendarios">
+              <PropertyRef Name="IdFabricante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calendarios_Idiomas_Calendarios">
+          <End Role="Calendarios" Type="Self.Calendarios" Multiplicity="1" />
+          <End Role="Calendarios_Idiomas" Type="Self.Calendarios_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calendarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendarios_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calendarios_Marcas">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="Calendarios" Type="Self.Calendarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendarios">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calendarios_SubcategoriasCalendario">
+          <End Role="SubcategoriasCalendario" Type="Self.SubcategoriasCalendario" Multiplicity="1" />
+          <End Role="Calendarios" Type="Self.Calendarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubcategoriasCalendario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendarios">
+              <PropertyRef Name="IdSubcategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calendarios_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Calendarios" Type="Self.Calendarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendarios">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoriasFotos_Idiomas_CategoriasFotos">
+          <End Role="CategoriasFotos" Type="Self.CategoriasFotos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CategoriasFotos_Idiomas" Type="Self.CategoriasFotos_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriasFotos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoriasFotos_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoriasFotos_Marcas">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="CategoriasFotos" Type="Self.CategoriasFotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoriasFotos">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entidades_Idiomas_Entidades">
+          <End Role="Entidades" Type="Self.Entidades" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Entidades_Idiomas" Type="Self.Entidades_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Entidades_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entidades_Marcas">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="Entidades" Type="Self.Entidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Entidades">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstadosCalendario_Idiomas_EstadosCalendario">
+          <End Role="EstadosCalendario" Type="Self.EstadosCalendario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EstadosCalendario_Idiomas" Type="Self.EstadosCalendario_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosCalendario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EstadosCalendario_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstadosCalendario_Marcas">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="EstadosCalendario" Type="Self.EstadosCalendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EstadosCalendario">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Eventos_Idiomas_Eventos">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Eventos_Idiomas" Type="Self.Eventos_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Eventos_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Eventos_Marcas">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Eventos">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Eventos_TiposEvento">
+          <End Role="TiposEvento" Type="Self.TiposEvento" Multiplicity="1" />
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposEvento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Eventos">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fabricantes_Idiomas_Fabricantes">
+          <End Role="Fabricantes" Type="Self.Fabricantes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Fabricantes_Idiomas" Type="Self.Fabricantes_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabricantes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fabricantes_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fabricantes_Marcas">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="Fabricantes" Type="Self.Fabricantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fabricantes">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotos_CategoriasFotos">
+          <End Role="CategoriasFotos" Type="Self.CategoriasFotos" Multiplicity="1" />
+          <End Role="Fotos" Type="Self.Fotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriasFotos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fotos">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotos_Idiomas_Fotos">
+          <End Role="Fotos" Type="Self.Fotos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Fotos_Idiomas" Type="Self.Fotos_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fotos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fotos_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotos_Marcas">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="Fotos" Type="Self.Fotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fotos">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SolicitudesContacto_Marcas">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="SolicitudesContacto" Type="Self.SolicitudesContacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SolicitudesContacto">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubcategoriasCalendario_Idiomas_SubcategoriasCalendario">
+          <End Role="SubcategoriasCalendario" Type="Self.SubcategoriasCalendario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SubcategoriasCalendario_Idiomas" Type="Self.SubcategoriasCalendario_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubcategoriasCalendario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubcategoriasCalendario_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubcategoriasCalendario_Marcas">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="SubcategoriasCalendario" Type="Self.SubcategoriasCalendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubcategoriasCalendario">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TiposEvento_Idiomas_TiposEvento">
+          <End Role="TiposEvento" Type="Self.TiposEvento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TiposEvento_Idiomas" Type="Self.TiposEvento_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposEvento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TiposEvento_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TiposEvento_Marcas">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="TiposEvento" Type="Self.TiposEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TiposEvento">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Marcas">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Videos_Idiomas_Videos">
+          <End Role="Videos" Type="Self.Videos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Videos_Idiomas" Type="Self.Videos_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Videos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Videos_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Videos_Marcas">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="Videos" Type="Self.Videos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Videos">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CollectorsClubEntitiesStoreContainer">
+          <EntitySet Name="Calendarios" EntityType="Self.Calendarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calendarios_Idiomas" EntityType="Self.Calendarios_Idiomas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoriasFotos" EntityType="Self.CategoriasFotos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoriasFotos_Idiomas" EntityType="Self.CategoriasFotos_Idiomas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entidades" EntityType="Self.Entidades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entidades_Idiomas" EntityType="Self.Entidades_Idiomas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadosCalendario" EntityType="Self.EstadosCalendario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadosCalendario_Idiomas" EntityType="Self.EstadosCalendario_Idiomas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Eventos" EntityType="Self.Eventos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Eventos_Idiomas" EntityType="Self.Eventos_Idiomas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fabricantes" EntityType="Self.Fabricantes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fabricantes_Idiomas" EntityType="Self.Fabricantes_Idiomas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fotos" EntityType="Self.Fotos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fotos_Idiomas" EntityType="Self.Fotos_Idiomas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marcas" EntityType="Self.Marcas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SolicitudesContacto" EntityType="Self.SolicitudesContacto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubcategoriasCalendario" EntityType="Self.SubcategoriasCalendario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubcategoriasCalendario_Idiomas" EntityType="Self.SubcategoriasCalendario_Idiomas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TiposEvento" EntityType="Self.TiposEvento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TiposEvento_Idiomas" EntityType="Self.TiposEvento_Idiomas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Videos" EntityType="Self.Videos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Videos_Idiomas" EntityType="Self.Videos_Idiomas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Calendarios_Entidades" Association="Self.FK_Calendarios_Entidades">
+            <End Role="Entidades" EntitySet="Entidades" />
+            <End Role="Calendarios" EntitySet="Calendarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calendarios_Entidades_IdEntidadContratante" Association="Self.FK_Calendarios_Entidades_IdEntidadContratante">
+            <End Role="Entidades" EntitySet="Entidades" />
+            <End Role="Calendarios" EntitySet="Calendarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calendarios_EstadosCalendario" Association="Self.FK_Calendarios_EstadosCalendario">
+            <End Role="EstadosCalendario" EntitySet="EstadosCalendario" />
+            <End Role="Calendarios" EntitySet="Calendarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calendarios_Fabricantes" Association="Self.FK_Calendarios_Fabricantes">
+            <End Role="Fabricantes" EntitySet="Fabricantes" />
+            <End Role="Calendarios" EntitySet="Calendarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calendarios_Idiomas_Calendarios" Association="Self.FK_Calendarios_Idiomas_Calendarios">
+            <End Role="Calendarios" EntitySet="Calendarios" />
+            <End Role="Calendarios_Idiomas" EntitySet="Calendarios_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calendarios_Marcas" Association="Self.FK_Calendarios_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Calendarios" EntitySet="Calendarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calendarios_SubcategoriasCalendario" Association="Self.FK_Calendarios_SubcategoriasCalendario">
+            <End Role="SubcategoriasCalendario" EntitySet="SubcategoriasCalendario" />
+            <End Role="Calendarios" EntitySet="Calendarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calendarios_Usuarios" Association="Self.FK_Calendarios_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Calendarios" EntitySet="Calendarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoriasFotos_Idiomas_CategoriasFotos" Association="Self.FK_CategoriasFotos_Idiomas_CategoriasFotos">
+            <End Role="CategoriasFotos" EntitySet="CategoriasFotos" />
+            <End Role="CategoriasFotos_Idiomas" EntitySet="CategoriasFotos_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoriasFotos_Marcas" Association="Self.FK_CategoriasFotos_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="CategoriasFotos" EntitySet="CategoriasFotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entidades_Idiomas_Entidades" Association="Self.FK_Entidades_Idiomas_Entidades">
+            <End Role="Entidades" EntitySet="Entidades" />
+            <End Role="Entidades_Idiomas" EntitySet="Entidades_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entidades_Marcas" Association="Self.FK_Entidades_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Entidades" EntitySet="Entidades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstadosCalendario_Idiomas_EstadosCalendario" Association="Self.FK_EstadosCalendario_Idiomas_EstadosCalendario">
+            <End Role="EstadosCalendario" EntitySet="EstadosCalendario" />
+            <End Role="EstadosCalendario_Idiomas" EntitySet="EstadosCalendario_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstadosCalendario_Marcas" Association="Self.FK_EstadosCalendario_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="EstadosCalendario" EntitySet="EstadosCalendario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Eventos_Idiomas_Eventos" Association="Self.FK_Eventos_Idiomas_Eventos">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="Eventos_Idiomas" EntitySet="Eventos_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Eventos_Marcas" Association="Self.FK_Eventos_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Eventos" EntitySet="Eventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Eventos_TiposEvento" Association="Self.FK_Eventos_TiposEvento">
+            <End Role="TiposEvento" EntitySet="TiposEvento" />
+            <End Role="Eventos" EntitySet="Eventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fabricantes_Idiomas_Fabricantes" Association="Self.FK_Fabricantes_Idiomas_Fabricantes">
+            <End Role="Fabricantes" EntitySet="Fabricantes" />
+            <End Role="Fabricantes_Idiomas" EntitySet="Fabricantes_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fabricantes_Marcas" Association="Self.FK_Fabricantes_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Fabricantes" EntitySet="Fabricantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotos_CategoriasFotos" Association="Self.FK_Fotos_CategoriasFotos">
+            <End Role="CategoriasFotos" EntitySet="CategoriasFotos" />
+            <End Role="Fotos" EntitySet="Fotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotos_Idiomas_Fotos" Association="Self.FK_Fotos_Idiomas_Fotos">
+            <End Role="Fotos" EntitySet="Fotos" />
+            <End Role="Fotos_Idiomas" EntitySet="Fotos_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotos_Marcas" Association="Self.FK_Fotos_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Fotos" EntitySet="Fotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SolicitudesContacto_Marcas" Association="Self.FK_SolicitudesContacto_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="SolicitudesContacto" EntitySet="SolicitudesContacto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubcategoriasCalendario_Idiomas_SubcategoriasCalendario" Association="Self.FK_SubcategoriasCalendario_Idiomas_SubcategoriasCalendario">
+            <End Role="SubcategoriasCalendario" EntitySet="SubcategoriasCalendario" />
+            <End Role="SubcategoriasCalendario_Idiomas" EntitySet="SubcategoriasCalendario_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubcategoriasCalendario_Marcas" Association="Self.FK_SubcategoriasCalendario_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="SubcategoriasCalendario" EntitySet="SubcategoriasCalendario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TiposEvento_Idiomas_TiposEvento" Association="Self.FK_TiposEvento_Idiomas_TiposEvento">
+            <End Role="TiposEvento" EntitySet="TiposEvento" />
+            <End Role="TiposEvento_Idiomas" EntitySet="TiposEvento_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TiposEvento_Marcas" Association="Self.FK_TiposEvento_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="TiposEvento" EntitySet="TiposEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Marcas" Association="Self.FK_Usuarios_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Videos_Idiomas_Videos" Association="Self.FK_Videos_Idiomas_Videos">
+            <End Role="Videos" EntitySet="Videos" />
+            <End Role="Videos_Idiomas" EntitySet="Videos_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Videos_Marcas" Association="Self.FK_Videos_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Videos" EntitySet="Videos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CollectorsClubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CollectorsClubEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Calendarios" EntityType="CollectorsClubModel.Calendario" />
+          <EntitySet Name="Calendarios_Idiomas" EntityType="CollectorsClubModel.Calendario_Idioma" />
+          <EntitySet Name="Entidades" EntityType="CollectorsClubModel.Entidad" />
+          <EntitySet Name="Entidades_Idiomas" EntityType="CollectorsClubModel.Entidad_Idioma" />
+          <EntitySet Name="EstadosCalendario" EntityType="CollectorsClubModel.EstadoCalendario" />
+          <EntitySet Name="EstadosCalendario_Idiomas" EntityType="CollectorsClubModel.EstadoCalendario_Idioma" />
+          <EntitySet Name="Fabricantes" EntityType="CollectorsClubModel.Fabricante" />
+          <EntitySet Name="Fabricantes_Idiomas" EntityType="CollectorsClubModel.Fabricante_Idioma" />
+          <EntitySet Name="SubcategoriasCalendario" EntityType="CollectorsClubModel.TipoCalendario" />
+          <EntitySet Name="SubcategoriasCalendario_Idiomas" EntityType="CollectorsClubModel.TipoCalendario_Idioma" />
+          <EntitySet Name="Usuarios" EntityType="CollectorsClubModel.Usuario" />
+          <AssociationSet Name="FK_Calendarios_Entidades" Association="CollectorsClubModel.FK_Calendarios_Entidades">
+            <End Role="Entidades" EntitySet="Entidades" />
+            <End Role="Calendarios" EntitySet="Calendarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calendarios_Entidades_IdEntidadContratante" Association="CollectorsClubModel.FK_Calendarios_Entidades_IdEntidadContratante">
+            <End Role="Entidades" EntitySet="Entidades" />
+            <End Role="Calendarios" EntitySet="Calendarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calendarios_EstadosCalendario" Association="CollectorsClubModel.FK_Calendarios_EstadosCalendario">
+            <End Role="EstadosCalendario" EntitySet="EstadosCalendario" />
+            <End Role="Calendarios" EntitySet="Calendarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calendarios_Fabricantes" Association="CollectorsClubModel.FK_Calendarios_Fabricantes">
+            <End Role="Fabricantes" EntitySet="Fabricantes" />
+            <End Role="Calendarios" EntitySet="Calendarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calendarios_Idiomas_Calendarios" Association="CollectorsClubModel.FK_Calendarios_Idiomas_Calendarios">
+            <End Role="Calendarios" EntitySet="Calendarios" />
+            <End Role="Calendarios_Idiomas" EntitySet="Calendarios_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calendarios_SubcategoriasCalendario" Association="CollectorsClubModel.FK_Calendarios_SubcategoriasCalendario">
+            <End Role="SubcategoriasCalendario" EntitySet="SubcategoriasCalendario" />
+            <End Role="Calendarios" EntitySet="Calendarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calendarios_Usuarios" Association="CollectorsClubModel.FK_Calendarios_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Calendarios" EntitySet="Calendarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entidades_Idiomas_Entidades" Association="CollectorsClubModel.FK_Entidades_Idiomas_Entidades">
+            <End Role="Entidades" EntitySet="Entidades" />
+            <End Role="Entidades_Idiomas" EntitySet="Entidades_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstadosCalendario_Idiomas_EstadosCalendario" Association="CollectorsClubModel.FK_EstadosCalendario_Idiomas_EstadosCalendario">
+            <End Role="EstadosCalendario" EntitySet="EstadosCalendario" />
+            <End Role="EstadosCalendario_Idiomas" EntitySet="EstadosCalendario_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fabricantes_Idiomas_Fabricantes" Association="CollectorsClubModel.FK_Fabricantes_Idiomas_Fabricantes">
+            <End Role="Fabricantes" EntitySet="Fabricantes" />
+            <End Role="Fabricantes_Idiomas" EntitySet="Fabricantes_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubcategoriasCalendario_Idiomas_SubcategoriasCalendario" Association="CollectorsClubModel.FK_SubcategoriasCalendario_Idiomas_SubcategoriasCalendario">
+            <End Role="SubcategoriasCalendario" EntitySet="SubcategoriasCalendario" />
+            <End Role="SubcategoriasCalendario_Idiomas" EntitySet="SubcategoriasCalendario_Idiomas" />
+          </AssociationSet>
+          <EntitySet Name="CategoriasFotos" EntityType="CollectorsClubModel.CategoriaFoto" />
+          <EntitySet Name="CategoriasFotos_Idiomas" EntityType="CollectorsClubModel.CategoriaFoto_Idioma" />
+          <EntitySet Name="Fotos" EntityType="CollectorsClubModel.Foto" />
+          <EntitySet Name="Fotos_Idiomas" EntityType="CollectorsClubModel.Foto_Idioma" />
+          <EntitySet Name="SolicitudesContacto" EntityType="CollectorsClubModel.SolicitudContacto" />
+          <EntitySet Name="Videos" EntityType="CollectorsClubModel.Video" />
+          <EntitySet Name="Videos_Idiomas" EntityType="CollectorsClubModel.Video_Idioma" />
+          <AssociationSet Name="FK_CategoriasFotos_Idiomas_CategoriasFotos" Association="CollectorsClubModel.FK_CategoriasFotos_Idiomas_CategoriasFotos">
+            <End Role="CategoriasFotos" EntitySet="CategoriasFotos" />
+            <End Role="CategoriasFotos_Idiomas" EntitySet="CategoriasFotos_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotos_CategoriasFotos" Association="CollectorsClubModel.FK_Fotos_CategoriasFotos">
+            <End Role="CategoriasFotos" EntitySet="CategoriasFotos" />
+            <End Role="Fotos" EntitySet="Fotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotos_Idiomas_Fotos" Association="CollectorsClubModel.FK_Fotos_Idiomas_Fotos">
+            <End Role="Fotos" EntitySet="Fotos" />
+            <End Role="Fotos_Idiomas" EntitySet="Fotos_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Videos_Idiomas_Videos" Association="CollectorsClubModel.FK_Videos_Idiomas_Videos">
+            <End Role="Videos" EntitySet="Videos" />
+            <End Role="Videos_Idiomas" EntitySet="Videos_Idiomas" />
+          </AssociationSet>
+          <EntitySet Name="Marcas" EntityType="CollectorsClubModel.Marca" />
+          <AssociationSet Name="FK_Calendarios_Marcas" Association="CollectorsClubModel.FK_Calendarios_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Calendario" EntitySet="Calendarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoriasFotos_Marcas" Association="CollectorsClubModel.FK_CategoriasFotos_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="CategoriaFoto" EntitySet="CategoriasFotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entidades_Marcas" Association="CollectorsClubModel.FK_Entidades_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Entidad" EntitySet="Entidades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstadosCalendario_Marcas" Association="CollectorsClubModel.FK_EstadosCalendario_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="EstadoCalendario" EntitySet="EstadosCalendario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fabricantes_Marcas" Association="CollectorsClubModel.FK_Fabricantes_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Fabricante" EntitySet="Fabricantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotos_Marcas" Association="CollectorsClubModel.FK_Fotos_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Foto" EntitySet="Fotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SolicitudesContacto_Marcas" Association="CollectorsClubModel.FK_SolicitudesContacto_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="SolicitudContacto" EntitySet="SolicitudesContacto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubcategoriasCalendario_Marcas" Association="CollectorsClubModel.FK_SubcategoriasCalendario_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="TipoCalendario" EntitySet="SubcategoriasCalendario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Marcas" Association="CollectorsClubModel.FK_Usuarios_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Videos_Marcas" Association="CollectorsClubModel.FK_Videos_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Video" EntitySet="Videos" />
+          </AssociationSet>
+          <EntitySet Name="Eventos" EntityType="CollectorsClubModel.Evento" />
+          <EntitySet Name="Eventos_Idiomas" EntityType="CollectorsClubModel.Evento_Idioma" />
+          <EntitySet Name="TiposEvento" EntityType="CollectorsClubModel.TipoEvento" />
+          <EntitySet Name="TiposEvento_Idiomas" EntityType="CollectorsClubModel.TipoEvento_Idioma" />
+          <AssociationSet Name="FK_Eventos_Idiomas_Eventos" Association="CollectorsClubModel.FK_Eventos_Idiomas_Eventos">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="Eventos_Idiomas" EntitySet="Eventos_Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Eventos_Marcas" Association="CollectorsClubModel.FK_Eventos_Marcas">
+            <End Role="Marca" EntitySet="Marcas" />
+            <End Role="Eventos" EntitySet="Eventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Eventos_TiposEvento" Association="CollectorsClubModel.FK_Eventos_TiposEvento">
+            <End Role="TiposEvento" EntitySet="TiposEvento" />
+            <End Role="Eventos" EntitySet="Eventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TiposEvento_Marcas" Association="CollectorsClubModel.FK_TiposEvento_Marcas">
+            <End Role="Marca" EntitySet="Marcas" />
+            <End Role="TiposEvento" EntitySet="TiposEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TiposEvento_Idiomas_TiposEvento" Association="CollectorsClubModel.FK_TiposEvento_Idiomas_TiposEvento">
+            <End Role="TiposEvento" EntitySet="TiposEvento" />
+            <End Role="TiposEvento_Idiomas" EntitySet="TiposEvento_Idiomas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Calendario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdSubcategoria" Type="Int16" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Anyo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Serie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdEntidad" Type="Int32" Nullable="false" />
+          <Property Name="NumeroRepetidos" Type="Int16" />
+          <Property Name="NumeroSerie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdEstado" Type="Int16" />
+          <Property Name="DL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdEntidadContratante" Type="Int32" />
+          <Property Name="Variante" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdFabricante" Type="Int32" />
+          <Property Name="PaginaWeb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImagenEnBinario" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Entidad" Relationship="CollectorsClubModel.FK_Calendarios_Entidades" FromRole="Calendarios" ToRole="Entidades" />
+          <NavigationProperty Name="EntidadContratante" Relationship="CollectorsClubModel.FK_Calendarios_Entidades_IdEntidadContratante" FromRole="Calendarios" ToRole="Entidades" />
+          <NavigationProperty Name="Estado" Relationship="CollectorsClubModel.FK_Calendarios_EstadosCalendario" FromRole="Calendarios" ToRole="EstadosCalendario" />
+          <NavigationProperty Name="Fabricante" Relationship="CollectorsClubModel.FK_Calendarios_Fabricantes" FromRole="Calendarios" ToRole="Fabricantes" />
+          <NavigationProperty Name="RegistrosIdiomas" Relationship="CollectorsClubModel.FK_Calendarios_Idiomas_Calendarios" FromRole="Calendarios" ToRole="Calendarios_Idiomas" />
+          <NavigationProperty Name="Tipo" Relationship="CollectorsClubModel.FK_Calendarios_SubcategoriasCalendario" FromRole="Calendarios" ToRole="SubcategoriasCalendario" />
+          <NavigationProperty Name="Usuario" Relationship="CollectorsClubModel.FK_Calendarios_Usuarios" FromRole="Calendarios" ToRole="Usuarios" />
+          <Property Name="Visible" Type="Boolean" Nullable="false" />
+          <Property Name="IdMarca" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Marca" Relationship="CollectorsClubModel.FK_Calendarios_Marcas" FromRole="Calendario" ToRole="Marcas" />
+        </EntityType>
+        <EntityType Name="Calendario_Idioma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRegistro" Type="Int32" Nullable="false" />
+          <Property Name="Cultura" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Variante" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Registro" Relationship="CollectorsClubModel.FK_Calendarios_Idiomas_Calendarios" FromRole="Calendarios_Idiomas" ToRole="Calendarios" />
+        </EntityType>
+        <EntityType Name="Entidad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CalendariosPorEntidad" Relationship="CollectorsClubModel.FK_Calendarios_Entidades" FromRole="Entidades" ToRole="Calendarios" />
+          <NavigationProperty Name="CalendariosPorEntidadContratante" Relationship="CollectorsClubModel.FK_Calendarios_Entidades_IdEntidadContratante" FromRole="Entidades" ToRole="Calendarios" />
+          <NavigationProperty Name="RegistrosIdiomas" Relationship="CollectorsClubModel.FK_Entidades_Idiomas_Entidades" FromRole="Entidades" ToRole="Entidades_Idiomas" />
+          <Property Name="IdMarca" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Marca" Relationship="CollectorsClubModel.FK_Entidades_Marcas" FromRole="Entidad" ToRole="Marcas" />
+        </EntityType>
+        <EntityType Name="Entidad_Idioma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRegistro" Type="Int32" Nullable="false" />
+          <Property Name="Cultura" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Registro" Relationship="CollectorsClubModel.FK_Entidades_Idiomas_Entidades" FromRole="Entidades_Idiomas" ToRole="Entidades" />
+        </EntityType>
+        <EntityType Name="EstadoCalendario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Calendarios" Relationship="CollectorsClubModel.FK_Calendarios_EstadosCalendario" FromRole="EstadosCalendario" ToRole="Calendarios" />
+          <NavigationProperty Name="RegistrosIdiomas" Relationship="CollectorsClubModel.FK_EstadosCalendario_Idiomas_EstadosCalendario" FromRole="EstadosCalendario" ToRole="EstadosCalendario_Idiomas" />
+          <Property Name="IdMarca" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Marca" Relationship="CollectorsClubModel.FK_EstadosCalendario_Marcas" FromRole="EstadoCalendario" ToRole="Marcas" />
+        </EntityType>
+        <EntityType Name="EstadoCalendario_Idioma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRegistro" Type="Int16" Nullable="false" />
+          <Property Name="Cultura" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Registro" Relationship="CollectorsClubModel.FK_EstadosCalendario_Idiomas_EstadosCalendario" FromRole="EstadosCalendario_Idiomas" ToRole="EstadosCalendario" />
+        </EntityType>
+        <EntityType Name="Fabricante">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Calendarios" Relationship="CollectorsClubModel.FK_Calendarios_Fabricantes" FromRole="Fabricantes" ToRole="Calendarios" />
+          <NavigationProperty Name="RegistrosIdiomas" Relationship="CollectorsClubModel.FK_Fabricantes_Idiomas_Fabricantes" FromRole="Fabricantes" ToRole="Fabricantes_Idiomas" />
+          <Property Name="IdMarca" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Marca" Relationship="CollectorsClubModel.FK_Fabricantes_Marcas" FromRole="Fabricante" ToRole="Marcas" />
+        </EntityType>
+        <EntityType Name="Fabricante_Idioma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRegistro" Type="Int32" Nullable="false" />
+          <Property Name="Cultura" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Registro" Relationship="CollectorsClubModel.FK_Fabricantes_Idiomas_Fabricantes" FromRole="Fabricantes_Idiomas" ToRole="Fabricantes" />
+        </EntityType>
+        <EntityType Name="TipoCalendario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Calendarios" Relationship="CollectorsClubModel.FK_Calendarios_SubcategoriasCalendario" FromRole="SubcategoriasCalendario" ToRole="Calendarios" />
+          <NavigationProperty Name="RegistrosIdiomas" Relationship="CollectorsClubModel.FK_SubcategoriasCalendario_Idiomas_SubcategoriasCalendario" FromRole="SubcategoriasCalendario" ToRole="SubcategoriasCalendario_Idiomas" />
+          <Property Name="IdMarca" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Marca" Relationship="CollectorsClubModel.FK_SubcategoriasCalendario_Marcas" FromRole="TipoCalendario" ToRole="Marcas" />
+        </EntityType>
+        <EntityType Name="TipoCalendario_Idioma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRegistro" Type="Int16" Nullable="false" />
+          <Property Name="Cultura" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Registro" Relationship="CollectorsClubModel.FK_SubcategoriasCalendario_Idiomas_SubcategoriasCalendario" FromRole="SubcategoriasCalendario_Idiomas" ToRole="SubcategoriasCalendario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrimerApellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SegundoApellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NombreDeUsuario" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CorreoElectronico" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Calendarios" Relationship="CollectorsClubModel.FK_Calendarios_Usuarios" FromRole="Usuarios" ToRole="Calendarios" />
+          <Property Name="IdMarca" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Marca" Relationship="CollectorsClubModel.FK_Usuarios_Marcas" FromRole="Usuario" ToRole="Marcas" />
+        </EntityType>
+        <Association Name="FK_Calendarios_Entidades">
+          <End Type="CollectorsClubModel.Entidad" Role="Entidades" Multiplicity="1" />
+          <End Type="CollectorsClubModel.Calendario" Role="Calendarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendarios">
+              <PropertyRef Name="IdEntidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calendarios_Entidades_IdEntidadContratante">
+          <End Type="CollectorsClubModel.Entidad" Role="Entidades" Multiplicity="0..1" />
+          <End Type="CollectorsClubModel.Calendario" Role="Calendarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendarios">
+              <PropertyRef Name="IdEntidadContratante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calendarios_EstadosCalendario">
+          <End Type="CollectorsClubModel.EstadoCalendario" Role="EstadosCalendario" Multiplicity="0..1" />
+          <End Type="CollectorsClubModel.Calendario" Role="Calendarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosCalendario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendarios">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calendarios_Fabricantes">
+          <End Type="CollectorsClubModel.Fabricante" Role="Fabricantes" Multiplicity="0..1" />
+          <End Type="CollectorsClubModel.Calendario" Role="Calendarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabricantes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendarios">
+              <PropertyRef Name="IdFabricante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calendarios_Idiomas_Calendarios">
+          <End Type="CollectorsClubModel.Calendario" Role="Calendarios" Multiplicity="1" />
+          <End Type="CollectorsClubModel.Calendario_Idioma" Role="Calendarios_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calendarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendarios_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calendarios_SubcategoriasCalendario">
+          <End Type="CollectorsClubModel.TipoCalendario" Role="SubcategoriasCalendario" Multiplicity="1" />
+          <End Type="CollectorsClubModel.Calendario" Role="Calendarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubcategoriasCalendario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendarios">
+              <PropertyRef Name="IdSubcategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calendarios_Usuarios">
+          <End Type="CollectorsClubModel.Usuario" Role="Usuarios" Multiplicity="1" />
+          <End Type="CollectorsClubModel.Calendario" Role="Calendarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendarios">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entidades_Idiomas_Entidades">
+          <End Type="CollectorsClubModel.Entidad" Role="Entidades" Multiplicity="1" />
+          <End Type="CollectorsClubModel.Entidad_Idioma" Role="Entidades_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Entidades_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstadosCalendario_Idiomas_EstadosCalendario">
+          <End Type="CollectorsClubModel.EstadoCalendario" Role="EstadosCalendario" Multiplicity="1" />
+          <End Type="CollectorsClubModel.EstadoCalendario_Idioma" Role="EstadosCalendario_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosCalendario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EstadosCalendario_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fabricantes_Idiomas_Fabricantes">
+          <End Type="CollectorsClubModel.Fabricante" Role="Fabricantes" Multiplicity="1" />
+          <End Type="CollectorsClubModel.Fabricante_Idioma" Role="Fabricantes_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabricantes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fabricantes_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubcategoriasCalendario_Idiomas_SubcategoriasCalendario">
+          <End Type="CollectorsClubModel.TipoCalendario" Role="SubcategoriasCalendario" Multiplicity="1" />
+          <End Type="CollectorsClubModel.TipoCalendario_Idioma" Role="SubcategoriasCalendario_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubcategoriasCalendario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubcategoriasCalendario_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CategoriaFoto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaUltimaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="Activa" Type="Boolean" Nullable="false" />
+          <Property Name="Orden" Type="Int16" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RegistrosIdiomas" Relationship="CollectorsClubModel.FK_CategoriasFotos_Idiomas_CategoriasFotos" FromRole="CategoriasFotos" ToRole="CategoriasFotos_Idiomas" />
+          <NavigationProperty Name="Fotos" Relationship="CollectorsClubModel.FK_Fotos_CategoriasFotos" FromRole="CategoriasFotos" ToRole="Fotos" />
+          <Property Name="IdMarca" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Marca" Relationship="CollectorsClubModel.FK_CategoriasFotos_Marcas" FromRole="CategoriaFoto" ToRole="Marcas" />
+        </EntityType>
+        <EntityType Name="CategoriaFoto_Idioma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRegistro" Type="Int32" Nullable="false" />
+          <Property Name="Cultura" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Registro" Relationship="CollectorsClubModel.FK_CategoriasFotos_Idiomas_CategoriasFotos" FromRole="CategoriasFotos_Idiomas" ToRole="CategoriasFotos" />
+        </EntityType>
+        <EntityType Name="Foto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaUltimaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="NombreArchivoImagen" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Orden" Type="Int16" Nullable="false" />
+          <Property Name="Activa" Type="Boolean" Nullable="false" />
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="750" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Categoria" Relationship="CollectorsClubModel.FK_Fotos_CategoriasFotos" FromRole="Fotos" ToRole="CategoriasFotos" />
+          <NavigationProperty Name="RegistrosIdiomas" Relationship="CollectorsClubModel.FK_Fotos_Idiomas_Fotos" FromRole="Fotos" ToRole="Fotos_Idiomas" />
+          <Property Name="IdMarca" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Marca" Relationship="CollectorsClubModel.FK_Fotos_Marcas" FromRole="Foto" ToRole="Marcas" />
+        </EntityType>
+        <EntityType Name="Foto_Idioma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRegistro" Type="Int32" Nullable="false" />
+          <Property Name="Cultura" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="750" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Registro" Relationship="CollectorsClubModel.FK_Fotos_Idiomas_Fotos" FromRole="Fotos_Idiomas" ToRole="Fotos" />
+        </EntityType>
+        <EntityType Name="SolicitudContacto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CorreoElectronico" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Asunto" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Contenido" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaUltimaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="IdMarca" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Marca" Relationship="CollectorsClubModel.FK_SolicitudesContacto_Marcas" FromRole="SolicitudContacto" ToRole="Marcas" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaUltimaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RegistrosIdiomas" Relationship="CollectorsClubModel.FK_Videos_Idiomas_Videos" FromRole="Videos" ToRole="Videos_Idiomas" />
+          <Property Name="IdMarca" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Marca" Relationship="CollectorsClubModel.FK_Videos_Marcas" FromRole="Video" ToRole="Marcas" />
+        </EntityType>
+        <EntityType Name="Video_Idioma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRegistro" Type="Int32" Nullable="false" />
+          <Property Name="Cultura" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Registro" Relationship="CollectorsClubModel.FK_Videos_Idiomas_Videos" FromRole="Videos_Idiomas" ToRole="Videos" />
+        </EntityType>
+        <Association Name="FK_CategoriasFotos_Idiomas_CategoriasFotos">
+          <End Type="CollectorsClubModel.CategoriaFoto" Role="CategoriasFotos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CollectorsClubModel.CategoriaFoto_Idioma" Role="CategoriasFotos_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriasFotos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoriasFotos_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotos_CategoriasFotos">
+          <End Type="CollectorsClubModel.CategoriaFoto" Role="CategoriasFotos" Multiplicity="1" />
+          <End Type="CollectorsClubModel.Foto" Role="Fotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriasFotos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fotos">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotos_Idiomas_Fotos">
+          <End Type="CollectorsClubModel.Foto" Role="Fotos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CollectorsClubModel.Foto_Idioma" Role="Fotos_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fotos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fotos_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Videos_Idiomas_Videos">
+          <End Type="CollectorsClubModel.Video" Role="Videos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CollectorsClubModel.Video_Idioma" Role="Videos_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Videos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Videos_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Calendarios" Relationship="CollectorsClubModel.FK_Calendarios_Marcas" FromRole="Marcas" ToRole="Calendario" />
+          <NavigationProperty Name="CategoriasFotos" Relationship="CollectorsClubModel.FK_CategoriasFotos_Marcas" FromRole="Marcas" ToRole="CategoriaFoto" />
+          <NavigationProperty Name="Entidades" Relationship="CollectorsClubModel.FK_Entidades_Marcas" FromRole="Marcas" ToRole="Entidad" />
+          <NavigationProperty Name="EstadosCalendario" Relationship="CollectorsClubModel.FK_EstadosCalendario_Marcas" FromRole="Marcas" ToRole="EstadoCalendario" />
+          <NavigationProperty Name="Fabricantes" Relationship="CollectorsClubModel.FK_Fabricantes_Marcas" FromRole="Marcas" ToRole="Fabricante" />
+          <NavigationProperty Name="Fotos" Relationship="CollectorsClubModel.FK_Fotos_Marcas" FromRole="Marcas" ToRole="Foto" />
+          <NavigationProperty Name="SolicitudesContacto" Relationship="CollectorsClubModel.FK_SolicitudesContacto_Marcas" FromRole="Marcas" ToRole="SolicitudContacto" />
+          <NavigationProperty Name="SubcategoriasCalendario" Relationship="CollectorsClubModel.FK_SubcategoriasCalendario_Marcas" FromRole="Marcas" ToRole="TipoCalendario" />
+          <NavigationProperty Name="Usuarios" Relationship="CollectorsClubModel.FK_Usuarios_Marcas" FromRole="Marcas" ToRole="Usuario" />
+          <NavigationProperty Name="Videos" Relationship="CollectorsClubModel.FK_Videos_Marcas" FromRole="Marcas" ToRole="Video" />
+          <NavigationProperty Name="Eventos" Relationship="CollectorsClubModel.FK_Eventos_Marcas" FromRole="Marca" ToRole="Eventos" />
+          <NavigationProperty Name="TiposEvento" Relationship="CollectorsClubModel.FK_TiposEvento_Marcas" FromRole="Marca" ToRole="TiposEvento" />
+        </EntityType>
+        <Association Name="FK_Calendarios_Marcas">
+          <End Type="CollectorsClubModel.Marca" Role="Marcas" Multiplicity="1" />
+          <End Type="CollectorsClubModel.Calendario" Role="Calendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendario">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoriasFotos_Marcas">
+          <End Type="CollectorsClubModel.Marca" Role="Marcas" Multiplicity="1" />
+          <End Type="CollectorsClubModel.CategoriaFoto" Role="CategoriaFoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoriaFoto">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entidades_Marcas">
+          <End Type="CollectorsClubModel.Marca" Role="Marcas" Multiplicity="1" />
+          <End Type="CollectorsClubModel.Entidad" Role="Entidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Entidad">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstadosCalendario_Marcas">
+          <End Type="CollectorsClubModel.Marca" Role="Marcas" Multiplicity="1" />
+          <End Type="CollectorsClubModel.EstadoCalendario" Role="EstadoCalendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EstadoCalendario">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fabricantes_Marcas">
+          <End Type="CollectorsClubModel.Marca" Role="Marcas" Multiplicity="1" />
+          <End Type="CollectorsClubModel.Fabricante" Role="Fabricante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fabricante">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotos_Marcas">
+          <End Type="CollectorsClubModel.Marca" Role="Marcas" Multiplicity="1" />
+          <End Type="CollectorsClubModel.Foto" Role="Foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Foto">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SolicitudesContacto_Marcas">
+          <End Type="CollectorsClubModel.Marca" Role="Marcas" Multiplicity="1" />
+          <End Type="CollectorsClubModel.SolicitudContacto" Role="SolicitudContacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SolicitudContacto">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubcategoriasCalendario_Marcas">
+          <End Type="CollectorsClubModel.Marca" Role="Marcas" Multiplicity="1" />
+          <End Type="CollectorsClubModel.TipoCalendario" Role="TipoCalendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TipoCalendario">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Marcas">
+          <End Type="CollectorsClubModel.Marca" Role="Marcas" Multiplicity="1" />
+          <End Type="CollectorsClubModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Videos_Marcas">
+          <End Type="CollectorsClubModel.Marca" Role="Marcas" Multiplicity="1" />
+          <End Type="CollectorsClubModel.Video" Role="Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaUltimaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HoraInicio" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="HoraFin" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="IdTipo" Type="Int16" Nullable="false" />
+          <Property Name="Activa" Type="Boolean" Nullable="false" />
+          <Property Name="IdMarca" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="750" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ubicacion" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RegistrosIdiomas" Relationship="CollectorsClubModel.FK_Eventos_Idiomas_Eventos" FromRole="Eventos" ToRole="Eventos_Idiomas" />
+          <NavigationProperty Name="Marca" Relationship="CollectorsClubModel.FK_Eventos_Marcas" FromRole="Eventos" ToRole="Marca" />
+          <NavigationProperty Name="Tipo" Relationship="CollectorsClubModel.FK_Eventos_TiposEvento" FromRole="Eventos" ToRole="TiposEvento" />
+        </EntityType>
+        <EntityType Name="Evento_Idioma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRegistro" Type="Int32" Nullable="false" />
+          <Property Name="Cultura" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Ubicacion" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="750" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Registro" Relationship="CollectorsClubModel.FK_Eventos_Idiomas_Eventos" FromRole="Eventos_Idiomas" ToRole="Eventos" />
+        </EntityType>
+        <EntityType Name="TipoEvento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Orden" Type="Int16" Nullable="false" />
+          <Property Name="IdMarca" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Eventos" Relationship="CollectorsClubModel.FK_Eventos_TiposEvento" FromRole="TiposEvento" ToRole="Eventos" />
+          <NavigationProperty Name="Marca" Relationship="CollectorsClubModel.FK_TiposEvento_Marcas" FromRole="TiposEvento" ToRole="Marca" />
+          <NavigationProperty Name="RegistrosIdiomas" Relationship="CollectorsClubModel.FK_TiposEvento_Idiomas_TiposEvento" FromRole="TiposEvento" ToRole="TiposEvento_Idiomas" />
+        </EntityType>
+        <EntityType Name="TipoEvento_Idioma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRegistro" Type="Int16" Nullable="false" />
+          <Property Name="Cultura" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Registro" Relationship="CollectorsClubModel.FK_TiposEvento_Idiomas_TiposEvento" FromRole="TiposEvento_Idiomas" ToRole="TiposEvento" />
+        </EntityType>
+        <Association Name="FK_Eventos_Idiomas_Eventos">
+          <End Type="CollectorsClubModel.Evento" Role="Eventos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CollectorsClubModel.Evento_Idioma" Role="Eventos_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Eventos_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Eventos_Marcas">
+          <End Type="CollectorsClubModel.Marca" Role="Marca" Multiplicity="1" />
+          <End Type="CollectorsClubModel.Evento" Role="Eventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Eventos">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Eventos_TiposEvento">
+          <End Type="CollectorsClubModel.TipoEvento" Role="TiposEvento" Multiplicity="1" />
+          <End Type="CollectorsClubModel.Evento" Role="Eventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposEvento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Eventos">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TiposEvento_Marcas">
+          <End Type="CollectorsClubModel.Marca" Role="Marca" Multiplicity="1" />
+          <End Type="CollectorsClubModel.TipoEvento" Role="TiposEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TiposEvento">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TiposEvento_Idiomas_TiposEvento">
+          <End Type="CollectorsClubModel.TipoEvento" Role="TiposEvento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CollectorsClubModel.TipoEvento_Idioma" Role="TiposEvento_Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposEvento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TiposEvento_Idiomas">
+              <PropertyRef Name="IdRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CollectorsClubEntitiesStoreContainer" CdmEntityContainer="CollectorsClubEntities" >
+          <EntitySetMapping Name="Calendarios">
+            <EntityTypeMapping TypeName="CollectorsClubModel.Calendario">
+              <MappingFragment StoreEntitySet="Calendarios">
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
+                <ScalarProperty Name="ImagenEnBinario" ColumnName="ImagenEnBinario" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="PaginaWeb" ColumnName="PaginaWeb" />
+                <ScalarProperty Name="IdFabricante" ColumnName="IdFabricante" />
+                <ScalarProperty Name="Variante" ColumnName="Variante" />
+                <ScalarProperty Name="IdEntidadContratante" ColumnName="IdEntidadContratante" />
+                <ScalarProperty Name="DL" ColumnName="DL" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="NumeroSerie" ColumnName="NumeroSerie" />
+                <ScalarProperty Name="NumeroRepetidos" ColumnName="NumeroRepetidos" />
+                <ScalarProperty Name="IdEntidad" ColumnName="IdEntidad" />
+                <ScalarProperty Name="Serie" ColumnName="Serie" />
+                <ScalarProperty Name="Anyo" ColumnName="Anyo" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="IdSubcategoria" ColumnName="IdSubcategoria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calendarios_Idiomas">
+            <EntityTypeMapping TypeName="CollectorsClubModel.Calendario_Idioma">
+              <MappingFragment StoreEntitySet="Calendarios_Idiomas">
+                <ScalarProperty Name="Variante" ColumnName="Variante" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cultura" ColumnName="Cultura" />
+                <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entidades">
+            <EntityTypeMapping TypeName="CollectorsClubModel.Entidad">
+              <MappingFragment StoreEntitySet="Entidades">
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entidades_Idiomas">
+            <EntityTypeMapping TypeName="CollectorsClubModel.Entidad_Idioma">
+              <MappingFragment StoreEntitySet="Entidades_Idiomas">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cultura" ColumnName="Cultura" />
+                <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadosCalendario">
+            <EntityTypeMapping TypeName="CollectorsClubModel.EstadoCalendario">
+              <MappingFragment StoreEntitySet="EstadosCalendario">
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadosCalendario_Idiomas">
+            <EntityTypeMapping TypeName="CollectorsClubModel.EstadoCalendario_Idioma">
+              <MappingFragment StoreEntitySet="EstadosCalendario_Idiomas">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cultura" ColumnName="Cultura" />
+                <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fabricantes">
+            <EntityTypeMapping TypeName="CollectorsClubModel.Fabricante">
+              <MappingFragment StoreEntitySet="Fabricantes">
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fabricantes_Idiomas">
+            <EntityTypeMapping TypeName="CollectorsClubModel.Fabricante_Idioma">
+              <MappingFragment StoreEntitySet="Fabricantes_Idiomas">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cultura" ColumnName="Cultura" />
+                <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubcategoriasCalendario">
+            <EntityTypeMapping TypeName="CollectorsClubModel.TipoCalendario">
+              <MappingFragment StoreEntitySet="SubcategoriasCalendario">
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubcategoriasCalendario_Idiomas">
+            <EntityTypeMapping TypeName="CollectorsClubModel.TipoCalendario_Idioma">
+              <MappingFragment StoreEntitySet="SubcategoriasCalendario_Idiomas">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cultura" ColumnName="Cultura" />
+                <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="CollectorsClubModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="NombreDeUsuario" ColumnName="NombreDeUsuario" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoriasFotos">
+            <EntityTypeMapping TypeName="CollectorsClubModel.CategoriaFoto">
+              <MappingFragment StoreEntitySet="CategoriasFotos">
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Activa" ColumnName="Activa" />
+                <ScalarProperty Name="FechaUltimaModificacion" ColumnName="FechaUltimaModificacion" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoriasFotos_Idiomas">
+            <EntityTypeMapping TypeName="CollectorsClubModel.CategoriaFoto_Idioma">
+              <MappingFragment StoreEntitySet="CategoriasFotos_Idiomas">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cultura" ColumnName="Cultura" />
+                <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fotos">
+            <EntityTypeMapping TypeName="CollectorsClubModel.Foto">
+              <MappingFragment StoreEntitySet="Fotos">
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="Activa" ColumnName="Activa" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="NombreArchivoImagen" ColumnName="NombreArchivoImagen" />
+                <ScalarProperty Name="FechaUltimaModificacion" ColumnName="FechaUltimaModificacion" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fotos_Idiomas">
+            <EntityTypeMapping TypeName="CollectorsClubModel.Foto_Idioma">
+              <MappingFragment StoreEntitySet="Fotos_Idiomas">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cultura" ColumnName="Cultura" />
+                <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SolicitudesContacto">
+            <EntityTypeMapping TypeName="CollectorsClubModel.SolicitudContacto">
+              <MappingFragment StoreEntitySet="SolicitudesContacto">
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="FechaUltimaModificacion" ColumnName="FechaUltimaModificacion" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+                <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Videos">
+            <EntityTypeMapping TypeName="CollectorsClubModel.Video">
+              <MappingFragment StoreEntitySet="Videos">
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="FechaUltimaModificacion" ColumnName="FechaUltimaModificacion" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Videos_Idiomas">
+            <EntityTypeMapping TypeName="CollectorsClubModel.Video_Idioma">
+              <MappingFragment StoreEntitySet="Videos_Idiomas">
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cultura" ColumnName="Cultura" />
+                <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marcas">
+            <EntityTypeMapping TypeName="CollectorsClubModel.Marca">
+              <MappingFragment StoreEntitySet="Marcas">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Eventos">
+            <EntityTypeMapping TypeName="CollectorsClubModel.Evento">
+              <MappingFragment StoreEntitySet="Eventos">
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="Activa" ColumnName="Activa" />
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+                <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="FechaUltimaModificacion" ColumnName="FechaUltimaModificacion" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Eventos_Idiomas">
+            <EntityTypeMapping TypeName="CollectorsClubModel.Evento_Idioma">
+              <MappingFragment StoreEntitySet="Eventos_Idiomas">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Cultura" ColumnName="Cultura" />
+                <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposEvento">
+            <EntityTypeMapping TypeName="CollectorsClubModel.TipoEvento">
+              <MappingFragment StoreEntitySet="TiposEvento">
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposEvento_Idiomas">
+            <EntityTypeMapping TypeName="CollectorsClubModel.TipoEvento_Idioma">
+              <MappingFragment StoreEntitySet="TiposEvento_Idiomas">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cultura" ColumnName="Cultura" />
+                <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

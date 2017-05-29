@@ -1,0 +1,24 @@
+﻿<dotnetnuke type="ResourceFile" version="5.0">
+  <files>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>Themes.resx</name>
+    </file>
+    <file>
+      <path>css/</path>
+      <name>Themes.css</name>
+    </file>
+    <file>
+      <path>scripts/bundles/</path>
+      <name>themes-bundle.js</name>
+    </file>
+    <file>
+      <path>scripts/</path>
+      <name>Themes.js</name>
+    </file>
+    <file>
+      <path />
+      <name>Themes.html</name>
+    </file>
+  </files>
+</dotnetnuke>

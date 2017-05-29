@@ -1,0 +1,28 @@
+﻿<dotnetnuke type="ResourceFile" version="5.0">
+  <files>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>Attributes.ascx.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>EditSkins.ascx.resx</name>
+    </file>
+    <file>
+      <path />
+      <name>Attributes.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>editskins.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>08.00.00.txt</name>
+    </file>
+    <file>
+      <path />
+      <name>module.css</name>
+    </file>
+  </files>
+</dotnetnuke>

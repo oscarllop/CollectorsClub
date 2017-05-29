@@ -1,0 +1,10 @@
+﻿@import "../variables.less.txt";
+
+ul.social-icons li {
+    border-width: @BSBorderWidth;
+    border-style: @BSBorderStyle; 
+    border-color: @BSBorderThemeMode;
+    border-radius: @BSBorderRadius;
+    box-shadow: @BBoxShadow;
+}
+

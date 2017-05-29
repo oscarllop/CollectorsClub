@@ -1,0 +1,47 @@
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="..\\..\\CollectorsClub.Model\\Templates\\Context.Base.ttinclude"#>
+<#@ output extension=".cs"#><#
+
+const string _inputFile = @"..\..\CollectorsClub.EntityFramework\Model.edmx";
+var _storeMetadata = LoadMetadata(_inputFile);
+var _textTransform = DynamicTextTransformation.Create(this);
+var _code = new CodeGenerationTools(this);
+var _ef = new MetadataTools(this);
+//var _itemCollection = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors).CreateEdmItemCollection(_inputFile);
+var _itemCollection = _storeMetadata.EdmItems;
+EntityContainer _container = _itemCollection.OfType<EntityContainer>().FirstOrDefault();
+var _typeMapper = new TypeMapper(_code, _ef, _container, _storeMetadata, _textTransform.Errors);
+var loader = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors);
+var modelNamespace = loader.GetModelNamespace(_inputFile);
+var _codeStringGenerator = new CodeStringGenerator(_code, _typeMapper, _ef);
+
+if (_container == null) {
+    return string.Empty;
+} #>
+using AutoMapper;
+using CollectorsClub.Model.Commands;
+using CollectorsClub.Web.API.Models;
+
+<#
+var codeNamespace = _code.VsNamespaceSuggestion();
+if (!String.IsNullOrEmpty(codeNamespace)) { #>
+namespace <#=_code.EscapeNamespace(codeNamespace) #> { <#
+	PushIndent("	");
+} #>
+
+<#=Accessibility.ForType(_container)#> partial class <#= Path.GetFileNameWithoutExtension(Host.TemplateFile) #> : Profile {
+  public override string ProfileName {
+		get { return "<#= Path.GetFileNameWithoutExtension(Host.TemplateFile) #>"; }
+	}
+
+	protected override void Configure() {
+<# foreach (var _entity in _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection)) { #>
+		Mapper.CreateMap<CreateOrUpdate<#= _entity.Name #>Command, <#= _entity.Name #>Model>();
+<# } #>
+	}
+}
+<# if (!String.IsNullOrEmpty(codeNamespace)) {
+	PopIndent(); #>
+}
+<# } #>

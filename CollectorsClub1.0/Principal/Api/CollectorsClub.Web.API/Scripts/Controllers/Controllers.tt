@@ -1,0 +1,117 @@
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="..\\..\\..\\CollectorsClub.Model\\Templates\\Context.Base.ttinclude"#>
+<#@ output extension=".js"#><#
+
+const string _inputFile = @"..\..\..\CollectorsClub.EntityFramework\Model.edmx";
+string _aplicacion = "CollectorsClub";
+Dictionary<string, MetadataGenerador.MetadataEntidad> _metadataEntidades = MetadataGenerador.ObtenerEntidades(_aplicacion);
+var _storeMetadata = LoadMetadata(_inputFile);
+var _textTransform = DynamicTextTransformation.Create(this);
+var _code = new CodeGenerationTools(this);
+var _ef = new MetadataTools(this);
+//var _itemCollection = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors).CreateEdmItemCollection(_inputFile);
+var _itemCollection = _storeMetadata.EdmItems;
+EntityContainer _container = _itemCollection.OfType<EntityContainer>().FirstOrDefault();
+var _typeMapper = new TypeMapper(_code, _ef, _container, _storeMetadata, _textTransform.Errors);
+var	_fileManager = EntityFrameworkTemplateFileManager.Create(this);
+var _codeStringGenerator = new CodeStringGenerator(_code, _typeMapper, _ef);
+var _codeJSGenerator = new CodeJSGenerator(_code, _typeMapper, _ef);
+
+if (!_typeMapper.VerifyCaseInsensitiveTypeUniqueness(_typeMapper.GetAllGlobalItems(_itemCollection), _inputFile)) {
+	return string.Empty;
+}
+
+MetadataGenerador.IncluirEntidadesNoExistentesEnFramework(_metadataEntidades, _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection).ToList(), _typeMapper);
+foreach (var _entity in _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection)) {
+  _fileManager.StartNewFile(_entity.Name + "Controller.js"); 
+	IEnumerable<NavigationProperty> _navigationProperties = _typeMapper.GetNavigationProperties(_entity);
+	IEnumerable<EdmProperty> _keyProperties = _typeMapper.GetKeyProperties(_entity); #>
+(function (factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD
+		define(['jquery', 'moment/moment-with-locales.min', 'WebAPI/BaseController', 'WebAPI/Models/<#=_code.Escape(_entity)#>Model<# if (_metadataEntidades[_entity.Name].TieneExtensionModelo) { #>Extension<# } #>'], factory);
+	} else if (typeof exports === 'object') {
+		// CommonJS
+		factory(require('jquery'), require('moment/moment-with-locales.min'), require('WebAPI/BaseController'), require('WebAPI/Models/<#=_code.Escape(_entity)#>Model<# if (_metadataEntidades[_entity.Name].TieneExtensionModelo) { #>Extension<# } #>'));
+	} else {
+		// Browser globals
+		if (typeof (BaseController) == 'undefined') {
+			$.when(
+				$.getScript(parametrosGlobales.UrlWebAPI + '/scripts/BaseController.js'),
+				$.getScript(parametrosGlobales.UrlWebAPI + '/scripts/Models/<#=_code.Escape(_entity)#>Model<# if (_metadataEntidades[_entity.Name].TieneExtensionModelo) { #>Extension<# } #>.js'),
+				$.Deferred(function (deferred) { $(deferred.resolve); })
+			).done(function () {
+				window.<#=_code.Escape(_entity)#>Controller = factory(jQuery, window.GlobalBaseController, <#=_code.Escape(_entity)#>Model);
+			}).fail(function (xhr, status) {
+				displayMessage("#InnerContainer", settings.MensajeError + status + xhr.responseText, 'Error');
+			});
+		} else {
+			window.<#=_code.Escape(_entity)#>Controller = factory(jQuery, window.GlobalBaseController, <#=_code.Escape(_entity)#>Model);
+		}
+	}
+}(function ($, moment, baseController, modelo) {
+	return function <#=_code.Escape(_entity)#>Controller(settings) {
+		var self = this;
+		self.settings = $.extend({}, settings);
+		self.settings.EntitySet = '<#= (EntitySet) _container.BaseEntitySets.Where(es => es.ElementType.Name == _entity.Name).FirstOrDefault() #>';
+		self.settings.EntityName = '<#=_code.Escape(_entity) #>';
+		self.settings.Controller = self;
+		self.settings.ApiUrl = settings.UrlWebAPI + '/api/' + self.settings.EntityName;
+		self.settings.KeyProperties = [<# foreach (EdmProperty _property in _keyProperties) { #>'<#=_property.Name #>'<# if (_property != _keyProperties.Last()) { #>, <# } #><# } #>];
+		self.settings.Modelo = modelo;
+
+		self.registrosPrueba = new Array();
+		for (i = 1; i <= 15; i++) {
+<# 
+			string _declaracionObjeto = string.Empty;
+			foreach (EdmProperty _property in _typeMapper.GetSimpleProperties(_entity)) {
+				if (_declaracionObjeto != string.Empty) { _declaracionObjeto += ", "; }
+				string _valor = _codeJSGenerator.DefaultValue(_property).ToString();
+				switch (_valor) {
+					case "''": _valor = "'" + _code.Escape(_property) + "' + i"; break;
+					case "0": _valor = "i"; break;
+				}
+				_declaracionObjeto += "'" + _code.Escape(_property) + "': " + _valor;
+			}
+			_declaracionObjeto  = "{ " + _declaracionObjeto  + " }";
+#>
+			self.registrosPrueba.push(<#= _declaracionObjeto #>);
+		}
+
+		self.Get = function (observable, options) { baseController.Get(observable, options, self.settings); }
+		self.GetQuery = function (observable, options) { baseController.GetQuery(observable, options, self.settings); }
+		self.GetExcel = function (options) { baseController.GetExcel(options, self.settings); }
+		self.GetPdf = function (registros, options) { baseController.GetPdf(registros, options, self.settings); }
+		self.Count = function (observable, options) { baseController.Count(observable, options, self.settings); }
+		self.GetPorId = function (observable, registro, options) { baseController.GetPorId(observable, registro, options, self.settings); }
+		self.Update = function (observable, registro, options) { baseController.Update(observable, registro, options, self.settings); }
+		self.UpdateMany = function (observable, registros, options) { baseController.UpdateMany(observable, registros, options, self.settings); }
+		self.Delete = function (observable, registro, options) { baseController.Delete(observable, registro, options, self.settings); }
+		self.EsRegistroNuevo = function (registro) { return baseController.EsRegistroNuevo(registro, self.settings); }
+
+		// OLL: pero por ahora no funcionan bien los DescargarScripts, cuando funcionen quitar el registro en el ViewModel
+<# foreach (NavigationProperty _property in _navigationProperties) { 
+		EntityType _relationshipType = _typeMapper.PrimaryEntityType(_entity, _property);
+		if (_relationshipType == null) {
+			AssociationType _associationType = (AssociationType) _property.RelationshipType;
+			Tuple<EntitySet, Dictionary<RelationshipEndMember, Dictionary<EdmMember, string>>> tupla; 
+			if (_storeMetadata.ManyToManyMappings.TryGetValue(_associationType, out tupla)) {
+				var _member = _property.ToEndMember.GetEntityType().NavigationProperties.Single(nv => (nv.RelationshipType == _property.RelationshipType) && (nv != _property));
+				_relationshipType = (EntityType) _member.DeclaringType;
+			}
+		}
+		if (_relationshipType != null && _relationshipType != _entity) {#>
+		//baseController.DescargarScripts('<#=_code.Escape(_relationshipType)#>', settings);
+<#	}
+	 } #>
+		
+		baseController.RegisterController(self.settings);
+	};
+}));
+<#
+}
+
+_fileManager.Process();
+#>

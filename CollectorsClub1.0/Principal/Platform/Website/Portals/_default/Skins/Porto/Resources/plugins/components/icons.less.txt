@@ -1,0 +1,7 @@
+﻿@import "../variables.less.txt";
+
+.sample-icon-list .sample-icon a:hover {
+    color: @CHColor;
+    background-color: @CHBackgroundColor;
+    border-color: @CHBorderColor;
+}

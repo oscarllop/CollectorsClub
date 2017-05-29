@@ -1,0 +1,13 @@
+﻿@import "../variables.less.txt";
+
+.heading.heading-bottom-border h1,
+.heading.heading-bottom-border h2,
+.heading.heading-bottom-border h3,
+.heading.heading-bottom-border h4,
+.heading.heading-bottom-border h5,
+.heading.heading-bottom-border h6 {
+    border-width: @BSBorderWidth;
+    border-style: @BSBorderStyle; 
+    border-color: @BSBorderThemeMode;
+    border-radius: @BSBorderRadius;
+}

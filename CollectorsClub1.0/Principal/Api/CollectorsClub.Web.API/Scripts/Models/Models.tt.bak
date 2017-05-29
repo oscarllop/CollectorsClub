@@ -1,0 +1,127 @@
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="..\\..\\..\\CollectorsClub.Model\\Templates\\Context.Base.ttinclude"#>
+<#@ output extension=".js"#><#
+
+const string _inputFile = @"..\..\..\CollectorsClub.EntityFramework\Model.edmx";
+string _aplicacion = "CollectorsClub";
+Dictionary<string, MetadataGenerador.MetadataEntidad> _metadataEntidades = MetadataGenerador.ObtenerEntidades(_aplicacion);
+var _storeMetadata = LoadMetadata(_inputFile);
+var _textTransform = DynamicTextTransformation.Create(this);
+var _code = new CodeGenerationTools(this);
+var _ef = new MetadataTools(this);
+//var _itemCollection = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors).CreateEdmItemCollection(_inputFile);
+var _itemCollection = _storeMetadata.EdmItems;
+EntityContainer _container = _itemCollection.OfType<EntityContainer>().FirstOrDefault();
+var _typeMapper = new TypeMapper(_code, _ef, _container, _storeMetadata, _textTransform.Errors);
+var _fileManager = EntityFrameworkTemplateFileManager.Create(this);
+var _codeStringGenerator = new CodeStringGenerator(_code, _typeMapper, _ef);
+var _codeJSGenerator = new CodeJSGenerator(_code, _typeMapper, _ef);
+
+if (!_typeMapper.VerifyCaseInsensitiveTypeUniqueness(_typeMapper.GetAllGlobalItems(_itemCollection), _inputFile)) {
+	return string.Empty;
+}
+
+MetadataGenerador.IncluirEntidadesNoExistentesEnFramework(_metadataEntidades, _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection).ToList(), _typeMapper);
+foreach (var _entity in _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection)) {
+	if (_entity.Name == "Seminario") { 
+		string a = "a"; 
+	}
+  _fileManager.StartNewFile(_entity.Name + "Model.js");
+  IEnumerable<EdmMember> _properties = _typeMapper.GetProperties(_entity);
+	IEnumerable<EdmProperty> propertiesWithDefaultValues = _typeMapper.GetPropertiesWithDefaultValues(_entity);
+  IEnumerable<NavigationProperty> collectionNavigationProperties = _typeMapper.GetCollectionNavigationProperties(_entity);
+  IEnumerable<NavigationProperty> navigationProperties = _typeMapper.GetNavigationProperties(_entity);
+  IEnumerable<EdmProperty> complexProperties = _typeMapper.GetComplexProperties(_entity);
+  IEnumerable<EdmProperty> simpleProperties = _typeMapper.GetSimpleProperties(_entity);
+	IEnumerable<MetadataGenerador.MetadataPropiedad> _propiedadesRelaciones = MetadataGenerador.AgruparPropiedadesPaneles(_metadataEntidades[_entity.Name].PanelesFormulario).Values.Where(p => p.Visible && MetadataGenerador.EsTipoCampoRelacion(p.TipoCampo)).Union(MetadataGenerador.AgruparPropiedadesPaneles(_metadataEntidades[_entity.Name].PanelesFiltro).Values.Where(p => p.Visible && MetadataGenerador.EsTipoCampoRelacion(p.TipoCampo)), new MetadataGenerador.MetadataPropiedadComparer(_properties, _typeMapper)); #>
+(function (factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD
+		define(['jquery', 'moment/moment-with-locales.min'<# foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesRelaciones) { string _entidadRelacionada = MetadataGenerador.ObtenerNombreEntidadRelacionada(_propiedad, _properties, _typeMapper); #>, 'WebAPI/Models/<#= _entidadRelacionada #>Model<# if (_metadataEntidades[_entidadRelacionada].TieneExtensionModelo) { #>Extension<# } #>'<# } #>], factory);
+	} else if (typeof exports === 'object') {
+		// CommonJS
+		factory(require('jquery'), require('moment/moment-with-locales.min')<# foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesRelaciones) { string _entidadRelacionada = MetadataGenerador.ObtenerNombreEntidadRelacionada(_propiedad, _properties, _typeMapper); #>, require('WebAPI/Models/<#= _entidadRelacionada #>Model<# if (_metadataEntidades[_entidadRelacionada].TieneExtensionModelo) { #>Extension<# } #>')<# } #>);
+	} else {
+		window.<#=_code.Escape(_entity)#>Model = factory(jQuery<# foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesRelaciones) { string _entidadRelacionada = MetadataGenerador.ObtenerNombreEntidadRelacionada(_propiedad, _properties, _typeMapper); #>, <#= _entidadRelacionada #>Model<# if (_metadataEntidades[_entidadRelacionada].TieneExtensionModelo) { #>Extension<# } #><# } #>);
+	}
+}(function ($, moment<# foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesRelaciones) { string _entidadRelacionada = MetadataGenerador.ObtenerNombreEntidadRelacionada(_propiedad, _properties, _typeMapper); #>, <#= _entidadRelacionada #>Model<# } #>) {
+	function <#=_code.Escape(_entity)#>Model(item, traducciones) {
+<# foreach (EdmMember _property in _properties) { 
+		if (_property is NavigationProperty) { 
+			NavigationProperty _navigationProperty = _property as NavigationProperty;
+			EntityType _relationshipType = _typeMapper.PrimaryEntityType(_entity, _navigationProperty);
+
+			if (_relationshipType != null) {
+				if (_navigationProperty.ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many) { 
+				/*ko.lazyObservableArray(function() { GlobalViewModels['<-#=_code.Escape(_relationshipType)#->ViewModel'].Get() }, this); */ #>
+		this.<#=_code.Escape(_navigationProperty)#> = ko.observableArray();
+<#			} else { 
+				/*ko.lazyObservable(function() { GlobalViewModels['<-#=_code.Escape(_relationshipType)#->ViewModel'].GetById(1); }, this); */#>
+		this.<#=_code.Escape(_navigationProperty)#> = ko.observable();
+<#			}
+			} else { #>
+		this.<#=_code.Escape(_navigationProperty)#> = ko.observableArray();
+<#		}
+		} else { #>
+		this.<#= _code.Escape(_property) #> = ko.observable()<#= _codeJSGenerator.ValidationExtension(_storeMetadata, _entity, (EdmProperty) _property) #>;
+<#	}
+	} #>
+
+		this.UpdateData(item, traducciones);
+		if (typeof (this.ExtendModel) !== 'undefined') { this.ExtendModel(this, item); }
+	}
+
+	<#=_code.Escape(_entity)#>Model.prototype.UpdateData = function (item, traducciones) {
+		ParsedModels.put(item, this);
+<# foreach (EdmMember _property in _properties) {
+		if (propertiesWithDefaultValues.Contains(_property)) { 
+			if (_typeMapper.GetTypeName(_property.TypeUsage) != "bool") { #>
+		this.<#= _code.Escape(_property) #>(item.<#= _code.Escape(_property) #> || <#=_typeMapper.CreateLiteral(propertiesWithDefaultValues.Single(p => p.Name == _property.Name).DefaultValue)#>);
+<#		} else { #>
+		if (typeof(item.<#= _code.Escape(_property) #>) != 'undefined') { this.<#= _code.Escape(_property) #>(item.<#= _code.Escape(_property) #>); } else { this.<#= _code.Escape(_property) #>(<#=_typeMapper.CreateLiteral(propertiesWithDefaultValues.Single(p => p.Name == _property.Name).DefaultValue)#>); }
+<#		} 
+		} else { 
+			if (_property is NavigationProperty) { 
+				NavigationProperty _navigationProperty = _property as NavigationProperty;
+				EntityType _relationshipType = _typeMapper.PrimaryEntityType(_entity, _navigationProperty);
+				if (_relationshipType != null) {
+					if (_navigationProperty.ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many) { #>
+		this.<#= _code.Escape(_property) #>(typeof (item) !== 'undefined' && typeof (item.<#= _code.Escape(_property) #>) === 'object' && item.<#= _code.Escape(_property) #> !== null ? $.map(item.<#= _code.Escape(_property) #>, function (registro) { if (!ParsedModels.containsKey(registro)) { return new <#=_code.Escape(_relationshipType)#>Model(registro, traducciones); } else { return ParsedModels.get(registro); } }) : []);
+<#				} else { #>
+		if (typeof (item) !== 'undefined' && typeof (item.<#= _code.Escape(_property) #>) === 'object' && item.<#= _code.Escape(_property) #> !== null) {
+			if (!ParsedModels.containsKey(item.<#= _code.Escape(_property) #>)) {
+				this.<#= _code.Escape(_property) #>(new <#=_code.Escape(_relationshipType)#>Model(item.<#= _code.Escape(_property) #>, traducciones));
+			} else {
+				this.<#= _code.Escape(_property) #>(ParsedModels.get(item.<#= _code.Escape(_property) #>));
+			}
+		} else {
+			this.<#= _code.Escape(_property) #>(null);
+		}
+<#				}
+				} else { 
+			AssociationType _associationType = (AssociationType) ((NavigationProperty) _property).RelationshipType;
+			Tuple<EntitySet, Dictionary<RelationshipEndMember, Dictionary<EdmMember, string>>> tupla; 
+			if (_storeMetadata.ManyToManyMappings.TryGetValue(_associationType, out tupla)) {
+				var _member = ((NavigationProperty) _property).ToEndMember.GetEntityType().NavigationProperties.Single(nv => (nv.RelationshipType == ((NavigationProperty) _property).RelationshipType) && (nv != _property));
+				_relationshipType = (EntityType) _member.DeclaringType;
+			} #>
+		this.<#= _code.Escape(_property) #>(typeof (item) !== 'undefined' && typeof (item.<#= _code.Escape(_property) #>) === 'object' && item.<#= _code.Escape(_property) #> !== null ? $.map(item.<#= _code.Escape(_property) #>, function (registro) { if (!ParsedModels.containsKey(registro)) { return new <#=_code.Escape(_relationshipType)#>Model(registro, traducciones); } else { return ParsedModels.get(registro); } }) : []);
+<#			}
+			} else if (_typeMapper.GetSQLTypeName((EdmProperty) _property) == "date") { #>
+		this.<#= _code.Escape(_property) #>(typeof (item.<#= _code.Escape(_property) #>) !== 'undefined' && item.<#= _code.Escape(_property) #> != null ? moment(item.<#= _code.Escape(_property) #>).format('YYYY-MM-DD') : null);
+<#		} else { #>
+		this.<#= _code.Escape(_property) #>(item.<#= _code.Escape(_property) #> || <#= (_typeMapper.HasNavigationProperty((EdmProperty) _property) ? "null" : _codeJSGenerator.DefaultValue(((EdmProperty) _property))) #>);
+<#		}
+		}	
+	} #>
+	}
+
+	return <#=_code.Escape(_entity)#>Model;
+}));
+<#
+}
+
+_fileManager.Process();
+#>

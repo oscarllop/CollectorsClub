@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About.Text">
+    <value xml:space="preserve">Acerca de {0}</value>
+  </data>
+  <data name="Admin.Text">
+    <value xml:space="preserve">Edición</value>
+  </data>
+  <data name="CannotDeleteContainer.ErrorMessage">
+    <value xml:space="preserve">Este conjunto de containers no puede ser eliminado porque está siendo usado.</value>
+  </data>
+  <data name="CannotDeleteSkin.ErrorMessage">
+    <value xml:space="preserve">Esta conjunto de temas no puede ser eliminado porque está siendo utilizado.</value>
+  </data>
+  <data name="cmdApply.Text">
+    <value xml:space="preserve">Aplicar</value>
+  </data>
+  <data name="cmdDelete.Text">
+    <value xml:space="preserve">Eliminar paquete de tema</value>
+  </data>
+  <data name="cmdParse.Text">
+    <value xml:space="preserve">Procesar paquete de tema</value>
+  </data>
+  <data name="cmdPreview.Text">
+    <value xml:space="preserve">Previsualizar</value>
+  </data>
+  <data name="cmdRestore.Text">
+    <value xml:space="preserve">Restaurar tema por omisión</value>
+  </data>
+  <data name="ContainerUpload.Action">
+    <value xml:space="preserve">Cargar container</value>
+  </data>
+  <data name="ControlTitle_.Text">
+    <value xml:space="preserve">Editor de temas</value>
+  </data>
+  <data name="ControlTitle_editskins.Text">
+    <value xml:space="preserve">Administrar temas</value>
+  </data>
+  <data name="Host.Text">
+    <value xml:space="preserve">Sistema</value>
+  </data>
+  <data name="lblApply.Text">
+    <value xml:space="preserve">Aplicar a</value>
+  </data>
+  <data name="lblMessage.Text">
+    <value xml:space="preserve">&lt;strong&gt;Atención:&lt;/strong&gt;&amp;nbsp;&amp;nbsp;Tiene que usar el Administrador de archivos para cargar el tema o container</value>
+  </data>
+  <data name="LegacySkin.Text">
+    <value xml:space="preserve">Este es un tema obsoleto</value>
+  </data>
+  <data name="Localized.Text">
+    <value xml:space="preserve">Traducible</value>
+  </data>
+  <data name="NoContainer.ErrorMessage">
+    <value xml:space="preserve">No existen archivos de container en la carpeta</value>
+  </data>
+  <data name="NoSkin.ErrorMessage">
+    <value xml:space="preserve">No existen archivos de tema en la carpeta</value>
+  </data>
+  <data name="ParseOptions.Help">
+    <value xml:space="preserve">Portable requiere referencias gráficas relativas para que el tema sea más portátil, pero requiere de recursos adicionales en tiempo de ejecución.</value>
+  </data>
+  <data name="ParseOptions.Text">
+    <value xml:space="preserve">Opciones de proceso</value>
+  </data>
+  <data name="plContainers.Help">
+    <value xml:space="preserve">Seleccione el paquete de containers</value>
+  </data>
+  <data name="plContainers.Text">
+    <value xml:space="preserve">Containers </value>
+  </data>
+  <data name="plSkins.Help">
+    <value xml:space="preserve">Seleccione el paquete de temas</value>
+  </data>
+  <data name="plSkins.Text">
+    <value xml:space="preserve">Temas</value>
+  </data>
+  <data name="plType.Help">
+    <value xml:space="preserve">Seleccione el tipo de tema a mostrar.</value>
+  </data>
+  <data name="plType.Text">
+    <value xml:space="preserve">Tipo de tema:</value>
+  </data>
+  <data name="Portable.Text">
+    <value xml:space="preserve">Portable </value>
+  </data>
+  <data name="Portal.Text">
+    <value xml:space="preserve">Sitio</value>
+  </data>
+  <data name="Site.Text">
+    <value xml:space="preserve">Sitio</value>
+  </data>
+  <data name="SkinDeleteFailure.Text">
+    <value xml:space="preserve">Sólo los superusuarios pueden eliminar los temas de sistema</value>
+  </data>
+  <data name="SkinUpload.Action">
+    <value xml:space="preserve">Cargar tema</value>
+  </data>
+  <data name="UsePackageUnInstall.Text">
+    <value xml:space="preserve">Este tema forma parte de un paquete. Utilice la opción Desinstalar paquete en la lista de temas en la lista principal.</value>
+  </data>
+</root>

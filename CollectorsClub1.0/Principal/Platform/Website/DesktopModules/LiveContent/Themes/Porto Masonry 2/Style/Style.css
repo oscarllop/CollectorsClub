@@ -1,0 +1,459 @@
+﻿.portomasonry2 {
+    position: relative;
+}
+
+    .portomasonry2 .clear_both {
+        clear: both;
+    }
+
+     .portomasonry2 .lc-masonry {
+        width: 50%!important;
+    }
+
+    .portomasonry2 .CommentForm input[type="text"],
+    .portomasonry2 .CommentForm textarea {
+        background-color: #FFFFFF;
+        background-image: none;
+        border: 1px solid #CCCCCC;
+        border-radius: 4px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+        font-size: inherit !important;
+        height: 46px;
+        line-height: normal !important;
+        padding: 6px 12px;
+        transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        vertical-align: middle;
+        width: 100% !important;
+        margin: 0px;
+    }
+
+    .portomasonry2 .CommentForm label {
+        margin-bottom: 5px;
+    }
+
+    .portomasonry2 .CommentForm input[type="text"]:focus,
+    .portomasonry2 .CommentForm textarea:focus {
+        border-color: #66AFE9;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+        outline: 0 none;
+    }
+
+    .portomasonry2 .CommentForm input[type="checkbox"],
+    .portomasonry2 .CommentForm input[type="radio"] {
+        margin: 5px;
+    }
+
+    .portomasonry2 div.comment-block {
+        background: #F4F4F4;
+        border-radius: 5px;
+        padding: 20px 20px 30px;
+        position: relative;
+    }
+
+    .portomasonry2 .img-thumbnail-comment {
+        background-color: #ffffff;
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        display: inline-block;
+        height: auto;
+        line-height: 1.42857;
+        margin-left: -95px;
+        max-width: 100%;
+        padding: 4px;
+        position: absolute;
+        transition: all 0.2s ease-in-out 0s;
+    }
+
+    .portomasonry2 .comment-list {
+        padding: 0 0 0 95px;
+        margin: 15px 0;
+    }
+
+    .portomasonry2 .CommentData {
+        border-top: 1px solid #DDDDDD;
+        margin: 30px 0 0 0;
+        padding: 20px 0 0;
+    }
+
+    .portomasonry2 .sort a {
+        padding: 2px 8px;
+        background-color: #0088CC;
+        border-radius: 4px;
+        font-size: 16px;
+        line-height: 25px;
+        color: #fff;
+    }
+
+    .portomasonry2 .sort {
+        text-align: right;
+    }
+
+    .portomasonry2 .lc-sort-source ul {
+        list-style-type: none;
+        display: inline-block;
+        padding: 0;
+    }
+
+        .portomasonry2 .lc-sort-source ul li {
+            padding: 0;
+            display: inline-block;
+        }
+
+    .portomasonry2 .lc-sort-source a {
+        padding: 8px 10px;
+        font-size: 15px;
+        line-height: normal;
+        text-decoration: none;
+        margin-right: 2px;
+    }
+
+        .portomasonry2 .lc-sort-source a.active, .portomasonry2 .lc-sort-source a:hover {
+            display: block;
+            background-color: #0088CC;
+            border-radius: 4px;
+            color: #FFFFFF;
+            text-shadow: none;
+            text-decoration: none;
+        }
+
+
+    .portomasonry2 span.reply {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    .portomasonry2 .fa-reply {
+        margin-right: 5px;
+        color: #0077b3;
+    }
+
+    .portomasonry2 div.comment-block .time-ago {
+        position: absolute;
+        right: 10px;
+        bottom: 5px;
+    }
+
+    .portomasonry2 div.comment-block span.comment-by {
+        display: block;
+        font-size: 1em;
+        line-height: 21px;
+        margin: 0;
+        padding: 0 0 5px 0;
+    }
+
+    .portomasonry2 div.comment-block .time-ago {
+        position: absolute;
+        right: 10px;
+        bottom: 5px;
+    }
+
+    .portomasonry2 .newheading, .portomasonry2 .CommentData h3 {
+        color: #0088cc !important;
+        margin: 0 0 40px;
+        font-size: 1.8em;
+        font-weight: 200;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 24px;
+    }
+
+        .portomasonry2 .CommentData h3 em {
+            margin-right: 7px;
+        }
+
+    .portomasonry2 .SaveComment {
+        background-color: #0088cc;
+        border-radius: 3px;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 10px;
+        cursor: pointer;
+        margin-top: 10px;
+        display: inline-block;
+    }
+
+        .portomasonry2 .SaveComment:hover {
+            color: #ffffff;
+            text-decoration: none;
+            border-color: #0099e6 #0099e6 #0077b3;
+            background-color: #0099e6;
+        }
+
+    .portomasonry2 .categories ul {
+        margin: 0;
+        padding: 0;
+    }
+
+        .portomasonry2 .categories ul li {
+            list-style-type: none;
+        }
+
+
+            .portomasonry2 .categories ul li a {
+                -webkit-transition: background 0.1s;
+                -moz-transition: background 0.1s;
+                transition: background 0.1s;
+                border-bottom: 1px solid #EDEDDE;
+                padding: 8px 0;
+                display: block;
+                color: #666;
+                font-size: 0.9em;
+                text-decoration: none;
+                padding-left: 25px;
+            }
+
+        .portomasonry2 .categories ul > li:hover {
+            background-color: #eee;
+            text-decoration: none;
+        }
+
+
+        .portomasonry2 .categories ul > li {
+            -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            background-image: url(Images/list-primary.png);
+            background-position: 10px 18px;
+            background-repeat: no-repeat;
+            transition: all 0.3s;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+    .portomasonry2 .viewall {
+        padding: 3px 5px;
+        background-color: #0088CC;
+        color: #ffffff;
+        font-size: 12px;
+        float: right;
+        margin: 10px;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+    .portomasonry2 .post-info a {
+        height: 50px;
+        overflow: hidden;
+        display: block;
+    }
+
+    .portomasonry2 .search .textbox {
+        display: block;
+        width: 100%;
+        height: 46px;
+        padding: 6px 45px 6px 15px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    }
+
+        .portomasonry2 .search .textbox:focus {
+            border-color: #66afe9;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+        }
+
+    .portomasonry2 .mwidget.search .msearch-toolbar {
+        position: relative;
+    }
+
+    .portomasonry2 .search-button {
+        background: url("Images/search.png") no-repeat scroll 0 0 transparent;
+        border: medium none;
+        bottom: 12px;
+        height: 19px;
+        position: absolute;
+        right: 12px;
+        text-indent: -999px;
+        width: 19px;
+    }
+
+    .portomasonry2 .mwidget {
+        margin-top: 15px;
+    }
+
+        .portomasonry2 .mwidget .tag-elements a, .portomasonry2 .lc-tags a {
+            display: inline-block;
+            padding: .2em .6em .3em;
+            font-size: 75%;
+            font-weight: bold;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: .25em;
+            background-color: #0088cc;
+            margin-right: 5px;
+            text-decoration: none;
+        }
+
+    .portomasonry2 .social-network {
+        margin: 10px 0px;
+    }
+
+    .portomasonry2 .CommentForm {
+        margin-top: 30px;
+    }
+
+.portomasonry2-search .mlightbox {
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    right: 25%;
+    max-height: 50%;
+    padding: 16px;
+    border: 4px solid #CCC;
+    background-color: white;
+    z-index: 1002;
+    overflow: auto;
+    border: 4px solid #ccc;
+    padding: 16px;
+}
+
+.portomasonry2-search .msearch-result .close-button {
+    background: url("Images/close.png") no-repeat;
+    border: none !important;
+    text-indent: -999px;
+    width: 30px;
+    height: 32px;
+    position: relative;
+    float: right;
+    right: -12px;
+    top: -14px;
+    min-width: 30px;
+    box-shadow: none;
+}
+
+.portomasonry2-search .msearch-result h3 {
+    position: static;
+    font-family: Arial,sans-serif;
+    color: #000000;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    border-bottom: none;
+    text-decoration: none;
+    color: #000000;
+}
+
+.portomasonry2-search .msearch-result .ms-result .result {
+    border-bottom: 1px solid #cccccc;
+}
+
+.portomasonry2-search .moverlay {
+    background-color: black;
+    display: none;
+    opacity: 0.8;
+    width: 100%;
+    z-index: 1001;
+}
+
+.portomasonry2-search .lnktitle {
+    font-weight: bold;
+    font-size: 12px;
+    color: #000000;
+    font-family: Arial,sans-serif;
+}
+
+.portomasonry2-search .paging .page, .portomasonry2-search .paging .pageselected {
+    background-repeat: repeat-x;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    margin-right: 3px;
+    padding: 6px;
+    border-radius: 5px;
+}
+
+.portomasonry2-search .paging .pageselected {
+    background-color: #204a87;
+    background-image: linear-gradient(to bottom, #204a87, #204a87);
+    color: #fff;
+}
+
+.portomasonry2-search .paging .page {
+    background-color: #fff;
+}
+
+    .portomasonry2-search .paging .page a {
+        color: #666666;
+    }
+
+.portomasonry2-search .paging {
+    text-align: center;
+    padding: 10px;
+}
+
+.portomasonry2-search .msearch-result {
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 12px;
+}
+
+.portomasonry2 .comment-login {
+    text-align: right;
+    font-style: italic;
+    color: Gray;
+}
+
+.portomasonry2 .control {
+    text-align: right;
+    background-color: #eee;
+    border-radius: 0 0 4px 4px;
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+}
+
+    .portomasonry2 .control a,
+    .portomasonry2 .icon-hide {
+        display: inline-block;
+        margin: 5px;
+    }
+
+.portomasonry2 .com {
+    margin-left: 30px;
+}
+
+.portomasonry2 .element {
+    max-width: 100%;
+}
+
+.portomasonry2:hover .sort {
+    opacity: 1;
+}
+
+.portomasonry2 .sort {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    opacity: 0;
+    transition: opacity .4s ease-in-out;
+    -moz-transition: opacity .4s ease-in-out;
+    -webkit-transition: opacity .4s ease-in-out;
+    z-index: 99;
+}
+
+.portomasonry2 .thumb-info .thumb-info-wrapper img {
+    max-width: 100%;
+}
+
+.portomasonry2 .thumb-info-title .thumb-info-inner, .portomasonry2 .thumb-info-title .thumb-info-type {
+    height: 25px;
+    overflow: hidden;
+}

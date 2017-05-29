@@ -1,0 +1,22 @@
+﻿@import "../variables.less.txt";
+
+.toggle > label {
+    border-width: @BSBorderWidth;
+    border-style: @BSBorderStyle; 
+    border-color: @BSBorderThemeMode;
+    border-radius: @BSBorderRadius;
+    box-shadow: @BBoxShadow;
+}
+
+html .toggle-primary .toggle.active > label {
+    background-color: @ASBackgroundColor;
+    border-color: @ASBorderColor;
+    color: @ASColor;
+}
+
+section.toggle label:hover {
+    color: @CHColor;
+    background-color: @CHBackgroundColor;
+    border-color: @CHBorderColor;
+}
+

@@ -1,0 +1,655 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" InitialTargets="ValidateSolutionConfiguration;ValidateToolsVersions;ValidateProjects" DefaultTargets="Build">
+  <PropertyGroup>
+    <MSBuildToolsPath32>C:\Program Files (x86)\MSBuild\14.0\bin\</MSBuildToolsPath32>
+    <MSBuildToolsRoot>C:\Program Files (x86)\MSBuild\</MSBuildToolsRoot>
+    <MSBuildFrameworkToolsPath>C:\Windows\Microsoft.NET\Framework\v4.0.30319\</MSBuildFrameworkToolsPath>
+    <MSBuildFrameworkToolsPath32>C:\Windows\Microsoft.NET\Framework\v4.0.30319\</MSBuildFrameworkToolsPath32>
+    <MSBuildFrameworkToolsRoot>C:\Windows\Microsoft.NET\Framework\</MSBuildFrameworkToolsRoot>
+    <MSBuildRuntimeVersion>4.0.30319</MSBuildRuntimeVersion>
+    <FrameworkSDKRoot>C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\</FrameworkSDKRoot>
+    <SDK35ToolsPath>C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\</SDK35ToolsPath>
+    <SDK40ToolsPath>C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6 Tools\</SDK40ToolsPath>
+    <VCTargetsPath>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\</VCTargetsPath>
+    <VCTargetsPath10>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\</VCTargetsPath10>
+    <VCTargetsPath11>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\</VCTargetsPath11>
+    <VCTargetsPath12>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\</VCTargetsPath12>
+    <VCTargetsPath14>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\</VCTargetsPath14>
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+    <WindowsSDK80Path />
+    <AspNetConfiguration>Release</AspNetConfiguration>
+    <SolutionDir>C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\</SolutionDir>
+    <SolutionExt>.sln</SolutionExt>
+    <SolutionFileName>Dnn.PersonaBar.Extensions.sln</SolutionFileName>
+    <SolutionName>Dnn.PersonaBar.Extensions</SolutionName>
+    <SolutionPath>C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Dnn.PersonaBar.Extensions.sln</SolutionPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <CurrentSolutionConfigurationContents>
+      <SolutionConfiguration xmlns="">
+  <ProjectConfiguration Project="{2CDEB8FA-ADFF-4440-84EA-3AF2CCB848D6}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SqlConsole\Dnn.PersonaBar.SqlConsole.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\NuGetPackages\NuGetPackages.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{A93DED6D-8696-40FE-90FC-4236F972BE41}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.ConfigConsole\Dnn.PersonaBar.ConfigConsole.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{B4CBAC32-E561-4426-AD67-8A12284AAED0}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Vocabularies\Dnn.PersonaBar.Vocabularies.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{55BE3993-A19A-442D-9E2E-D0E8A690CFFC}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.CssEditor\Dnn.PersonaBar.CssEditor.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{1762F0C8-F0B5-4D64-B8DF-23B164554D40}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Extensions\Dnn.PersonaBar.Extensions.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{35AD8ED3-CBC3-4208-83D1-660EBC908DE2}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Recyclebin\Dnn.PersonaBar.Recyclebin.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{89251729-9768-4245-A657-4D822E3E9122}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Roles\Dnn.PersonaBar.Roles.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{A3DF3DFE-0A09-4D3E-9E82-A0D5EC45750E}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Seo\Dnn.PersonaBar.Seo.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{2C608115-C60B-4138-B4FA-525513E984B8}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Sites\Dnn.PersonaBar.Sites.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{5AD58DBF-E912-46E5-8812-342BB8AF8182}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Themes\Dnn.PersonaBar.Themes.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{96E8B714-A431-4CB7-A251-17F171055F64}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Users\Dnn.PersonaBar.Users.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{E9445FC8-2BBD-4EFD-B63D-8C7B8C6EEB50}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Security\Dnn.PersonaBar.Security.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{EE37275B-1E65-4475-BB1E-0F8F31B3D281}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.TaskScheduler\Dnn.PersonaBar.TaskScheduler.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{962EE62B-2209-42B9-AB38-72E63E59DF57}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.AdminLogs\Dnn.PersonaBar.AdminLogs.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{A8B33EDC-FE3D-4BBA-B127-13A6AD7E5C12}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Licensing\Dnn.PersonaBar.Licensing.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{9CCA271F-CFAA-42A3-B577-7D5CBB38C646}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Pages\Dnn.PersonaBar.Pages.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{9FA6939A-0ABF-42AF-B43A-4063AFE3EE47}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Servers\Dnn.PersonaBar.Servers.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{C0A07377-E031-4C5B-AC56-0080555C9AC2}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SiteSettings\Dnn.PersonaBar.SiteSettings.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+</SolutionConfiguration>
+    </CurrentSolutionConfigurationContents>
+  </PropertyGroup>
+  <ItemDefinitionGroup />
+  <ItemGroup>
+    <SolutionConfiguration Include="Cloud_Debug|Any CPU">
+      <Configuration>Cloud_Debug</Configuration>
+      <Platform>Any CPU</Platform>
+      <Content>
+        <SolutionConfiguration xmlns="">
+  <ProjectConfiguration Project="{2CDEB8FA-ADFF-4440-84EA-3AF2CCB848D6}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SqlConsole\Dnn.PersonaBar.SqlConsole.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\NuGetPackages\NuGetPackages.csproj" BuildProjectInSolution="True">Cloud_Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{A93DED6D-8696-40FE-90FC-4236F972BE41}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.ConfigConsole\Dnn.PersonaBar.ConfigConsole.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{B4CBAC32-E561-4426-AD67-8A12284AAED0}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Vocabularies\Dnn.PersonaBar.Vocabularies.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{55BE3993-A19A-442D-9E2E-D0E8A690CFFC}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.CssEditor\Dnn.PersonaBar.CssEditor.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{1762F0C8-F0B5-4D64-B8DF-23B164554D40}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Extensions\Dnn.PersonaBar.Extensions.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{35AD8ED3-CBC3-4208-83D1-660EBC908DE2}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Recyclebin\Dnn.PersonaBar.Recyclebin.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{89251729-9768-4245-A657-4D822E3E9122}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Roles\Dnn.PersonaBar.Roles.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{A3DF3DFE-0A09-4D3E-9E82-A0D5EC45750E}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Seo\Dnn.PersonaBar.Seo.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{2C608115-C60B-4138-B4FA-525513E984B8}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Sites\Dnn.PersonaBar.Sites.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{5AD58DBF-E912-46E5-8812-342BB8AF8182}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Themes\Dnn.PersonaBar.Themes.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{96E8B714-A431-4CB7-A251-17F171055F64}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Users\Dnn.PersonaBar.Users.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{E9445FC8-2BBD-4EFD-B63D-8C7B8C6EEB50}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Security\Dnn.PersonaBar.Security.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{EE37275B-1E65-4475-BB1E-0F8F31B3D281}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.TaskScheduler\Dnn.PersonaBar.TaskScheduler.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{962EE62B-2209-42B9-AB38-72E63E59DF57}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.AdminLogs\Dnn.PersonaBar.AdminLogs.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{A8B33EDC-FE3D-4BBA-B127-13A6AD7E5C12}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Licensing\Dnn.PersonaBar.Licensing.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{9CCA271F-CFAA-42A3-B577-7D5CBB38C646}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Pages\Dnn.PersonaBar.Pages.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{9FA6939A-0ABF-42AF-B43A-4063AFE3EE47}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Servers\Dnn.PersonaBar.Servers.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{C0A07377-E031-4C5B-AC56-0080555C9AC2}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SiteSettings\Dnn.PersonaBar.SiteSettings.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+</SolutionConfiguration>
+      </Content>
+    </SolutionConfiguration>
+    <SolutionConfiguration Include="Cloud_Release|Any CPU">
+      <Configuration>Cloud_Release</Configuration>
+      <Platform>Any CPU</Platform>
+      <Content>
+        <SolutionConfiguration xmlns="">
+  <ProjectConfiguration Project="{2CDEB8FA-ADFF-4440-84EA-3AF2CCB848D6}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SqlConsole\Dnn.PersonaBar.SqlConsole.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\NuGetPackages\NuGetPackages.csproj" BuildProjectInSolution="True">Cloud_Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{A93DED6D-8696-40FE-90FC-4236F972BE41}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.ConfigConsole\Dnn.PersonaBar.ConfigConsole.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{B4CBAC32-E561-4426-AD67-8A12284AAED0}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Vocabularies\Dnn.PersonaBar.Vocabularies.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{55BE3993-A19A-442D-9E2E-D0E8A690CFFC}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.CssEditor\Dnn.PersonaBar.CssEditor.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{1762F0C8-F0B5-4D64-B8DF-23B164554D40}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Extensions\Dnn.PersonaBar.Extensions.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{35AD8ED3-CBC3-4208-83D1-660EBC908DE2}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Recyclebin\Dnn.PersonaBar.Recyclebin.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{89251729-9768-4245-A657-4D822E3E9122}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Roles\Dnn.PersonaBar.Roles.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{A3DF3DFE-0A09-4D3E-9E82-A0D5EC45750E}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Seo\Dnn.PersonaBar.Seo.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{2C608115-C60B-4138-B4FA-525513E984B8}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Sites\Dnn.PersonaBar.Sites.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{5AD58DBF-E912-46E5-8812-342BB8AF8182}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Themes\Dnn.PersonaBar.Themes.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{96E8B714-A431-4CB7-A251-17F171055F64}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Users\Dnn.PersonaBar.Users.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{E9445FC8-2BBD-4EFD-B63D-8C7B8C6EEB50}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Security\Dnn.PersonaBar.Security.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{EE37275B-1E65-4475-BB1E-0F8F31B3D281}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.TaskScheduler\Dnn.PersonaBar.TaskScheduler.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{962EE62B-2209-42B9-AB38-72E63E59DF57}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.AdminLogs\Dnn.PersonaBar.AdminLogs.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{A8B33EDC-FE3D-4BBA-B127-13A6AD7E5C12}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Licensing\Dnn.PersonaBar.Licensing.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{9CCA271F-CFAA-42A3-B577-7D5CBB38C646}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Pages\Dnn.PersonaBar.Pages.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{9FA6939A-0ABF-42AF-B43A-4063AFE3EE47}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Servers\Dnn.PersonaBar.Servers.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{C0A07377-E031-4C5B-AC56-0080555C9AC2}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SiteSettings\Dnn.PersonaBar.SiteSettings.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+</SolutionConfiguration>
+      </Content>
+    </SolutionConfiguration>
+    <SolutionConfiguration Include="Debug|Any CPU">
+      <Configuration>Debug</Configuration>
+      <Platform>Any CPU</Platform>
+      <Content>
+        <SolutionConfiguration xmlns="">
+  <ProjectConfiguration Project="{2CDEB8FA-ADFF-4440-84EA-3AF2CCB848D6}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SqlConsole\Dnn.PersonaBar.SqlConsole.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\NuGetPackages\NuGetPackages.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{A93DED6D-8696-40FE-90FC-4236F972BE41}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.ConfigConsole\Dnn.PersonaBar.ConfigConsole.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{B4CBAC32-E561-4426-AD67-8A12284AAED0}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Vocabularies\Dnn.PersonaBar.Vocabularies.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{55BE3993-A19A-442D-9E2E-D0E8A690CFFC}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.CssEditor\Dnn.PersonaBar.CssEditor.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{1762F0C8-F0B5-4D64-B8DF-23B164554D40}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Extensions\Dnn.PersonaBar.Extensions.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{35AD8ED3-CBC3-4208-83D1-660EBC908DE2}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Recyclebin\Dnn.PersonaBar.Recyclebin.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{89251729-9768-4245-A657-4D822E3E9122}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Roles\Dnn.PersonaBar.Roles.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{A3DF3DFE-0A09-4D3E-9E82-A0D5EC45750E}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Seo\Dnn.PersonaBar.Seo.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{2C608115-C60B-4138-B4FA-525513E984B8}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Sites\Dnn.PersonaBar.Sites.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{5AD58DBF-E912-46E5-8812-342BB8AF8182}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Themes\Dnn.PersonaBar.Themes.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{96E8B714-A431-4CB7-A251-17F171055F64}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Users\Dnn.PersonaBar.Users.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{E9445FC8-2BBD-4EFD-B63D-8C7B8C6EEB50}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Security\Dnn.PersonaBar.Security.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{EE37275B-1E65-4475-BB1E-0F8F31B3D281}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.TaskScheduler\Dnn.PersonaBar.TaskScheduler.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{962EE62B-2209-42B9-AB38-72E63E59DF57}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.AdminLogs\Dnn.PersonaBar.AdminLogs.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{A8B33EDC-FE3D-4BBA-B127-13A6AD7E5C12}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Licensing\Dnn.PersonaBar.Licensing.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{9CCA271F-CFAA-42A3-B577-7D5CBB38C646}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Pages\Dnn.PersonaBar.Pages.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{9FA6939A-0ABF-42AF-B43A-4063AFE3EE47}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Servers\Dnn.PersonaBar.Servers.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{C0A07377-E031-4C5B-AC56-0080555C9AC2}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SiteSettings\Dnn.PersonaBar.SiteSettings.csproj" BuildProjectInSolution="True">Debug|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+</SolutionConfiguration>
+      </Content>
+    </SolutionConfiguration>
+    <SolutionConfiguration Include="Npm_Release|Any CPU">
+      <Configuration>Npm_Release</Configuration>
+      <Platform>Any CPU</Platform>
+      <Content>
+        <SolutionConfiguration xmlns="">
+  <ProjectConfiguration Project="{2CDEB8FA-ADFF-4440-84EA-3AF2CCB848D6}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SqlConsole\Dnn.PersonaBar.SqlConsole.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\NuGetPackages\NuGetPackages.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{A93DED6D-8696-40FE-90FC-4236F972BE41}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.ConfigConsole\Dnn.PersonaBar.ConfigConsole.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{B4CBAC32-E561-4426-AD67-8A12284AAED0}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Vocabularies\Dnn.PersonaBar.Vocabularies.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{55BE3993-A19A-442D-9E2E-D0E8A690CFFC}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.CssEditor\Dnn.PersonaBar.CssEditor.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{1762F0C8-F0B5-4D64-B8DF-23B164554D40}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Extensions\Dnn.PersonaBar.Extensions.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{35AD8ED3-CBC3-4208-83D1-660EBC908DE2}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Recyclebin\Dnn.PersonaBar.Recyclebin.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{89251729-9768-4245-A657-4D822E3E9122}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Roles\Dnn.PersonaBar.Roles.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{A3DF3DFE-0A09-4D3E-9E82-A0D5EC45750E}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Seo\Dnn.PersonaBar.Seo.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{2C608115-C60B-4138-B4FA-525513E984B8}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Sites\Dnn.PersonaBar.Sites.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{5AD58DBF-E912-46E5-8812-342BB8AF8182}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Themes\Dnn.PersonaBar.Themes.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{96E8B714-A431-4CB7-A251-17F171055F64}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Users\Dnn.PersonaBar.Users.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{E9445FC8-2BBD-4EFD-B63D-8C7B8C6EEB50}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Security\Dnn.PersonaBar.Security.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{EE37275B-1E65-4475-BB1E-0F8F31B3D281}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.TaskScheduler\Dnn.PersonaBar.TaskScheduler.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{962EE62B-2209-42B9-AB38-72E63E59DF57}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.AdminLogs\Dnn.PersonaBar.AdminLogs.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{A8B33EDC-FE3D-4BBA-B127-13A6AD7E5C12}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Licensing\Dnn.PersonaBar.Licensing.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{9CCA271F-CFAA-42A3-B577-7D5CBB38C646}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Pages\Dnn.PersonaBar.Pages.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{9FA6939A-0ABF-42AF-B43A-4063AFE3EE47}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Servers\Dnn.PersonaBar.Servers.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{C0A07377-E031-4C5B-AC56-0080555C9AC2}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SiteSettings\Dnn.PersonaBar.SiteSettings.csproj" BuildProjectInSolution="True">Npm_Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+</SolutionConfiguration>
+      </Content>
+    </SolutionConfiguration>
+    <SolutionConfiguration Include="Release|Any CPU">
+      <Configuration>Release</Configuration>
+      <Platform>Any CPU</Platform>
+      <Content>
+        <SolutionConfiguration xmlns="">
+  <ProjectConfiguration Project="{2CDEB8FA-ADFF-4440-84EA-3AF2CCB848D6}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SqlConsole\Dnn.PersonaBar.SqlConsole.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\NuGetPackages\NuGetPackages.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{A93DED6D-8696-40FE-90FC-4236F972BE41}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.ConfigConsole\Dnn.PersonaBar.ConfigConsole.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{B4CBAC32-E561-4426-AD67-8A12284AAED0}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Vocabularies\Dnn.PersonaBar.Vocabularies.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{55BE3993-A19A-442D-9E2E-D0E8A690CFFC}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.CssEditor\Dnn.PersonaBar.CssEditor.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{1762F0C8-F0B5-4D64-B8DF-23B164554D40}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Extensions\Dnn.PersonaBar.Extensions.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{35AD8ED3-CBC3-4208-83D1-660EBC908DE2}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Recyclebin\Dnn.PersonaBar.Recyclebin.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{89251729-9768-4245-A657-4D822E3E9122}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Roles\Dnn.PersonaBar.Roles.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{A3DF3DFE-0A09-4D3E-9E82-A0D5EC45750E}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Seo\Dnn.PersonaBar.Seo.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{2C608115-C60B-4138-B4FA-525513E984B8}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Sites\Dnn.PersonaBar.Sites.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{5AD58DBF-E912-46E5-8812-342BB8AF8182}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Themes\Dnn.PersonaBar.Themes.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{96E8B714-A431-4CB7-A251-17F171055F64}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Users\Dnn.PersonaBar.Users.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{E9445FC8-2BBD-4EFD-B63D-8C7B8C6EEB50}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Security\Dnn.PersonaBar.Security.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{EE37275B-1E65-4475-BB1E-0F8F31B3D281}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.TaskScheduler\Dnn.PersonaBar.TaskScheduler.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{962EE62B-2209-42B9-AB38-72E63E59DF57}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.AdminLogs\Dnn.PersonaBar.AdminLogs.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{A8B33EDC-FE3D-4BBA-B127-13A6AD7E5C12}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Licensing\Dnn.PersonaBar.Licensing.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{9CCA271F-CFAA-42A3-B577-7D5CBB38C646}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Pages\Dnn.PersonaBar.Pages.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{9FA6939A-0ABF-42AF-B43A-4063AFE3EE47}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Servers\Dnn.PersonaBar.Servers.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+  <ProjectConfiguration Project="{C0A07377-E031-4C5B-AC56-0080555C9AC2}" AbsolutePath="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SiteSettings\Dnn.PersonaBar.SiteSettings.csproj" BuildProjectInSolution="True">Release|AnyCPU<ProjectDependency Project="{5313F690-D9A3-40B1-908C-1F5A3F3EA683}" /></ProjectConfiguration>
+</SolutionConfiguration>
+      </Content>
+    </SolutionConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SqlConsole\Dnn.PersonaBar.SqlConsole.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\NuGetPackages\NuGetPackages.csproj">
+      <ToolsVersion>
+      </ToolsVersion>
+      <SkipNonexistentProjects>False</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=AnyCPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.ConfigConsole\Dnn.PersonaBar.ConfigConsole.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Vocabularies\Dnn.PersonaBar.Vocabularies.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.CssEditor\Dnn.PersonaBar.CssEditor.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Extensions\Dnn.PersonaBar.Extensions.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Recyclebin\Dnn.PersonaBar.Recyclebin.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Roles\Dnn.PersonaBar.Roles.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Seo\Dnn.PersonaBar.Seo.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Sites\Dnn.PersonaBar.Sites.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Themes\Dnn.PersonaBar.Themes.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Users\Dnn.PersonaBar.Users.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Security\Dnn.PersonaBar.Security.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.TaskScheduler\Dnn.PersonaBar.TaskScheduler.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.AdminLogs\Dnn.PersonaBar.AdminLogs.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Licensing\Dnn.PersonaBar.Licensing.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Pages\Dnn.PersonaBar.Pages.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Servers\Dnn.PersonaBar.Servers.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SiteSettings\Dnn.PersonaBar.SiteSettings.csproj.metaproj">
+      <ToolsVersion>14.0</ToolsVersion>
+      <SkipNonexistentProjects>Build</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Release; Platform=Any CPU</AdditionalProperties>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+  </ItemGroup>
+  <Target Name="ValidateSolutionConfiguration">
+    <Error Condition="('$(CurrentSolutionConfigurationContents)' == '') and ('$(SkipInvalidConfigurations)' != 'true')" Text="The specified solution configuration &quot;$(Configuration)|$(Platform)&quot; is invalid. Please specify a valid solution configuration using the Configuration and Platform properties (e.g. MSBuild.exe Solution.sln /p:Configuration=Debug /p:Platform=&quot;Any CPU&quot;) or leave those properties blank to use the default solution configuration." Code="MSB4126" HelpKeyword="MSBuild.SolutionInvalidSolutionConfiguration" />
+    <Warning Condition="('$(CurrentSolutionConfigurationContents)' == '') and ('$(SkipInvalidConfigurations)' == 'true')" Text="The specified solution configuration &quot;$(Configuration)|$(Platform)&quot; is invalid. Please specify a valid solution configuration using the Configuration and Platform properties (e.g. MSBuild.exe Solution.sln /p:Configuration=Debug /p:Platform=&quot;Any CPU&quot;) or leave those properties blank to use the default solution configuration." Code="MSB4126" HelpKeyword="MSBuild.SolutionInvalidSolutionConfiguration" />
+    <Message Condition="'$(CurrentSolutionConfigurationContents)' != ''" Text="Building solution configuration &quot;$(Configuration)|$(Platform)&quot;." />
+  </Target>
+  <Target Name="ValidateToolsVersions">
+    <Error Condition="'$(MSBuildToolsVersion)' == '2.0' and ('$(ProjectToolsVersion)' != '2.0' and '$(ProjectToolsVersion)' != '')" Text="The tools version &quot;$(MSBuildToolsVersion)&quot; of the solution does not support building projects with a different tools version." Code="MSB4149" HelpKeyword="MSBuild.SolutionToolsVersionDoesNotSupportProjectToolsVersion" />
+  </Target>
+  <Target Name="ValidateProjects" />
+  <Target Name="GetSolutionConfigurationContents" Outputs="$(SolutionConfigurationContents)" />
+  <Target Name="Build" Outputs="@(CollectedBuildOutput)">
+    <MSBuild Projects="@(ProjectReference)" BuildInParallel="True" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Clean">
+    <MSBuild Projects="@(ProjectReference-&gt;Reverse())" Targets="Clean" BuildInParallel="True" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Rebuild" Outputs="@(CollectedBuildOutput)">
+    <MSBuild Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Publish">
+    <MSBuild Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_SqlConsole" Outputs="@(Modules_Settings_Dnn_PersonaBar_SqlConsoleBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SqlConsole\Dnn.PersonaBar.SqlConsole.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_SqlConsoleBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_SqlConsole:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SqlConsole\Dnn.PersonaBar.SqlConsole.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_SqlConsole:Rebuild" Outputs="@(Modules_Settings_Dnn_PersonaBar_SqlConsoleBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SqlConsole\Dnn.PersonaBar.SqlConsole.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_SqlConsoleBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_SqlConsole:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SqlConsole\Dnn.PersonaBar.SqlConsole.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="_nuget\NuGetPackages" Outputs="@(_nuget_NuGetPackagesBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\NuGetPackages\NuGetPackages.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Release; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="_nuget_NuGetPackagesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="_nuget\NuGetPackages:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\NuGetPackages\NuGetPackages.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Release; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="_nuget\NuGetPackages:Rebuild" Outputs="@(_nuget_NuGetPackagesBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\NuGetPackages\NuGetPackages.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Release; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="_nuget_NuGetPackagesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="_nuget\NuGetPackages:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\NuGetPackages\NuGetPackages.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Release; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_ConfigConsole" Outputs="@(Modules_Settings_Dnn_PersonaBar_ConfigConsoleBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.ConfigConsole\Dnn.PersonaBar.ConfigConsole.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_ConfigConsoleBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_ConfigConsole:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.ConfigConsole\Dnn.PersonaBar.ConfigConsole.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_ConfigConsole:Rebuild" Outputs="@(Modules_Settings_Dnn_PersonaBar_ConfigConsoleBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.ConfigConsole\Dnn.PersonaBar.ConfigConsole.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_ConfigConsoleBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_ConfigConsole:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.ConfigConsole\Dnn.PersonaBar.ConfigConsole.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Vocabularies" Outputs="@(Modules_Settings_Dnn_PersonaBar_VocabulariesBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Vocabularies\Dnn.PersonaBar.Vocabularies.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_VocabulariesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Vocabularies:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Vocabularies\Dnn.PersonaBar.Vocabularies.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Vocabularies:Rebuild" Outputs="@(Modules_Settings_Dnn_PersonaBar_VocabulariesBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Vocabularies\Dnn.PersonaBar.Vocabularies.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_VocabulariesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Vocabularies:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Vocabularies\Dnn.PersonaBar.Vocabularies.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_CssEditor" Outputs="@(Modules_Settings_Dnn_PersonaBar_CssEditorBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.CssEditor\Dnn.PersonaBar.CssEditor.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_CssEditorBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_CssEditor:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.CssEditor\Dnn.PersonaBar.CssEditor.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_CssEditor:Rebuild" Outputs="@(Modules_Settings_Dnn_PersonaBar_CssEditorBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.CssEditor\Dnn.PersonaBar.CssEditor.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_CssEditorBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_CssEditor:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.CssEditor\Dnn.PersonaBar.CssEditor.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Extensions" Outputs="@(Modules_Settings_Dnn_PersonaBar_ExtensionsBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Extensions\Dnn.PersonaBar.Extensions.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_ExtensionsBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Extensions:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Extensions\Dnn.PersonaBar.Extensions.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Extensions:Rebuild" Outputs="@(Modules_Settings_Dnn_PersonaBar_ExtensionsBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Extensions\Dnn.PersonaBar.Extensions.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_ExtensionsBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Extensions:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Extensions\Dnn.PersonaBar.Extensions.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Content\Dnn_PersonaBar_Recyclebin" Outputs="@(Modules_Content_Dnn_PersonaBar_RecyclebinBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Recyclebin\Dnn.PersonaBar.Recyclebin.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Content_Dnn_PersonaBar_RecyclebinBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Content\Dnn_PersonaBar_Recyclebin:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Recyclebin\Dnn.PersonaBar.Recyclebin.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Content\Dnn_PersonaBar_Recyclebin:Rebuild" Outputs="@(Modules_Content_Dnn_PersonaBar_RecyclebinBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Recyclebin\Dnn.PersonaBar.Recyclebin.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Content_Dnn_PersonaBar_RecyclebinBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Content\Dnn_PersonaBar_Recyclebin:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Recyclebin\Dnn.PersonaBar.Recyclebin.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_Roles" Outputs="@(Modules_Manage_Dnn_PersonaBar_RolesBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Roles\Dnn.PersonaBar.Roles.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Manage_Dnn_PersonaBar_RolesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_Roles:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Roles\Dnn.PersonaBar.Roles.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_Roles:Rebuild" Outputs="@(Modules_Manage_Dnn_PersonaBar_RolesBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Roles\Dnn.PersonaBar.Roles.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Manage_Dnn_PersonaBar_RolesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_Roles:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Roles\Dnn.PersonaBar.Roles.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Seo" Outputs="@(Modules_Settings_Dnn_PersonaBar_SeoBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Seo\Dnn.PersonaBar.Seo.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_SeoBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Seo:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Seo\Dnn.PersonaBar.Seo.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Seo:Rebuild" Outputs="@(Modules_Settings_Dnn_PersonaBar_SeoBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Seo\Dnn.PersonaBar.Seo.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_SeoBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Seo:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Seo\Dnn.PersonaBar.Seo.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_Sites" Outputs="@(Modules_Manage_Dnn_PersonaBar_SitesBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Sites\Dnn.PersonaBar.Sites.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Manage_Dnn_PersonaBar_SitesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_Sites:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Sites\Dnn.PersonaBar.Sites.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_Sites:Rebuild" Outputs="@(Modules_Manage_Dnn_PersonaBar_SitesBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Sites\Dnn.PersonaBar.Sites.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Manage_Dnn_PersonaBar_SitesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_Sites:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Sites\Dnn.PersonaBar.Sites.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_Themes" Outputs="@(Modules_Manage_Dnn_PersonaBar_ThemesBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Themes\Dnn.PersonaBar.Themes.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Manage_Dnn_PersonaBar_ThemesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_Themes:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Themes\Dnn.PersonaBar.Themes.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_Themes:Rebuild" Outputs="@(Modules_Manage_Dnn_PersonaBar_ThemesBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Themes\Dnn.PersonaBar.Themes.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Manage_Dnn_PersonaBar_ThemesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_Themes:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Themes\Dnn.PersonaBar.Themes.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_Users" Outputs="@(Modules_Manage_Dnn_PersonaBar_UsersBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Users\Dnn.PersonaBar.Users.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Manage_Dnn_PersonaBar_UsersBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_Users:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Users\Dnn.PersonaBar.Users.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_Users:Rebuild" Outputs="@(Modules_Manage_Dnn_PersonaBar_UsersBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Users\Dnn.PersonaBar.Users.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Manage_Dnn_PersonaBar_UsersBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_Users:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.Users\Dnn.PersonaBar.Users.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Security" Outputs="@(Modules_Settings_Dnn_PersonaBar_SecurityBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Security\Dnn.PersonaBar.Security.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_SecurityBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Security:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Security\Dnn.PersonaBar.Security.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Security:Rebuild" Outputs="@(Modules_Settings_Dnn_PersonaBar_SecurityBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Security\Dnn.PersonaBar.Security.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_SecurityBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Security:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Security\Dnn.PersonaBar.Security.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_TaskScheduler" Outputs="@(Modules_Settings_Dnn_PersonaBar_TaskSchedulerBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.TaskScheduler\Dnn.PersonaBar.TaskScheduler.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_TaskSchedulerBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_TaskScheduler:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.TaskScheduler\Dnn.PersonaBar.TaskScheduler.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_TaskScheduler:Rebuild" Outputs="@(Modules_Settings_Dnn_PersonaBar_TaskSchedulerBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.TaskScheduler\Dnn.PersonaBar.TaskScheduler.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_TaskSchedulerBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_TaskScheduler:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.TaskScheduler\Dnn.PersonaBar.TaskScheduler.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_AdminLogs" Outputs="@(Modules_Manage_Dnn_PersonaBar_AdminLogsBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.AdminLogs\Dnn.PersonaBar.AdminLogs.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Manage_Dnn_PersonaBar_AdminLogsBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_AdminLogs:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.AdminLogs\Dnn.PersonaBar.AdminLogs.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_AdminLogs:Rebuild" Outputs="@(Modules_Manage_Dnn_PersonaBar_AdminLogsBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.AdminLogs\Dnn.PersonaBar.AdminLogs.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Manage_Dnn_PersonaBar_AdminLogsBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Manage\Dnn_PersonaBar_AdminLogs:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Manage\Dnn.PersonaBar.AdminLogs\Dnn.PersonaBar.AdminLogs.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Licensing" Outputs="@(Modules_Settings_Dnn_PersonaBar_LicensingBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Licensing\Dnn.PersonaBar.Licensing.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_LicensingBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Licensing:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Licensing\Dnn.PersonaBar.Licensing.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Licensing:Rebuild" Outputs="@(Modules_Settings_Dnn_PersonaBar_LicensingBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Licensing\Dnn.PersonaBar.Licensing.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_LicensingBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Licensing:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Licensing\Dnn.PersonaBar.Licensing.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Content\Dnn_PersonaBar_Pages" Outputs="@(Modules_Content_Dnn_PersonaBar_PagesBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Pages\Dnn.PersonaBar.Pages.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Content_Dnn_PersonaBar_PagesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Content\Dnn_PersonaBar_Pages:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Pages\Dnn.PersonaBar.Pages.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Content\Dnn_PersonaBar_Pages:Rebuild" Outputs="@(Modules_Content_Dnn_PersonaBar_PagesBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Pages\Dnn.PersonaBar.Pages.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Content_Dnn_PersonaBar_PagesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Content\Dnn_PersonaBar_Pages:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Content\Dnn.PersonaBar.Pages\Dnn.PersonaBar.Pages.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Servers" Outputs="@(Modules_Settings_Dnn_PersonaBar_ServersBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Servers\Dnn.PersonaBar.Servers.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_ServersBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Servers:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Servers\Dnn.PersonaBar.Servers.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Servers:Rebuild" Outputs="@(Modules_Settings_Dnn_PersonaBar_ServersBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Servers\Dnn.PersonaBar.Servers.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_ServersBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_Servers:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.Servers\Dnn.PersonaBar.Servers.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_SiteSettings" Outputs="@(Modules_Settings_Dnn_PersonaBar_SiteSettingsBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SiteSettings\Dnn.PersonaBar.SiteSettings.csproj.metaproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_SiteSettingsBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_SiteSettings:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SiteSettings\Dnn.PersonaBar.SiteSettings.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_SiteSettings:Rebuild" Outputs="@(Modules_Settings_Dnn_PersonaBar_SiteSettingsBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SiteSettings\Dnn.PersonaBar.SiteSettings.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="Modules_Settings_Dnn_PersonaBar_SiteSettingsBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Modules\Settings\Dnn_PersonaBar_SiteSettings:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\TeamCity\buildAgent\work\Dnn AdminExperience 1.1.0\CompilePlatformExtensions\src\Modules\Settings\Dnn.PersonaBar.SiteSettings\Dnn.PersonaBar.SiteSettings.csproj.metaproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="14.0" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+</Project>

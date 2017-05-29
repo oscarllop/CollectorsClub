@@ -1,0 +1,622 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D1FAA914-50AA-4CAD-B58B-EE21CC6D7BD5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CollectorsClub.Web.API</RootNamespace>
+    <AssemblyName>CollectorsClub.Web.API</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>44311</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.Mvc5.3.3.0\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.WebApi2.3.3.3\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke">
+      <HintPath>..\packages\DotNetNuke\7.4.1\DotNetNuke.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.HttpModules">
+      <HintPath>..\packages\DotNetNuke\7.4.1\DotNetNuke.HttpModules.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.Instrumentation, Version=7.4.1.280, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetNuke\7.4.1\DotNetNuke.Instrumentation.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.Log4Net, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetNuke\7.4.1\DotNetNuke.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.Web">
+      <HintPath>..\packages\DotNetNuke\7.4.1\DotNetNuke.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\packages\EPPlus 3.1.3\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetNuke\7.4.1\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.2.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.2.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Spatial, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.2.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.4.0.0\lib\net40\System.Web.Http.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="WebApi.OutputCache.Core">
+      <HintPath>..\packages\Strathweb.CacheOutput.WebApi2.0.9.0\lib\net45\WebApi.OutputCache.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WebApi.OutputCache.V2">
+      <HintPath>..\packages\Strathweb.CacheOutput.WebApi2.0.9.0\lib\net45\WebApi.OutputCache.V2.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Code\Localizacion.cs" />
+    <Compile Include="App_Code\Utilidades.cs" />
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Controllers\CalendarioController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Calendario_IdiomaController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CategoriaCalendarioController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CategoriaCalendario_IdiomaController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CategoriaFotoController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CategoriaFoto_IdiomaController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Controllers.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\EntidadController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Entidad_IdiomaController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\EstadoCalendarioController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\EstadoCalendario_IdiomaController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\EventoController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Evento_IdiomaController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\FabricanteController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Fabricante_IdiomaController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\FotoController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\FotoControllerExtension.cs" />
+    <Compile Include="Controllers\Foto_IdiomaController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\MarcaController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\SolicitudContactoController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CalendarioControllerExtension.cs" />
+    <Compile Include="Controllers\SolicitudContactoControllerExtension.cs" />
+    <Compile Include="Controllers\PaginaGestorContenidosController.cs" />
+    <Compile Include="Controllers\GlobalController.cs" />
+    <Compile Include="Controllers\SubcategoriaCalendarioController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\SubcategoriaCalendario_IdiomaController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TipoColeccionCalendarioController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TipoColeccionCalendario_IdiomaController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TipoEventoController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TipoEvento_IdiomaController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TrazaController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\VideoController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Video_IdiomaController.cs">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Mappers\AutoMapperConfiguration.cs" />
+    <Compile Include="Mappers\CreateOrUpdateCommandToModelMappingProfile.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateOrUpdateCommandToModelMappingProfile.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappers\EntityToModelMappingProfile.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityToModelMappingProfile.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappers\ModelToCreateOrUpdateCommandMappingProfile.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelToCreateOrUpdateCommandMappingProfile.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappers\ModelToModelMappingProfile.cs">
+      <DependentUpon>ModelToModelMappingProfile.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Mappers\ModelToEntityMappingProfile.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelToEntityMappingProfile.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="Global.asax" />
+    <Content Include="Mappers\ModelToModelMappingProfile.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelToModelMappingProfile.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\BaseController.js" />
+    <Content Include="Scripts\Controllers\CalendarioController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\Calendario_IdiomaController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\CategoriaCalendarioController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\CategoriaCalendario_IdiomaController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\CategoriaFotoController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\CategoriaFoto_IdiomaController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\Controllers.js">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\EntidadController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\Entidad_IdiomaController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\EstadoCalendarioController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\EstadoCalendario_IdiomaController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\EventoController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\Evento_IdiomaController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\FabricanteController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\Fabricante_IdiomaController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\FotoController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\Foto_IdiomaController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\MarcaController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\PaginaGestorContenidosController.js" />
+    <Content Include="Scripts\Controllers\SolicitudContactoController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\SubcategoriaCalendarioController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\SubcategoriaCalendario_IdiomaController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\TipoColeccionCalendarioController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\TipoColeccionCalendario_IdiomaController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\TipoEventoController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\TipoEvento_IdiomaController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\UsuarioController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\VideoController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controllers\Video_IdiomaController.js">
+      <DependentUpon>Controllers.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Core.js" />
+    <Content Include="Scripts\jquery.extensions.js" />
+    <Content Include="Scripts\jshashtable-2.1.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\knockout-3.2.0.js" />
+    <Content Include="Scripts\knockout.extensions.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
+    <Content Include="Scripts\knockout.validation.js" />
+    <Content Include="Scripts\knockout.validation.min.js" />
+    <Content Include="Scripts\Models\CalendarioModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\Calendario_IdiomaModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\CategoriaCalendarioModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\CategoriaCalendario_IdiomaModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\CategoriaFotoModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\CategoriaFoto_IdiomaModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\DocumentoUsuariosModel.js" />
+    <Content Include="Scripts\Models\EntidadModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\Entidad_IdiomaModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\EstadoCalendarioModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\EstadoCalendario_IdiomaModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\EventoModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\Evento_IdiomaModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\FabricanteModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\Fabricante_IdiomaModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\FotoModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\Foto_IdiomaModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\MarcaModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\Models.js">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\PaginaGestorContenidosModel.js" />
+    <Content Include="Scripts\Models\SolicitudContactoModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\SubcategoriaCalendarioModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\SubcategoriaCalendario_IdiomaModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\TipoColeccionCalendarioModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\TipoColeccionCalendario_IdiomaModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\TipoDocumentoUsuariosModel.js" />
+    <Content Include="Scripts\Models\TipoEventoModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\TipoEvento_IdiomaModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\UsuarioModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\VideoModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Models\Video_IdiomaModel.js">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\scrollpaging.js" />
+    <Content Include="Scripts\string.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CollectorsClub.Data\CollectorsClub.Data.csproj">
+      <Project>{fdf561b9-9bff-44a5-b401-71b7252aafa1}</Project>
+      <Name>CollectorsClub.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CollectorsClub.IdentityModel\CollectorsClub.IdentityModel.csproj">
+      <Project>{1a2b5e2c-e321-445c-8e98-d5e0a95d9773}</Project>
+      <Name>CollectorsClub.IdentityModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CollectorsClub.Model\CollectorsClub.Model.csproj">
+      <Project>{9567e24b-487c-4947-819a-d74b6c1327b8}</Project>
+      <Name>CollectorsClub.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CollectorsClub.Web.API.Models\CollectorsClub.Web.API.Models.csproj">
+      <Project>{b4c45bbe-640a-46cc-b3c8-91b9a446f974}</Project>
+      <Name>CollectorsClub.Web.API.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Json\Core.Json.csproj">
+      <Project>{db406d06-4185-4b58-88eb-42731de31249}</Project>
+      <Name>Core.Json</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Controllers\Controllers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Controllers.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mappers\CreateOrUpdateCommandToModelMappingProfile.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CreateOrUpdateCommandToModelMappingProfile.cs</LastGenOutput>
+    </Content>
+    <Content Include="Mappers\ModelToCreateOrUpdateCommandMappingProfile.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelToCreateOrUpdateCommandMappingProfile.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="logs\" />
+    <Folder Include="Portals\_default\Logs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Controllers\Controllers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Controllers.js</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\Models\Models.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Models.js</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\knockout.validation.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mappers\EntityToModelMappingProfile.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EntityToModelMappingProfile.cs</LastGenOutput>
+    </Content>
+    <Content Include="Mappers\ModelToEntityMappingProfile.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelToEntityMappingProfile.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2002</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44301/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="false" Inherits="CollectorsClub.UI.Skins.Controls.AvisoLegal" CodeFile="AvisoLegal.ascx.cs" %>
+<a class="terms" rel="nofollow" href="~/<%= Multiidioma.GetUrlFromTabID(Multiidioma.GetTabIDFromUrl("/Avisolegal")) %>"><%= Localization.GetString("NombreEnlace", Localization.GetResourceFile(this, MyFileName)) %></a>

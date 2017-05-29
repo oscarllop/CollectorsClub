@@ -1,0 +1,29 @@
+<dotnetnuke version="3.0" type="Module">
+  <folders>
+    <folder>
+      <name>CollectorsClub.Fotogaleria</name>
+      <friendlyname>CollectorsClub - Fotogalería</friendlyname>
+      <modulename>CollectorsClub.Fotogaleria</modulename>
+      <description>CollectorsClub - Fotogalería</description>
+      <version>01.00.00</version>
+      <modules>
+        <module>
+          <friendlyname>CollectorsClub - Fotogalería</friendlyname>
+          <cachetime>0</cachetime>
+          <controls>
+            <control>
+              <src>DesktopModules/CollectorsClub/Editores/Fotogaleria.ascx</src>
+              <type>View</type>
+              <helpurl></helpurl>
+            </control>
+          </controls>
+        </module>
+      </modules>
+      <files>
+        <file>
+          <name>Fotogaleria.ascx</name>
+        </file>
+      </files>
+    </folder>
+  </folders>
+</dotnetnuke>

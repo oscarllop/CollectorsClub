@@ -1,0 +1,334 @@
+﻿<div ng-controller="switcher_index">
+    <uiengine provider="AngularBootstrap" identifier="switcher_index" layout="dashboard">
+        <uilayout name="Theme">
+            <uitemplate>
+                <div class="icongroup"></div>
+                <div id="getCSSModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="cssModalLabel">[L:NewTheme]</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div id="themeAlert" class="alert alert-danger fade in" style="display:none;"></div>
+                                <table>
+                                    <tr>
+                                        <td width="150px"><strong>[L:ThemeName]</strong></td>
+                                        <td>
+                                            <input ng-model="Name" type="text" id="Name" ng-keypress="Click_Enter($event)" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <a id="Save" class="btn btn-primary save" ng-click="Click_Create()">[L:CreateTheme]</a>
+                                <a class="btn btn-default" data-dismiss="modal" aria-hidden="true">[L:Cancel]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="getapplyCSSModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="cssModalLabel">[L:ApplyTheme]</h4>
+                            </div>
+                            <div class="modal-body">
+                                <span>[L:Message]</span> <strong> {{Name}} </strong> <span>[L:Current]</span>
+                            </div>
+                            <div class="modal-footer">
+                                <a class="btn btn-primary save" ng-click="Click_Apply()">[L:Apply]</a>
+                                <a class="btn btn-default" ng-click="Click_ApplyCancel()" data-dismiss="modal" aria-hidden="true">[L:Cancel]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="getConfirmedModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="cssModalLabel">[L:ConfirmationMessage]</h4>
+                            </div>
+                            <div class="modal-body"> <span>[L:Overwrite]</span> <strong> {{ui.data.Theme.Value}} </strong>  <span>[L:ExistingTheme]</span></div>
+                            <div class="modal-footer">
+                                <a class="btn btn-primary save" ng-click="Click_Save()">[L:Yes]</a>
+                                <a class="btn btn-default" data-dismiss="modal" aria-hidden="true">[L:No]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Delete -->
+                <div id="getRemoveModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="cssModalLabel">[L:ConfirmationMessage] </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div id="themeAlert1" class="alert alert-danger fade in" style="display:none;"></div>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <span type="text" id="getThemeName">[L:Delete]</span> <strong> {{ui.data.Theme.Value}} </strong> <span>[L:ThemeDel].</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <a id="Delete" class="btn btn-primary save" ng-click="Click_Delete()">[L:Yes]</a>
+                                <a class="btn btn-default" data-dismiss="modal" aria-hidden="true">[L:No]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="getResetModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="cssModalLabel">[L:ConfirmationMessage] </h4>
+                            </div>
+                            <div class="modal-body">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <span type="text" >[L:ResetTheme]</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <a id="Reset" class="btn btn-primary save" ng-click="Click_ResetTheme()">[L:Yes]</a>
+                                <a class="btn btn-default" data-dismiss="modal" aria-hidden="true">[L:No]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </uitemplate>
+        </uilayout>
+
+        <uilayout name="New" attr-id="New" attr-class="ms-tab-pane ms-active">
+            <uitemplate>
+                <div class="title"><strong>[L:Themes]</strong></div>
+                <div id="getTheme" class="ms-tab-pane" access-roles="host">
+                    <a class="fa fa-plus-square-o right" title="New Theme" mn-ng-click="Click_Open()"><strong>[L:New]</strong></a>
+                    <textarea mn-ng-model="ui.data.CSS.Value" class="hidden"></textarea>
+                </div>
+                <div mn-ng-bind-html="demo_markup">
+                </div>
+            </uitemplate>
+            <uielement name="Theme" container-attr-access-roles="host" control="dropdownlist" attr-ng-change="Change_Theme()" attr-ng-click="Lock()" attr-ng-blur="bindLock()"></uielement>
+            <uitemplate>
+                <div class="hide-text" access-roles="host">
+                    <p mn-ng-hide="ShowStyleSwitcher()">
+                        [L:Create]<br />
+                        <small>[L:Default]</small>
+                    </p>
+                </div>
+            </uitemplate>
+        </uilayout>
+        <uilayout name="default" attr-class="controlgroup">
+            <uitemplate>
+                <div mn-ng-show="ShowStyleSwitcher()" class="icongroup">
+                    <a mn-ng-click="Click_Reset()" title="Reset" class="fa fa-refresh"></a>
+                    <a mn-ng-click="Click_SaveStyleSwitcher()" title="Save" class="fa fa-floppy-o" access-roles="host"></a>
+                    <a mn-ng-click="Click_Remove()" title="Remove" class="fa fa-trash" access-roles="host"></a>
+                    <a mn-ng-click="Lock_Switcher()" title="Lock Sidebar" class="lockSwitcher fa fa-unlock"></a>
+                </div>
+
+            </uitemplate>
+
+        </uilayout>
+        <uilayout name="Basic" attr-id="Basic" attr-class="ms-tab-pane">
+            <uitemplate>
+                <div class="title"><strong>[L:Basic]</strong></div>
+                <div class="ms-form-group" data-datatype="radiobuttonlist" data-name="Header">
+                    <label>[L:Header]</label>
+                    <div></div>
+                    <div mn-ng-repeat="option in ui.data.Header.Options" class="ng-binding ng-scope">
+                        <input type="radio" value="{{option.Value}}" ng-model="ui.data.Header.Value" id="Header{{option.Key}}" ng-click="Reload()"><label for="Header{{option.Key}}">{{option.Key}}</label>
+                    </div>
+                </div>
+            </uitemplate>
+            <uielement name="BorderStyle" control="checkboxtoggle" attr-class="pad-top"></uielement>
+            <uielement name="LayoutStyle" control="checkboxtoggle" attr-class="pad-top"></uielement>
+            <uitemplate>
+                <div class="ms-form-group pad-top" mn-ng-hide="ui.data.LayoutStyle.Value">
+                    <label>[L:BackgroundImages]</label>
+                    <ul class="background-images">
+                        <li class="bg-fix" mn-ng-repeat="option in ui.data.BackgroundImages.Options">
+                            <input type="radio" value="{{option.Name}}" ng-click="Change('BGImage')" ng-model="ui.data.BackgroundImages.Value" title="{{option.Name}}" />
+                            <label class="bg-label" ng-attr-style="background-image: url('{{option.Value}}');"></label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="ms-form-group pad-top" mn-ng-hide="ui.data.LayoutStyle.Value">
+                    <label>[L:BackgroundPatterns]</label>
+                    <ul class="background-patterns">
+                        <li class="bg-fix" mn-ng-repeat="option in ui.data.BackgroundPatterns.Options">
+                            <input type="radio" value="{{option.Name}}" ng-click="Change('BGPattern')" ng-model="ui.data.BackgroundPatterns.Value" title="{{option.Name}}" />
+                            <label class="bg-label" ng-attr-style="background-image: url('{{option.Value}}');"></label>
+                        </li>
+                    </ul>
+                </div>
+            </uitemplate>
+            <uielement name="BackgroundColor" control="checkboxtoggle" attr-class="pad-top"></uielement>
+            <uielement name="WebsiteType" control="checkboxtoggle" attr-class="pad-top"></uielement>
+
+        </uilayout>
+        <uilayout name="Colors" attr-id="Colors" attr-class="ms-tab-pane">
+            <uitemplate>
+                <div class="title"><strong>[L:Colors]</strong></div>
+                <div class="bg-content">
+                    <a ng-click="Click_Active('PrimaryColor')">[L:PrimaryColor] <span class="fa fa-chevron-down pull-right"></span></a>
+                    <div mn-ng-show="show_pc" class="primary-color">
+                        <div class="ms-form-group">
+                            <ul>
+                                <li mn-ng-repeat="option in ui.data.PrimaryColor.Options">
+                                    <input type="radio" value="{{option.HexValue}}" ng-click="Change()" ng-model="ui.data.PrimaryColor.Value" style="background-color: {{option.HexValue}};" />
+                                    <label class="ColorLabel" ng-attr-style="background-color: {{option.HexValue}};"></label>
+                                </li>
+                                <li class="color_picker">
+                                    <label>[L:CustomColor]</label>
+                                    <input type="radio" class="col_picker pull-right" id="PrimaryColorPicker" ng-model="ui.data.PrimaryColor.Value" />
+                                    <label class="col_picker"></label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a ng-click="Click_Active('SecondaryColor')">[L:SecondaryColor]<span class="fa fa-chevron-down pull-right"></span></a>
+                    <div mn-ng-show="show_sc" class="secondary-color">
+                        <div class="ms-form-group">
+                            <ul>
+                                <li mn-ng-repeat="option in ui.data.SecondaryColor.Options">
+                                    <input type="radio" value="{{option.HexValue}}" ng-click="Change()" ng-model="ui.data.SecondaryColor.Value" style="background-color: {{option.HexValue}};" />
+                                    <label class="ColorLabel" ng-attr-style="background-color: {{option.HexValue}};"></label>
+                                </li>
+                                <li class="color_picker">
+                                    <label>[L:CustomColor]</label>
+                                    <input type="radio" class="col_picker pull-right" id="SecondaryColorPicker" ng-model="ui.data.SecondaryColor.Value" />
+                                    <label class="col_picker"></label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a ng-click="Click_Active('TertiaryColor')">[L:TertiaryColor]<span class="fa fa-chevron-down pull-right"></span></a>
+                    <div mn-ng-show="show_tc" class="tertiary-color">
+                        <div class="ms-form-group">
+                            <ul>
+                                <li mn-ng-repeat="option in ui.data.TertiaryColor.Options">
+                                    <input type="radio" value="{{option.HexValue}}" ng-click="Change()" ng-model="ui.data.TertiaryColor.Value" style="background-color: {{option.HexValue}};" />
+                                    <label class="ColorLabel" ng-attr-style="background-color: {{option.HexValue}};"></label>
+                                </li>
+                                <li class="color_picker">
+                                    <label>[L:CustomColor]</label>
+                                    <input type="radio" class="col_picker pull-right" id="TertiaryColorPicker" ng-model="ui.data.TertiaryColor.Value" />
+                                    <label class="col_picker"></label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a ng-click="Click_Active('QuaternaryColor')">[L:QuaternaryColor]<span class="fa fa-chevron-down pull-right"></span></a>
+                    <div mn-ng-show="show_qc" class="quaternary-color">
+                        <div class="ms-form-group">
+                            <ul>
+                                <li mn-ng-repeat="option in ui.data.QuaternaryColor.Options">
+                                    <input type="radio" value="{{option.HexValue}}" ng-click="Change()" ng-model="ui.data.QuaternaryColor.Value" style="background-color: {{option.HexValue}};" />
+                                    <label class="ColorLabel" ng-attr-style="background-color: {{option.HexValue}};"></label>
+                                </li>
+                                <li class="color_picker">
+                                    <label>[L:CustomColor]</label>
+                                    <input type="radio" class="col_picker pull-right" id="QuarternaryColorPicker" ng-model="ui.data.QuaternaryColor.Value" />
+                                    <label class="col_picker"></label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </uitemplate>
+        </uilayout>
+        <uilayout name="Social" attr-id="Social" attr-class="ms-tab-pane" attr-ng-class="{'removebox': !ui.data.SocialIcons.Value}">
+            <uielement name="SocialIcons" control="toggle" attr-class="bg-none"></uielement>
+            <uitemplate>
+                <div class="st_social ms-form-group" mn-ng-show="ui.data.SocialIcons.Value">
+                    <ul class="social-icons">
+                        <li mn-ng-repeat="social in ui.data.Socials.Options" class="{{social.id}}">
+                            <em ng-click="Click_SocialActive(social)" title="{{social.name}}"></em>
+                            <input type="text" ng-blur="Click_SocialActive(social, 'blur')" value="{{social.href}}" class="fa {{social.id}}" />
+                        </li>
+                    </ul>
+                </div>
+            </uitemplate>
+        </uilayout>
+        <uilayout name="Components" attr-id="Components" attr-class="ms-tab-pane">
+            <uitemplate><div class="title"><strong>[L:DNNComponents]</strong></div></uitemplate>
+            <uielement name="Breadcrumb" control="toggle"></uielement>
+            <uielement name="Copyright" control="toggle" attr-class="pad-top"></uielement>
+            <uielement name="Language" control="toggle" attr-class="pad-top"></uielement>
+            <uielement name="Login" control="toggle" attr-class="pad-top"></uielement>
+            <uielement name="Menu" control="toggle" attr-class="pad-top"></uielement>
+            <uielement name="PrivacyStatement" control="toggle" attr-class="pad-top"></uielement>
+            <uielement name="Register" control="toggle" attr-class="pad-top"></uielement>
+            <uielement name="Search" control="toggle" attr-class="pad-top"></uielement>
+            <uielement name="Termsofuse" control="toggle" attr-class="pad-top"></uielement>
+            <uitemplate>
+                <div class="help-message">
+                    <hr />
+                    <span class="ms-help-block">[L:ComponentHelp]</span>
+                    <span class="ms-help-block">[L:ComponentHelpMsg]</span>
+                </div>
+            </uitemplate>
+        </uilayout>
+        <uilayout name="Settings" attr-id="Settings" attr-class="ms-tab-pane">
+            <uitemplate><div class="title"><strong>[L:Settings]</strong></div></uitemplate>
+            <uielement name="LoginPopup" control="toggle" container-attr-ng-show="ui.data.Login.Value"></uielement>
+            <uitemplate>
+                <div class="help-message">
+                    <hr />
+                    <span class="ms-help-block" data-label="loginpopup" ng-show="ui.data.Login.Value">[L:LoginMessage]</span>
+                    </div>
+            </uitemplate>
+            <uielement name="Viewport" control="toggle" attr-class="Viewport"></uielement>
+            <uitemplate>
+                <div class="help-message">
+                    <hr />
+                    <span class="ms-help-block">[L:ViewPortHelp]</span>
+                    </div>
+</uitemplate>
+            <uielement name="GoogleMapAPI" attr-class="GoogleMap" control="textbox" container-attr-ng-show="showGoogleMapKey()" attr-ng-keypress="Click_EnterPrevent($event)" ng-blur="createCookie();"></uielement>
+            <uitemplate>
+                <div class="help-message">
+                    <hr />
+                    <div class="ms-form-group api_key" mn-ng-show="showGoogleMapKey()"><span>Google Maps API Key is required for "Maps" Shortcode. Please refer to </span> <a href="http://www.mandeeps.com/support/documentation/pageid/1338/porto-using-style-switcher-settings#porto-using-style-switcher-googlemapapikey">documentation</a><span> to obtain a key.</span></div>
+                    </div>
+</uitemplate>
+        </uilayout>
+        <uilayout name="ShortCodes" attr-id="ShortCodes" attr-class="ms-tab-pane">
+            <uitemplate>
+                <div class="title"><strong>[L:ShortCode]</strong></div>
+            </uitemplate>
+            <uielement name="Toggle" control="checkbox" attr-ng-click="Click_Toggle()" ng-model="Toggle.Value"></uielement>
+            <uielement name="ShortCodes" control="checkboxlist" attr-class="ShortContent pad-top" label="false"></uielement>
+            <uitemplate>
+                <div class="help-message">
+                    <hr />
+                    <span class="ms-help-block">[L:ShortcodesHelp]</span>
+              </div>
+</uitemplate>
+        </uilayout>
+    </uiengine>
+</div>
+
+

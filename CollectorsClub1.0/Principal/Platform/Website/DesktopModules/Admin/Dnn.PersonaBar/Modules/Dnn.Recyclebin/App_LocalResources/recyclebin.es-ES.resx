@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="nav_Recyclebin.Text">
+    <value xml:space="preserve">Papelera de reciclaje</value>
+  </data>
+  <data name="recyclebin_Actions.Text">
+    <value xml:space="preserve">Acciones</value>
+  </data>
+  <data name="recyclebin_CancelConfirm.Text">
+    <value xml:space="preserve">No</value>
+  </data>
+  <data name="recyclebin_Delete.Text">
+    <value xml:space="preserve">Eliminar</value>
+  </data>
+  <data name="recyclebin_DeleteConfirm.Text">
+    <value xml:space="preserve">Sí</value>
+  </data>
+  <data name="recyclebin_DeletedDate.Text">
+    <value xml:space="preserve">Fecha</value>
+  </data>
+  <data name="recyclebin_EmptyRecycleBin.Text">
+    <value xml:space="preserve">Vaciar la papelera de reciclaje</value>
+  </data>
+  <data name="recyclebin_EmptyRecycleBinConfirm.Text">
+    <value xml:space="preserve">¿Está seguro que desea eliminar definitivamente todas las páginas y módulos?</value>
+  </data>
+  <data name="recyclebin_Modules.Text">
+    <value xml:space="preserve">Módulos</value>
+  </data>
+  <data name="recyclebin_ModuleTitle.Text">
+    <value xml:space="preserve">Título del módulo</value>
+  </data>
+  <data name="recyclebin_NoConfirm.Text">
+    <value xml:space="preserve">No</value>
+  </data>
+  <data name="recyclebin_NoItems.Text">
+    <value xml:space="preserve">No hay nada en la papelera de reciclaje.</value>
+  </data>
+  <data name="recyclebin_NoModules.Text">
+    <value xml:space="preserve">No hay ningún módulo en la papelera de reciclaje.</value>
+  </data>
+  <data name="recyclebin_NoPages.Text">
+    <value xml:space="preserve">No hay ninguna página en la papelera de reciclaje.</value>
+  </data>
+  <data name="recyclebin_NoUsers.Text" lastModified="2017-02-05 15:49:00">
+    <value xml:space="preserve">No hay ningún usuario en la papelera de reciclaje.</value>
+  </data>
+  <data name="recyclebin_Page.Text">
+    <value xml:space="preserve">Página</value>
+  </data>
+  <data name="recyclebin_Pages.Text">
+    <value xml:space="preserve">Páginas</value>
+  </data>
+  <data name="recyclebin_RemoveModuleConfirm.Text">
+    <value xml:space="preserve">&lt;p&gt;Confirme que desea eliminar este módulo.&lt;/p&gt;</value>
+  </data>
+  <data name="recyclebin_RemoveModulesConfirm.Text">
+    <value xml:space="preserve">&lt;p&gt;Confirme que desea eliminar los módulos seleccionados.&lt;/p&gt;</value>
+  </data>
+  <data name="recyclebin_RemovePageConfirm.Text">
+    <value xml:space="preserve">&lt;p&gt;Confirme que desea eliminar esta página.&lt;/p&gt;</value>
+  </data>
+  <data name="recyclebin_RemovePagesConfirm.Text">
+    <value xml:space="preserve">&lt;p&gt;Confirme que desea eliminar las páginas seleccionadas.&lt;/p&gt;</value>
+  </data>
+  <data name="recyclebin_RemoveUserConfirm.Text" lastModified="2017-02-05 15:49:00">
+    <value xml:space="preserve">&lt;p&gt;Confirme que desea eliminar este usuario.&lt;/p&gt;</value>
+  </data>
+  <data name="recyclebin_RemoveUsersConfirm.Text" lastModified="2017-02-05 15:49:00">
+    <value xml:space="preserve">&lt;p&gt;Confirme que desea eliminar los usuarios seleccionados.&lt;/p&gt;</value>
+  </data>
+  <data name="recyclebin_Restore.Text">
+    <value xml:space="preserve">Restaurar</value>
+  </data>
+  <data name="recyclebin_RestoreModuleConfirm.Text">
+    <value xml:space="preserve">&lt;p&gt;Confirme que desea restaurar este módulo.&lt;/p&gt;</value>
+  </data>
+  <data name="recyclebin_RestoreModulesConfirm.Text">
+    <value xml:space="preserve">&lt;p&gt;Confirme que desea restaurar los módulos seleccionados.&lt;/p&gt;</value>
+  </data>
+  <data name="recyclebin_RestorePageConfirm.Text">
+    <value xml:space="preserve">&lt;p&gt;Confirme que desea restaurar las páginas seleccionadas.&lt;/p&gt;</value>
+  </data>
+  <data name="recyclebin_RestorePageInvalid.Text">
+    <value xml:space="preserve">Primero tiene que restaurar la página madre.</value>
+  </data>
+  <data name="recyclebin_RestorePagesConfirm.Text">
+    <value xml:space="preserve">&lt;p&gt;Confirme que desea eliminar este módulo.&lt;/p&gt;</value>
+  </data>
+  <data name="recyclebin_RestorePagesInvalid.Text">
+    <value xml:space="preserve">Para restaurar las páginas que ha seleccionado tiene también que seleccionar la página madre.</value>
+  </data>
+  <data name="recyclebin_RestoreUserConfirm.Text" lastModified="2017-02-05 15:49:00">
+    <value xml:space="preserve">&lt;p&gt;Confirme que desea restaurar este usuario.&lt;/p&gt;</value>
+  </data>
+  <data name="recyclebin_RestoreUsersConfirm.Text" lastModified="2017-02-05 15:49:00">
+    <value xml:space="preserve">&lt;p&gt;Confirme que desea restaurar los usuarios seleccionados.&lt;/p&gt;</value>
+  </data>
+  <data name="recyclebin_Title.Text">
+    <value xml:space="preserve">Papelera de reciclaje</value>
+  </data>
+  <data name="recyclebin_UnableToSelectAllModules.Text">
+    <value xml:space="preserve">No se puede eliminar o restaurar un módulo si su página se encuentra en la papelera de reciclaje.</value>
+  </data>
+  <data name="recyclebin_UserDisplayName.Text" lastModified="2017-02-05 15:49:00">
+    <value xml:space="preserve">Nombre</value>
+  </data>
+  <data name="recyclebin_Username.Text" lastModified="2017-02-05 15:49:00">
+    <value xml:space="preserve">Usuario</value>
+  </data>
+  <data name="recyclebin_Users.Text" lastModified="2017-02-05 15:49:00">
+    <value xml:space="preserve">Usuarios</value>
+  </data>
+  <data name="recyclebin_YesConfirm.Text">
+    <value xml:space="preserve">Sí</value>
+  </data>
+  <data name="Service_EmptyRecycleBinError.Text">
+    <value xml:space="preserve">Alguno de los elementos no se ha eliminado.</value>
+  </data>
+  <data name="Service_RemoveTabError.Text">
+    <value xml:space="preserve">La página {0} no se puede eliminar hasta que se hayan eliminado sus páginas hijas.</value>
+  </data>
+  <data name="Service_RemoveTabModuleError.Text">
+    <value xml:space="preserve">Se ha producido un error al eliminar la página:&lt;br/&gt;{0}</value>
+  </data>
+  <data name="Service_RemoveUserError.Text" lastModified="2017-02-05 15:49:00">
+    <value xml:space="preserve">Se ha producido un error al eliminar el usuario: &lt;br/&gt;{0}</value>
+  </data>
+  <data name="Service_RestoreModuleError.Text">
+    <value xml:space="preserve">Se ha producido un error al restaurar el módulo {0} en la página {1}. La página esta eliminada.</value>
+  </data>
+  <data name="Service_RestoreTabError.Text">
+    <value xml:space="preserve">La página {0} no se puede restaurar hasta que se haya restaurado su página madre.</value>
+  </data>
+  <data name="Service_RestoreTabModuleError.Text">
+    <value xml:space="preserve">Se ha producido un error al restaurar la página:&lt;br/&gt;{0}</value>
+  </data>
+  <data name="Service_RestoreUserError.Text" lastModified="2017-02-05 15:49:00">
+    <value xml:space="preserve">Se ha producido un error al restaurar el usuario.</value>
+  </data>
+</root>

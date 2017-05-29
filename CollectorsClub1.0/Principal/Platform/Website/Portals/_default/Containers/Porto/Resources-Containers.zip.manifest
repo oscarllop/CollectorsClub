@@ -1,0 +1,360 @@
+﻿<dotnetnuke type="ResourceFile" version="5.0">
+  <files>
+    <file>
+      <path />
+      <name>NoTitle.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>NoTitle.jpg</name>
+    </file>
+    <file>
+      <path>Resources/img/</path>
+      <name>logo.png</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h1.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h1.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h1_Primary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h1_Primary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h1_Quaternary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h1_Quaternary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h1_Secondary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h1_Secondary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h1_Tertiary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h1_Tertiary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h2.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h2.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h2_Primary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h2_Primary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h2_Quaternary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h2_Quaternary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h2_Secondary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h2_Secondary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h2_Tertiary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h2_Tertiary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Border_Bottom.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Border_Bottom.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Border_Bottom_Double.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Border_Bottom_Double.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Border_Bottom_Primary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Border_Bottom_Primary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Border_Bottom_Quaternary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Border_Bottom_Quaternary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Border_Bottom_Secondary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Border_Bottom_Secondary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Border_Bottom_Tertiary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Border_Bottom_Tertiary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Center_Border.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Center_Border.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Left_Border.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Left_Border.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Primary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Primary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Primary_Border_Bottom.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Primary_Border_Bottom.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Quaternary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Quaternary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Quaternary_Border_Bottom.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Quaternary_Border_Bottom.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Right_Border.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Right_Border.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Secondary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Secondary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Secondary_Border_Bottom.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Secondary_Border_Bottom.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Tertiary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Tertiary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Tertiary_Border_Bottom.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h3_Tertiary_Border_Bottom.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h4.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h4.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h4_Primary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h4_Primary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h4_Quaternary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h4_Quaternary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h4_Secondary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h4_Secondary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h4_Tertiary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h4_Tertiary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h5.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h5.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h5_Primary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h5_Primary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h5_Quaternary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h5_Quaternary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h5_Secondary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h5_Secondary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h5_Tertiary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h5_Tertiary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h6.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h6.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h6_Primary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h6_Primary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h6_Quaternary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h6_Quaternary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h6_Secondary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h6_Secondary.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h6_Tertiary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Title_h6_Tertiary.jpg</name>
+    </file>
+  </files>
+</dotnetnuke>

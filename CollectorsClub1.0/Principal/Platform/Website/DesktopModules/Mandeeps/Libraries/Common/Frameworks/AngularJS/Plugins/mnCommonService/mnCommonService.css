@@ -1,0 +1,166 @@
+﻿/*
+    This is needed to hide the UIEngine on initial page load to prevent FOUC
+    UIEngine is forced to display:block !important using inline style after ../render/ui returns new markup
+*/
+uiengine {
+    display: none !important;
+}
+
+.validationGroup label.error {
+    font-size: 12px;
+    color: red;
+}
+
+.control-background {
+    background-color: #fff !important;
+}
+
+.MNormal {
+    font-family: Tahoma, Arial, Helvetica;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.MNormalBold {
+    font-family: Tahoma, Arial, Helvetica;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.MNormalRed {
+    font-family: Tahoma, Arial, Helvetica;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.MHead {
+    font-family: Tahoma, Arial, Helvetica;
+    font-size: 20px;
+    font-weight: normal;
+    color: #333333;
+}
+
+.MSubHead {
+    font-family: Tahoma, Arial, Helvetica;
+    font-size: 11px;
+    font-weight: bold;
+    color: #003366;
+}
+
+.MNormalTextBox {
+    font-family: Tahoma, Arial, Helvetica;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+@media (max-width: 768px) {
+
+    .ms-input-group {
+        width: 100%;
+    }
+}
+
+.uploadinput-button input {
+    background-color: #999;
+    padding: 8px;
+    border: 1px solid #ccc;
+    color: #fff !important;
+    border-radius: 5px;
+    display: block;
+}
+
+#ImportCsv .cta {
+    width: 14%;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    height: 38px;
+    background-color: !important;
+    color: transparent !important;
+    display: flex !important;
+    filter: alpha(opacity=0);
+    padding: 6px 12px;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+    #ImportCsv .cta::before {
+        content: 'Upload File';
+        display: inline-block;
+        background-image: linear-gradient(to top,#f9f9f9 0,#f9f9f9 50%,#e3e3e3 50%,#e3e3e3 100%);
+        color: #444;
+        border: 1px solid #999;
+        border-radius: 3px;
+        padding: 5px 8px;
+        outline: 0;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+        text-shadow: 1px 1px #fff;
+        font-weight: 700;
+        font-size: 14px;
+        text-align: center;
+    }
+
+.angular-ui-tree-placeholder {
+    background: #f0f9ff;
+    border: 2px dashed #bed2db;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 10px;
+}
+
+.angular-ui-tree-handle {
+    background: #f8faff;
+    border: 1px solid #dae2ea;
+    color: #7c9eb2;
+    padding: 10px 10px;
+    margin: 10px;
+}
+
+.angular-ui-tree-handle-nodrag {
+    background: #f8faff;
+    border: 1px solid #dae2ea;
+    color: #7c9eb2;
+    padding: 10px 10px;
+    margin: 10px;
+    cursor: default;
+}
+
+.treeedit {
+    margin-right: 5px !important;
+}
+
+.gridimages {
+    max-width: 70px;
+    max-height: 70px;
+    cursor: pointer;
+}
+
+.modalimage {
+    padding: 0.8em 0em;
+}
+
+
+a.ms-btn.ms-btn-default.button-left {
+    text-decoration: none;
+    background: #eee;
+    color: #23527c;
+    border-color: #ccc;
+}
+a.ms-btn.ms-btn-default.button-left:hover {
+    background: #e6e6e6;
+    border-color: #adadad;
+}
+
+a.ms-btn.ms-btn-primary.button-left {
+    text-decoration: none;
+    background-color: #337ab7;
+    color: #fff;
+}
+a.ms-btn.ms-btn-primary.button-left:hover {
+    background-color: #286090;
+    border-color: #204d74;
+}

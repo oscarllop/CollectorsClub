@@ -1,0 +1,87 @@
+﻿<div id="__id__partialContenedorInterno" style="display: none">
+	<div class="disenyointeriorlistado Patrocinadores" data-bind="foreach: Registros">
+		<!--<a data-bind="attr: { 'id': 'Edicion_' + Nombre }" class="ancla"></a>
+		<div class="cabecera" data-bind="visible: Registros().length > 0">
+			<div class="divider divider-solid">
+				<em class="fa fa-chevron-up"></em>
+			</div>
+			<div class="feature-box">
+				<div class="feature-box-icon">
+					<em class="fa fa-film"></em>
+				</div>
+				<div class="feature-box-info">
+					<h4 class="mb-sm nombre" data-bind="html: Nombre"></h4>
+				</div>
+			</div>
+			<div class="divider divider-solid inferior">
+				<em class="fa fa-chevron-down"></em>
+			</div>
+		</div>-->
+		<div class="videos" data-bind="foreach: Registros">
+			<a data-bind="attr: { 'id': 'Video_' + Id }" class="ancla"></a>
+			<div class="video">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="feature-box">
+							<!--<div class="feature-box-icon">
+								<em class="fa fa-film"></em>
+							</div>-->
+							<div class="feature-box-info">
+								<h4 class="mb-sm nombre" data-bind="html: Nombre"></h4>
+								<p class="mb-lg descripcion" data-bind="html: Descripcion"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="embed-responsive embed-responsive-16by9">
+							<iframe frameborder="0" data-bind="attr: { 'src': Url + '?showinfo=0&amp;wmode=opaque' }"></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var __id_partialParametros = null;
+	var __id_partialTimeoutActualizarActivado = false;
+	window.__id__partial = {
+		Iniciar: function (parametros, partials) {
+			__id_partialParametros = parametros;
+			try {
+				partials.IniciarPartial(parametros.IdModulo + 'System', parametros, [], []);
+			} catch (excepcion) {
+				console.log(excepcion);
+			}
+		},
+		Actualizar: function (parametros, partials) {
+			__id_partialParametros = parametros;
+			try {
+				// TODO: OLL: Revisar esto. Es feo feo, pero no se me ocurre otra manera ahora.
+				var _llamadaRecursiva = function () {
+					if (typeof (GlobalViewModels['__id__partialViewModel']) === 'undefined') {
+						setTimeout(_llamadaRecursiva, 100);
+					} else {
+						__id_partialTimeoutActualizarActivado = false;
+						_actualizarViewModel();
+					}
+				}
+
+				var _actualizarViewModel = function () {
+					GlobalViewModels['__id__partialViewModel'].Actualizar(__id_partialParametros);
+				}
+
+				if (typeof (GlobalViewModels['__id__partialViewModel']) === 'undefined') {
+					if (!__id_partialTimeoutActualizarActivado) { __id_partialTimeoutActualizarActivado = true; setTimeout(_llamadaRecursiva, 100); }
+				} else {
+					__id_partialTimeoutActualizarActivado = false;
+					_actualizarViewModel();
+				}
+			} catch (excepcion) {
+				console.log(excepcion);
+			}
+		}
+	}
+</script>

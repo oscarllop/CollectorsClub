@@ -1,0 +1,87 @@
+﻿<div id="__id__partialContenedorInterno" style="display: none">
+	<aside class="sidebar DestacadosBarraLateral">
+		<div class="tabs mb-xlg">
+			<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#tabPrimeraPestanya"><em class="fa fa-star"></em><span data-bind="text: TraduccionCampos.get('TituloPrimeraPestanya_Text')()"></span></a></li>
+				<li><a data-toggle="tab" href="#tabSegundaPestanya" data-bind="text: TraduccionCampos.get('TituloSegundaPestanya_Text')()"></a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active" id="tabPrimeraPestanya">
+					<ul class="simple-post-list" data-bind="foreach: CalendariosDestacados">
+						<li>
+							<div class="post-image">
+								<div class="img-thumbnail">
+									<a data-bind="attr: { 'href': $parent.UrlCalendarios() + '/Id/' + Id }">
+										<img data-bind="attr: { 'src': '~/Portals/0/_extension/Imagenes/Calendarios/' + NombreArchivoImagen, 'alt': Nombre + ' ' + Apellidos, 'title': Nombre + ' ' + Apellidos }" />
+									</a>
+								</div>
+							</div>
+							<div class="post-info">
+								<a data-bind="attr: { 'href': $parent.UrlCalendarios() + '/Id/' + Id }"><span class="nombre" data-bind="html: Nombre"></span> <span class="apellidos" data-bind="html: Apellidos"></span></a>
+								<div class="post-meta"><span class="empesa" data-bind="html: Empresa"></span></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="tab-pane" id="tabSegundaPestanya">
+					<ul class="simple-post-list" data-bind="foreach: UsuariosDestacados">
+						<li>
+							<div class="post-image">
+								<div class="img-thumbnail">
+									<a data-bind="attr: { 'href': $parent.UrlUsuarios() + '/Id/' + Id }">
+										<img data-bind="attr: { 'src': '~/Portals/0/_extension/Imagenes/Usuarios/' + NombreArchivoImagen, 'alt': Nombre + ' ' + Apellidos, 'title': Nombre + ' ' + Apellidos }" />
+									</a>
+								</div>
+							</div>
+							<div class="post-info">
+								<a data-bind="attr: { 'href': $parent.UrlUsuarios() + '/Id/' + Id }"><span class="nombre" data-bind="html: Nombre"></span> <span class="apellidos" data-bind="html: Apellidos"></span></a>
+								<div class="post-meta"><span class="empresa" data-bind="html: Empresa"></span></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</aside>
+</div>
+<script type="text/javascript">
+	var __id_partialParametros = null;
+	var __id_partialTimeoutActualizarActivado = false;
+	window.__id__partial = {
+		Iniciar: function (parametros, partials) {
+			__id_partialParametros = parametros;
+			try {
+				partials.IniciarPartial(parametros.IdModulo + 'System', parametros, [], []);
+			} catch (excepcion) {
+				console.log(excepcion);
+			}
+		},
+		Actualizar: function (parametros, partials) {
+			__id_partialParametros = parametros;
+			try {
+				// TODO: OLL: Revisar esto. Es feo feo, pero no se me ocurre otra manera ahora.
+				var _llamadaRecursiva = function () {
+					if (typeof (GlobalViewModels['__id__partialViewModel']) === 'undefined') {
+						setTimeout(_llamadaRecursiva, 100);
+					} else {
+						__id_partialTimeoutActualizarActivado = false;
+						_actualizarViewModel();
+					}
+				}
+
+				var _actualizarViewModel = function () {
+					GlobalViewModels['__id__partialViewModel'].Actualizar(__id_partialParametros);
+				}
+
+				if (typeof (GlobalViewModels['__id__partialViewModel']) === 'undefined') {
+					if (!__id_partialTimeoutActualizarActivado) { __id_partialTimeoutActualizarActivado = true; setTimeout(_llamadaRecursiva, 100); }
+				} else {
+					__id_partialTimeoutActualizarActivado = false;
+					_actualizarViewModel();
+				}
+			} catch (excepcion) {
+				console.log(excepcion);
+			}
+		}
+	}
+</script>

@@ -1,0 +1,734 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9567E24B-487C-4947-819A-D74B6C1327B8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CollectorsClub.Model</RootNamespace>
+    <AssemblyName>CollectorsClub.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\CreateOrUpdateCalendarioCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateCalendario_IdiomaCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateCategoriaCalendarioCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateCategoriaCalendario_IdiomaCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateCategoriaFotoCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateCategoriaFoto_IdiomaCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateCommands.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateEntidadCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateEntidad_IdiomaCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateEstadoCalendarioCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateEstadoCalendario_IdiomaCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateEventoCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateEvento_IdiomaCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateFabricanteCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateFabricante_IdiomaCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateFotoCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateFoto_IdiomaCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateMarcaCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateSolicitudContactoCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateSubcategoriaCalendarioCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateSubcategoriaCalendario_IdiomaCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateTipoColeccionCalendarioCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateTipoColeccionCalendario_IdiomaCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateTipoEventoCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateTipoEvento_IdiomaCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateUsuarioCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateVideoCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateOrUpdateVideo_IdiomaCommand.cs">
+      <DependentUpon>CreateOrUpdateCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteCalendarioCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteCalendario_IdiomaCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteCategoriaCalendarioCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteCategoriaCalendario_IdiomaCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteCategoriaFotoCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteCategoriaFoto_IdiomaCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteCommands.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteEntidadCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteEntidad_IdiomaCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteEstadoCalendarioCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteEstadoCalendario_IdiomaCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteEventoCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteEvento_IdiomaCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteFabricanteCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteFabricante_IdiomaCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteFotoCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteFoto_IdiomaCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteMarcaCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteSolicitudContactoCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteSubcategoriaCalendarioCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteSubcategoriaCalendario_IdiomaCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteTipoColeccionCalendarioCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteTipoColeccionCalendario_IdiomaCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteTipoEventoCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteTipoEvento_IdiomaCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteUsuarioCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteVideoCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DeleteVideo_IdiomaCommand.cs">
+      <DependentUpon>DeleteCommands.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\CalendarioConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\Calendario_IdiomaConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\CategoriaCalendarioConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\CategoriaCalendario_IdiomaConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\CategoriaFotoConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\CategoriaFoto_IdiomaConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\Configurations.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\EntidadConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\Entidad_IdiomaConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\EstadoCalendarioConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\EstadoCalendario_IdiomaConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\EventoConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\Evento_IdiomaConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\FabricanteConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\Fabricante_IdiomaConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\FotoConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\Foto_IdiomaConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\MarcaConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\SolicitudContactoConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\SubcategoriaCalendarioConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\SubcategoriaCalendario_IdiomaConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\TipoColeccionCalendarioConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\TipoColeccionCalendario_IdiomaConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\TipoEventoConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\TipoEvento_IdiomaConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\UsuarioConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\VideoConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\Video_IdiomaConfiguration.cs">
+      <DependentUpon>Configurations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContextExtension.cs" />
+    <Compile Include="Entities\Calendario.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Calendario_Idioma.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CategoriaCalendario.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CategoriaCalendario_Idioma.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CategoriaFoto.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CategoriaFoto_Idioma.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Entidad.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Entidad_Idioma.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Entities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EstadoCalendario.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EstadoCalendario_Idioma.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Evento.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Evento_Idioma.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Fabricante.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Fabricante_Idioma.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Foto.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Foto_Idioma.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Marca.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SolicitudContacto.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SubcategoriaCalendario.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SubcategoriaCalendario_Idioma.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TipoColeccionCalendario.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TipoColeccionCalendario_Idioma.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TipoEvento.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TipoEvento_Idioma.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Usuario.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Video.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Video_Idioma.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateCalendarioHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateCalendario_IdiomaHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateCategoriaCalendarioHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateCategoriaCalendario_IdiomaHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateCategoriaFotoHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateCategoriaFoto_IdiomaHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateEntidadHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateEntidad_IdiomaHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateEstadoCalendarioHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateEstadoCalendario_IdiomaHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateEventoHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateEvento_IdiomaHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateFabricanteHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateFabricante_IdiomaHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateFotoHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateFoto_IdiomaHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateHandlers.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateMarcaHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateSolicitudContactoHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateSubcategoriaCalendarioHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateSubcategoriaCalendario_IdiomaHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateTipoColeccionCalendarioHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateTipoColeccionCalendario_IdiomaHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateTipoEventoHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateTipoEvento_IdiomaHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateUsuarioHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateVideoHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CreateOrUpdateVideo_IdiomaHandler.cs">
+      <DependentUpon>CreateOrUpdateHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteCalendarioHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteCalendario_IdiomaHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteCategoriaCalendarioHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteCategoriaCalendario_IdiomaHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteCategoriaFotoHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteCategoriaFoto_IdiomaHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteEntidadHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteEntidad_IdiomaHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteEstadoCalendarioHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteEstadoCalendario_IdiomaHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteEventoHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteEvento_IdiomaHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteFabricanteHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteFabricante_IdiomaHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteFotoHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteFoto_IdiomaHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteHandlers.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteMarcaHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteSolicitudContactoHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteSubcategoriaCalendarioHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteSubcategoriaCalendario_IdiomaHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteTipoColeccionCalendarioHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteTipoColeccionCalendario_IdiomaHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteTipoEventoHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteTipoEvento_IdiomaHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteUsuarioHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteVideoHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteVideo_IdiomaHandler.cs">
+      <DependentUpon>DeleteHandlers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\DatabaseFactory.cs" />
+    <Compile Include="Infrastructure\IDatabaseFactory.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Mappers\CreateOrUpdateCommandToEntityMappingProfile.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateOrUpdateCommandToEntityMappingProfile.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappers\EntityToCreateOrUpdateCommandMappingProfile.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityToCreateOrUpdateCommandMappingProfile.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CalendarioRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\Calendario_IdiomaRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CategoriaCalendarioRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CategoriaCalendario_IdiomaRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CategoriaFotoRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CategoriaFoto_IdiomaRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\EntidadRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\Entidad_IdiomaRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\EstadoCalendarioRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\EstadoCalendario_IdiomaRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\EventoRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\Evento_IdiomaRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\FabricanteRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\Fabricante_IdiomaRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\FotoRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\Foto_IdiomaRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\MarcaRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\Repositories.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\SolicitudContactoRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\SubcategoriaCalendarioRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\SubcategoriaCalendario_IdiomaRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\TipoColeccionCalendarioRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\TipoColeccionCalendario_IdiomaRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\TipoEventoRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\TipoEvento_IdiomaRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\UsuarioRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\VideoRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\Video_IdiomaRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Commands\CreateOrUpdateCommands.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CreateOrUpdateCommands.cs</LastGenOutput>
+    </None>
+    <None Include="Commands\DeleteCommands.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DeleteCommands.cs</LastGenOutput>
+    </None>
+    <None Include="Configurations\Configurations.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Configurations.cs</LastGenOutput>
+    </None>
+    <None Include="Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Context.cs</LastGenOutput>
+    </None>
+    <None Include="Entities\Entities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Entities.cs</LastGenOutput>
+    </None>
+    <None Include="Handlers\CreateOrUpdateHandlers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CreateOrUpdateHandlers.cs</LastGenOutput>
+    </None>
+    <None Include="Handlers\DeleteHandlers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DeleteHandlers.cs</LastGenOutput>
+    </None>
+    <None Include="Mappers\CreateOrUpdateCommandToEntityMappingProfile.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CreateOrUpdateCommandToEntityMappingProfile.cs</LastGenOutput>
+    </None>
+    <None Include="Mappers\EntityToCreateOrUpdateCommandMappingProfile.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EntityToCreateOrUpdateCommandMappingProfile.cs</LastGenOutput>
+    </None>
+    <None Include="Repositories\Repositories.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Repositories.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\Context.Base.ttinclude" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CollectorsClub.Data\CollectorsClub.Data.csproj">
+      <Project>{fdf561b9-9bff-44a5-b401-71b7252aafa1}</Project>
+      <Name>CollectorsClub.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

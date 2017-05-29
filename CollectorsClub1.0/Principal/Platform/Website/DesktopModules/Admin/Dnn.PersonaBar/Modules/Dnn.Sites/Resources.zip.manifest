@@ -1,0 +1,28 @@
+﻿<dotnetnuke type="ResourceFile" version="5.0">
+  <files>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>Sites.resx</name>
+    </file>
+    <file>
+      <path>css/</path>
+      <name>Sites.css</name>
+    </file>
+    <file>
+      <path>scripts/bundles/</path>
+      <name>sites-bundle.js</name>
+    </file>
+    <file>
+      <path>scripts/exportables/Sites/</path>
+      <name>SitesListView.js</name>
+    </file>
+    <file>
+      <path>scripts/</path>
+      <name>Sites.js</name>
+    </file>
+    <file>
+      <path />
+      <name>Sites.html</name>
+    </file>
+  </files>
+</dotnetnuke>

@@ -1,0 +1,71 @@
+﻿/* Accordion */
+.panel-group .panel-heading {
+	padding: 0;
+	border-radius: 3px;
+}
+
+.panel-group .panel-heading a {
+	display: block;
+	padding: 10px 15px;
+}
+
+.panel-group .panel-heading a:hover, .panel-group .panel-heading a:focus {
+	text-decoration: none;
+}
+
+.panel-group .panel-heading a [class^="icon-"] {
+	margin-right: 4px;
+	position: relative;
+	top: 1px;
+}
+
+.panel-group .panel-heading a .fa {
+	display: inline-block;
+	margin-right: 5px;
+	position: relative;
+	top: -1px;
+}
+
+.panel-group.panel-group-sm .panel-heading a {
+	padding: 5px 15px;
+	font-size: 0.9em;
+}
+
+.panel-group.panel-group-sm .panel-body {
+	font-size: 0.9em;
+}
+
+.panel-group.panel-group-lg .panel-heading a {
+	padding: 15px 15px;
+	font-size: 1em;
+	font-weight: 600;
+}
+
+.panel-group.without-bg .panel-default {
+	background: transparent !important;
+}
+
+.panel-group.without-bg .panel-default > .panel-heading {
+	background: transparent !important;
+}
+
+.panel-group.without-bg .panel-body {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.panel-group.without-borders .panel {
+	border: 0;
+	box-shadow: none;
+	border-bottom: 1px solid #DDD;
+	border-radius: 0;
+}
+
+.panel-group.without-borders .panel-heading a {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.panel-group.without-borders .panel-body {
+	padding: 0;
+}

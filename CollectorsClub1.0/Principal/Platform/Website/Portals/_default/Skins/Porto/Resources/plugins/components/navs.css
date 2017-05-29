@@ -1,0 +1,79 @@
+﻿/* Navs */
+ul.nav-list li {
+	margin: 0;
+	padding: 0;
+	display: block;
+	position: relative;
+}
+
+ul.nav-list li a {
+	-webkit-transition: background 0.1s;
+	-moz-transition: background 0.1s;
+	transition: background 0.1s;
+	border-bottom: 1px solid #EDEDDE;
+	padding: 8px 0;
+	display: block;
+	color: #666;
+	font-size: 0.9em;
+	text-decoration: none;
+}
+
+ul.nav-list li a:before {
+	content: "";
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-top: 4px solid transparent;
+	border-bottom: 4px solid transparent;
+	border-left: 4px solid #333;
+	margin-left: 10px;
+	margin-right: 5px;
+	position: relative;
+}
+
+ul.nav-list li a:hover {
+	background-color: #eee;
+	text-decoration: none;
+}
+
+ul.nav-list li.active > a {
+	font-weight: bold;
+}
+
+ul.nav-list li ul {
+	list-style: none;
+	margin: 0 0 0 25px;
+	padding: 0;
+}
+
+ul.nav-list li:last-child a {
+	border-bottom: none;
+}
+
+ul.nav-list.hide-not-active li ul {
+	display: none;
+}
+
+ul.nav-list.hide-not-active li.active ul {
+	display: block;
+}
+
+ul.nav-list.show-bg-active .active > a {
+	background-color: #f5f5f5;
+}
+
+ul.nav-list.show-bg-active .active > a:hover {
+	background-color: #eee;
+}
+
+ul.narrow li a {
+	padding: 4px 0;
+}
+
+ul.nav-pills > li.active > a {
+	background-color: #CCC;
+}
+
+ul.nav-pills > li.active > a:hover, ul.nav-pills > li.active > a:focus {
+	background-color: #CCC;
+}

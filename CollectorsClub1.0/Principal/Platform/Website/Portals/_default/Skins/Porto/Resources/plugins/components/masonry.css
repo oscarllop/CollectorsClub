@@ -1,0 +1,12 @@
+﻿/* Masonry */
+.masonry .masonry-item {
+	width: 25%;
+}
+
+.masonry .masonry-item.w2 {
+	width: 50%;
+}
+
+.masonry .masonry-item img {
+	border-radius: 0 !important;
+}

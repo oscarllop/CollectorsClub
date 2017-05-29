@@ -1,0 +1,747 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BackgroundColor.OFF" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="BackgroundColor.ON" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="BackgroundColor.Text" xml:space="preserve">
+    <value>Background Color</value>
+  </data>
+  <data name="BorderStyle.OFF" xml:space="preserve">
+    <value>Square</value>
+  </data>
+  <data name="BorderStyle.ON" xml:space="preserve">
+    <value>Rounded</value>
+  </data>
+  <data name="BorderStyle.Text" xml:space="preserve">
+    <value>Border Style</value>
+  </data>
+  <data name="Breadcrumb.Text" xml:space="preserve">
+    <value>Breadcrumb</value>
+  </data>
+  <data name="Copyright.Text" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+  <data name="Gradient.Text" xml:space="preserve">
+    <value>Gradient</value>
+  </data>
+  <data name="hello.Text" xml:space="preserve">
+    <value>hi</value>
+  </data>
+  <data name="LayoutStyle.OFF" xml:space="preserve">
+    <value>Boxed</value>
+  </data>
+  <data name="LayoutStyle.ON" xml:space="preserve">
+    <value>Wide</value>
+  </data>
+  <data name="LayoutStyle.Text" xml:space="preserve">
+    <value>Layout Style</value>
+  </data>
+  <data name="Login.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Menu.Text" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="PrivacyStatement.Text" xml:space="preserve">
+    <value>Privacy Statement</value>
+  </data>
+  <data name="Register.Text" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Search.Text" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Termsofuse.Text" xml:space="preserve">
+    <value>Terms Of Use</value>
+  </data>
+  <data name="WebsiteType.OFF" xml:space="preserve">
+    <value>One Page</value>
+  </data>
+  <data name="WebsiteType.ON" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="WebsiteType.Text" xml:space="preserve">
+    <value>Website Type</value>
+  </data>
+  <data name="Basic.Text" xml:space="preserve">
+    <value>Layout</value>
+  </data>
+  <data name="Breadcrumb.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Breadcrumb.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Colors.Text" xml:space="preserve">
+    <value>Colors</value>
+  </data>
+  <data name="Components.Text" xml:space="preserve">
+    <value>Components</value>
+  </data>
+  <data name="Copyright.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Copyright.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="GoogleMap.Text" xml:space="preserve">
+    <value>Google Map </value>
+  </data>
+  <data name="Header.Text" xml:space="preserve">
+    <value>Header</value>
+  </data>
+  <data name="Login.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Login.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Menu.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Menu.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="PrivacyStatement.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="PrivacyStatement.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Register.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Register.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Reset.Text" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Search.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Search.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Social.Text" xml:space="preserve">
+    <value>Social Icons</value>
+  </data>
+  <data name="SocialIcons.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="SocialIcons.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Termsofuse.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Termsofuse.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="GoogleMap.OFF" xml:space="preserve">
+    <value>Disable</value>
+  </data>
+  <data name="GoogleMap.ON" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="Language.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Language.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Language.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="PrimaryColor.Text" xml:space="preserve">
+    <value>Primary Color</value>
+  </data>
+  <data name="QuaternaryColor.Text" xml:space="preserve">
+    <value>Quaternary Color</value>
+  </data>
+  <data name="SecondaryColor.Text" xml:space="preserve">
+    <value>Secondary Color</value>
+  </data>
+  <data name="TertiaryColor.Text" xml:space="preserve">
+    <value>Tertiary Color</value>
+  </data>
+  <data name="Viewport.OFF" xml:space="preserve">
+    <value>Disable</value>
+  </data>
+  <data name="Viewport.ON" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="Viewport.Text" xml:space="preserve">
+    <value>Pinch To Zoom</value>
+  </data>
+  <data name="GoogleMapAPI.Text" xml:space="preserve">
+    <value>Google Map API Key</value>
+  </data>
+  <data name="Remove.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="BackgroundImages.Text" xml:space="preserve">
+    <value>Background Images</value>
+  </data>
+  <data name="BackgroundPatterns.Text" xml:space="preserve">
+    <value>Background Pattern</value>
+  </data>
+  <data name="ApplyThemeMessage" xml:space="preserve">
+    <value>Would you like to apply this theme to current portal?</value>
+  </data>
+  <data name="Accordion.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Accordion.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Accordion.Text" xml:space="preserve">
+    <value>Accordion</value>
+  </data>
+  <data name="Alerts.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Alerts.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Alerts.Text" xml:space="preserve">
+    <value>Alerts</value>
+  </data>
+  <data name="Animations.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Animations.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Animations.Text" xml:space="preserve">
+    <value>Animations</value>
+  </data>
+  <data name="Arrows.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Arrows.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Arrows.Text" xml:space="preserve">
+    <value>Arrows</value>
+  </data>
+  <data name="Blockquotes.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Blockquotes.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Blockquotes.Text" xml:space="preserve">
+    <value>Blockqoutes</value>
+  </data>
+  <data name="Buttons.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Buttons.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Buttons.Text" xml:space="preserve">
+    <value>Buttons</value>
+  </data>
+  <data name="CallToaction.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="CallToaction.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="CallToaction.Text" xml:space="preserve">
+    <value>Call to Action</value>
+  </data>
+  <data name="Carousel.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Carousel.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Carousel.Text" xml:space="preserve">
+    <value>Carousel</value>
+  </data>
+  <data name="Counters.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Counters.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Counters.Text" xml:space="preserve">
+    <value>Counters</value>
+  </data>
+  <data name="Dividers.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Dividers.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Dividers.Text" xml:space="preserve">
+    <value>Dividers</value>
+  </data>
+  <data name="Forms.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Forms.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Forms.Text" xml:space="preserve">
+    <value>Forms</value>
+  </data>
+  <data name="Headings.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Headings.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Headings.Text" xml:space="preserve">
+    <value>Headings</value>
+  </data>
+  <data name="IconBoxes.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="IconBoxes.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="IconBoxes.Text" xml:space="preserve">
+    <value>Icon Boxes</value>
+  </data>
+  <data name="Icons.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Icons.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Icons.Text" xml:space="preserve">
+    <value>Icons</value>
+  </data>
+  <data name="ImageFrames.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="ImageFrames.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="ImageFrames.Text" xml:space="preserve">
+    <value>Image Frames</value>
+  </data>
+  <data name="ImageGallery.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="ImageGallery.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="ImageGallery.Text" xml:space="preserve">
+    <value>Image Gallery</value>
+  </data>
+  <data name="Labels.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Labels.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Labels.Text" xml:space="preserve">
+    <value>Labels</value>
+  </data>
+  <data name="Lightbox.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Lightbox.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Lightbox.Text" xml:space="preserve">
+    <value>Light Box</value>
+  </data>
+  <data name="Lists.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Lists.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Lists.Text" xml:space="preserve">
+    <value>Lists</value>
+  </data>
+  <data name="Maps.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Maps.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Maps.Text" xml:space="preserve">
+    <value>Maps</value>
+  </data>
+  <data name="Medias.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Medias.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Medias.Text" xml:space="preserve">
+    <value>Medias</value>
+  </data>
+  <data name="Modals.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Modals.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Modals.Text" xml:space="preserve">
+    <value>Modals</value>
+  </data>
+  <data name="Posts.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Posts.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Posts.Text" xml:space="preserve">
+    <value>Posts</value>
+  </data>
+  <data name="PricingTables.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="PricingTables.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="PricingTables.Text" xml:space="preserve">
+    <value>Pricing Tables</value>
+  </data>
+  <data name="ProgressBars.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="ProgressBars.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="ProgressBars.Text" xml:space="preserve">
+    <value>Progress Bars</value>
+  </data>
+  <data name="SectionsParallex.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="SectionsParallex.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="SectionsParallex.Text" xml:space="preserve">
+    <value>Section &amp; Parallex</value>
+  </data>
+  <data name="SocialMediaIcons.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="SocialMediaIcons.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="SocialMediaIcons.Text" xml:space="preserve">
+    <value>Social Media Icons</value>
+  </data>
+  <data name="StickyElements.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="StickyElements.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="StickyElements.Text" xml:space="preserve">
+    <value>Sticky Elements</value>
+  </data>
+  <data name="Tables.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Tables.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Tables.Text" xml:space="preserve">
+    <value>Tables</value>
+  </data>
+  <data name="Tabs.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Tabs.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Tabs.Text" xml:space="preserve">
+    <value>Tabs</value>
+  </data>
+  <data name="Testimonials.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Testimonials.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Testimonials.Text" xml:space="preserve">
+    <value>Testimonials</value>
+  </data>
+  <data name="Toggles.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Toggles.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Toggles.Text" xml:space="preserve">
+    <value>Toggles</value>
+  </data>
+  <data name="TooltipsPopovers.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="TooltipsPopovers.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="TooltipsPopovers.Text" xml:space="preserve">
+    <value>Tooltips &amp; Popovers</value>
+  </data>
+  <data name="Typography.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Typography.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Typography.Text" xml:space="preserve">
+    <value>Typography</value>
+  </data>
+  <data name="WordRotator.OFF" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="WordRotator.ON" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="WordRotator.Text" xml:space="preserve">
+    <value>Word Rotator</value>
+  </data>
+  <data name="Apply.Text" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="ApplyTheme.Text" xml:space="preserve">
+    <value>Apply Theme</value>
+  </data>
+  <data name="Cancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ConfirmationMessage.Text" xml:space="preserve">
+    <value>Confirmation Message</value>
+  </data>
+  <data name="Create.Text" xml:space="preserve">
+    <value>Create a new theme to customize it using Style Switcher.</value>
+  </data>
+  <data name="CreateTheme.Text" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Current.Text" xml:space="preserve">
+    <value>theme to current portal?</value>
+  </data>
+  <data name="Default.Text" xml:space="preserve">
+    <value>Default Home and Inner themes cannot be customized with Style Switcher.</value>
+  </data>
+  <data name="Delete.Text" xml:space="preserve">
+    <value>Are you sure you want to remove</value>
+  </data>
+  <data name="Message.Text" xml:space="preserve">
+    <value>Would you like to apply</value>
+  </data>
+  <data name="NewTheme.Text" xml:space="preserve">
+    <value>Create New Theme</value>
+  </data>
+  <data name="No.Text" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Overwrite.Text" xml:space="preserve">
+    <value>Would you like to save</value>
+  </data>
+  <data name="ThemeName.Text" xml:space="preserve">
+    <value>Theme Name</value>
+  </data>
+  <data name="Yes.Text" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="ShortCode.Text" xml:space="preserve">
+    <value>Shortcodes</value>
+  </data>
+  <data name="Disable.Text" xml:space="preserve">
+    <value>Disable</value>
+  </data>
+  <data name="Enable.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="DemoMessage.Text" xml:space="preserve">
+    <value>Style Switcher allows you to customize the theme and even save your changes as new DNN Themes. </value>
+  </data>
+  <data name="New.Text" xml:space="preserve">
+    <value> New Theme</value>
+  </data>
+  <data name="Settings.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="CustomColor.Text" xml:space="preserve">
+    <value>Custom Color</value>
+  </data>
+  <data name="GoogleMapAPI.Help" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</value>
+  </data>
+  <data name="ViewPortHelp.Text" xml:space="preserve">
+    <value>Allow mobile users to zoom in and out using the pinch gesture.</value>
+  </data>
+  <data name="DNNComponents.Text" xml:space="preserve">
+    <value>DNN Components</value>
+  </data>
+  <data name="Themes.Text" xml:space="preserve">
+    <value>Themes</value>
+  </data>
+  <data name="ExistingTheme.Text" xml:space="preserve">
+    <value>theme?</value>
+  </data>
+  <data name="DemoMsg.Text" xml:space="preserve">
+    <value>For demo purposes, Style Switcher is visible to everyone; otherwise, it only appears if you're logged in as SuperUser and can be turned off permanently.</value>
+  </data>
+  <data name="LoginPopup.OFF" xml:space="preserve">
+    <value>Redirect</value>
+  </data>
+  <data name="LoginPopup.ON" xml:space="preserve">
+    <value>Popup</value>
+  </data>
+  <data name="LoginPopup.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="SocialIcons.Text" xml:space="preserve">
+    <value>Social Icons</value>
+  </data>
+  <data name="Toggle.Text" xml:space="preserve">
+    <value>Toggle All</value>
+  </data>
+  <data name="LoginMessage.Text" xml:space="preserve">
+    <value>Use a popup or redirect user to a new page to login.</value>
+  </data>
+  <data name="ComponentHelp.Text" xml:space="preserve">
+    <value>Customize your theme by hiding unnecessary DNN Components.</value>
+  </data>
+  <data name="ShortcodesHelp.Text" xml:space="preserve">
+    <value>Uncheck unnecessary shortcodes to reduce the overall theme footprint and improve performance.</value>
+  </data>
+  <data name="ResetTheme.Text" xml:space="preserve">
+    <value>Are you sure you want to reset Style Switcher changes?</value>
+  </data>
+  <data name="ImpDemoMsg.Text" xml:space="preserve">
+    <value>For obvious reasons, this feature is disabled for demo.</value>
+  </data>
+  <data name="ThemeDel.Text" xml:space="preserve">
+    <value>theme</value>
+  </data>
+  <data name="ComponentHelpMsg.Text" xml:space="preserve">
+    <value>Language Switcher only appears if you have more than one language enabled via Admin &gt; Languages.</value>
+  </data>
+</root>

@@ -1,0 +1,13 @@
+﻿/* Sitemap */
+ul.sitemap > li > a {
+	font-weight: bold;
+}
+
+ul.sitemap.list li {
+	margin: 0 0 3px 0;
+}
+
+ul.sitemap.list ul {
+	margin-bottom: 5px;
+	margin-top: 5px;
+}

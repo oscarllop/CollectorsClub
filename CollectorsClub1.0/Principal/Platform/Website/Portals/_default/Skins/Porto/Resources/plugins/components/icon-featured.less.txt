@@ -1,0 +1,15 @@
+﻿@import "../variables.less.txt";
+
+.featured-box h2 {
+    font-size: @HSFontSize;
+    font-weight: @HSFontWeight;
+    color: @HSColor;
+}
+
+html .featured-box-effect-3.featured-box-primary:hover .icon-featured,
+html .featured-box-effect-3.featured-box-secondary:hover .icon-featured,
+html .featured-box-effect-3.featured-box-tertiary:hover .icon-featured,
+html .featured-box-effect-3.featured-box-quaternary:hover .icon-featured {
+    background-color: @CHBackgroundColor;
+    border-color: @CHBorderColor;
+}

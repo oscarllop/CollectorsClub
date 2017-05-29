@@ -1,0 +1,38 @@
+﻿<div class="live-campaign-porto">
+    <div class="row">
+        <div class="col-md-12">
+            [Lists]
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-6">
+                <label>
+                    [FirstName_Label]</label>
+                [FirstName_Input]
+            </div>
+            <div class="col-md-6">
+                <label>
+                    [LastName_Label]</label>
+                [LastName_Input]
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>
+                    [Email_Label]</label>
+                [Email_Input]
+            </div>
+        </div>
+    </div>
+</div>
+<button class="btn btn-primary btn-lg" type="button" onclick="[Submit_Script]">
+    [Join_Button]</button>
+<script>
+    jQuery.each($('.live-campaign-porto > .row:nth-child(2)'), function (key, value) {
+        if (jQuery(value).find('label').val() == '')
+            jQuery(value).hide();
+    });
+</script>

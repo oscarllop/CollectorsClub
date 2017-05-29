@@ -1,0 +1,620 @@
+﻿/*
+ * jQuery UI CSS Framework 1.8.16
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming/API
+ */
+
+/* Layout helpers
+----------------------------------*/
+.porto .ui-helper-hidden { display: none; }
+.porto .ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px); }
+.porto .ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+.porto .ui-helper-clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.porto .ui-helper-clearfix { display: inline-block; }
+/* required comment for clearfix to work in Opera \*/
+* html .ui-helper-clearfix { height:1%; }
+.porto .ui-helper-clearfix { display:block; }
+/* end clearfix */
+.porto .ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }
+
+/* Interaction Cues
+----------------------------------*/
+.porto .ui-state-disabled { cursor: default !important; }
+
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.porto .ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.porto .ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+
+/*
+ * jQuery UI CSS Framework 1.8.16
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming/API
+ *
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Verdana,Arial,sans-serif&fwDefault=normal&fsDefault=1.1em&cornerRadius=4px&bgColorHeader=cccccc&bgTextureHeader=03_highlight_soft.png&bgImgOpacityHeader=75&borderColorHeader=aaaaaa&fcHeader=222222&iconColorHeader=222222&bgColorContent=ffffff&bgTextureContent=01_flat.png&bgImgOpacityContent=75&borderColorContent=aaaaaa&fcContent=222222&iconColorContent=222222&bgColorDefault=e6e6e6&bgTextureDefault=02_glass.png&bgImgOpacityDefault=75&borderColorDefault=d3d3d3&fcDefault=555555&iconColorDefault=888888&bgColorHover=dadada&bgTextureHover=02_glass.png&bgImgOpacityHover=75&borderColorHover=999999&fcHover=212121&iconColorHover=454545&bgColorActive=ffffff&bgTextureActive=02_glass.png&bgImgOpacityActive=65&borderColorActive=aaaaaa&fcActive=212121&iconColorActive=454545&bgColorHighlight=fbf9ee&bgTextureHighlight=02_glass.png&bgImgOpacityHighlight=55&borderColorHighlight=fcefa1&fcHighlight=363636&iconColorHighlight=2e83ff&bgColorError=fef1ec&bgTextureError=02_glass.png&bgImgOpacityError=95&borderColorError=cd0a0a&fcError=cd0a0a&iconColorError=cd0a0a&bgColorOverlay=aaaaaa&bgTextureOverlay=01_flat.png&bgImgOpacityOverlay=0&opacityOverlay=30&bgColorShadow=aaaaaa&bgTextureShadow=01_flat.png&bgImgOpacityShadow=0&opacityShadow=30&thicknessShadow=8px&offsetTopShadow=-8px&offsetLeftShadow=-8px&cornerRadiusShadow=8px
+ */
+
+
+/* Component containers
+----------------------------------*/
+.porto .ui-widget { font-family: Verdana,Arial,sans-serif; font-size: 1.1em; }
+.porto .ui-widget .ui-widget { font-size: 1em; }
+.porto .ui-widget input, .porto .ui-widget select, .porto .ui-widget textarea, .porto .ui-widget button { font-family: Verdana,Arial,sans-serif; font-size: 1em; }
+.porto .ui-widget-content { border: 1px solid #aaaaaa; background: #ffffff url(Images/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x; color: #222222; }
+.porto .ui-widget-content a { color: #222222; }
+.porto .ui-widget-header { border: 1px solid #aaaaaa; background: #cccccc url(Images/ui-bg_highlight-soft_75_cccccc_1x100.png) 100% 100% repeat-x; color: #222222; font-weight: bold; }
+.porto .ui-widget-header a { color: #222222; }
+
+/* Interaction states
+----------------------------------*/
+.porto .ui-state-default, .porto .ui-widget-content .ui-state-default, .porto .ui-widget-header .ui-state-default { border: none; background:none; font-weight: normal; color: #555555; }
+.porto .ui-state-hover a, .porto .ui-state-hover a:hover { color: #212121; text-decoration: none; }
+.porto .ui-state-active, .porto .ui-widget-content .ui-state-active, .porto .ui-widget-header .ui-state-active { border: 1px solid #aaaaaa; background: #ffffff url(Images/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #212121; }
+.porto .ui-state-active a, .porto .ui-state-active a:link, .porto .ui-state-active a:visited { color: #212121; text-decoration: none; }
+.porto .ui-widget :active { outline: none; }
+
+/* Interaction Cues
+----------------------------------*/
+.porto .ui-state-highlight, .porto .ui-widget-content .ui-state-highlight, .porto .ui-widget-header .ui-state-highlight  {border: 1px solid #fcefa1; background: #fbf9ee url(Images/ui-bg_glass_55_fbf9ee_1x400.png) 50% 50% repeat-x; color: #363636; }
+.porto .ui-state-highlight a, .porto .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #363636; }
+.porto .ui-state-error, .porto .ui-widget-content .ui-state-error, .porto .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #fef1ec url(Images/ui-bg_glass_95_fef1ec_1x400.png) 50% 50% repeat-x; color: #cd0a0a; }
+.porto .ui-state-error a, .porto .ui-widget-content .ui-state-error a, .porto .ui-widget-header .ui-state-error a { color: #cd0a0a; }
+.porto .ui-state-error-text, .porto .ui-widget-content .ui-state-error-text, .porto .ui-widget-header .ui-state-error-text { color: #cd0a0a; }
+.porto .ui-priority-primary, .porto .ui-widget-content .ui-priority-primary, .porto .ui-widget-header .ui-priority-primary { font-weight: bold; }
+.porto .ui-priority-secondary, .porto .ui-widget-content .ui-priority-secondary,  .ui-widget-header .ui-priority-secondary { opacity: .7; filter:Alpha(Opacity=70); font-weight: normal; }
+.porto .ui-state-disabled, .porto .ui-widget-content .ui-state-disabled, .porto .ui-widget-header .ui-state-disabled { opacity: .35; filter:Alpha(Opacity=35); background-image: none; }
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.porto .ui-icon { width: 16px; height: 16px; background-image: url(Images/ui-icons_222222_256x240.png); }
+.porto .ui-widget-content .ui-icon {background-image: url(Images/ui-icons_222222_256x240.png); }
+.porto .ui-widget-header .ui-icon {background-image: url(Images/ui-icons_222222_256x240.png); }
+.porto .ui-state-hover .ui-icon, .porto .ui-state-focus .ui-icon {background-image: url(Images/ui-icons_454545_256x240.png); }
+.porto .ui-state-active .ui-icon {background-image: url(Images/ui-icons_454545_256x240.png); }
+.porto .ui-state-highlight .ui-icon {background-image: url(Images/ui-icons_2e83ff_256x240.png); }
+.porto .ui-state-error .ui-icon, .porto .ui-state-error-text .ui-icon {background-image: url(Images/ui-icons_cd0a0a_256x240.png); }
+
+/* positioning */
+.porto .ui-icon-circle-triangle-e { background-position: -48px -192px; }
+.porto .ui-icon-circle-triangle-w { background-position: -80px -192px; }
+
+/* Corner radius */
+.porto .ui-corner-all, .porto .ui-corner-top, .porto .ui-corner-left, .porto .ui-corner-tl { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; -khtml-border-top-left-radius: 4px; border-top-left-radius: 4px; }
+.porto .ui-corner-all, .porto .ui-corner-top, .porto .ui-corner-right, .porto .ui-corner-tr { -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; -khtml-border-top-right-radius: 4px; border-top-right-radius: 4px; }
+.porto .ui-corner-all, .porto .ui-corner-bottom, .porto .ui-corner-left, .porto .ui-corner-bl { -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; -khtml-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px; }
+.porto .ui-corner-all, .porto .ui-corner-bottom, .porto .ui-corner-right, .porto .ui-corner-br { -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; -khtml-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px; }
+
+/* Overlays */
+.porto .ui-widget-overlay { background: #aaaaaa url(Images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); }
+.porto .ui-widget-shadow { margin: -8px 0 0 -8px; padding: 8px; background: #aaaaaa url(Images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -khtml-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }/*
+ * jQuery UI Datepicker 1.8.16
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Datepicker#theming
+ */
+#ui-datepicker-div {display: none;}
+.porto .ui-datepicker { padding: .2em .2em 0; display: none;background: #ffffff url(Images/ui-bg_highlight-soft_75_cccccc_1x100.png) 100% 100% repeat-x;  }
+.porto .ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; }
+.porto .ui-datepicker .ui-datepicker-prev, .porto .ui-datepicker .ui-datepicker-next { position:absolute; top: 2px; width: 1.8em; height: 1.8em; }
+.porto .ui-datepicker .ui-datepicker-prev-hover, .porto .ui-datepicker .ui-datepicker-next-hover { top: 4px; }
+.porto .ui-datepicker .ui-datepicker-prev { left:2px; }
+.porto .ui-datepicker .ui-datepicker-next { right:2px; }
+.porto .ui-datepicker .ui-datepicker-prev-hover { left:3px; }
+.porto .ui-datepicker .ui-datepicker-next-hover { right:4px; }
+.porto .ui-datepicker .ui-datepicker-prev span, .porto .ui-datepicker .ui-datepicker-next span { display: block; position: absolute; left: 50%; margin-left: -8px; top: 50%; margin-top: -8px;  }
+.porto .ui-datepicker .ui-datepicker-title { margin: 0 2.3em; line-height: 1.8em; text-align: center; }
+.porto .ui-datepicker .ui-datepicker-title select { font-size:1em; margin:1px 0; }
+.porto .ui-datepicker select.ui-datepicker-month-year {width: 100%;}
+.porto .ui-datepicker select.ui-datepicker-month, 
+.porto .ui-datepicker select.ui-datepicker-year { width: 49%;}
+.porto .ui-datepicker table {width: 100%; font-size: .9em; border-collapse: collapse; margin:0 0 .4em; }
+.porto .ui-datepicker th { padding: .7em .3em; text-align: center; font-weight: bold; border: 0;  }
+.porto .ui-datepicker td { border: 0; padding: 1px; }
+.porto .ui-datepicker td span, .porto .ui-datepicker td a { display: block; padding: .2em; text-align: center; text-decoration: none; }
+.porto .ui-datepicker .ui-datepicker-buttonpane { background-image: none; margin: .7em 0 0 0; padding:0 .2em; border-left: 0; border-right: 0; border-bottom: 0; }
+.porto .ui-datepicker .ui-datepicker-buttonpane button { float: right; margin: .5em .2em .4em; cursor: pointer; padding: .2em .6em .3em .6em; width:auto; overflow:visible; }
+.porto .ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current { float:left; }
+
+/* with multiple calendars */
+.porto .ui-datepicker.ui-datepicker-multi { width:auto; }
+.porto .ui-datepicker-multi .ui-datepicker-group { float:left; }
+.porto .ui-datepicker-multi .ui-datepicker-group table { width:95%; margin:0 auto .4em; }
+.porto .ui-datepicker-multi-2 .ui-datepicker-group { width:50%; }
+.porto .ui-datepicker-multi-3 .ui-datepicker-group { width:33.3%; }
+.porto .ui-datepicker-multi-4 .ui-datepicker-group { width:25%; }
+.porto .ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header { border-left-width:0; }
+.porto .ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header { border-left-width:0; }
+.porto .ui-datepicker-multi .ui-datepicker-buttonpane { clear:left; }
+.porto .ui-datepicker-row-break { clear:both; width:100%; font-size:0em; }
+
+/* RTL support */
+.porto .ui-datepicker-rtl { direction: rtl; }
+.porto .ui-datepicker-rtl .ui-datepicker-prev { right: 2px; left: auto; }
+.porto .ui-datepicker-rtl .ui-datepicker-next { left: 2px; right: auto; }
+.porto .ui-datepicker-rtl .ui-datepicker-prev:hover { right: 1px; left: auto; }
+.porto .ui-datepicker-rtl .ui-datepicker-next:hover { left: 1px; right: auto; }
+.porto .ui-datepicker-rtl .ui-datepicker-buttonpane { clear:right; }
+.porto .ui-datepicker-rtl .ui-datepicker-buttonpane button { float: left; }
+.porto .ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current { float:right; }
+.porto .ui-datepicker-rtl .ui-datepicker-group { float:right; }
+.porto .ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+.porto .ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+
+/* IE6 IFRAME FIX (taken from datepicker 1.5.3 */
+.porto .ui-datepicker-cover {
+    display: none; /*sorry for IE5*/
+    display/**/: block; /*sorry for IE5*/
+    position: absolute; /*must have*/
+    z-index: -1; /*must have*/
+    filter: mask(); /*must have*/
+    top: -4px; /*must have*/
+    left: -4px; /*must have*/
+    width: 200px; /*must have*/
+    height: 200px; /*must have*/
+}
+
+.porto .managearticle {
+    float:right;
+    margin-bottom: 15px;
+}
+
+.porto .socialnetwork div {
+    margin-top:15px;
+}
+
+.porto .tags{
+    text-align:justify;
+    word-wrap:break-word;
+}
+
+.porto .tags a.cloudweight1{
+    font-size:1em;
+}
+
+.porto .tags a.cloudweight2{
+    font-size:1.5em;
+}
+
+.porto .tags a.cloudweight3{
+    font-size:2em;
+}
+
+.porto .tags a.cloudweight4{
+    font-size:2.5em;
+}
+
+.porto .tags a.cloudweight5{
+    font-size:3em;
+}
+
+.porto .calendar .LiveBlogDateHlight a{
+    background-color:#878787;   
+    color:#fff;
+    border-radius:5px;
+    background-image:none;
+}
+
+.porto .treeview {font-size: inherit;}
+.porto .treeview .rtPlus,.porto .treeview .rtMinus{background-image:url('Images/PlusMinus.png')}
+.porto .treeview .rtChecked,.porto .treeview .rtUnchecked,.porto .treeview .rtIndeterminate{background-image:url('Images/TriState.png')}
+.porto .treeview .rtHover .rtIn, .porto .treeview .rtSelected .rtIn {border:none !important; padding: 4px 3px 3px; background:none; text-decoration:underline;}
+.porto .treeview .rtSelected .rtLoadingBefore,.porto .treeview .rtSelected .rtLoadingAfter,.porto .treeview .rtSelected .rtLoadingBelow{color:#333}
+.porto .treeview .rtLoadingIcon{background-image:url('Images/LoadingIcon.gif')}
+.porto .treeview .rtLI .rtEdit .rtIn{border-color:#515151;background:#fff}
+.porto .treeview .rtLines .rtLI,.porto .treeview .rtLines .rtFirst .rtUL{background-image:url('Images/NodeSpan.png')}
+.porto .treeview .rtLines .rtFirst,.porto .treeview .rtLines .rtFirst .rtUL{background-image:url('Images/FirstNodeSpan.png')}
+.porto .treeview .rtLines .rtLast,.porto .treeview .rtLines .rtLast .rtUL{background-image:none}
+.porto .treeview .rtLines .rtTop{background-image:url('Images/TopLine.png')}
+.porto .treeview .rtLines .rtMid{background-image:url('Images/MiddleLine.png')}
+.porto .treeview .rtLines .rtBot{background-image:url('Images/BottomLine.png')}
+.porto .treeview .rtLines .rtLast .rtTop{background-image:url('Images/SingleLine.png')}
+
+.porto div.search {
+    position:relative;
+}
+
+.porto .search .textbox {  
+    width: 100%;
+    height: 46px;
+    padding: 6px 12px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+  
+.porto .search .search-button {
+    border: 0;
+    border-left: 1px solid #BFBFBF;
+    padding: 13px 27px 12px 27px;
+    line-height: normal;
+    border-radius: 0 4px 4px 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    position:absolute;
+    text-indent: -999px;
+    top: 1px;
+    right: 1px;
+    background: url(Images/search.png) center center no-repeat #f0f0f0;
+}
+
+.porto .categories ul > li , .porto .authors ul > li {
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	background-image: url(Images/list-primary.png);
+	background-position: 9px 19px;
+	background-repeat: no-repeat;
+	border-bottom: 1px solid #EDEDDE;
+	padding: 8px 20px;
+	transition: all 0.3s;
+}
+
+.porto .authors ul > li {
+    background-image: none; 
+    padding-left:10px; 
+}
+
+.porto .categories ul li, .porto .authors ul li {
+    display:block;
+    position:relative;
+}
+
+.porto aside ul, .porto.widgetmodule ul, .porto .post-content .categories ul {
+    padding-left:0;
+    margin-left:0;
+    list-style:none;
+}
+
+.porto .categories ul > li:hover,
+.porto .categories ul > li:focus, 
+.porto .authors ul > li:hover,
+.porto .authors ul > li:focus {
+    background-color: #eeeeee;
+}
+
+.porto .categories ul > li a:hover , 
+.porto .categories ul > li a:focus ,
+.porto .authors ul > li a:hover , 
+.porto .authors ul > li a:focus {
+    text-decoration:none;
+}
+
+.porto .categories a, .porto .authors a, .porto .blogrolls a.rss-feeds {
+    position:absolute;
+    right:10px;
+}
+
+.porto .blogrolls a.rss-feeds {
+    top:0;
+}
+
+.porto .categories a.lb-lst, .porto .authors a.lb-lst {
+    position:relative;
+    right:0;
+}
+
+.porto aside a, .porto.widgetmodule ul li a, .porto.widgetmodule .tags a {
+    font-size: 0.9em;
+    color:#666666;
+}
+
+.porto .CommentForm input[type="text"], .porto .CommentForm textarea {
+    background-color: #FFFFFF;
+    background-image: none;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    vertical-align: middle;
+    font-size: inherit !important;
+    line-height: normal !important;
+    width: 100%;
+    height: 46px;
+}
+
+.porto .CommentForm textarea, 
+.porto .CommentForm div.Preview {
+    height: 200px !important;
+    width: 100% !important;
+}
+
+.porto .CommentForm div.Preview {
+    padding:6px 13px !important;
+    font-size: inherit !important;
+    line-height: normal !important;
+    margin:0 !important;
+    border-radius: 4px;
+}
+
+.porto .CommentForm input[type="text"]:focus, 
+.porto .CommentForm textarea:focus, 
+.porto .search .textbox:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.porto .CommentForm input[type="checkbox"], 
+.porto .CommentForm input[type="radio"] {
+    margin:5px;
+}
+
+.porto .CommentData .comment {
+    margin: 10px 0;
+    padding: 10px 0 0 115px;
+}
+
+.porto .CommentData .com {
+    padding-left: 120px;
+}
+
+.porto article .img-thumbnail {
+    margin-left: -115px;
+    position: absolute;
+}
+
+.porto article .related .img-thumbnail {
+    margin-left: 0;
+    position: inherit;
+}
+
+.porto div.comment-block {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background: #F4F4F4;
+    border-radius: 5px;
+    padding: 20px 20px 30px;
+    position: relative;
+}
+
+.porto img.avatar {
+    height: 80px;
+    width: 80px;
+}
+
+.porto .CommentData div.comment-arrow {
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid #F4F4F4;
+    border-top: 15px solid transparent;
+    height: 0;
+    left: -15px;
+    position: absolute;
+    top: 28px;
+    width: 0;
+}
+
+.porto .post-image {
+    margin: 0 0 30px;
+}
+
+.porto.widgetmodule .post-image {
+    margin: 0 12px 0px 0;
+}
+
+.porto .related .post-image, 
+.porto .msearch-result h3, 
+.porto div.post-block h3 {
+    margin-bottom:0;
+}
+
+.porto h2.la-title {
+    margin-bottom: 10px;
+}
+
+.porto .la-desc {
+    color: #999;
+}
+
+.porto .post-image img {
+    border: 4px solid #FFFFFF;
+     -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+     -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 4px rgba(0,0,0,.2);
+    -o-box-shadow: 0 1px 4px rgba(0,0,0,.2);
+    box-shadow: 0 1px 4px rgba(0,0,0,.2);
+    padding:0;   
+    max-width:100%;
+    display:block;
+    background: #fff;
+    margin: 0 auto;
+}
+
+.porto .post-image a.jackbox img {
+    width: 100%; 
+}
+
+.porto .CommentForm .moderatemsg {
+    color: Red;
+}
+
+.porto .mrssfeeds, .porto .read-more, .porto .CommentData .reply {
+    float:right; 
+}
+
+.porto span.read-more a, .porto a.read-more {
+    font-size: 12px;
+}
+
+.porto .pager a,
+.porto .pager span.CurrentPage,
+.porto .pager span.CurrentPageSelected {
+    padding: 10px 16px;
+    font-size: 18px;
+    position: relative;
+    line-height: 1.428571429;
+    text-decoration: none;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    margin-left: -1px;  
+    display: inline;  
+    cursor:pointer;    
+}
+    
+ .porto .pager span.CurrentPage,
+ .porto .pager span.CurrentPageSelected,
+ .porto .pager a:hover {
+     background-color:#eee;
+}
+   
+.porto .pager strong {
+    font-weight:normal;    
+}
+
+.porto div.post-leave-comment {
+    margin-top: 0;
+    padding-top: 20px;
+}
+
+.porto .CommentForm .SaveComment {
+    background-color:#fafafa;
+    border-radius:5px;
+    border:1px solid #ccc;
+    padding:10px;
+}
+
+.porto .CommentForm .SaveComment:hover {
+    background-color: #f5f5f5;
+    text-decoration:none;
+}
+
+.porto .mwidgetposts .post-image img, 
+.porto .related .post-image img, 
+.porto .related .post-image a.jackbox img,
+.porto .highestRatingArticle .img-thumbnail img {
+    width:50px;
+    height:50px;
+}
+
+.porto ul.simple-post-list li {
+    min-height:97px;
+}
+
+.porto .recentcomments ul.simple-post-list li {
+    min-height:62px;
+}
+
+.porto .blogrolls ul.simple-post-list li {
+    min-height:0;
+    padding:5px 0;
+    margin-bottom:15px;
+    position:relative;
+}
+
+.porto .blogrolls ul.simple-post-list li li {
+    margin-bottom:0;
+}
+
+.porto .msearch-result .close-button {
+    background: url("Images/close.png") transparent no-repeat;
+    border: none !important;
+    text-indent: -999px;
+    width: 30px;
+    height:32px;
+    position:relative;
+    float:right;
+    top:-28px;
+    right:-22px;
+    min-width:30px;
+    box-shadow:none;
+}
+
+.porto .msearch-result {
+    background-color:#fafafa;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 12px;
+    margin-bottom:50px;
+    display: none;
+}
+
+.porto .CommentForm .newheading, 
+.porto .CommentData .heading {
+	font-size: 1.4em;
+	font-weight: 400;
+	letter-spacing: normal;
+	line-height: 27px;
+	margin: 0 0 14px 0;
+}
+
+.porto .CommentData .com {
+    padding-left:20px; 
+}
+
+.porto .CommentData, 
+.porto .post-content .pages, 
+.porto .post-content .categories {
+    margin-top:20px;
+}
+
+.porto .CommentData .heading, .porto .CommentData .content, .porto .post-content .pages {
+    margin-bottom:20px;
+}
+
+.porto .CommentData .cont-reply {
+    min-width: 60px;
+}
+
+.porto .related div.post-meta {
+    margin-bottom:0;
+}
+
+.porto .moverlay {
+    display: none;
+    width: 100%;
+    background-color: black;
+    z-index:1001;
+    -moz-opacity: 0.8;
+    opacity:.80;
+    filter: alpha(opacity=80);
+}
+
+.porto .mlightbox {
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    right:25%;
+    max-height: 50%;
+    padding: 16px;
+    border: 4px solid #CCC;
+    background-color: white;
+    z-index:1002;
+    overflow: auto;
+}
+
+.porto .mlightbox .close-button {
+    right:-12px;
+    top:-14px;
+}

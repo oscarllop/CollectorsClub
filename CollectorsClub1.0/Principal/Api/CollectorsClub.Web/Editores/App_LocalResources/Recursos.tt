@@ -1,0 +1,329 @@
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="..\\..\\..\\CollectorsClub.Model\\Templates\\Context.Base.ttinclude"#>
+<#@ output extension=".ascx.resx"#><#
+
+const string _inputFile = @"..\..\..\CollectorsClub.EntityFramework\Model.edmx";
+string _aplicacion = "CollectorsClub";
+Dictionary<string, MetadataGenerador.MetadataEntidad> _metadataEntidades = MetadataGenerador.ObtenerEntidades(_aplicacion);
+var _storeMetadata = LoadMetadata(_inputFile);
+var _textTransform = DynamicTextTransformation.Create(this);
+var _code = new CodeGenerationTools(this);
+var _ef = new MetadataTools(this);
+//var _itemCollection = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors).CreateEdmItemCollection(_inputFile);
+var _itemCollection = _storeMetadata.EdmItems;
+EntityContainer _container = _itemCollection.OfType<EntityContainer>().FirstOrDefault();
+var _typeMapper = new TypeMapper(_code, _ef, _container, _storeMetadata, _textTransform.Errors);
+var	_fileManager = EntityFrameworkTemplateFileManager.Create(this);
+
+if (!_typeMapper.VerifyCaseInsensitiveTypeUniqueness(_typeMapper.GetAllGlobalItems(_itemCollection), _inputFile)) {
+	return string.Empty;
+}
+string[] _culturas =  new string[] { "es-ES", "en-US", "ca-ES" };
+
+MetadataGenerador.IncluirEntidadesNoExistentesEnFramework(_metadataEntidades, _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection).ToList(), _typeMapper);
+foreach (var _entity in _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection)) {
+	foreach (string _cultura in _culturas) {
+		_fileManager.StartNewFile(_entity.Name + "EditorView.ascx." + _cultura + ".resx"); 
+		IEnumerable<EdmMember> _properties = _typeMapper.GetProperties(_entity); #>
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Cancelar.Text" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Cancelar.Title" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Cargando.Text" xml:space="preserve">
+    <value>Cargando los registros...</value>
+  </data>
+  <data name="CargandoFormulario.Text" xml:space="preserve">
+    <value>Cargando el registro....</value>
+  </data>
+  <data name="Borrar.Text" xml:space="preserve">
+    <value>Borrar los registros seleccionados</value>
+  </data>
+  <data name="Guardar.Text" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="Guardar.Title" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="MensajeError.Text" xml:space="preserve">
+    <value>Se ha producido un error al procesar la petición: </value>
+  </data>
+  <data name="MensajeEstaSeguroBorrar.Text" xml:space="preserve">
+    <value>Se va a borrar el registro. ¿Está seguro?</value>
+  </data>
+  <data name="MensajeNoExistenRegistros.Text" xml:space="preserve">
+    <value>No se han encontrado registros que coincidan con los filtros indicados.</value>
+  </data>
+  <data name="Nuevo.Text" xml:space="preserve">
+    <value>Crear nuevo registro</value>
+  </data>
+  <data name="Seleccionar.Text" xml:space="preserve">
+    <value>Seleccionar...</value>
+  </data>
+  <data name="Todos.Text" xml:space="preserve">
+    <value>Todos...</value>
+  </data>
+  <data name="CargandoRegistro.Text" xml:space="preserve">
+    <value>Obteniendo el registo a editar...</value>
+  </data>
+  <data name="CargandoRegistros.Text" xml:space="preserve">
+    <value>Cargando registros...</value>
+  </data>
+  <data name="MensajeErrorValidacion.Text" xml:space="preserve">
+    <value>Error de validación</value>
+  </data>
+  <data name="MensajeRespuestaServicioVacia.Text" xml:space="preserve">
+    <value>No se han podido obtener el/los registro/s del servidor.</value>
+  </data>
+  <data name="RegistroEliminado.Text" xml:space="preserve">
+    <value>Se ha borrado el registro correctamente.</value>
+  </data>
+  <data name="RegistroGuardado.Text" xml:space="preserve">
+    <value>Se ha guardado el registo correctamente.</value>
+  </data>
+  <data name="MensajeErrorCarga.Text" xml:space="preserve">
+    <value>No se puede cargar este apartado. Por favor, rellene este formulario indicándonos que operaciones ha realizado.</value>
+  </data>
+  <data name="Buscar.Text" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="Si.Text" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="No.Text" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="VerMas.Text" xml:space="preserve">
+    <value>Obtener siguientes registros</value>
+  </data>
+  <data name="MensajeEstaSeguroBorrarSeleccionados.Text" xml:space="preserve">
+    <value>Se van a borrar los registros seleccionados. ¿Está seguro?</value>
+  </data>
+  <data name="MensajeEstaSeguroCopiarSeleccionados.Text" xml:space="preserve">
+    <value>Se van a copiar los registros seleccionados. ¿Está seguro?</value>
+  </data>
+  <data name="MensajeEstaSeguroEditarSeleccionados.Text" xml:space="preserve">
+    <value>Se van a modificar los registros seleccionados. ¿Está seguro?</value>
+  </data>
+  <data name="FiltroModificado.Text" xml:space="preserve">
+    <value>Se han modificado los filtros. Debe refrescar la lista de resultados.</value>
+  </data>
+  <data name="RestablecerFiltroPorDefecto.Text" xml:space="preserve">
+    <value>Restablecer filtro por defecto</value>
+  </data>
+	<data name="Refrescar.Text" xml:space="preserve">
+		<value>Refrescar la lista de resultados</value>
+	</data>
+	<data name="Copiar.Text" xml:space="preserve">
+		<value>Copiar los registros seleccionados</value>
+	</data>
+	<data name="ExportarExcel.Text" xml:space="preserve">
+		<value>Exportar la lista de resultados actual a excel</value>
+	</data>
+	<data name="ExportarAPdf.Text" xml:space="preserve">
+		<value>Generar el pdf de los registros seleccionados</value>
+	</data>
+	<data name="Refrescar.Title" xml:space="preserve">
+		<value>Refrescar la lista de resultados</value>
+	</data>
+	<data name="Copiar.Title" xml:space="preserve">
+		<value>Copiar los registros seleccionados</value>
+	</data>
+	<data name="ExportarExcel.Title" xml:space="preserve">
+		<value>Exportar la lista de resultados actual a excel</value>
+	</data>
+	<data name="ExportarAPdf.Title" xml:space="preserve">
+		<value>Generar el pdf de los registros seleccionados</value>
+	</data>
+	<data name="EdicionMultiple.Text" xml:space="preserve">
+		<value>Editar simultáneamente los registros seleccionados</value>
+	</data>
+	<data name="EdicionMultiple.Title" xml:space="preserve">
+		<value>Editar simultáneamente los registros seleccionados</value>
+	</data>
+	<data name="MantenerValorCampo_Text" xml:space="preserve">
+		<value>Mantener el valor actual...</value>
+	</data>
+<#	MetadataGenerador.MetadataEntidad _metadataEntidad = _metadataEntidades[_entity.Name];
+		if (_metadataEntidad != null) { 
+			foreach (MetadataGenerador.MetadataPropiedad _metadataPropiedad in MetadataGenerador.PropiedadesVisibles(_metadataEntidad)) { 
+				if (_metadataPropiedad != null && (_metadataPropiedad.TipoCampo ==  MetadataGenerador.TipoCampo.Numero_Rango || _metadataPropiedad.TipoCampo == MetadataGenerador.TipoCampo.Fecha_Rango || _metadataPropiedad.TipoCampo == MetadataGenerador.TipoCampo.Hora_Rango || _metadataPropiedad.TipoCampo == MetadataGenerador.TipoCampo.Relacion1_N_Fecha_Rango || _metadataPropiedad.TipoCampo == MetadataGenerador.TipoCampo.FechaHora_Rango)) { #>
+  <data name="<#= _metadataPropiedad.Nombre #>Desde.Text" xml:space="preserve">
+    <value><#= _metadataPropiedad.Literal #> desde</value>
+  </data>
+  <data name="MensajeEntrada_<#= _metadataPropiedad.Nombre #>Desde.Text" xml:space="preserve">
+    <value>Indique un valor para el campo <#= _metadataPropiedad.Literal #> desde</value>
+  </data>
+  <data name="MensajeError_<#= _metadataPropiedad.Nombre #>Desde.Text" xml:space="preserve">
+    <value>Debe indicar un valor para el campo <#= _metadataPropiedad.Literal #> desde</value>
+  </data>
+  <data name="<#= _metadataPropiedad.Nombre #>Hasta.Text" xml:space="preserve">
+    <value><#= _metadataPropiedad.Literal #> hasta</value>
+  </data>
+  <data name="MensajeEntrada_<#= _metadataPropiedad.Nombre #>Hasta.Text" xml:space="preserve">
+    <value>Indique un valor para el campo <#= _metadataPropiedad.Literal #> hasta</value>
+  </data>
+  <data name="MensajeError_<#= _metadataPropiedad.Nombre #>Hasta.Text" xml:space="preserve">
+    <value>Debe indicar un valor para el campo <#= _metadataPropiedad.Literal #> hasta</value>
+  </data>
+<#			} #>
+  <data name="<#= _metadataPropiedad.Nombre #>.Text" xml:space="preserve">
+    <value><#= _metadataPropiedad.Literal #></value>
+  </data>
+<#			EdmMember _property = _properties.Where(p => p.Name == _metadataPropiedad.Nombre).FirstOrDefault();
+				MetadataGenerador.MetadataPropiedad _propiedadFiltro = null;
+				MetadataGenerador.MetadataPropiedad _propiedadFormulario = null;
+				if (_property != null) {
+					_propiedadFiltro = MetadataGenerador.BuscarPropiedad(_metadataEntidad.PanelesFiltro, _property);
+					_propiedadFormulario = MetadataGenerador.BuscarPropiedad(_metadataEntidad.PanelesFormulario, _property);
+				}
+				if (_propiedadFiltro == null || _propiedadFiltro.Visible || _propiedadFormulario == null || _propiedadFormulario.Visible) { #>
+  <data name="MensajeEntrada_<#= _metadataPropiedad.Nombre #>.Text" xml:space="preserve">
+    <value>Indique un valor para el campo <#= _metadataPropiedad.Literal #></value>
+  </data>
+  <data name="MensajeError_<#= _metadataPropiedad.Nombre #>.Text" xml:space="preserve">
+    <value>Debe indicar un valor para el campo <#= _metadataPropiedad.Literal #></value>
+  </data>
+<#			}
+			}
+		} else {
+			foreach (EdmMember _property in _properties) { #>
+	<data name="<#=_code.Escape(_property)#>.Text" xml:space="preserve">
+    <value><#= _property.Name #></value>
+  </data>
+  <data name="MensajeEntrada_<#=_code.Escape(_property)#>.Text" xml:space="preserve">
+    <value>Indique un valor para el campo <#= _property.Name #></value>
+  </data>
+  <data name="MensajeError_<#=_code.Escape(_property)#>.Text" xml:space="preserve">
+    <value>Debe indicar un valor para el campo <#= _property.Name #></value>
+  </data>
+<#		}
+		} #>
+</root>
+<# }
+}
+
+_fileManager.Process();
+#>

@@ -1,0 +1,21 @@
+﻿@import "../variables.less.txt";
+
+blockquote {
+	font-size:@FSFontSize;
+}
+blockquote.with-borders {
+	border-radius: @BSBorderRadius;
+	border-top: @BSBorderWidth @BSBorderStyle @BSBorderColor;
+	border-bottom:  @BSBorderWidth @BSBorderStyle @BSBorderColor;
+	border-left:  @BSBorderWidth @BSBorderStyle @BSBorderColor;
+	border-right:  @BSBorderWidth @BSBorderStyle @BSBorderColor;
+	box-shadow:@BBoxShadow;
+	
+}
+blockquote p {
+    font-family: @FSFontFamily;
+}
+blockquote{
+    box-shadow: @BBoxShadow;
+}
+

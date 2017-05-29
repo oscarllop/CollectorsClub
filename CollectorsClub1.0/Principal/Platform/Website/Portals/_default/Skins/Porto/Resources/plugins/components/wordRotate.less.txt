@@ -1,0 +1,14 @@
+﻿@import "../variables.less.txt";
+
+.inverted {
+    background-color: @HSBackgroundColor;
+}
+.word-rotate {
+	text-align: @HSTextAlign;
+	
+}
+h1.mb-sm.word-rotator-title{
+     font-size:@HSFontSize;
+     line-height: 54px;
+     box-shadow:initial;
+}

@@ -1,0 +1,17 @@
+﻿@import "../variables.less.txt";
+
+.dialog, .white-popup-block {
+    border-width: @BSBorderWidth;
+    border-style: @BSBorderStyle; 
+    border-color: @BSBorderThemeMode;
+    border-radius: @BSBorderRadius;
+    box-shadow: @BBoxShadow;
+}
+
+.dialog h1, 
+.white-popup-block h4 {
+    color: @HSColor;
+    font-weight: @HSFontWeight;
+    font-size: @HSFontSize;
+    text-align: @HSTextAlign;
+}

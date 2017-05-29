@@ -1,0 +1,23 @@
+﻿@import "../variables.less.txt";
+
+p {
+    font-size:  @FSFontSize;
+    font-weight: @FSFontWeight;
+    font-family: @FSFontFamily;
+    line-height: @FSLineHeight;
+    color: @FSColor; 
+}
+
+.fa {
+    color: @ISIconColor;
+    font-size: @ISIconSize;
+}
+
+p a:hover {
+    color: @LHFontColor;
+}
+
+p a {
+    color: @LTColor;
+    font-family: @LTFontFamily;
+}

@@ -1,0 +1,587 @@
+﻿* {
+    -webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+div.body *,
+html .scroll-to-top,
+.ui-dialog-titlebar-close,
+.lightbox-opened .mfp-wrap * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.Normal, 
+.NormalDisabled, 
+.NormalDeleted {
+    color: #777;
+	font-family: "Open Sans", Arial, sans-serif;
+	font-size: inherit;
+	line-height: 22px;
+}
+
+/*----- Language -----*/
+
+.language {
+    float: right;
+    margin: 10px 0 0 0;
+    padding: 0;
+}
+
+    .language .language-object span {
+        float: right;
+        padding: 5px 8px;
+        margin: 0 0 0 5px;
+        border-radius: 100%;
+        box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.1);
+        -moz-border-radius: 100%;
+        -webkit-border-radius: 100%;
+        background-color: #fff;
+    }
+
+        .language .language-object span img {
+            height: 12px;
+            width: 17px;
+            opacity: 0.4;
+        }
+
+        .language .language-object span:hover img {
+            opacity: 1;
+        }
+
+    .language .language-object .Language.selected img {
+        opacity: 1;
+        border-color: #222;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+        -webkit-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.8);
+        box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.8);
+    }
+
+/*----- Social Icons -----*/
+
+header.colored.flat-menu.darken-top-border div.search,
+header.clean-top.center div.search {
+    margin-bottom: 0;
+}
+
+
+/* LOGIN */
+/*------------------------------------------------*/
+#login {
+    float: right;
+    margin: 10px 0 0 0;
+}
+
+    #login .registerGroup,
+    #login .registerGroup *,
+    #login .loginGroup,
+    #login .loginGroup * {
+        display: block;
+    }
+
+    #login .registerGroup,
+    #login .loginGroup {
+        float: left;
+        padding: 0;
+        margin: 0;
+    }
+
+    #login .loginGroup {
+        margin-left: 20px;
+    }
+        #login .registerGroup li:first-child:hover {
+            border-left: #222;
+        }
+
+        /* Register Group Styles */
+
+        #login .registerGroup li {
+            float: left;
+        }
+
+        #login .registerGroup .buttonGroup {
+            margin: 0;
+            padding: 0 0 0 10px;
+        }
+
+#login .registerGroup a,
+#login .loginGroup a,
+#login a.SkinObject,
+#login a.LoginLink {
+    position: relative;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#login .registerGroup a {
+    line-height: 16px;
+    height: 32px;
+    padding: 10px 0;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+    #login a.SkinObject,
+    #login a.LoginLink {
+        padding: 7px 0;
+    }
+
+    #login .userMessages a:hover,
+    #login .userNotifications a:hover {
+        background: #eeeeee;
+    }
+
+    #login .userDisplayName a:hover,
+    #login .loginGroup a:hover {
+        color: #000;
+    }
+
+    .dark #login .userDisplayName a:hover,
+    .dark #login .loginGroup a:hover {
+        color: #FFF;
+    }
+
+    #login .registerGroup a:hover,
+    #login .loginGroup a:hover {
+        text-decoration: none;
+    }
+
+    #login .registerGroup a strong,
+    #login .loginGroup a strong {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        overflow: hidden;
+        font-size: 11px;
+        text-indent: -9999px;
+    }
+
+#login .userMessages a,
+#login .userNotifications a {
+    background-color: #ffffff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+    #login .userProfileImg img,
+    #login .registerGroup a,
+    #login .loginGroup a,
+    #login a.SkinObject,
+    #login a.LoginLink {
+        border-radius: 20px;
+    }
+
+    #login .userMessages strong {
+        height: 100%;
+        background: url('Resources/img/icon_message.png') no-repeat center center;
+    }
+
+    #login .userNotifications strong {
+        height: 100%;
+        background: url('Resources/img/icon_notification.png') no-repeat center center;
+    }
+
+    #login .registerGroup a span {
+        display: inline-block;
+        position: absolute;
+        right: 2px;
+        top: -9px;
+        min-width: 7px;
+        margin-right: 3px;
+        background: rgb(59,150,182); /* Old browsers */
+        text-align: center;
+        font-size: 11px;
+        color: #fff;
+        text-shadow: 0px 1px 0px #333333;
+    }
+
+#login .registerGroup .userProfileImg a {
+    min-width: 25px;
+    min-height: 32px;
+    padding: 0;
+    background: none;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+    #login .registerGroup a img {
+        height: 32px;
+        width: 32px;
+        background: #333;
+    }
+
+    /* Number of message next to the message icon*/
+    #login .userMessages a span,
+    #login .userNotifications a span {
+        display: inline-block;
+        margin-top: 9px;
+        margin-right: 0px;
+        background-color: transparent;
+        font-size: 10px;
+    }
+
+.layout_trigger {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-size: cover;
+}
+
+.dnnCheckbox .mark {
+    padding: 0;
+    background-color: transparent;
+}
+
+.body .dnnSortable {
+    min-height: 0px !important;
+}
+
+.body .dnnDropEmptyPanes {
+    min-height: 110px !important;
+    outline: 1px dashed #ccc !important;
+}
+
+.body ul.dnnAdminTabNav,
+.body ul.dnnActions,
+#dnnModuleDigitalAssetsBreadcrumb ul {
+    padding-left: 0;
+}
+
+    .body ul.dnnAdminTabNav li {
+        line-height: normal;
+    }
+
+header.flat-menu.clean-top div.social-icons,
+header.colored.flat-menu div.social-icons,
+header.clean-top.center div.social-icons {
+    float: left;
+    margin: 0;
+    clear: none;
+}
+
+#ControlBar,
+div.body .mdMemberList *,
+div.body .dnnDocumentViewerBackground *,
+div.body .dnnDropDownList .selected-item a,
+.dnnDocumentViewerBackground div,
+#dnnModuleDigitalAssetsMainToolbar,
+#dnnModuleDigitalAssetsSelectionToolbar {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.icon-search {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+}
+
+.DnnModule {
+    z-index: inherit !important;
+}
+
+.console {
+    width: 250px;
+    height: auto;
+    background-color: #484848; /* Menu Background Color */
+}
+
+.console-none div {
+    cursor: pointer;
+    cursor: hand;
+    float: left;
+    height: auto;
+    width: 250px;
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
+}
+
+.console-none h3 {
+    padding: 10px 8px 10px 40px;
+    margin: 0;
+    border-bottom: solid 1px #fff;
+    background: url('Resources/img/arrow_2.png') 18px center no-repeat;
+    color: #eee;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: bold;
+}
+
+.console-none div div {
+    display: none;
+}
+
+.console-mouseon {
+    background-color: #70b1c7;
+}
+
+#UserProfileImg img {
+    width: 100px;
+    height: auto;
+    border: solid 3px #fff;
+}
+
+.UserProfileControls ul {
+    margin: 15px 0;
+    padding: 0;
+}
+
+.UserProfileControls ul li {
+    list-style-type: none;
+    margin-bottom: 3px;
+}
+
+blockquote p {
+    font-style: normal;
+    font-family: "Open Sans",Arial,sans-serif;
+}
+
+.dnnEditState .DnnModule {
+    opacity: 1;
+}
+
+.DNNEmptyPane {
+    width: auto;
+}
+
+.dnnFormMessage {
+    max-width: 100%;
+}
+
+.btn-primary:visited,
+.btn-primary:visited:hover {
+    color: #fff;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 479px) {
+
+    .LoginPanel {
+        width: 100%;
+        padding: 0;
+    }
+
+    .dnnLoginService input[type="text"], .dnnLoginService input[type="password"] {
+        min-width: 100%;
+        width: 100%;
+    }
+
+    .dnnFormItem > label.dnnFormLabel, .dnnLabel {
+        width: auto;
+    }
+
+    div.dnnRegistrationForm {
+        min-width: 100%;
+        width: 100%;
+    }
+
+    .dnnFormItem input[type="text"], .dnnFormItem input[type="password"], .dnnFormItem input[type="email"], .dnnFormItem input[type="tel"], .dnnFormItem select, .dnnFormItem textarea {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .dnnFormMessage {
+        max-width: 100%;
+    }
+
+    div.dnnRegistrationForm .dnnForm {
+        width: 100%;
+    }
+}
+
+.btn-danger:visited {
+    color: #fff;
+}
+
+footer .container .row > div {
+    margin-bottom: 0 !important;
+}
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    min-height: 0px;
+}
+
+blockquote cite {
+    display: inline;
+    color: #777;
+    font-size: inherit;
+}
+
+/* Search */
+header div.search input.NormalTextBox:first-child {
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    width: 170px;
+    font-size: 0.9em;
+    padding: 6px 32px 6px 12px;
+    height: 34px;
+    -moz-transition: all 0.2s ease-in 0.2s;
+    -o-transition: all 0.2s ease-in 0.2s;
+    -webkit-transition: all 0.2s ease-in 0.2s;
+    transition: all 0.2s ease-in 0.2s;
+}
+
+    header div.search input.NormalTextBox:focus {
+        width: 220px;
+        border-color: #CCC;
+        outline: none;
+    }
+
+    header div.search input.NormalTextBox {
+        display: block;
+        float: left;
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.428571429;
+        color: #555555;
+        vertical-align: middle;
+        background-color: #ffffff;
+        background-image: none;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    }
+
+header .icon-search {
+    border: 0;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #CCC;
+    padding: 10px;
+    text-decoration: none;
+}
+
+ul,
+ol {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+}
+
+li p {
+	line-height: 24px;
+}
+
+header .header-top.header-top-style-2 .social-icons {
+    margin-top: 7px;
+    float: left;
+}
+
+.ModConsoleC .console {
+    width: auto;
+    background-color: transparent;
+}
+
+.ModConsoleC .console-mouseon {
+    background-color: #ebedf0;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    
+    header nav ul.nav-main li a i.fa-caret-down,
+    header nav ul.nav-main li a em.fa-caret-down,
+    header nav ul.nav-main .dropdown-submenu i.fa-caret-down,
+    header nav ul.nav-main .dropdown-submenu em.fa-caret-down {
+        font-size: 25px;
+    }
+
+    header .header-top {
+		display: block;
+	}
+
+    header.clean-top .header-top {
+		border-bottom: 1px solid #EDEDED;
+		background-color: #F4F4F4;
+		margin-top: -8px;
+	}
+
+	header div.search {
+		display: none;
+	}
+
+    header .social-icons {
+        margin-top: 13px;
+    }
+
+    header nav ul.nav-main li.mega-menu-item.opened ul.dropdown-menu > li > a {
+        color: #FFF;
+    }
+}
+
+footer .copyright a {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+footer .copyright span {
+    margin-right: 5px;
+}
+
+.icon {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-map-marker:before {
+  content: "\f041";
+}
+
+.icon-phone:before {
+  content: "\f095";
+}
+
+.icon-envelope:before {
+  content: "\f0e0";
+}
+.custom-underline {
+	background: url(Resources/img/custom-underline.png) no-repeat center 100%;
+	padding-bottom: 25px;
+	font-size: 1.5em;
+}
+
+.feature-box-icon i.fa.text-color-primary {
+    line-height: 32px;
+}
+
+p .font-size-sm {
+    font-size: 0.9em !important;
+}
+.center .font-size-md {
+    font-size: 1em !important;
+}
+@media (min-width: 992px){
+.mockup-landing-page {
+    margin-top: -120px;
+}
+}
+section.section.section-with-mockup {
+    margin-top: 120px;
+}
+.semi-bold {
+    font-weight: 600;
+}

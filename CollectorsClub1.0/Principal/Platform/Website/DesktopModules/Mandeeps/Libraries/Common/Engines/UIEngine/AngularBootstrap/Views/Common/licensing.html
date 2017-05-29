@@ -1,0 +1,28 @@
+﻿<div ng-controller="common_licensing">
+    <uiengine provider="AngularBootstrap" identifier="common_licensing" layout="default">
+        <uilayout name="default">
+            <uitemplate>
+                <div mn-ng-show="!ui.data.WarningMessage.Options.length">
+                    <b>License Manager</b>
+                    <br /><br />
+                    <p mn-ng-bind-html="ui.data.Setting.Options.Status | unsafe"></p>
+                    <div class="ms-form-group">
+                        <label>Selected Edition</label>
+                        <select class="ms-form-control" mn-ng-model="ui.data.Editions.Value" mn-ng-options="option as option for option in ui.data.Editions.Options"></select>
+                    </div>
+                    <a href="http://www.mandeeps.com/Activation.aspx" target="_blank" style="font-size:10px">Help Me Choose?</a>
+                    <br /><br />
+                    <button mn-ng-if="ui.data.Setting.Options.Activate" type="button" class="ms-btn ms-btn-primary" mn-ng-click="Activate()" style="margin-right:5px">Activate</button>
+                    <button type="button" class="ms-btn ms-btn-warning" mn-ng-click="Finish(ui.data.Setting.Options.FinishType)">{{ui.data.Setting.Options.FinishType}}</button>
+                </div>
+                <div mn-ng-show="ui.data.WarningMessage.Options.length">
+                    <b>License Manager</b>
+                    <br /><br />
+                    <div mn-ng-repeat="item in ui.data.WarningMessage.Options">
+                        <p style="color:red;" mn-ng-bind-html="item | unsafe"></p>
+                    </div>
+                </div>
+            </uitemplate>
+        </uilayout>
+    </uiengine>
+</div>

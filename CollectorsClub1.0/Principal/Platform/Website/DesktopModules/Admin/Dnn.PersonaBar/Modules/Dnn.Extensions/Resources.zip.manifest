@@ -1,0 +1,40 @@
+﻿<dotnetnuke type="ResourceFile" version="5.0">
+  <files>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>Extensions.resx</name>
+    </file>
+    <file>
+      <path>css/</path>
+      <name>extensions.css</name>
+    </file>
+    <file>
+      <path>data/</path>
+      <name>ModuleControlTemplate.resources</name>
+    </file>
+    <file>
+      <path />
+      <name>extensions.html</name>
+    </file>
+    <file>
+      <path>scripts/bundles/</path>
+      <name>extensions-bundle.js</name>
+    </file>
+    <file>
+      <path>scripts/bundles/</path>
+      <name>rw-widgets.eot</name>
+    </file>
+    <file>
+      <path>scripts/bundles/</path>
+      <name>rw-widgets.svg</name>
+    </file>
+    <file>
+      <path>scripts/bundles/</path>
+      <name>rw-widgets.ttf</name>
+    </file>
+    <file>
+      <path>scripts/</path>
+      <name>extensions.js</name>
+    </file>
+  </files>
+</dotnetnuke>

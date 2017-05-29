@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CheckLanguage.Text" lastModified="2015-12-27 07:32:21">
+    <value xml:space="preserve">Utilice el servicio de actualizaciones para obtener nuevos paquetes de idiomas para las extensiones</value>
+  </data>
+  <data name="ControlTitle_.Text" lastModified="2015-12-27 07:32:21">
+    <value xml:space="preserve">Extensiones</value>
+  </data>
+  <data name="Description.Header" lastModified="2015-12-27 07:32:21">
+    <value xml:space="preserve">Descripción</value>
+  </data>
+  <data name="Download.Text" lastModified="2015-12-27 07:32:21">
+    <value xml:space="preserve">Descargar</value>
+  </data>
+  <data name="InstalledOnHost.Tooltip" lastModified="2015-12-27 07:32:21">
+    <value xml:space="preserve">Instalado en Sistema</value>
+  </data>
+  <data name="InstalledOnPortal.Tooltip" lastModified="2015-12-27 07:32:21">
+    <value xml:space="preserve">Instalado en {0}</value>
+  </data>
+  <data name="installExtension.Text" lastModified="2015-12-27 07:32:21">
+    <value xml:space="preserve">Instalar</value>
+  </data>
+  <data name="Language.Type" lastModified="2015-12-27 07:32:21">
+    <value xml:space="preserve">Paquetes de idiomas</value>
+  </data>
+  <data name="LanguageMessage.Text" lastModified="2015-12-27 07:32:21">
+    <value xml:space="preserve">Pulse para obtener este paquete de idioma</value>
+  </data>
+  <data name="LanguagePacksDetail.Text" lastModified="2015-12-27 07:32:21">
+    <value xml:space="preserve">Los paquetes de idioma permiten mostrar cierta información en el idioma preferido de los usuarios. Esta información incluye nombres de campos y ayuda, mensajes de bienvenida, recordatorios de contraseñas, la fecha y hora en el formato local... Aquí puede ver todos los paquetes de idioma disponibles. Seleccione los que quiera instalar en la web.</value>
+  </data>
+  <data name="lblUpdate.Text" lastModified="2015-12-27 08:33:16">
+    <value xml:space="preserve">Esta aplicación contiene un servicio de actualización que muestra un icono cuando una nueva versión para la extensión está disponble. El icono que aparece contendrá una indicación visual si una extensión instalada actualmente contiene una vulnerabilidad de seguridad potencial. Si se identifica una vulnerabilidad de seguridad, se recomienda actualizar a la versión más reciente de la extensión. Al hacer clic en el icono será redirigido a una ubicación donde se podrá adquirir la extensión para su instalación inmediata.</value>
+  </data>
+  <data name="Name.Header" lastModified="2015-12-27 08:33:16">
+    <value xml:space="preserve">Nombre</value>
+  </data>
+  <data name="NoResults.Text" lastModified="2015-12-27 08:33:16">
+    <value xml:space="preserve">No se han encontrado extensiones</value>
+  </data>
+  <data name="Version.Header" lastModified="2015-12-27 09:33:18">
+    <value xml:space="preserve">Versión</value>
+  </data>
+</root>

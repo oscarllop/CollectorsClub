@@ -1,0 +1,59 @@
+﻿/* Circular Bars */
+.circular-bar {
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+.circular-bar .circular-bar-chart {
+	position: relative;
+}
+
+.circular-bar strong {
+	display: block;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 30px;
+	position: absolute;
+	top: 35%;
+	width: 80%;
+	left: 10%;
+	text-align: center;
+}
+
+.circular-bar label {
+	display: block;
+	font-weight: 100;
+	font-size: 17px;
+	line-height: 20px;
+	position: absolute;
+	top: 50%;
+	width: 80%;
+	left: 10%;
+	text-align: center;
+}
+
+.circular-bar.only-icon .fa {
+	display: block;
+	font-weight: 600;
+	font-size: 38px;
+	line-height: 30px;
+	position: absolute;
+	top: 40%;
+	width: 80%;
+	left: 10%;
+	text-align: center;
+}
+
+.circular-bar.single-line strong {
+	top: 40%;
+}
+
+.circular-bar.circular-bar-sm label {
+	font-size: 14px;
+	top: 36%;
+}
+
+.circular-bar.circular-bar-lg strong {
+	font-size: 20px;
+	top: 40%;
+}

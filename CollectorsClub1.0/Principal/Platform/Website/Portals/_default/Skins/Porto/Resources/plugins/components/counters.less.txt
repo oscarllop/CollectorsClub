@@ -1,0 +1,51 @@
+﻿@import "../variables.less.txt";
+
+.counters .counter {
+	text-align: @HSTextAlign;
+}
+.counters.with-borders .counter {
+	border-radius: @BSBorderRadius;
+	border-top: @BSBorderWidth @BSBorderStyle @BSBorderColor;
+	border-bottom: @BSBorderWidth @BSBorderStyle @BSBorderColor;
+	border-left:@BSBorderWidth @BSBorderStyle @BSBorderColor;
+	border-right:@BSBorderWidth @BSBorderStyle @BSBorderColor;
+	box-shadow: @BBoxShadow;
+	
+}
+
+.counters .fa {
+	font-size: @ISIconSize;
+}
+.counters strong {
+	font-size:@HSFontSize;
+	}
+.counters label {
+	font-weight: @FSFontWeight;
+	font-size: @FSFontSize;
+}
+.counters.counters-sm .fa {
+	font-size: @ISIconSize;
+}
+.counters.counters-sm strong {
+	font-size:  @FSFontSize;
+    line-height:@FSLineHeight;
+	}
+.counters.counters-sm label {
+	font-size: @FSFontSize;
+	line-height: @FSLineHeight;
+}
+
+.counters.counters-lg .fa {
+	font-size: @ISIconSize;
+	
+}
+
+.counters.counters-lg strong {
+	font-size: @FSFontSize;
+	line-height: @FSLineHeight;
+}
+
+.counters.counters-lg label {
+	font-size: @FSFontSize;
+	line-height: @FSLineHeight;
+}

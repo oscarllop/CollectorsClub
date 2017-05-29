@@ -1,0 +1,984 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F913D677-DF97-414E-8536-A810B3AB8FCB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CollectorsClub.Web</RootNamespace>
+    <AssemblyName>CollectorsClub.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Editores\CalendarioEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\Calendario_IdiomaEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\CategoriaCalendarioEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\CategoriaCalendario_IdiomaEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\CategoriaFotoEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\CategoriaFoto_IdiomaEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\ControlesCodigo.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Editores\EntidadEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\Entidad_IdiomaEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\EstadoCalendarioEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\EstadoCalendario_IdiomaEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\EventoEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\Evento_IdiomaEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\FabricanteEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\Fabricante_IdiomaEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\FotoEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\Foto_IdiomaEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\MarcaEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\SolicitudContactoEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\SubcategoriaCalendarioEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\SubcategoriaCalendario_IdiomaEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\TipoColeccionCalendarioEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\TipoColeccionCalendario_IdiomaEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\TipoEventoEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\TipoEvento_IdiomaEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\UsuarioEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\VideoEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Editores\Video_IdiomaEditorView.ascx.cs">
+      <DependentUpon>ControlesCodigo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Editores\AltaModulosDNN.sql">
+      <DependentUpon>AltaModulosDNN.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Content>
+    <Content Include="Editores\AltaModulosDNN.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AltaModulosDNN.sql</LastGenOutput>
+    </Content>
+    <Content Include="Editores\CalendarioEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CalendarioEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CalendarioEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CalendarioEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CalendarioEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Calendario_IdiomaEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Calendario_IdiomaEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Calendario_IdiomaEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Calendario_IdiomaEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Calendario_IdiomaEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaCalendarioEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaCalendarioEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaCalendarioEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaCalendarioEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaCalendarioEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaCalendario_IdiomaEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaCalendario_IdiomaEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaCalendario_IdiomaEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaCalendario_IdiomaEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaCalendario_IdiomaEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaFotoEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaFotoEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaFotoEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaFotoEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaFotoEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaFoto_IdiomaEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaFoto_IdiomaEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaFoto_IdiomaEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaFoto_IdiomaEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\CategoriaFoto_IdiomaEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Controles.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Content>
+    <Content Include="Editores\EntidadEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EntidadEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EntidadEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EntidadEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EntidadEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Entidad_IdiomaEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Entidad_IdiomaEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Entidad_IdiomaEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Entidad_IdiomaEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Entidad_IdiomaEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EstadoCalendarioEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EstadoCalendarioEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EstadoCalendarioEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EstadoCalendarioEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EstadoCalendarioEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EstadoCalendario_IdiomaEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EstadoCalendario_IdiomaEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EstadoCalendario_IdiomaEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EstadoCalendario_IdiomaEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EstadoCalendario_IdiomaEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EventoEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EventoEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EventoEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EventoEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\EventoEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Evento_IdiomaEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Evento_IdiomaEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Evento_IdiomaEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Evento_IdiomaEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Evento_IdiomaEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\FabricanteEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\FabricanteEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\FabricanteEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\FabricanteEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\FabricanteEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Fabricante_IdiomaEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Fabricante_IdiomaEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Fabricante_IdiomaEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Fabricante_IdiomaEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Fabricante_IdiomaEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\FotoEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\FotoEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\FotoEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\FotoEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\FotoEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Foto_IdiomaEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Foto_IdiomaEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Foto_IdiomaEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Foto_IdiomaEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Foto_IdiomaEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Main.js">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\MarcaEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\MarcaEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\MarcaEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\MarcaEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\MarcaEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Metadata.sql">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Metadata.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Partials.html">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\SolicitudContactoEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\SolicitudContactoEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\SolicitudContactoEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\SolicitudContactoEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\SolicitudContactoEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\StoredProcedures.sql">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoredProcedures.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\SubcategoriaCalendarioEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\SubcategoriaCalendarioEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\SubcategoriaCalendarioEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\SubcategoriaCalendarioEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\SubcategoriaCalendarioEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\SubcategoriaCalendario_IdiomaEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\SubcategoriaCalendario_IdiomaEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\SubcategoriaCalendario_IdiomaEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\SubcategoriaCalendario_IdiomaEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\SubcategoriaCalendario_IdiomaEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\System.js">
+      <DependentUpon>System.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Editores\App_LocalResources\Recursos.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Recursos.ascx.resx</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Editores\App_LocalResources\Recursos.ascx.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Designer</SubType>
+      <DesignTime>True</DesignTime>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Editores\Controles.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Controles.ascx</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Editores\ControlesCodigo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ControlesCodigo.ascx.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Editores\System.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>System.js</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Editores\TipoColeccionCalendarioEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoColeccionCalendarioEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoColeccionCalendarioEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoColeccionCalendarioEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoColeccionCalendarioEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoColeccionCalendario_IdiomaEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoColeccionCalendario_IdiomaEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoColeccionCalendario_IdiomaEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoColeccionCalendario_IdiomaEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoColeccionCalendario_IdiomaEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoEventoEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoEventoEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoEventoEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoEventoEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoEventoEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoEvento_IdiomaEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoEvento_IdiomaEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoEvento_IdiomaEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoEvento_IdiomaEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\TipoEvento_IdiomaEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\UsuarioEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\UsuarioEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\UsuarioEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\UsuarioEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\UsuarioEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\VideoEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\VideoEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\VideoEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\VideoEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\VideoEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Video_IdiomaEditorMain.js">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Video_IdiomaEditorSystem.js">
+      <DependentUpon>System.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Video_IdiomaEditorView.ascx">
+      <DependentUpon>Controles.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Video_IdiomaEditorView.html">
+      <DependentUpon>Partials.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\Video_IdiomaEditorViewModel.js">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\ViewModel.js">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Content>
+    <Content Include="Editores\ViewModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ViewModel.js</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Editores\CalendarioEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\Calendario_IdiomaEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\CategoriaCalendarioEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\CategoriaCalendario_IdiomaEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\CategoriaFotoEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\CategoriaFoto_IdiomaEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\EntidadEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\Entidad_IdiomaEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\EstadoCalendarioEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\EstadoCalendario_IdiomaEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\EventoEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\Evento_IdiomaEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\FabricanteEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\Fabricante_IdiomaEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\FotoEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\Foto_IdiomaEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\Main.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Main.js</LastGenOutput>
+    </None>
+    <None Include="Editores\Manifest.dnn">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\Manifest.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Manifest.dnn</LastGenOutput>
+    </None>
+    <None Include="Editores\MarcaEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\Metadata.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Metadata.sql</LastGenOutput>
+    </None>
+    <None Include="Editores\Partials.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Partials.html</LastGenOutput>
+    </None>
+    <None Include="Editores\SolicitudContactoEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\StoredProcedures.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StoredProcedures.sql</LastGenOutput>
+    </None>
+    <None Include="Editores\SubcategoriaCalendarioEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\SubcategoriaCalendario_IdiomaEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\TipoColeccionCalendarioEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\TipoColeccionCalendario_IdiomaEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\TipoEventoEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\TipoEvento_IdiomaEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\UsuarioEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\VideoEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+    <None Include="Editores\Video_IdiomaEditorViewManifest.dnn">
+      <DependentUpon>Manifest.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Editores\App_LocalResources\CalendarioEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\CalendarioEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\CalendarioEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Calendario_IdiomaEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Calendario_IdiomaEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Calendario_IdiomaEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\CategoriaCalendarioEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\CategoriaCalendarioEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\CategoriaCalendarioEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\CategoriaCalendario_IdiomaEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\CategoriaCalendario_IdiomaEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\CategoriaCalendario_IdiomaEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\CategoriaFotoEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\CategoriaFotoEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\CategoriaFotoEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\CategoriaFoto_IdiomaEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\CategoriaFoto_IdiomaEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\CategoriaFoto_IdiomaEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\EntidadEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\EntidadEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\EntidadEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Entidad_IdiomaEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Entidad_IdiomaEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Entidad_IdiomaEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\EstadoCalendarioEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\EstadoCalendarioEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\EstadoCalendarioEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\EstadoCalendario_IdiomaEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\EstadoCalendario_IdiomaEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\EstadoCalendario_IdiomaEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\EventoEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\EventoEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\EventoEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Evento_IdiomaEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Evento_IdiomaEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Evento_IdiomaEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\FabricanteEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\FabricanteEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\FabricanteEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Fabricante_IdiomaEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Fabricante_IdiomaEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Fabricante_IdiomaEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\FotoEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\FotoEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\FotoEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Foto_IdiomaEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Foto_IdiomaEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Foto_IdiomaEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\MarcaEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\MarcaEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\MarcaEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\SolicitudContactoEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\SolicitudContactoEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\SolicitudContactoEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\SubcategoriaCalendarioEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\SubcategoriaCalendarioEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\SubcategoriaCalendarioEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\SubcategoriaCalendario_IdiomaEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\SubcategoriaCalendario_IdiomaEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\SubcategoriaCalendario_IdiomaEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\TipoColeccionCalendarioEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\TipoColeccionCalendarioEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\TipoColeccionCalendarioEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\TipoColeccionCalendario_IdiomaEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\TipoColeccionCalendario_IdiomaEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\TipoColeccionCalendario_IdiomaEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\TipoEventoEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\TipoEventoEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\TipoEventoEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\TipoEvento_IdiomaEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\TipoEvento_IdiomaEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\TipoEvento_IdiomaEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\UsuarioEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\UsuarioEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\UsuarioEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\VideoEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\VideoEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\VideoEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Video_IdiomaEditorView.ascx.ca-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Video_IdiomaEditorView.ascx.en-US.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editores\App_LocalResources\Video_IdiomaEditorView.ascx.es-ES.resx">
+      <DependentUpon>Recursos.tt</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

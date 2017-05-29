@@ -1,0 +1,29 @@
+<dotnetnuke version="3.0" type="Module">
+  <folders>
+    <folder>
+      <name>CollectorsClub.EditorEstadosCalendario_Idiomas</name>
+      <friendlyname>CollectorsClub - Mantenimiento EstadosCalendario_Idiomas</friendlyname>
+      <modulename>CollectorsClub.EditorEstadosCalendario_Idiomas</modulename>
+      <description>CollectorsClub - Mantenimiento EstadosCalendario_Idiomas</description>
+      <version>01.00.00</version>
+      <modules>
+        <module>
+          <friendlyname>CollectorsClub - Mantenimiento EstadosCalendario_Idiomas</friendlyname>
+          <cachetime>0</cachetime>
+          <controls>
+            <control>
+              <src>DesktopModules/CollectorsClub/Editores/EstadoCalendario_IdiomaEditorView.ascx</src>
+              <type>View</type>
+              <helpurl></helpurl>
+            </control>
+          </controls>
+        </module>
+      </modules>
+      <files>
+        <file>
+          <name>EstadoCalendario_IdiomaEditorView.ascx</name>
+        </file>
+      </files>
+    </folder>
+  </folders>
+</dotnetnuke>

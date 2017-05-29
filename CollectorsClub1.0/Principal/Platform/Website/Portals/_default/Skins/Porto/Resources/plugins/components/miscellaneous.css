@@ -1,0 +1,69 @@
+﻿/* Miscellaneous */
+.pull-left {
+	float: left !important;
+}
+
+.pull-right {
+	float: right !important;
+}
+
+.push-bottom {
+	margin-bottom: 35px;
+}
+
+.push-top {
+	margin-top: 35px;
+}
+
+.align-center, .center {
+	text-align: center !important;
+}
+
+.align-left {
+	text-align: left !important;
+}
+
+.align-right {
+	text-align: right !important;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.inverted {
+	color: #FFF;
+	display: inline-block;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+h1 .inverted {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+h2 .inverted {
+	padding-left: 7px;
+	padding-right: 7px;
+}
+
+h3 .inverted {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+h4 .inverted {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+h5 .inverted {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+h6 .inverted {
+	padding-left: 2px;
+	padding-right: 2px;
+}

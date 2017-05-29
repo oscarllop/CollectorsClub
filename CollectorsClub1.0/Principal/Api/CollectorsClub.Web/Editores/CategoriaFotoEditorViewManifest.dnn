@@ -1,0 +1,29 @@
+<dotnetnuke version="3.0" type="Module">
+  <folders>
+    <folder>
+      <name>CollectorsClub.EditorCategoriasFotos</name>
+      <friendlyname>CollectorsClub - Mantenimiento CategoriasFotos</friendlyname>
+      <modulename>CollectorsClub.EditorCategoriasFotos</modulename>
+      <description>CollectorsClub - Mantenimiento CategoriasFotos</description>
+      <version>01.00.00</version>
+      <modules>
+        <module>
+          <friendlyname>CollectorsClub - Mantenimiento CategoriasFotos</friendlyname>
+          <cachetime>0</cachetime>
+          <controls>
+            <control>
+              <src>DesktopModules/CollectorsClub/Editores/CategoriaFotoEditorView.ascx</src>
+              <type>View</type>
+              <helpurl></helpurl>
+            </control>
+          </controls>
+        </module>
+      </modules>
+      <files>
+        <file>
+          <name>CategoriaFotoEditorView.ascx</name>
+        </file>
+      </files>
+    </folder>
+  </folders>
+</dotnetnuke>

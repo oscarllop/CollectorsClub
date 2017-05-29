@@ -1,0 +1,175 @@
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="..\\..\\CollectorsClub.Model\\Templates\\Context.Base.ttinclude"#><#@ output extension=".sql"#><#
+
+const string _inputFile = @"..\..\CollectorsClub.EntityFramework\Model.edmx";
+string _aplicacion = "CollectorsClub";
+Dictionary<string, MetadataGenerador.MetadataEntidad> _metadataEntidades = MetadataGenerador.ObtenerEntidades(_aplicacion);
+var _storeMetadata = LoadMetadata(_inputFile);
+var _textTransform = DynamicTextTransformation.Create(this);
+var _code = new CodeGenerationTools(this);
+var _ef = new MetadataTools(this);
+//var _itemCollection = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors).CreateEdmItemCollection(_inputFile);
+var _itemCollection = _storeMetadata.EdmItems;
+EntityContainer _container = _itemCollection.OfType<EntityContainer>().FirstOrDefault();
+var _typeMapper = new TypeMapper(_code, _ef, _container, _storeMetadata, _textTransform.Errors);
+var _codeSQLGenerator = new CodeSQLGenerator(_code, _typeMapper, _ef, _storeMetadata);
+if (_container == null) {
+    return string.Empty;
+} #>
+USE CollectorsClub;
+GO
+
+<# MetadataGenerador.IncluirEntidadesNoExistentesEnFramework(_metadataEntidades, _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection).ToList(), _typeMapper);
+	 foreach (var _entity in _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection)) { 
+	  IEnumerable<EdmMember> _simpleProperties = _typeMapper.GetSimpleProperties(_entity);
+	  IEnumerable<EdmMember> _visibleProperties = _typeMapper.GetVisibleProperties(_entity);
+	  IEnumerable<EdmMember> _keyProperties = _typeMapper.GetKeyProperties(_entity);
+		List<EdmMember> _procedureParameterProperties = _codeSQLGenerator.GetQueryParameterProperties(_visibleProperties, _simpleProperties); #>
+<# /* ------------------------------- Inicio script del módulo <--#=_code.Escape(_entity)#-->  ------------------------------ */ #>
+<# EntitySet _entitySet = (EntitySet) _container.BaseEntitySets.Where(es => es.ElementType.Name == _entity.Name).FirstOrDefault(); #>
+<# /* IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = '<--#=_code.Escape(_entity)#-->_ObtenerPorFiltros')
+DROP PROCEDURE <--#=_code.Escape(_entity)#-->_ObtenerPorFiltros
+GO */ #>
+<# Dictionary<string, MetadataGenerador.MetadataPropiedad> _metadataPropiedades = MetadataGenerador.AgruparPropiedadesPaneles(_metadataEntidades[_entity.Name].PanelesFiltro).Values.Where(p => p.Visible).ToDictionary(p => p.Nombre); #>
+ALTER PROCEDURE [dbo].[<#=_code.Escape(_entity)#>_ObtenerPorFiltros](@RegistroInicial int = NULL, @RegistroFinal int = NULL, @ColumnaOrden nvarchar(50) = '<#= _keyProperties.First().Name #>', @TipoOrden smallint = 1, <#=_codeSQLGenerator.ProcedureParameters(_entity, _simpleProperties, _metadataPropiedades) #>) AS
+BEGIN
+	--declare @RegistroInicial int = 1
+	--declare @RegistroFinal int = 50
+	--declare @ColumnaOrden nvarchar(50) = '<#= _keyProperties.First().Name #>'
+	--declare @TipoOrden smallint = 0
+<#=_codeSQLGenerator.DeclareVariables(_entity, _simpleProperties, _metadataPropiedades) #>
+	;WITH DATOS AS (
+		SELECT ROW_NUMBER() OVER ( 
+			ORDER BY
+<#	List<EdmMember> _propiedadesOrden = _visibleProperties.Where(p => _typeMapper.GetSQLTypeName((EdmProperty) p) != "ntext" && _typeMapper.GetSQLTypeName((EdmProperty) p) != "text" && _typeMapper.GetSQLTypeName((EdmProperty) p) != "xml").ToList();
+	foreach (EdmMember _property in _propiedadesOrden) { #>
+				CASE WHEN @TipoOrden = 1 AND @ColumnaOrden = '<#= _property.Name #>' THEN <#= _typeMapper.StoreColumnNameWithAlias(_entitySet.Name, _entity, (EdmProperty) _property) #> END ASC,
+				CASE WHEN @TipoOrden <> 1 AND @ColumnaOrden = '<#= _property.Name #>' THEN <#= _typeMapper.StoreColumnNameWithAlias(_entitySet.Name, _entity, (EdmProperty) _property) #> END DESC<# if (_property != _propiedadesOrden.Last()) { #>,<# } #>
+
+<# } #>
+			) AS NumeroRegistro,
+			<#=_codeSQLGenerator.Select(_entity, _entitySet.Name, _visibleProperties) #>
+		FROM <#=_code.Escape(_entitySet)#>
+<# foreach (NavigationProperty _navigationProperty in _typeMapper.GetSimpleNavigationProperties(_entity).OrderBy(p => _typeMapper.ToProperties(p).Any(tp => _ef.IsNullable(tp)))) {
+		EntityType _tipoRelacionado = _typeMapper.FromEntityType(_navigationProperty);
+		EdmMember _propiedadNombreoCodigo = _typeMapper.GetSimpleProperties(_tipoRelacionado).Where(p => p.Name.ToLower().Contains("nombre") || p.Name.ToLower().Contains("descripcion")).OrderBy(p => p.Name.Length).FirstOrDefault();
+		if (_propiedadNombreoCodigo == null) { _propiedadNombreoCodigo = _typeMapper.GetSimpleProperties(_tipoRelacionado).Where(p => p.Name.ToLower().Contains("codigo")).OrderBy(p => p.Name.Length).FirstOrDefault(); }
+		EntitySet _propertyEntitySet = _typeMapper.GetEntitySet(_tipoRelacionado);
+		ReadOnlyMetadataCollection<EdmProperty> _fromProperties = _typeMapper.FromProperties(_navigationProperty);
+		ReadOnlyMetadataCollection<EdmProperty> _toProperties = _typeMapper.ToProperties(_navigationProperty); #>
+			<#= (_propiedadNombreoCodigo == null || _tipoRelacionado == _entity ? "--" : string.Empty) + (_typeMapper.ToProperties(_navigationProperty).Any(tp => _ef.IsNullable(tp)) ? "LEFT OUTER JOIN " : "INNER JOIN ") + _code.Escape(_propertyEntitySet) + " AS " + _typeMapper.StoreAlias(_propertyEntitySet, _navigationProperty)#> ON<#for (int i = 0; i < _fromProperties.Count; i++) { if (_fromProperties[i] != _fromProperties[0]) { #> AND<# }#> <#=_typeMapper.StoreColumnNameWithAlias(_typeMapper.StoreAlias(_propertyEntitySet, _navigationProperty), (EntityType) _fromProperties[i].DeclaringType, _fromProperties[i]) + " = " + _typeMapper.StoreColumnNameWithAlias(_entitySet.Name, (EntityType) _toProperties[i].DeclaringType, _toProperties[i])#><# } #>
+
+<# } #>
+		<#= _codeSQLGenerator.WhereStatement(_entity, _entitySet, _simpleProperties, _metadataPropiedades) #>
+	)
+	SELECT <#=_codeSQLGenerator.SelectNombresCampos(_entity, _entitySet.Name, _visibleProperties) #>
+	FROM DATOS
+	WHERE (@RegistroInicial IS NULL AND @RegistroFinal IS NULL OR (NumeroRegistro >= @RegistroInicial AND NumeroRegistro <= @RegistroFinal)) 
+END
+GO
+
+<# /* IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = '<--#=_code.Escape(_entity)#-->_ObtenerPorFiltros')
+DROP PROCEDURE <--#=_code.Escape(_entity)#-->_ObtenerCantidadPorFiltros
+GO */ #>
+ALTER PROCEDURE [dbo].[<#=_code.Escape(_entity)#>_ObtenerCantidadPorFiltros](<#=_codeSQLGenerator.ProcedureParameters(_entity, _simpleProperties, _metadataPropiedades) #>) AS
+BEGIN
+<#=_codeSQLGenerator.DeclareVariables(_entity, _simpleProperties, _metadataPropiedades) #>
+	SELECT COUNT(*)
+	FROM <#=_code.Escape(_entitySet)#>
+<# /*foreach (NavigationProperty _navigationProperty in _typeMapper.GetSimpleNavigationProperties(_entity).OrderBy(p => _typeMapper.ToProperties(p).Any(tp => _ef.IsNullable(tp)))) {
+	EntityType _tipoRelacionado = _typeMapper.FromEntityType(_navigationProperty);
+	EdmMember _propiedadNombreoCodigo = _typeMapper.GetSimpleProperties(_tipoRelacionado).Where(p => p.Name.ToLower().Contains("nombre") || p.Name.ToLower().Contains("descripcion")).OrderBy(p => p.Name.Length).FirstOrDefault();
+	if (_propiedadNombreoCodigo == null) { _propiedadNombreoCodigo = _typeMapper.GetSimpleProperties(_tipoRelacionado).Where(p => p.Name.ToLower().Contains("codigo")).OrderBy(p => p.Name.Length).FirstOrDefault(); }
+	EntitySet _propertyEntitySet = _typeMapper.GetEntitySet(_tipoRelacionado);
+	ReadOnlyMetadataCollection<EdmProperty> _fromProperties = _typeMapper.FromProperties(_navigationProperty);
+	ReadOnlyMetadataCollection<EdmProperty> _toProperties = _typeMapper.ToProperties(_navigationProperty); #>
+		<#= (_propiedadNombreoCodigo == null || _tipoRelacionado == _entity ? "--" : string.Empty) + (_typeMapper.ToProperties(_navigationProperty).Any(tp => _ef.IsNullable(tp)) ? "LEFT OUTER JOIN " : "INNER JOIN ") + _code.Escape(_propertyEntitySet) + " AS " + _typeMapper.StoreAlias(_propertyEntitySet, _navigationProperty)#> ON<#for (int i = 0; i < _fromProperties.Count; i++) { if (_fromProperties[i] != _fromProperties[0]) { #> AND<# }#> <#=_typeMapper.StoreColumnNameWithAlias(_typeMapper.StoreAlias(_propertyEntitySet, _navigationProperty), (EntityType) _fromProperties[i].DeclaringType, _fromProperties[i]) + " = " + _typeMapper.StoreColumnNameWithAlias(_entitySet.Name, (EntityType) _toProperties[i].DeclaringType, _toProperties[i])#><# } #>
+
+<# }*/ #>
+	<#= _codeSQLGenerator.WhereStatement(_entity, _entitySet, _simpleProperties, _metadataPropiedades) #>
+END
+GO
+
+<# EdmMember _propiedadNombre = _visibleProperties.Where(p => p.Name.ToLower().Contains("nombre") || p.Name.ToLower().Contains("descripcion")).OrderBy(p => p.Name.Length).FirstOrDefault(); 
+	 EdmMember _propiedadIdMarca = _visibleProperties.Where(p => p.Name == "IdMarca").FirstOrDefault(); 
+	 EdmMember _propiedadId = (_keyProperties.Count() > 0 ? (EdmProperty) _keyProperties.First() : _visibleProperties.First()); #>
+<# /* IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = '<--#=_code.Escape(_entity)#-->_ObtenerComboPorIdMarca')
+DROP PROCEDURE <--#=_code.Escape(_entity) #-->_ObtenerComboPorIdMarca
+GO */ #>
+<# if (_propiedadIdMarca != null) {	#>
+ALTER PROCEDURE [dbo].[<#=_code.Escape(_entity)#>_ObtenerComboPorIdMarca](@IdMarca as char(3)<#= (_metadataEntidades[_entity.Name].Multiidioma ? ", @Cultura as varchar(5)" : string.Empty) #>) AS
+<# } else { #>
+ALTER PROCEDURE [dbo].[<#=_code.Escape(_entity)#>_ObtenerCombo]<#= (_metadataEntidades[_entity.Name].Multiidioma ? "(@Cultura as varchar(5))" : string.Empty) #> AS
+<# } #>
+BEGIN
+<# if (_propiedadIdMarca != null) {	#>
+	--declare @IdMarca as char(3) = 'CCB'
+	<# if (_metadataEntidades[_entity.Name].Multiidioma) { #>
+	--declare @Cultura as varchar(5) = 'es-ES'
+	<# } #>
+
+<# } #>
+	SELECT <#= _typeMapper.StoreColumnNameWithAlias(_code.Escape(_entitySet), _entity, _propiedadId) #> AS Id, <#= (_metadataEntidades[_entity.Name].Multiidioma ? "COALESCE(" + _typeMapper.StoreColumnNameWithAlias(_code.Escape(_entitySet) + "_idiomas", _entity, (EdmProperty) (_propiedadNombre != null ? _propiedadNombre : _propiedadId)) + ", " + _typeMapper.StoreColumnNameWithAlias(_code.Escape(_entitySet), _entity, (EdmProperty) (_propiedadNombre != null ? _propiedadNombre : _propiedadId)) + ")" : _typeMapper.StoreColumnNameWithAlias(_code.Escape(_entitySet), _entity, (EdmProperty) (_propiedadNombre != null ? _propiedadNombre : _propiedadId))) #> AS Nombre
+	FROM <#=_code.Escape(_entitySet) #>
+<# if (_metadataEntidades[_entity.Name].Multiidioma) { #>
+		LEFT OUTER JOIN <#=_code.Escape(_entitySet) #>_Idiomas ON <#=_code.Escape(_entitySet) #>_Idiomas.IdRegistro = <#=_code.Escape(_entitySet) #>.Id AND <#=_code.Escape(_entitySet) #>_Idiomas.Cultura = @Cultura
+<# }
+	 if (_propiedadIdMarca != null) {	#>
+	WHERE <#= _typeMapper.StoreColumnNameWithAlias(_code.Escape(_entitySet), _entity, (EdmProperty) _propiedadIdMarca) #> = @IdMarca
+<# } #>
+	ORDER BY Nombre
+END
+GO
+
+<# if (_metadataEntidades[_entity.Name].GenerarAutocomplete) { #>
+<# /* IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = '<--#=_code.Escape(_entity)#-->_ObtenerLista')
+DROP PROCEDURE <--#=_code.Escape(_entity) #-->_ObtenerLista
+GO */ #>
+<# if (_propiedadIdMarca != null) {	#>
+ALTER PROCEDURE [dbo].[<#=_code.Escape(_entity)#>_ObtenerAutocompletePorIdMarca](@IdMarca as char(3), @Texto as nvarchar(50)) AS
+<# } else { #>
+ALTER PROCEDURE [dbo].[<#=_code.Escape(_entity)#>_ObtenerAutocomplete](@Texto as nvarchar(50)) AS
+<# } #>
+BEGIN
+<# if (_propiedadIdMarca != null) {	#>
+	--declare @IdMarca as char(3) = 'EAE'
+
+<# } #>
+	SELECT <#= _typeMapper.StoreColumnNameWithAlias(_code.Escape(_entitySet), _entity, _propiedadId) #> AS Id, <#= _typeMapper.StoreColumnNameWithAlias(_code.Escape(_entitySet), _entity, (EdmProperty) (_propiedadNombre != null ? _propiedadNombre : _propiedadId)) #> AS Nombre
+	FROM <#=_code.Escape(_entitySet) #>
+<# if (_propiedadIdMarca != null) {	#>
+	WHERE <#= _typeMapper.StoreColumnNameWithAlias(_code.Escape(_entitySet), _entity, (EdmProperty) _propiedadIdMarca) #> = @IdMarca
+<# } #>
+		AND (<#= _typeMapper.StoreColumnNameWithAlias(_code.Escape(_entitySet), _entity, _propiedadId) #> LIKE '%' + @Texto + '%'<# if (_propiedadNombre != null) { #> OR <#= _typeMapper.StoreColumnNameWithAlias(_code.Escape(_entitySet), _entity, (EdmProperty) (_propiedadNombre != null ? _propiedadNombre : _propiedadId)) #> LIKE '%' + @Texto + '%'<# } #>) 
+
+	ORDER BY Nombre
+END
+GO
+<# } #>
+
+<# /* IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = '<--#=_code.Escape(_entity)#-->_ObtenerLista')
+DROP PROCEDURE <--#=_code.Escape(_entity) #-->_ObtenerLista
+GO */ #>
+ALTER PROCEDURE [dbo].[<#=_code.Escape(_entity)#>_ObtenerLista](@Lista as varchar(500)) AS
+BEGIN
+	--declare @Lista as varchar(500) = '1,2'
+
+	SELECT <#=_codeSQLGenerator.Select(_entity, _entitySet.Name, _visibleProperties) #>
+	FROM <#=_code.Escape(_entitySet)#>
+		INNER JOIN dbo.fnArrayATabla<#= (_aplicacion == "Integrador" ? "Int" : "") #>(@Lista, ',') l ON l.number = <#= _typeMapper.StoreColumnNameWithAlias(_code.Escape(_entitySet), _entity, (_keyProperties.Count() > 0 ? (EdmProperty) _keyProperties.First() : _visibleProperties.First())) #>
+<# foreach (NavigationProperty _navigationProperty in _typeMapper.GetSimpleNavigationProperties(_entity).OrderBy(p => _typeMapper.ToProperties(p).Any(tp => _ef.IsNullable(tp)))) {
+		EntityType _tipoRelacionado = _typeMapper.FromEntityType(_navigationProperty);
+		EdmMember _propiedadNombreoCodigo = _typeMapper.GetSimpleProperties(_tipoRelacionado).Where(p => p.Name.ToLower().Contains("nombre") || p.Name.ToLower().Contains("descripcion")).OrderBy(p => p.Name.Length).FirstOrDefault();
+		if (_propiedadNombreoCodigo == null) { _propiedadNombreoCodigo = _typeMapper.GetSimpleProperties(_tipoRelacionado).Where(p => p.Name.ToLower().Contains("codigo")).OrderBy(p => p.Name.Length).FirstOrDefault(); }
+		EntitySet _propertyEntitySet = _typeMapper.GetEntitySet(_tipoRelacionado);
+		ReadOnlyMetadataCollection<EdmProperty> _fromProperties = _typeMapper.FromProperties(_navigationProperty);
+		ReadOnlyMetadataCollection<EdmProperty> _toProperties = _typeMapper.ToProperties(_navigationProperty); #>
+			<#= (_propiedadNombreoCodigo == null || _tipoRelacionado == _entity ? "--" : string.Empty) + (_typeMapper.ToProperties(_navigationProperty).Any(tp => _ef.IsNullable(tp)) ? "LEFT OUTER JOIN " : "INNER JOIN ") + _code.Escape(_propertyEntitySet) + " AS " + _typeMapper.StoreAlias(_propertyEntitySet, _navigationProperty)#> ON<#for (int i = 0; i < _fromProperties.Count; i++) { if (_fromProperties[i] != _fromProperties[0]) { #> AND<# }#> <#=_typeMapper.StoreColumnNameWithAlias(_typeMapper.StoreAlias(_propertyEntitySet, _navigationProperty), (EntityType) _fromProperties[i].DeclaringType, _fromProperties[i]) + " = " + _typeMapper.StoreColumnNameWithAlias(_entitySet.Name, (EntityType) _toProperties[i].DeclaringType, _toProperties[i])#><# } #>
+
+<# } #>
+END
+GO
+
+<# /* ------------------------------- Fin script del módulo <--#=_code.Escape(_entity)#-->  ------------------------------ */ #>
+<# } #>

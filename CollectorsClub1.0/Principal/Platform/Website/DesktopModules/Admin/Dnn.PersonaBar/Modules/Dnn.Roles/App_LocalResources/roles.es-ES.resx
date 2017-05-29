@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <!--DOTWARE TST S.L.-->
+  <data name="ActionCancelled.Message">
+    <value xml:space="preserve">Cancelado.</value>
+  </data>
+  <data name="Add.Text">
+    <value xml:space="preserve">Añadir</value>
+  </data>
+  <data name="AddUserPlaceHolder.Text">
+    <value xml:space="preserve">Empiece a escribir para añadir un usuario al rol</value>
+  </data>
+  <data name="AllGroups.Text">
+    <value xml:space="preserve">[Todos los grupos]</value>
+  </data>
+  <data name="Approved.Text">
+    <value xml:space="preserve">Aprobado</value>
+  </data>
+  <data name="AssignToExistUsers.Help">
+    <value xml:space="preserve">Asignar el rol a todos los usuarios existentes.</value>
+  </data>
+  <data name="AssignToExistUsers.Text">
+    <value xml:space="preserve">Asignar a usuarios</value>
+  </data>
+  <data name="Auto.Header">
+    <value xml:space="preserve">Auto</value>
+  </data>
+  <data name="AutoAssignment.Help">
+    <value xml:space="preserve">Indica si se debe asignar este rol automáticamente a los usuarios.</value>
+  </data>
+  <data name="AutoAssignment.Text">
+    <value xml:space="preserve">Asignación automática</value>
+  </data>
+  <data name="Both.Text">
+    <value xml:space="preserve">Ambos</value>
+  </data>
+  <data name="Cancel.Text">
+    <value xml:space="preserve">Cancelar</value>
+  </data>
+  <data name="CannotAssginUserToUnApprovedRole.Text">
+    <value xml:space="preserve">No se puede asignar un usuario a un rol no aprobado.</value>
+  </data>
+  <data name="Create.Text">
+    <value xml:space="preserve">Crear nuevo rol</value>
+  </data>
+  <data name="Delete.Text">
+    <value xml:space="preserve">Eliminar</value>
+  </data>
+  <data name="DeleteInconsistency.Error">
+    <value xml:space="preserve">Se ha producido un error. Cargue la página de nuevo y vuelva a intentarlo.</value>
+  </data>
+  <data name="DeleteRole.Confirm">
+    <value xml:space="preserve">¿Está seguro que desea eliminar este rol?</value>
+  </data>
+  <data name="DeleteRole.Error">
+    <value xml:space="preserve">Se ha producido un error al eliminar el rol. Vuelva a intentarlo.</value>
+  </data>
+  <data name="DeleteRole.Message">
+    <value xml:space="preserve">El rol se ha eliminado.</value>
+  </data>
+  <data name="DeleteRoleGroup.Confirm">
+    <value xml:space="preserve">¿Está seguro que desea eliminar este grupo de roles?</value>
+  </data>
+  <data name="DeleteRoleGroup.Error">
+    <value xml:space="preserve">Se ha producido un error al eliminar el grupo de roles. Vuelva a intentarlo.</value>
+  </data>
+  <data name="DeleteRoleGroup.Message">
+    <value xml:space="preserve">El grupo de roles se ha eliminado.</value>
+  </data>
+  <data name="DeleteUser.Confirm">
+    <value xml:space="preserve">¿Está seguro que desea eliminar este usuario del rol?</value>
+  </data>
+  <data name="Description.Help">
+    <value xml:space="preserve">Introduzca la descripción del rol.</value>
+  </data>
+  <data name="Description.Text">
+    <value xml:space="preserve">Descripción</value>
+  </data>
+  <data name="Disabled.Text">
+    <value xml:space="preserve">Desactivado</value>
+  </data>
+  <data name="DuplicateRole.Text">
+    <value xml:space="preserve">Ya existe un rol con el mismo nombre.</value>
+  </data>
+  <data name="DuplicateRoleGroup.Text">
+    <value xml:space="preserve">El grupo de roles ya existe.</value>
+  </data>
+  <data name="EditRole.Text">
+    <value xml:space="preserve">Editar rol</value>
+  </data>
+  <data name="Expires.Header">
+    <value xml:space="preserve">Expira</value>
+  </data>
+  <data name="GlobalRolesGroup.Text">
+    <value xml:space="preserve">[Roles globales]</value>
+  </data>
+  <data name="GroupDescription.Help">
+    <value xml:space="preserve">Introduzca la descripción del grupo de roles.</value>
+  </data>
+  <data name="GroupDescription.Text">
+    <value xml:space="preserve">Descripción</value>
+  </data>
+  <data name="GroupName.Header">
+    <value xml:space="preserve">Grupo</value>
+  </data>
+  <data name="GroupName.Help">
+    <value xml:space="preserve">Introduzca el nombre del grupo de roles.</value>
+  </data>
+  <data name="GroupName.Required">
+    <value xml:space="preserve">Campo obligatorio.</value>
+  </data>
+  <data name="GroupName.Text">
+    <value xml:space="preserve">Nombre del grupo</value>
+  </data>
+  <data name="InSufficientPermissions.Text">
+    <value xml:space="preserve">No tiene los permisos necesarios para realizar esta acción.</value>
+  </data>
+  <data name="InvalidRequest.Text">
+    <value xml:space="preserve">Petición inválida.</value>
+  </data>
+  <data name="isOwner.Text">
+    <value xml:space="preserve">Propietario</value>
+  </data>
+  <data name="lblNewGroup.Text">
+    <value xml:space="preserve">[Nuevo grupo]</value>
+  </data>
+  <data name="LoadMore.Text">
+    <value xml:space="preserve">Ver más</value>
+  </data>
+  <data name="Members.Header">
+    <value xml:space="preserve">Miembros</value>
+  </data>
+  <data name="nav_Roles.Text">
+    <value xml:space="preserve">Roles</value>
+  </data>
+  <data name="NewGroup.Text">
+    <value xml:space="preserve">Nuevo grupo</value>
+  </data>
+  <data name="NoData.Text">
+    <value xml:space="preserve">No hay ningún rol en este grupo.</value>
+  </data>
+  <data name="NoUsers.Text">
+    <value xml:space="preserve">No hay ningún usuario en este rol.</value>
+  </data>
+  <data name="PageInfo.Text">
+    <value xml:space="preserve">Página {0} de {1}</value>
+  </data>
+  <data name="PageSummary.Text">
+    <value xml:space="preserve">Mostrando {0}-{1} de {2}</value>
+  </data>
+  <data name="Pending.Text">
+    <value xml:space="preserve">Pendiente</value>
+  </data>
+  <data name="PermissionsByRole.Text">
+    <value xml:space="preserve">Usuarios del rol</value>
+  </data>
+  <data name="plRoleGroups.Help">
+    <value xml:space="preserve">Seleccione el grupo de roles al que pertenecerá.</value>
+  </data>
+  <data name="plRoleGroups.Text">
+    <value xml:space="preserve">Grupo de roles</value>
+  </data>
+  <data name="Public.Text">
+    <value xml:space="preserve">Público</value>
+  </data>
+  <data name="PublicRole.Help">
+    <value xml:space="preserve">Active esta opción si los usuarios se pueden suscribir al rol en la página de Gestión de servicios de su cuenta.</value>
+  </data>
+  <data name="RoleAdded.Error">
+    <value xml:space="preserve">Se ha producido un error al crear el rol. Vuelva a intentarlo.</value>
+  </data>
+  <data name="RoleAdded.Message">
+    <value xml:space="preserve">El rol se ha creado.</value>
+  </data>
+  <data name="RoleGroupUpdated.Error">
+    <value xml:space="preserve">Se ha producido un error al actualizar el grupo de roles. Vuelva a intentarlo.</value>
+  </data>
+  <data name="RoleGroupUpdated.Message">
+    <value xml:space="preserve">El grupo de roles se ha actualizado.</value>
+  </data>
+  <data name="RoleName.Header">
+    <value xml:space="preserve">Nombre del rol</value>
+  </data>
+  <data name="RoleName.Help">
+    <value xml:space="preserve">Introduzca el nombre del rol.</value>
+  </data>
+  <data name="RoleName.Required">
+    <value xml:space="preserve">Campo obligatorio.</value>
+  </data>
+  <data name="RoleName.Text">
+    <value xml:space="preserve">Nombre del rol</value>
+  </data>
+  <data name="RoleUpdated.Error">
+    <value xml:space="preserve">Se ha producido un error al actualizar el rol. Vuelva a intentarlo.</value>
+  </data>
+  <data name="RoleUpdated.Message">
+    <value xml:space="preserve">El rol se ha actualizado.</value>
+  </data>
+  <data name="Save.Text">
+    <value xml:space="preserve">Guardar</value>
+  </data>
+  <data name="Search.Text">
+    <value xml:space="preserve">Buscar</value>
+  </data>
+  <data name="SearchPlaceHolder.Text">
+    <value xml:space="preserve">Buscar roles por palabra clave</value>
+  </data>
+  <data name="securityModeListLabel.Help">
+    <value xml:space="preserve">Seleccione el modo de seguridad para este rol/grupo.</value>
+  </data>
+  <data name="securityModeListLabel.Text">
+    <value xml:space="preserve">Modo de seguridad:</value>
+  </data>
+  <data name="SecurityRole.Text">
+    <value xml:space="preserve">Rol de seguridad</value>
+  </data>
+  <data name="SecurityRoleDeleteNotAllowed.Text">
+    <value xml:space="preserve">Los roles de sistema no se pueden eliminar.</value>
+  </data>
+  <data name="SendEmail.Text">
+    <value xml:space="preserve">Enviar email</value>
+  </data>
+  <data name="SocialGroup.Text">
+    <value xml:space="preserve">Grupo social</value>
+  </data>
+  <data name="Start.Header">
+    <value xml:space="preserve">Inicio</value>
+  </data>
+  <data name="statusListLabel.Help">
+    <value xml:space="preserve">Seleccione el estado de este rol/grupo.</value>
+  </data>
+  <data name="statusListLabel.Text">
+    <value xml:space="preserve">Estado</value>
+  </data>
+  <data name="UpdateGroup.Text">
+    <value xml:space="preserve">Actualizar grupo</value>
+  </data>
+  <data name="UserNotFound.Text">
+    <value xml:space="preserve">No se ha encontrado el usuario.</value>
+  </data>
+  <data name="Users.Header">
+    <value xml:space="preserve">Usuarios</value>
+  </data>
+  <data name="Users.Text">
+    <value xml:space="preserve">Usuarios</value>
+  </data>
+  <data name="UsersInRole.Text">
+    <value xml:space="preserve">Usuarios del rol</value>
+  </data>
+</root>

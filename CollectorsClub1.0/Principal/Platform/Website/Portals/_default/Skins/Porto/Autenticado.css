@@ -1,0 +1,8 @@
+﻿header nav ul.nav-main li a {
+	font-size: 12px !important;
+}
+
+header .search {
+	float: left;
+	margin-top: 0px !important;
+}

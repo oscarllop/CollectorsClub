@@ -1,0 +1,210 @@
+﻿<div id="__id__partialContenedorInterno" style="display: none">
+	<div class="row">
+		<div class="col-md-3" style="padding: 0px;">
+			<div class="buscador">
+				<div id="CalendarioEditorfiltro" data-bind="with: Filtro" class="filtro">
+					<div id="CalendarioEditorcontenidoFiltro">
+						<div data-bind="visible: ($parent.Registros().length + $parent.IdsRegistrosFijos.length <= 0) && $parent.ListadoCargado()" class="MensajeNoExistenRegistros">
+							<span data-bind="text: $parent.TraduccionCampos.get('MensajeNoExistenRegistros_Text')()"></span>
+						</div>
+						<div class="container" style="padding: 0px;">
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('Nombre_Text')() + ':'"></label>
+									<input type="text" class="form-control" data-bind="textInput: Nombre, enable: $parent.HabilitarFiltro().Nombre, event: { change: function () { $parent.FiltroModificado(true); $parent.Buscar(); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('IdTipoColeccion_Text')() + ':'"></label>
+									<div class="well" style="max-height: 300px;overflow: auto;">
+										<ul class="list-group checked-list-box" data-bind="listaOpciones: { ListaValores: $parent.TiposColeccionCalendario, ListaSeleccionados: IdsTipoColeccion, click: $parent.Buscar }"></ul>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('IdCategoria_Text')() + ':'"></label>
+									<div class="well" style="max-height: 300px;overflow: auto;">
+										<ul class="list-group checked-list-box" data-bind="listaOpciones: { ListaValores: $parent.CategoriasCalendario, ListaSeleccionados: IdsCategoria, click: $parent.Buscar }"></ul>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('IdSubcategoria_Text')() + ':'"></label>
+									<div class="well" style="max-height: 300px;overflow: auto;">
+										<ul class="list-group checked-list-box" data-bind="listaOpciones: { ListaValores: $parent.SubcategoriasCalendario, ListaSeleccionados: IdsSubcategoria, click: $parent.Buscar }"></ul>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('Anyo_Text')() + ':'"></label>
+									<input type="text" class="form-control" data-bind="textInput: Anyo, enable: $parent.HabilitarFiltro().Anyo, event: { change: function () { $parent.FiltroModificado(true); $parent.Buscar(); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('IdEstado_Text')() + ':'"></label>
+									<div class="well" style="max-height: 300px;overflow: auto;">
+										<ul class="list-group checked-list-box" data-bind="listaOpciones: { ListaValores: $parent.EstadosCalendario, ListaSeleccionados: IdsEstado, click: $parent.Buscar }"></ul>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('IdEntidad_Text')() + ':'"></label>
+									<div class="well" style="max-height: 300px;overflow: auto;">
+										<ul class="list-group checked-list-box" data-bind="listaOpciones: { ListaValores: $parent.Entidades, ListaSeleccionados: IdsEntidad, click: $parent.Buscar }"></ul>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('Serie_Text')() + ':'"></label>
+									<input type="text" class="form-control" data-bind="textInput: Serie, enable: $parent.HabilitarFiltro().Serie, event: { change: function () { $parent.FiltroModificado(true); $parent.Buscar(); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('NumeroRepetidos_Text')() + ':'"></label>
+									<div class="input-group">
+										<span class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
+										<select class="form-control" data-bind="options: $parent.OpcionesFiltrosBooleanos, optionsText: 'Nombre', optionsValue: 'Valor', nullableBooleanValue: TieneRepetidos, enable: $parent.HabilitarFiltro().NumeroRepetidos, event: { change: function () { $parent.FiltroModificado(true); $parent.Buscar() } }, valueAllowUnset: true"></select>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('NumeroSerie_Text')() + ':'"></label>
+									<input type="text" class="form-control" data-bind="textInput: NumeroSerie, enable: $parent.HabilitarFiltro().NumeroSerie, event: { change: function () { $parent.FiltroModificado(true); $parent.Buscar(); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('IdEntidadContratante_Text')() + ':'"></label>
+									<div class="well" style="max-height: 300px;overflow: auto;">
+										<ul class="list-group checked-list-box" data-bind="listaOpciones: { ListaValores: $parent.Entidades, ListaSeleccionados: IdsEntidadContratante, click: $parent.Buscar }"></ul>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('DL_Text')() + ':'"></label>
+									<input type="text" class="form-control" data-bind="textInput: DL, enable: $parent.HabilitarFiltro().DL, event: { change: function () { $parent.FiltroModificado(true); $parent.Buscar(); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('Variante_Text')() + ':'"></label>
+									<input type="text" class="form-control" data-bind="textInput: Variante, enable: $parent.HabilitarFiltro().Variante, event: { change: function () { $parent.FiltroModificado(true); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('IdFabricante_Text')() + ':'"></label>
+									<div class="well" style="max-height: 300px;overflow: auto;">
+										<ul class="list-group checked-list-box" data-bind="listaOpciones: { ListaValores: $parent.Fabricantes, ListaSeleccionados: IdsFabricante, click: $parent.Buscar }"></ul>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('PaginaWeb_Text')() + ':'"></label>
+									<input type="text" class="form-control" data-bind="textInput: PaginaWeb, enable: $parent.HabilitarFiltro().PaginaWeb, event: { change: function () { $parent.FiltroModificado(true); $parent.Buscar(); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('Codigo_Text')() + ':'"></label>
+									<input type="text" class="form-control" data-bind="textInput: Codigo, enable: $parent.HabilitarFiltro().Codigo, event: { change: function () { $parent.FiltroModificado(true); $parent.Buscar(); }, keypress: function (data, event) { if (event.keyCode == 13) { $parent.Buscar(data); } else { return true; } } }" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label data-bind="text: $parent.TraduccionCampos.get('IdUsuario_Text')() + ':'"></label>
+									<div class="input-group">
+										<span class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
+										<select class="form-control" data-bind="options: $parent.Usuarios, optionsText: 'Nombre', optionsValue: 'Id', value: IdUsuario, optionsCaption: $parent.TraduccionCampos.get('Todos_Text')(), enable: $parent.HabilitarFiltro().IdUsuario, event: { change: function () { $parent.FiltroModificado(true); } }, valueAllowUnset: true"></select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<ul class="dnnActions dnnClear">
+							<li>
+								<a data-bind="click: $parent.Buscar, text: $parent.TraduccionCampos.get('Buscar_Text')()" class="dnnPrimaryAction"></a>
+							</li>
+							<li>
+								<a data-bind="click: $parent.RestablecerFiltroPorDefecto, text: $parent.TraduccionCampos.get('RestablecerFiltroPorDefecto_Text')()" class="dnnPrimaryAction"></a>
+							</li>
+						</ul>
+						<div class="dnnFormMessage dnnFormMessageFijado" data-bind="visible: $parent.FiltroModificado">
+							<span data-bind="text: $parent.TraduccionCampos.get('FiltroModificado_Text')()"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div data-bind="foreach: Grupos" class="Calendarios" style="margin-top: 25px">
+				<div class="row" data-bind="foreach: Registros">
+					<div class="col-md-4 col-sm-6 col-xs-12 isotope-item Calendario">
+						<div class="thumb-info">
+							<a data-bind="attr: { 'href': $parents[1].Url() + '/Id/' + Id }">
+								<img class="img-responsive img-thumbnail" data-bind="attr: { 'src': '~/Portals/0/_extension/Imagenes/Colecciones/Calendarios' + Imagen, 'alt': Nombre, 'title': Nombre }" />
+								<span class="thumb-info-title">
+									<span class="thumb-info-inner">
+										<span class="nombre" data-bind="html: Nombre"></span>
+									</span>
+									<span class="thumb-info-type" data-bind="text: $parents[1].TraduccionCampos.get('VerMas_Text')()"></span>
+								</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var __id_partialParametros = null;
+	var __id_partialTimeoutActualizarActivado = false;
+	window.__id__partial = {
+		Iniciar: function (parametros, partials) {
+			__id_partialParametros = parametros;
+			try {
+				partials.IniciarPartial(parametros.IdModulo + 'System', parametros, [], []);
+			} catch (excepcion) {
+				console.log(excepcion);
+			}
+		},
+		Actualizar: function (parametros, partials) {
+			__id_partialParametros = parametros;
+			try {
+				// TODO: OLL: Revisar esto. Es feo feo, pero no se me ocurre otra manera ahora.
+				var _llamadaRecursiva = function () {
+					if (typeof (GlobalViewModels['__id__partialViewModel']) === 'undefined') {
+						setTimeout(_llamadaRecursiva, 100);
+					} else {
+						__id_partialTimeoutActualizarActivado = false;
+						_actualizarViewModel();
+					}
+				}
+
+				var _actualizarViewModel = function () {
+					GlobalViewModels['__id__partialViewModel'].Actualizar(__id_partialParametros);
+				}
+
+				if (typeof (GlobalViewModels['__id__partialViewModel']) === 'undefined') {
+					if (!__id_partialTimeoutActualizarActivado) { __id_partialTimeoutActualizarActivado = true; setTimeout(_llamadaRecursiva, 100); }
+				} else {
+					__id_partialTimeoutActualizarActivado = false;
+					_actualizarViewModel();
+				}
+			} catch (excepcion) {
+				console.log(excepcion);
+			}
+		}
+	}
+</script>

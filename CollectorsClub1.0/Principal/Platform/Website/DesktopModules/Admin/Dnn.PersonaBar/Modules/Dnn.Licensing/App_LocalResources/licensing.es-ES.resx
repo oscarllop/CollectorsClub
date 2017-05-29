@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <!--DOTWARE TST S.L.-->
+  <data name="Activated.Header">
+    <value xml:space="preserve">Activada</value>
+  </data>
+  <data name="CheckOutEvoq">
+    <value xml:space="preserve">Evop un exhaustivo conjunto de funciones que su equipo adorará. Organizaciones de todo el mundo confían en Evoq para desarrollar potentes experiancias web.</value>
+  </data>
+  <data name="CheckOutEvoq.Header">
+    <value xml:space="preserve">PRUEBE EVOQ</value>
+  </data>
+  <data name="DocumentCenter">
+    <value xml:space="preserve">En en centro de documentación de DNN encontrará todas las respuestas, tutoriales y ayuda del producto que pueda necesitar.</value>
+  </data>
+  <data name="DocumentCenter.Header">
+    <value xml:space="preserve">CENTRO DE DOCUMENTACIÓN</value>
+  </data>
+  <data name="Error.ACT1.Text">
+    <value xml:space="preserve">Error en la activación de la licencia. Los detalles proporcionados no coinciden con una licencia válida.&lt;br /&gt;&lt;br /&gt;Verifique los detalles de su licencia en &lt;a href="{0}" target="_blank"&gt;su página de licencias en www.dnnsoftware.com&lt;/a&gt; e inténtelo de nuevo. Si el error continúa, póngase en contacto con el departamento de soporte técnico.</value>
+  </data>
+  <data name="Error.ACT2.Text">
+    <value xml:space="preserve">Error en la activación de la licencia. Ya existe una activación de producción de {0} en uso.</value>
+  </data>
+  <data name="Error.ACT3.Text">
+    <value xml:space="preserve">Ha sobrepasado el límite de activaciones permitidas</value>
+  </data>
+  <data name="Error.ACT4.Text">
+    <value xml:space="preserve">Error en la activación de la licencia. Ya existe una activación de producción de {0} en uso.</value>
+  </data>
+  <data name="Error.ACT6.Text">
+    <value xml:space="preserve">Error en la activación de la licencia. El período de validez de esta licencia caducó el {0:d}. Póngase en contacto con &lt;a href="mailto:customercare@dnnsoftware.com"&gt;customercare@dnnsoftware.com&lt;/a&gt;.</value>
+  </data>
+  <data name="Error.ContactServer.activate">
+    <value xml:space="preserve">No se ha podido activar la licencia. La conexión con el servidor de licencias no ha sido posible. Inténtelo de nuevo más tarde o use la activación manual. Si el error persiste póngase en contacto con el departamento de soporte técnico.</value>
+  </data>
+  <data name="Error.ContactServer.canrenew">
+    <value xml:space="preserve">La conexión con el servidor de licencias no ha sido posible. No podrá activar o renovar automáticamente sus licencias, pero puede utilizar la activación manual para activar sus licencias.&lt;br /&gt;&lt;br /&gt;
+Para renovar licencias póngase en contacto con &lt;a href="mailto:customercare@dnnsoftware.com"&gt;customercare@dnnsoftware.com&lt;/a&gt;.</value>
+  </data>
+  <data name="Error.ContactServer.deactivate">
+    <value xml:space="preserve">Su licencia se ha borrado.&lt;br /&gt;&lt;br /&gt;
+No se ha podido añadir la activación de nuevo a su factura debido a un problema de conexión con el servidor de licencias. Póngase en contacto con el departamento de soporte técnico para activar la licencia.</value>
+  </data>
+  <data name="Error.ContactServer.renew">
+    <value xml:space="preserve">No se ha podido renovar la licencia. La conexión con el servidor de licencias no ha sido posible. Inténtelo de nuevo más tarde o póngase en contacto con &lt;a href="mailto:customercare@dnnsoftware.com"&gt;customercare@dnnsoftware.com&lt;/a&gt;.</value>
+  </data>
+  <data name="Error.DEA1.Text">
+    <value xml:space="preserve">No se ha podido borrar la licencia. La licencia no se ha encontrado.</value>
+  </data>
+  <data name="Error.ExpiredLicense">
+    <value xml:space="preserve">No se ha podido activar la licencia. Su licencia expiró el {0:d}. Comprueba sus licencias en &lt;a href="{1}" target="_blank"&gt;su página de licencias en www.dnnsoftware.com&lt;/a&gt;. Inicie sesión usando la cuenta que recibió la primera vez que compró el producto.</value>
+  </data>
+  <data name="Error.LicenseAlreadyExists">
+    <value xml:space="preserve">No se ha podido activar la licencia. El sistema {0} ya tiene la licencia {1}.</value>
+  </data>
+  <data name="Error.Unknown">
+    <value xml:space="preserve">No se ha podido procesar la petición, vuelva a intentarlo.</value>
+  </data>
+  <data name="Error.Unknown.Activation">
+    <value xml:space="preserve">No se ha podido procesar la petición, vuelva a intentarlo o utilice la activación manual.</value>
+  </data>
+  <data name="Expires.Header">
+    <value xml:space="preserve">CADUCA</value>
+  </data>
+  <data name="InvoiceNumber.Header">
+    <value xml:space="preserve">NÚMERO DE FACTURA</value>
+  </data>
+  <data name="LicenseType.Development">
+    <value xml:space="preserve">Desarrollo</value>
+  </data>
+  <data name="LicenseType.Failover">
+    <value xml:space="preserve">Failover</value>
+  </data>
+  <data name="LicenseType.Header">
+    <value xml:space="preserve">TIPO DE LICENCIA</value>
+  </data>
+  <data name="LicenseType.Production">
+    <value xml:space="preserve">Producción</value>
+  </data>
+  <data name="LicenseType.Staging">
+    <value xml:space="preserve">Servidor provisional</value>
+  </data>
+  <data name="LicenseType.Test">
+    <value xml:space="preserve">Test</value>
+  </data>
+  <data name="nav_Licensing.Text">
+    <value xml:space="preserve">Acerca de</value>
+  </data>
+  <data name="NoLicense.Header">
+    <value xml:space="preserve">No tiene licencias EVOQ... aún</value>
+  </data>
+  <data name="NoLicense.Text">
+    <value xml:space="preserve">Actualice a EVOQ para acceder a funciones profesionales para sus sitios.</value>
+  </data>
+  <data name="Success.DevLicenseActivated">
+    <value xml:space="preserve">La licencia de desarrollo se ha activado correctamente.</value>
+  </data>
+  <data name="Success.FailoverLicenseActivated">
+    <value xml:space="preserve">La licencia de conmutación por error se ha activado correctamente.</value>
+  </data>
+  <data name="Success.LicenseActivated">
+    <value xml:space="preserve">La licencia de producción se ha activado correctamente.</value>
+  </data>
+  <data name="Success.LicenseDeactivated">
+    <value xml:space="preserve">La licencia se ha eliminado correctamente.</value>
+  </data>
+  <data name="Success.LicenseDeactivatedContactServerErr">
+    <value xml:space="preserve">La licencia se ha eliminado. &lt;br/&gt;&lt;br/&gt;No se ha podido añadir la activación de nuevo a su pedido porque la conexión con el servidor de licencias ha fallado. Si necesita activar una licencia de producción, póngase en contacto con soporte técnico.</value>
+  </data>
+  <data name="Success.LicenseDeactivatedNoActivationIncrease">
+    <value xml:space="preserve">La licencia se ha eliminado. &lt;br/&gt;&lt;br/&gt;No se ha podido añadir la activación de nuevo a su pedido. Si necesita activar una licencia de producción, póngase en contacto con soporte técnico.</value>
+  </data>
+  <data name="Success.LicenseRenewed">
+    <value xml:space="preserve">La licencia se ha renovado correctamente.</value>
+  </data>
+  <data name="Success.StagingLicenseActivated">
+    <value xml:space="preserve">La licencia provisional se ha activado correctamente.</value>
+  </data>
+  <data name="Success.TestLicenseActivated">
+    <value xml:space="preserve">La licencia de test se ha activado correctamente.</value>
+  </data>
+  <data name="Success.TrialActivation">
+    <value xml:space="preserve">Su licencia ampliada de prueba ha sido correctamente instalada.</value>
+  </data>
+  <data name="Success.TrialExtensionRequest">
+    <value xml:space="preserve">Su solicitud de licencia ampliada de prueba se ha enviado. Debería recibir un mensaje en 1 día laborable con las instrucciones para ampliar su licencia. Si tiene preguntas sobre ampliaciones de la licencia de prueba, llame al Departamento Comercial de DotNetNuke Corp. en el 650-288-3150.</value>
+  </data>
+  <data name="UpgradeToEvoq">
+    <value xml:space="preserve">¿Está preparado para llevar su presencia web al siguiente nivel? Inicie una prueba gratuita o programe una demo personalizada para su equipo.</value>
+  </data>
+  <data name="UpgradeToEvoq.Header">
+    <value xml:space="preserve">ACTUALIZAR</value>
+  </data>
+  <data name="WebLicenseList.url">
+    <value xml:space="preserve">http://www.dnnsoftware.com/Support/Success-Network/License-Management</value>
+  </data>
+  <data name="WebServer.Header">
+    <value xml:space="preserve">SERVIDOR WEB</value>
+  </data>
+</root>

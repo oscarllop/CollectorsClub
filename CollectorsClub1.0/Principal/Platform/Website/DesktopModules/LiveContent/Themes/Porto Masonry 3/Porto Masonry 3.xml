@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ThemeSetting xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ThumbnailWidth>500</ThumbnailWidth>
+  <ThumbnailHeight>600</ThumbnailHeight>
+  <ThumbnailResizeType>Constrained</ThumbnailResizeType>
+  <ClientScripts>
+  </ClientScripts>
+  <MediaTypes>
+    <string>Picture</string>
+  </MediaTypes>
+</ThemeSetting>

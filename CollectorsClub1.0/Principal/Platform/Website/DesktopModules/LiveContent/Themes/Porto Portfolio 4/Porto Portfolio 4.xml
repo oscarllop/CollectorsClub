@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ThemeSetting xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <PageSize>1000</PageSize>
+  <ThumbnailWidth>250</ThumbnailWidth>
+  <ThumbnailHeight>250</ThumbnailHeight>
+  <ThumbnailResizeType>Cropped</ThumbnailResizeType>
+  <SortByDragandDrop>false</SortByDragandDrop>
+  <MediaTypes>
+    <string>Picture</string>
+  </MediaTypes>
+  <StartupScripts>
+    <string>
+      $(document).ready(function ($) {
+
+      $("#LiCoElementWrapper[Module:moduleid] .lc-sort-source").each(function () {
+
+      var source = $(this);
+      var destination = $("#LiCoElementWrapper[Module:moduleid] ul.lc-sort-destination[data-sort-id=" + $(this).attr("data-sort-id") + "]");
+
+      if (destination.get(0)) {
+
+      $(window).load(function () {
+
+      destination.isotope({
+      itemSelector: "li",
+      itemClass: 'lc-isotope-item'
+      });
+
+      source.find("a").click(function (e) {
+
+      e.preventDefault();
+
+      var $this = $(this),
+      filter = $this.attr("data-option-value");
+
+      source.find(".active").removeClass("active");
+      $this.addClass("active");
+
+      destination.isotope({
+      filter: filter
+      });
+
+      self.location = "#" + filter.replace(".", "");
+
+      return false;
+
+      });
+
+      $(window).bind("hashchange", function (e) {
+
+      var hashFilter = "." + location.hash.replace("#", ""),
+      hash = (hashFilter == "." || hashFilter == ".*" ? "*" : hashFilter);
+
+      source.find("li.active").removeClass("active");
+      source.find("li[data-option-value='" + hash + "']").addClass("active");
+
+      destination.isotope({
+      filter: hash
+      });
+
+      });
+
+      var hashFilter = (location.hash.replace("#", "") || "*");
+
+      var initFilterEl = source.find("li a[data-option-value='" + hashFilter + "']");
+
+      if (initFilterEl.get(0)) {
+      source.find("li a[data-option-value='" + hashFilter + "']").click();
+      } else {
+      source.find(".category-show-all li:first-child a").click();
+      }
+      });
+      }
+      });
+      });
+
+    </string>
+  </StartupScripts>
+</ThemeSetting>

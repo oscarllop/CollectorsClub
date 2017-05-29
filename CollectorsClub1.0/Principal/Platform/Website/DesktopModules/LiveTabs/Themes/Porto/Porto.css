@@ -1,0 +1,142 @@
+/* Layout helpers
+----------------------------------*/
+.livetabsporto .ui-helper-hidden { display: none; }
+.livetabsporto .ui-helper-hidden-accessible { position: absolute; left: -99999999px; }
+.livetabsporto .ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+.livetabsporto .ui-helper-clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.livetabsporto .ui-helper-clearfix { display: inline-block; }
+/* required comment for clearfix to work in Opera \*/
+* html .ui-helper-clearfix { height:1%; }
+.livetabsporto .ui-helper-clearfix { display:block; }
+/* end clearfix */
+.livetabsporto .ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }
+/* Interaction Cues
+----------------------------------*/
+.livetabsporto .ui-state-disabled { cursor: default !important; }
+/* states and images */
+.livetabsporto .ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
+/* Overlays */
+.livetabsporto .ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+/* Component containers
+----------------------------------*/
+.livetabsporto .ui-widget { }
+.livetabsporto .ui-widget input, .livetabsporto .ui-widget select, .livetabsporto .ui-widget textarea, .livetabsporto .ui-widget button { font-family: Verdana,Arial,sans-serif; font-size: 1em; }
+.livetabsporto .ui-widget-content { border: 0; background: none;}
+.livetabsporto .ui-widget-header { border: 0; background: transparent; font-weight: bold;}
+.livetabsporto .ui-widget-header a { }
+/* Interaction states
+----------------------------------*/
+.livetabsporto .ui-state-default, .livetabsporto .ui-widget-content .ui-state-default {  background: none repeat scroll 0 0 #F4F4F4; font-weight: normal; outline: none; }
+.livetabsporto .ui-state-default a, .livetabsporto .ui-state-default a:link, .livetabsporto .ui-state-default a:visited { text-decoration: none; outline: none; }
+.livetabsporto .ui-state-hover, .livetabsporto .ui-widget-content .ui-state-hover, .livetabsporto .ui-state-focus, .livetabsporto .ui-widget-content .ui-state-focus { background: none repeat scroll 0 0 #F4F4F4; font-weight: normal;outline: none;}
+.livetabsporto .ui-state-hover a, .livetabsporto .ui-state-hover a:hover { text-decoration: none; outline: none;}
+.livetabsporto .ui-state-active, .livetabsporto .ui-widget-content .ui-state-active { background: none; font-weight: normal; outline: none; }
+.livetabsporto .ui-state-active a, .livetabsporto .ui-state-active a:link, .livetabsporto .ui-state-active a:visited { outline: none; text-decoration: none; }
+/* Interaction Cues
+----------------------------------*/
+.livetabsporto .ui-state-highlight, .livetabsporto .ui-widget-content .ui-state-highlight {border: 1px solid #fcefa1; background: none; color: #363636; }
+.livetabsporto .ui-state-highlight a, .livetabsporto .ui-widget-content .ui-state-highlight a { color: #363636; }
+.livetabsporto .ui-state-error, .livetabsporto .ui-widget-content .ui-state-error {border: 1px solid #cd0a0a; background: none; color: #cd0a0a; }
+.livetabsporto .ui-state-error a, .livetabsporto .ui-widget-content .ui-state-error a { color: #cd0a0a; }
+.livetabsporto .ui-state-error-text, .livetabsporto .ui-widget-content .ui-state-error-text { color: #cd0a0a; }
+.livetabsporto .ui-state-disabled, .livetabsporto .ui-widget-content .ui-state-disabled { opacity: .35; filter:Alpha(Opacity=35); background-image: none; }
+.livetabsporto .ui-priority-primary, .livetabsporto .ui-widget-content .ui-priority-primary { font-weight: bold; }
+.livetabsporto .ui-priority-secondary, .livetabsporto .ui-widget-content .ui-priority-secondary { opacity: .7; filter:Alpha(Opacity=70); font-weight: normal; }
+/* states and images */
+.livetabsporto .ui-icon { width: 16px; height: 16px; background-image: none; }
+.livetabsporto .ui-widget-content .ui-icon {background-image: none; }
+.livetabsporto .ui-widget-header .ui-icon {background-image: none; }
+.livetabsporto .ui-state-default .ui-icon { background-image: none; }
+.livetabsporto .ui-state-hover .ui-icon, .livetabsporto .ui-state-focus .ui-icon {background-image: none; }
+.livetabsporto .ui-state-active .ui-icon {background-image: none; }
+.livetabsporto .ui-state-highlight .ui-icon {background-image: none; }
+.livetabsporto .ui-state-error .ui-icon, .livetabsporto .ui-state-error-text .ui-icon {background-image: none; }
+/* Corner radius */
+.livetabsporto .ui-corner-all, .livetabsporto .ui-corner-top, .livetabsporto .ui-corner-left, .livetabsporto .ui-corner-tl { -moz-border-radius-topleft: 8px; -webkit-border-top-left-radius: 8px; -khtml-border-top-left-radius: 8px; border-top-left-radius: 8px; }
+.livetabsporto .ui-corner-all, .livetabsporto .ui-corner-top, .livetabsporto .ui-corner-right, .livetabsporto .ui-corner-tr { -moz-border-radius-topright: 8px; -webkit-border-top-right-radius: 8px; -khtml-border-top-right-radius: 8px; border-top-right-radius: 8px; }
+.livetabsporto .ui-corner-all, .livetabsporto .ui-corner-bottom, .livetabsporto .ui-corner-left, .livetabsporto .ui-corner-bl { -moz-border-radius-bottomleft: 0px; -webkit-border-bottom-left-radius: 0px; -khtml-border-bottom-left-radius: 0px; border-bottom-left-radius: 0px; }
+.livetabsporto .ui-corner-all, .livetabsporto .ui-corner-bottom, .livetabsporto .ui-corner-right, .livetabsporto .ui-corner-br { -moz-border-radius-bottomright: 0px; -webkit-border-bottom-right-radius: 0px; -khtml-border-bottom-right-radius: 0px; border-bottom-right-radius: 0px; }
+
+.livetabsporto.mleft .mleft.ui-corner-all, .mleft.livetabsporto .mleft.ui-corner-top, .mleft.livetabsporto .mleft.ui-corner-left, .mleft.livetabsporto .mleft.ui-corner-tl { -moz-border-radius-topleft: 8px; -webkit-border-top-left-radius: 8px; -khtml-border-top-left-radius: 8px; border-top-left-radius: 8px; }
+
+/* Overlays */
+.livetabsporto .ui-widget-overlay { background: none; opacity: .30;filter:Alpha(Opacity=30); }
+.livetabsporto .ui-widget-shadow { margin: -8px 0 0 -8px; padding: 8px; background: none; opacity: .30;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -webkit-border-radius: 8px; -khtml-border-radius: 8px; border-radius: 8px; }
+/* Tabs
+----------------------------------*/
+.livetabsporto .ui-tabs { padding: 0; zoom: 1; }
+.livetabsporto .ui-tabs .ui-tabs-nav { list-style: none outside none; padding: 0; position: relative; z-index: 1;}
+.livetabsporto .ui-tabs .ui-tabs-nav li { list-style: none; position: relative; float: left; margin: 0 4px -2px 0!important; padding: 0;}
+.livetabsporto .ui-tabs .ui-tabs-nav li a { float: left; text-decoration: none; padding: 10px 15px !important; border-width: 2px 1px 0; border-style:solid solid none; border-color:#DDDDDD; border-radius: 8px 8px 0 0;}
+.livetabsporto .ui-tabs .ui-tabs-nav li.ui-tabs-selected, .livetabsporto .ui-tabs .ui-tabs-nav li.ui-tabs-active, .livetabsporto .ui-tabs .ui-tabs-nav li.ui-tabs-active { padding-bottom: 1px; border-bottom-width: 0; margin:0 1px -1px 0;}
+.livetabsporto .ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .livetabsporto .ui-tabs .ui-tabs-nav li.ui-tabs-active a, .livetabsporto .ui-tabs .ui-tabs-nav li.ui-tabs-active a, .livetabsporto .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .livetabsporto .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; border-top: 3px solid; border-radius: 8px 8px 0 0;}
+.livetabsporto .ui-tabs .ui-tabs-nav li a, .livetabsporto .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a, .livetabsporto .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active a, .livetabsporto .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.livetabsporto .ui-tabs .ui-tabs-panel { padding: 15px; display: block; border:1px solid #ccc!important; background: none; z-index:0; }
+.livetabsporto .ui-tabs .ui-tabs-hide { display: none !important; }
+.livetabsporto .ui-tabs .ui-tabs-nav a:hover {border-top-color: #999999;}
+
+.livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-nav, .livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-nav { border-radius: 0 !important; margin: 0 !important; padding: 0 !important; }
+.livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-nav li.mleft, .livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-nav li.mright { border-radius: 0; margin: 0 0 4px 0 !important; padding: 0 !important;}
+.livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-nav li.mleft{ border-bottom: 1px solid #ccc !important; border-bottom-left-radius: 8px !important;}
+.livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-panel, .livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-panel { padding: 6px 12px !important; min-height: 150px; }
+.livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-panel { float: left !important; margin-left:-1px;}
+.livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-panel { float: right !important; margin-right:-1px;}
+.livetabsporto.mbottom .mbottom.ui-tabs .mbottom.ui-tabs-nav { border-top: 1px solid #d9d9d9; }
+
+
+.livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-nav li.mleft.ui-tabs-selected a, .livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-nav li.mleft.ui-tabs-active a, .livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-nav li.mleft.ui-tabs-active a, .livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-nav li.mleft.ui-state-disabled a, .livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-nav li.mleft.ui-state-processing a,
+.livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-nav li.mright.ui-tabs-selected a, .livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-nav li.mright.ui-tabs-active a, .livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-nav li.mright.ui-tabs-active a,.livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-nav li.mright.ui-state-disabled a, .livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-nav li.mright.ui-state-processing a,
+.livetabsporto.mbottom .mbottom.ui-tabs .mbottom.ui-tabs-nav li.mbottom.ui-tabs-selected a, .livetabsporto.mbottom .mbottom.ui-tabs .mbottom.ui-tabs-nav li.mbottom.ui-tabs-active a, .livetabsporto.mbottom .mbottom.ui-tabs .mbottom.ui-tabs-nav li.mbottom.ui-tabs-active a,.livetabsporto.mbottom .mbottom.ui-tabs .mbottom.ui-tabs-nav li.mbottom.ui-state-disabled a, .livetabsporto.mbottom .mbottom.ui-tabs .mbottom.ui-tabs-nav li.mbottom.ui-state-processing a{cursor: text; border-radius: 0;}
+
+.livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-nav li.mleft.ui-tabs-selected a, .livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-nav li.mleft.ui-tabs-active a, .livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-nav li.mleft.ui-tabs-active a, .livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-nav li.mleft.ui-state-disabled a, .livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-nav li.mleft.ui-state-processing a { border-left: 3px solid; border-top-left-radius: 8px; border-bottom-left-radius: 8px;}
+
+.livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-nav li.mright.ui-tabs-selected a, .livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-nav li.mright.ui-tabs-active a, .livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-nav li.mright.ui-tabs-active a,.livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-nav li.mright.ui-state-disabled a, .livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-nav li.mright.ui-state-processing a { border-right: 3px solid; border-top-right-radius: 8px; border-bottom-right-radius: 8px;}
+
+.livetabsporto.mbottom .mbottom.ui-tabs .mbottom.ui-tabs-nav li.mbottom.ui-tabs-selected a, .livetabsporto.mbottom .mbottom.ui-tabs .mbottom.ui-tabs-nav li.mbottom.ui-tabs-active a, .livetabsporto.mbottom .mbottom.ui-tabs .mbottom.ui-tabs-nav li.mbottom.ui-tabs-active a,.livetabsporto.mbottom .mbottom.ui-tabs .mbottom.ui-tabs-nav li.mbottom.ui-state-disabled a, .livetabsporto.mbottom .mbottom.ui-tabs .mbottom.ui-tabs-nav li.mbottom.ui-state-processing a { border-bottom: 3px solid; border-bottom-left-radius: 8px;	border-bottom-right-radius: 8px;}
+
+
+.livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-nav li a,
+.livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-nav li a,
+.livetabsporto.mbottom .mbottom.ui-tabs .mbottom.ui-tabs-nav li a
+	{
+	border-color: #DDDDDD;
+    border-radius: 0;
+    border-style: solid none none solid;
+    border-width: 1px medium 0 2px;
+    float: left;
+    padding: 10px 15px !important;
+    text-decoration: none;
+	position:relative;
+	}
+
+.livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-nav li a
+	{
+	border-style: solid none none solid;
+    border-width: 1px medium 0 2px;
+	border-top-left-radius : 8px;
+	border-bottom-left-radius: 8px;
+	}
+
+.livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-nav li a 
+	{
+	border-style: solid solid solid none;
+    border-width: 1px 2px 1px 0;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+    }
+
+.livetabsporto.mbottom .mbottom.ui-tabs .mbottom.ui-tabs-nav li a 
+	{
+	border-style: none solid solid solid;
+    border-width: 0 1px 2px 1px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+    }
+
+.livetabsporto.mleft .mleft.ui-tabs .mleft.ui-tabs-nav li a:hover {border-left-color:#ccc;}
+.livetabsporto.mright .mright.ui-tabs .mright.ui-tabs-nav li a:hover{border-right-color:#ccc;}
+.livetabsporto.mbottom .mbottom.ui-tabs .mbottom.ui-tabs-nav li a:hover{ border-bottom-color:#ccc;}
+
+
+
+

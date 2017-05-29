@@ -1,0 +1,92 @@
+﻿<dotnetnuke type="ResourceFile" version="5.0">
+  <files>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>Dashboard.ascx.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>DashboardControls.ascx.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>Export.ascx.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>SharedResources.resx</name>
+    </file>
+    <file>
+      <path />
+      <name>Dashboard.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>DashboardControls.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>Export.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>08.00.00.txt</name>
+    </file>
+    <file>
+      <path />
+      <name>module.css</name>
+    </file>
+    <file>
+      <path />
+      <name>Dashboard_32X32.png</name>
+    </file>
+    <file>
+      <path>Controls/App_LocalResources/</path>
+      <name>Database.ascx.resx</name>
+    </file>
+    <file>
+      <path>Controls/App_LocalResources/</path>
+      <name>Host.ascx.resx</name>
+    </file>
+    <file>
+      <path>Controls/App_LocalResources/</path>
+      <name>Modules.ascx.resx</name>
+    </file>
+    <file>
+      <path>Controls/App_LocalResources/</path>
+      <name>Portals.ascx.resx</name>
+    </file>
+    <file>
+      <path>Controls/App_LocalResources/</path>
+      <name>Server.ascx.resx</name>
+    </file>
+    <file>
+      <path>Controls/App_LocalResources/</path>
+      <name>Skins.ascx.resx</name>
+    </file>
+    <file>
+      <path>Controls/</path>
+      <name>Database.ascx</name>
+    </file>
+    <file>
+      <path>Controls/</path>
+      <name>Host.ascx</name>
+    </file>
+    <file>
+      <path>Controls/</path>
+      <name>Modules.ascx</name>
+    </file>
+    <file>
+      <path>Controls/</path>
+      <name>Portals.ascx</name>
+    </file>
+    <file>
+      <path>Controls/</path>
+      <name>Server.ascx</name>
+    </file>
+    <file>
+      <path>Controls/</path>
+      <name>Skins.ascx</name>
+    </file>
+  </files>
+</dotnetnuke>

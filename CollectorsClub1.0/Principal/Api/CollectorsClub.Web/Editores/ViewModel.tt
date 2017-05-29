@@ -1,0 +1,403 @@
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="..\\..\\CollectorsClub.Model\\Templates\\Context.Base.ttinclude"#>
+<#@ output extension=".js" encoding="utf-8"#><#
+
+const string _inputFile = @"..\..\CollectorsClub.EntityFramework\Model.edmx";
+string _aplicacion = "CollectorsClub";
+Dictionary<string, MetadataGenerador.MetadataEntidad> _metadataEntidades = MetadataGenerador.ObtenerEntidades(_aplicacion);
+var _storeMetadata = LoadMetadata(_inputFile);
+var _textTransform = DynamicTextTransformation.Create(this);
+var _code = new CodeGenerationTools(this);
+var _ef = new MetadataTools(this);
+//var _itemCollection = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors).CreateEdmItemCollection(_inputFile);
+var _itemCollection = _storeMetadata.EdmItems;
+EntityContainer _container = _itemCollection.OfType<EntityContainer>().FirstOrDefault();
+var _typeMapper = new TypeMapper(_code, _ef, _container, _storeMetadata, _textTransform.Errors);
+var	_fileManager = EntityFrameworkTemplateFileManager.Create(this);
+var _codeSQLGenerator = new CodeSQLGenerator(_code, _typeMapper, _ef, _storeMetadata);
+var _codeJSGenerator = new CodeJSGenerator(_code, _typeMapper, _ef);
+var _modulo = "Editor";
+
+if (!_typeMapper.VerifyCaseInsensitiveTypeUniqueness(_typeMapper.GetAllGlobalItems(_itemCollection), _inputFile)) {
+	return string.Empty;
+}
+
+MetadataGenerador.IncluirEntidadesNoExistentesEnFramework(_metadataEntidades, _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection).ToList(), _typeMapper);
+foreach (var _entity in _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection)) {
+  _fileManager.StartNewFile(_entity.Name + "EditorViewModel.js");
+	EntitySet _entitySet = (EntitySet) _container.BaseEntitySets.Where(es => es.ElementType.Name == _entity.Name).FirstOrDefault();
+  IEnumerable<NavigationProperty> _navigationProperties = _typeMapper.GetNavigationProperties(_entity);
+  IEnumerable<EdmProperty> _keyProperties = _typeMapper.GetKeyProperties(_entity);
+	IEnumerable<EdmProperty> _simpleProperties = _typeMapper.GetSimpleProperties(_entity);
+  IEnumerable<EdmMember> _properties = _typeMapper.GetProperties(_entity);
+  IEnumerable<EdmMember> _visibleProperties = _typeMapper.GetVisibleProperties(_entity);
+	List<EdmMember> _procedureParameterProperties = _codeSQLGenerator.GetQueryParameterProperties(_visibleProperties, _simpleProperties); 
+	IEnumerable<MetadataGenerador.MetadataPropiedad> _propiedadesRelaciones = MetadataGenerador.AgruparPropiedadesPaneles(_metadataEntidades[_entity.Name].PanelesFormulario).Values.Where(p => p.Visible && MetadataGenerador.EsTipoCampoRelacion1_N(p.TipoCampo)).Union(MetadataGenerador.AgruparPropiedadesPaneles(_metadataEntidades[_entity.Name].PanelesFiltro).Values.Where(p => p.Visible && MetadataGenerador.EsTipoCampoRelacion(p.TipoCampo)), new MetadataGenerador.MetadataPropiedadComparer(_properties, _typeMapper)); 
+	IEnumerable<MetadataGenerador.MetadataPropiedad> _propiedadesFormulario = MetadataGenerador.AgruparPropiedadesPaneles(_metadataEntidades[_entity.Name].PanelesFormulario).Values.Where(p => p.Visible);
+	IEnumerable<MetadataGenerador.MetadataPropiedad> _propiedadesFiltro = MetadataGenerador.AgruparPropiedadesPaneles(_metadataEntidades[_entity.Name].PanelesFiltro).Values.Where(p => p.Visible); 
+	IEnumerable<MetadataGenerador.MetadataPropiedad> _propiedadesGestionArchivos = MetadataGenerador.PropiedadesGestionArchivos(_propiedadesFormulario); #>
+define(['Globales/BaseViewModelEditor', 'knockout', 'global/knockout/knockout.validation.min', 'Globales/ko.observableDictionary', 'WebAPI/Controllers/<#=_code.Escape(_entity)#>Controller', 'WebAPI/Models/<#=_code.Escape(_entity)#>Model<# if (_metadataEntidades[_entity.Name].TieneExtensionModelo) { #>Extension<# } #>'<# foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesRelaciones) { string _entidadRelacionada = MetadataGenerador.ObtenerNombreEntidadRelacionada(_propiedad, _properties, _typeMapper); #>, 'WebAPI/Controllers/<#= _entidadRelacionada #>Controller', 'WebAPI/Models/<#= _entidadRelacionada #>Model<# if (_metadataEntidades[_entidadRelacionada].TieneExtensionModelo) { #>Extension<# } #>'<# } #><# if (_propiedadesGestionArchivos.Count() > 0) { #>, 'WebAPI/Models/DocumentoUsuariosModel'<# } #>, 'Globales/Core.Utils', 'Globales/popup', 'moment/moment-with-locales.min'], function (baseViewModel, ko, validation, observableDictionary, <#=_code.Escape(_entity)#>Controller, <#=_code.Escape(_entity)#>Model<# foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesRelaciones) { string _entidadRelacionada = MetadataGenerador.ObtenerNombreEntidadRelacionada(_propiedad, _properties, _typeMapper); #>, <#= _entidadRelacionada #>Controller, <#= _entidadRelacionada #>Model<# } #><# if (_propiedadesGestionArchivos.Count() > 0) { #>, DocumentoUsuariosModel<# } #>, utils, popup, moment) {
+	try {
+		return function <#=_code.Escape(_entity)#><#= _modulo #>ViewModel(settings) {
+			var self = this;
+			self.settings = $.extend({<#= ( _metadataEntidades[_entity.Name].Multiidioma ? " Multiidioma: true " : string.Empty) #>}, settings);
+			// #region Propiedades y métodos que difieren por entidad
+			self.Entidad = '<#=_code.Escape(_entity)#>';
+			self.CamposVisiblesInsercion = { <# foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesFormulario) { #><# if (_propiedad != _propiedadesFormulario.First()) { #>, <# } #><#= _propiedad.Nombre #>: <#= (_propiedad.VisibleInsercion).ToString().ToLower() #><# } #> };
+			self.CamposVisiblesEdicion = { <# foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesFormulario) { #><# if (_propiedad != _propiedadesFormulario.First()) { #>, <# } #><#= _propiedad.Nombre #>: <#= (_propiedad.VisibleEdicion).ToString().ToLower() #><# } #> };
+			self.CamposHabilitadosInsercion = { <# foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesFormulario) { #><# if (_propiedad != _propiedadesFormulario.First()) { #>, <# } #><#= _propiedad.Nombre #>: <#= (!_propiedad.SoloLecturaInsercion).ToString().ToLower() #><# } #> };
+			self.CamposHabilitadosEdicion = { <# foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesFormulario) { #><# if (_propiedad != _propiedadesFormulario.First()) { #>, <# } #><#= _propiedad.Nombre #>: <#= (!_propiedad.SoloLecturaEdicion).ToString().ToLower() #><# } #> };
+			self.CamposHabilitadosFiltro = { <# foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesFiltro) { #><# if (_propiedad != _propiedadesFiltro.First()) { #>, <# } #><#= _propiedad.Nombre #>: <#= (_propiedad.HabilitarFiltro).ToString().ToLower() #><# } #> };
+			self.VolverAlListadoAlGuardar = false;
+			self.SerializarClave = function (registro) { return <# foreach (EdmProperty _property in _keyProperties) { #>registro.<#=_property.Name #><# if (_property != _keyProperties.Last()) { #> + '_' + <# } #><# } #>; }
+			self.InicializarClave = function (registro) { 
+<# foreach (EdmProperty _property in _keyProperties) { #>
+				if (ko.isObservable(registro.<#=_property.Name #>)) { registro.<#=_property.Name #>(<#= _codeJSGenerator.DefaultValue((EdmProperty) _property) #>); } else { registro.<#=_property.Name #> = <#= _codeJSGenerator.DefaultValue((EdmProperty) _property) #>; } 
+<# } #>
+				return registro; 
+			}
+			self.AsignarClave = function (registroOrigen, registroDestino) {
+<# foreach (EdmProperty _property in _keyProperties) { #>
+				if (ko.isObservable(registroDestino.<#=_property.Name #>)) { registroDestino.<#=_property.Name #>(ko.unwrap(registroOrigen.<#=_property.Name #>)); } else { registroDestino.<#=_property.Name #> = ko.unwrap(registroOrigen.<#=_property.Name #>); }
+<# } #>
+				return registroDestino;
+			}
+			self.EntidadesRelacionadas = [<#= (_propiedadesRelaciones.Count() > 0 ? "'" + string.Join("', '", _propiedadesRelaciones.Select(p => MetadataGenerador.ObtenerNombreEntidadRelacionada(p, _properties, _typeMapper))) + "'" : string.Empty) #>];
+			self.FiltroPorDefecto = {
+<# Dictionary<string, MetadataGenerador.MetadataPropiedad> _metadataPropiedadesFiltro = MetadataGenerador.AgruparPropiedadesPaneles(_metadataEntidades[_entity.Name].PanelesFiltro).Values.Where(p => p.Visible).ToDictionary(p => p.Nombre);
+		foreach (MetadataGenerador.MetadataPropiedad _propiedad in _metadataPropiedadesFiltro.Values) {
+			switch (_propiedad.TipoCampo) {
+			case MetadataGenerador.TipoCampo.Numero_Rango:
+			case MetadataGenerador.TipoCampo.Fecha_Rango:
+			case MetadataGenerador.TipoCampo.FechaHora_Rango:
+			case MetadataGenerador.TipoCampo.Relacion1_N_Fecha_Rango:
+			case MetadataGenerador.TipoCampo.Hora_Rango: #>
+				<#= _propiedad.Nombre #>Desde: ko.observable(),
+				<#= _propiedad.Nombre #>Hasta: ko.observable(),
+<#			break;
+			case MetadataGenerador.TipoCampo.Booleano_Desplegable_NoObligatorio: #>
+				<#= _propiedad.Nombre #>: ko.observable(null),
+<#			break;
+			case MetadataGenerador.TipoCampo.Desconocido: #>
+<#			break;
+			default: #>
+				<#= _propiedad.Nombre #>: ko.observable(<#= (_propiedad.Nombre.ToLower() == "idmarca" || _propiedad.Nombre.ToLower() == "cultura" || _propiedad.Nombre.ToLower() == "idedicion" ? "self.settings." + _propiedad.Nombre : string.Empty) #>),
+<#			break; 
+			}
+		} #>
+			};
+			self.Filtro = ko.observable(self.FiltroPorDefecto);
+			self.TieneExtensionObtenerLista = <#= _metadataEntidades[_entity.Name].TieneExtensionObtenerLista.ToString().ToLower() #>;
+			self.MetodoObtenerPorFiltros = '<#=_code.Escape(_entity)#>_ObtenerPorFiltros<#= (_metadataEntidades[_entity.Name].TieneExtensionObtenerPorFiltros ? "Extension" : string.Empty) #>';
+			self.MetodoObtenerCantidadPorFiltros = '<#=_code.Escape(_entity)#>_ObtenerCantidadPorFiltros<#= (_metadataEntidades[_entity.Name].TieneExtensionObtenerCantidadPorFiltros ? "Extension" : string.Empty) #>';
+<# if (_metadataEntidades[_entity.Name].TieneExtensionInsertar) { #>
+			self.MetodoExtensionNew = 'PostExtension';
+<# } #>
+<# if (_metadataEntidades[_entity.Name].TieneExtensionActualizar) { #>
+			self.MetodoExtensionUpdate = 'PutExtension';
+<# } #>
+<# if (_metadataEntidades[_entity.Name].TieneExtensionBorrar) { #>
+			self.MetodoExtensionDelete = 'DeleteExtension';
+<# } #>
+
+			self.ObtenerFiltros = function (filtro) {
+<# foreach (MetadataGenerador.MetadataPropiedad _metadataPropiedad in _metadataPropiedadesFiltro.Values) {
+			EdmMember _property = _properties.Where(p => p.Name == _metadataPropiedad.Nombre).FirstOrDefault();
+			switch (_metadataPropiedad.TipoCampo) {
+			case MetadataGenerador.TipoCampo.Numero_Rango:
+			// OLL: El tipo Relacion1_N_Fecha_Rango se ha creado para evitar los desplegables de eventos para (IdEventoAgenda), en los que salen muchos valores. Deberíamos ver otras opciones: Buscador, Filtrar por id Cliente...
+			case MetadataGenerador.TipoCampo.Relacion1_N_Fecha_Rango:
+			case MetadataGenerador.TipoCampo.FechaHora_Rango:
+			case MetadataGenerador.TipoCampo.Fecha_Rango: 
+			case MetadataGenerador.TipoCampo.Hora_Rango: 
+				try { #>
+				<#= (_metadataPropiedad == _metadataPropiedadesFiltro.Values.First() ? "return " : "	") #>'&parameter=<#= _metadataPropiedad.Nombre #>Desde|<#= (_property != null ? _typeMapper.GetSQLTypeName((EdmProperty) _property) : _metadataPropiedad.TipoDatosSql) #>|' + (typeof (filtro.<#= _metadataPropiedad.Nombre #>Desde) !== 'undefined' && filtro.<#= _metadataPropiedad.Nombre #>Desde !== null ? filtro.<#= _metadataPropiedad.Nombre #>Desde : '') +
+					'&parameter=<#= _metadataPropiedad.Nombre #>Hasta|<#= (_property != null ? _typeMapper.GetSQLTypeName((EdmProperty) _property) : _metadataPropiedad.TipoDatosSql) #>|' + (typeof (filtro.<#= _metadataPropiedad.Nombre #>Hasta) !== 'undefined' && filtro.<#= _metadataPropiedad.Nombre #>Hasta !== null ? filtro.<#= _metadataPropiedad.Nombre #>Hasta : '')<#= (_metadataPropiedad != _metadataPropiedadesFiltro.Values.Last() ? " +" : ";") #>
+<#			} catch (Exception _excepcion) {
+					throw new ApplicationException(string.Format("No se ha encontrado el la propiedad {0} de la entidad {1} en entity framework.", _metadataPropiedad.Nombre, _entity.Name));
+				}
+				break;
+			default:  
+				try {
+					string _tipo = (_property != null ? _typeMapper.GetSQLTypeName((EdmProperty) _property) : _metadataPropiedad.TipoDatosSql); #>
+				<#= (_metadataPropiedad == _metadataPropiedadesFiltro.Values.First() ? "return " : "	") #>'&parameter=<#= _metadataPropiedad.Nombre #>|<#= _tipo.Replace("(max)", string.Empty) #>|' + (typeof (filtro.<#= _metadataPropiedad.Nombre #>) !== 'undefined' && filtro.<#= _metadataPropiedad.Nombre #> !== null ? filtro.<#= _metadataPropiedad.Nombre #> : '')<#= (_tipo.Replace("(max)", string.Empty) == "nvarchar" || _tipo.Replace("(max)", string.Empty) == "varchar" || _tipo.Replace("(max)", string.Empty) == "varbinary" || _tipo.Replace("(max)", string.Empty) == "time" ? " + '|" + (_tipo.Replace("(max)", string.Empty) == "time" ? 7 : (_tipo.Contains("(max)") ? -1 : (_property != null ? _typeMapper.MaxLength((EdmProperty) _property) : _metadataPropiedad.TamanyoDatosSql))) + "'" : string.Empty) + (_metadataPropiedad != _metadataPropiedadesFiltro.Values.Last() ? " +" : ";") #>
+<#			} catch {
+					throw new ApplicationException (string.Format("Error al procesar la propiedad {0} de la entidad {1}", _metadataPropiedad.Nombre, _entity.Name));
+				}
+				break; 
+			}
+		} #>
+			}
+			// #endregion Propiedades y métodos que difieren por entidad
+
+			// #region Métodos comúnes a todas las entidades
+			self.FormatearFecha = utils.FormatearFecha;
+			self.MostrarFiltroFijado = function (fijar) { baseViewModel.MostrarFiltroFijado(fijar, self.settings.IdModulo); };
+			self.Select = function (registro) { baseViewModel.Select(self, registro); };
+			self.New = function () { baseViewModel.New(self, <#=_code.Escape(_entity)#>Model); };
+			self.Cancel = function () { baseViewModel.Cancel(self); };
+			self.Count = function () { baseViewModel.Count(self); };
+<# if (_propiedadesGestionArchivos.Count() == 0) { #>
+			self.Update = function (registro) { baseViewModel.Update(self, registro); };
+<# } #>
+			self.Delete = function (registro, pedirConfirmacion) { baseViewModel.Delete(self, registro, pedirConfirmacion); };
+			self.DeleteSelected = function (viewModel) { baseViewModel.DeleteSelected(viewModel); };
+			self.FijarRegistro = function (registro, event) { baseViewModel.FijarRegistro(self, registro, event); };
+			self.LiberarRegistro = function (registro, event) { baseViewModel.LiberarRegistro(self, registro, event); };
+			self.RegistrosObtenidos = function (registros, tipo) { baseViewModel.RegistrosObtenidos(self, registros, tipo); };
+			self.Buscar = function (filtro) { baseViewModel.Buscar(self, filtro); };
+			self.Refrescar = function (viewModel) { baseViewModel.Refrescar(viewModel); };
+			self.VerMas = function (viewModel) { baseViewModel.VerMas(viewModel); };
+			self.Get = function (viewModel) { baseViewModel.Get((typeof (viewModel) !== 'undefined' ? viewModel : self)); };
+			self.ColumnaVisible = function (nombreColumna) { return baseViewModel.ColumnaVisible(self, nombreColumna); };
+			self.ColumnaOculta = function (nombreColumna) { return baseViewModel.ColumnaOculta(self, nombreColumna); };
+			//self.PosicionarSelector = function (columna) { return baseViewModel.PosicionarSelector(self, columna); };
+			self.ActualizarSeleccion = function (viewModel) { return baseViewModel.ActualizarSeleccion(viewModel); };
+			self.Inicializar = function (settings) { baseViewModel.Inicializar(self, settings, <#=_code.Escape(_entity)#>Model); };
+			self.ExportarAExcel = function () { baseViewModel.ExportarAExcel(self); };
+			self.RestablecerFiltroPorDefecto = function (filtro) { baseViewModel.RestablecerFiltroPorDefecto(self, filtro); };
+			self.Ordenar = function (columna) { baseViewModel.Ordenar(self, columna); };
+			self.MostrarOcultarColumnas = function (columna) { baseViewModel.MostrarOcultarColumnas(self); };
+			self.MostrarOcultarColumna = function (columna) { baseViewModel.MostrarOcultarColumna(self, columna); };
+			self.MostrarBuscador = function (entidad, observable) { baseViewModel.MostrarBuscador(self, entidad, observable); };
+			self.ActualizarSeleccionadoEnBuscador = function (id, entidad, observable) { baseViewModel.ActualizarSeleccionadoEnBuscador(self, id, entidad, observable); };
+			self.ActivarBloque = function (id) { baseViewModel.ActivarBloque(self, id); };
+			self.CancelarCopiar = function () { baseViewModel.CancelarCopiar(self); };
+			self.Copiar = function (registro, pedirConfirmacion, registroCopia) { baseViewModel.Copiar(self, registro, pedirConfirmacion, registroCopia); };
+			self.MostrarDialogoCopia = function (viewModel) { baseViewModel.MostrarDialogoCopia(viewModel, <#=_code.Escape(_entity)#>Model); };
+			self.CopiarSeleccionados = function (registroCopia) { baseViewModel.CopiarSeleccionados(self, registroCopia); };
+			self.CancelarEdicionMultiple = function () { baseViewModel.CancelarEdicionMultiple(self); };
+			self.Editar = function (registro, pedirConfirmacion, registroEdicionMultiple) { baseViewModel.Editar(self, registro, pedirConfirmacion, registroEdicionMultiple); };
+			self.MostrarDialogoEdicionMultiple = function (viewModel) { baseViewModel.MostrarDialogoEdicionMultiple(viewModel, <#=_code.Escape(_entity)#>Model); };
+			self.EditarSeleccionados = function (registroEdicionMultiple) { baseViewModel.EditarSeleccionados(self, registroEdicionMultiple); };
+<# if (MetadataGenerador.AgruparPropiedadesPaneles(_metadataEntidades[_entity.Name].PanelesListado).Values.Where(p => p.Visible && p.TipoCampo == MetadataGenerador.TipoCampo.Booleano_CeldaCasilla).Count() > 0) { #>
+			self.ActualizarCampoBooleano = function (propiedad, indice, tipo, registro, evento) { return baseViewModel.ActualizarCampoBooleano(self, registro, propiedad, indice, tipo); };
+<# } #>
+			// #endregion Métodos comúnes a todas las entidades
+
+			// #region Definición relaciones
+			if (typeof (GlobalControllers) != 'undefined' && typeof (GlobalControllers['<#=_code.Escape(_entity)#>Controller']) == 'undefined') { GlobalControllers['<#=_code.Escape(_entity)#>Controller'] = new <#=_code.Escape(_entity)#>Controller(settings); }
+			// OLL: Este código no debería estar aquí, pero por ahora no funcionan bien los DescargarScripts
+			$.each(self.EntidadesRelacionadas, function (indice, entidad) {
+				if (typeof (GlobalControllers) != 'undefined' && typeof (GlobalControllers[entidad + 'Controller']) == 'undefined') { eval('GlobalControllers[entidad + \'Controller\'] = new ' + entidad + 'Controller(settings);'); }
+			});
+
+<# foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesRelaciones) { 
+		EdmProperty _property = (EdmProperty) _properties.Where(p => p.Name == _propiedad.Nombre).FirstOrDefault();
+		string _nombreTipoRelacionado = string.Empty;
+		EntityType _tipoRelacionado = null;
+		if (_property != null) {
+			NavigationProperty _navigationProperty = null;
+			_typeMapper.HasNavigationProperty(_property, out _tipoRelacionado, out _navigationProperty);
+			_nombreTipoRelacionado = _tipoRelacionado.Name;
+		} else {
+			_nombreTipoRelacionado = _propiedad.EntidadRelacionada;
+			_tipoRelacionado = _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection).Where(e => e.Name == _nombreTipoRelacionado).FirstOrDefault();
+			if (_tipoRelacionado == null) { throw new ApplicationException(string.Format("No se ha hallado la entidad para el tipo relacionado `{0}`.", _tipoRelacionado)); }
+		}
+		bool _entidadPorMarca = _tipoRelacionado.Properties.Where(p => p.Name == "IdMarca").Count() > 0;
+		string _entidadRelacionada = _nombreTipoRelacionado;//_code.Escape(_typeMapper.GetTypeName(_navigationProperty.ToEndMember.GetEntityType()));
+		if (string.IsNullOrEmpty(_nombreTipoRelacionado)) { throw new ApplicationException (string.Format("Error al procesar la propiedad {0} de la entidad {1}", _propiedad.Nombre, _entity.Name)); }
+		EntitySet _entitySetEntidadRelacionada = (EntitySet) _container.BaseEntitySets.Where(es => es.ElementType.Name == _nombreTipoRelacionado).FirstOrDefault(); 
+		if (_propiedad.TipoCampo == MetadataGenerador.TipoCampo.Relacion1_N_Desplegable || _propiedad.TipoCampo == MetadataGenerador.TipoCampo.Relacion1_N_DesplegableConBuscador) { #>
+			self.<#=_code.Escape(_entitySetEntidadRelacionada)#> = ko.lazyObservableArray(GlobalControllers['<#= _entidadRelacionada #>Controller'].<#= (_propiedad.ObtenerTodosLosCamposEntidadEnDesplegables ? "Get" : "GetQuery") #>, self, {
+				Todos: true,
+<#		if (_propiedad.ObtenerTodosLosCamposEntidadEnDesplegables) {
+				if (_entidadPorMarca) { #>
+				Action: 'GetPorMarca',
+				Parameters: { IdMarca: self.settings.IdMarca<#= (_metadataEntidades[_entidadRelacionada].Multiidioma ? ", Cultura: self.settings.Cultura" : string.Empty) #> },
+<#			} 
+			} else { 
+				if (_entidadPorMarca) { #>
+				Parameters: 'query=<#= _entidadRelacionada #>_ObtenerComboPorIdMarca<#= (_metadataEntidades[_entidadRelacionada].TieneExtensionObtenerCombo ? "Extension" : string.Empty) #>' +
+										'&parameter=IdMarca|char|' + self.settings.IdMarca + '|3'<# if (!_metadataEntidades[_entidadRelacionada].Multiidioma) { #>, 
+<#				} else { #> + 
+										'&parameter=Cultura|varchar|' + self.settings.Cultura + '|5',
+<#				}
+				} else { #>
+				Parameters: 'query=<#= _entidadRelacionada #>_ObtenerCombo<#= (_metadataEntidades[_entidadRelacionada].TieneExtensionObtenerCombo ? "Extension" : string.Empty) #>'<# if (!_metadataEntidades[_entidadRelacionada].Multiidioma) { #>, 
+<#				} else { #> + 
+										'&parameter=Cultura|varchar|' + self.settings.Cultura + '|5',
+<#				} 
+				} 
+			} #>
+				PrellamadaApi: function () { self.Cargando(true); },
+				PostllamadaApi: function () { self.Cargando(false); },
+				MostrarMensaje: function (error, tipo) { utils.MostrarMensaje('#' + self.settings.ErrorContainer, error, tipo); },
+				RespuestaPeticionCorrecta: function (observable) { },
+<#		if (_propiedad.GenerarObservables) { #> RegistrosComoObservables: true<# } #>
+			});
+
+<#	}
+		if (_propiedad.TipoCampo == MetadataGenerador.TipoCampo.Relacion1_N_Autocomplete || _propiedad.TipoCampo == MetadataGenerador.TipoCampo.Relacion1_N_AutocompleteConBuscador || _propiedad.TipoCampo == MetadataGenerador.TipoCampo.Relacion1_N_AutocompleteConBuscadorYEtiqueta) { #>
+			self.<#=_code.Escape(_entitySetEntidadRelacionada)#> = ko.observable();
+			self.Autocomplete<#=_code.Escape(_entitySetEntidadRelacionada)#> = function (textoBusqueda, metodoCargaRegistros) {
+				try {
+					GlobalControllers['<#= _entidadRelacionada #>Controller'].GetQuery(self.<#=_code.Escape(_entitySetEntidadRelacionada)#>, {
+						Todos: true,
+						Parameters: 'query=<#= _entidadRelacionada #>_ObtenerAutocompletePorIdMarca<# if (_metadataEntidades[_entidadRelacionada].TieneExtensionAutocomplete) { #>Extension<# } #>' +
+												'&parameter=IdMarca|char|' + self.settings.IdMarca + '|3' +
+												'&parameter=Texto|nvarchar|' + textoBusqueda + '|50',
+						PrellamadaApi: function () { self.Cargando(true); },
+						PostllamadaApi: function () { self.Cargando(false); },
+						MostrarMensaje: function (error, tipo) { utils.MostrarMensaje('#' + self.settings.ErrorContainer, error, tipo); },
+						RespuestaPeticionCorrecta: function (observable) { metodoCargaRegistros(observable()); }
+					});
+				} catch (excepcion) {
+					console.log(excepcion);
+				}
+			}
+
+<#	}
+		if (_propiedad.TipoCampo == MetadataGenerador.TipoCampo.Relacion1_N_AutocompleteConBuscador || _propiedad.TipoCampo == MetadataGenerador.TipoCampo.Relacion1_N_AutocompleteConBuscadorYEtiqueta) { #>
+			self.MostrarBuscador<#= _entidadRelacionada #> = ko.observable(false);
+<#	}	 
+  } #>
+			// #endregion Definición relaciones
+<# if (_propiedadesGestionArchivos.Count() > 0) { #>
+
+			// #region Propiedades de gestión de archivos
+			var _numeroPropiedadesACargar = <#= _propiedadesGestionArchivos.Count() #>;
+			var _numeroPropiedadesCargadas = 0;
+<#	foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesGestionArchivos) { #>
+			self.BorradoLogicoDeArchivos<#= _propiedad.Nombre #> = (typeof (self.settings.BorradoLogicoDeArchivos) !== 'undefined' ? self.settings.BorradoLogicoDeArchivos : false);
+			self.NumeroMaximoArchivosACargar<#= _propiedad.Nombre #> = 1;
+			
+			self.CargaFinalizada<#= _propiedad.Nombre #> = function (archivos) {
+				// TODO: Utilizar la propiedad de self Registro en lugar de un observable aparte.
+				self.Registro().<#= _propiedad.Nombre #>((self.DocumentosUsuario<#= _propiedad.Nombre #>().length > 0 ? ko.unwrap(self.DocumentosUsuario<#= _propiedad.Nombre #>()[0].RutaArchivo) : null));
+				_numeroPropiedadesCargadas++;
+				if (_numeroPropiedadesCargadas == _numeroPropiedadesACargar) { baseViewModel.Update(self, self.Registro); }
+			}
+
+			self.DocumentosUsuario<#= _propiedad.Nombre #> = ko.observableArray([]);
+			self.Sincronizando<#= _propiedad.Nombre #> = false;
+			self.Archivos<#= _propiedad.Nombre #> = ko.observableArray([]);
+			self.DocumentosUsuario<#= _propiedad.Nombre #>.subscribe(function (documentos) {
+				if (!self.Sincronizando<#= _propiedad.Nombre #>) {
+					self.Sincronizando<#= _propiedad.Nombre #> = true;
+					self.Archivos<#= _propiedad.Nombre #>(documentos.map(function (documento) { return { Ruta: self.UrlArchivos<#= _propiedad.Nombre #>() + '/' + ko.unwrap(documento.RutaArchivo), Doctype: ko.unwrap(documento.Doctype) }; }));
+					self.Sincronizando<#= _propiedad.Nombre #> = false;
+				}
+			}, self);
+
+			self.Archivos<#= _propiedad.Nombre #>.subscribe(function (archivos) {
+				if (!self.Sincronizando<#= _propiedad.Nombre #>) {
+					self.Sincronizando<#= _propiedad.Nombre #> = true;
+					var _documentosActuales = self.DocumentosUsuario<#= _propiedad.Nombre #>();
+					var _documentosABorrar = new Array();
+
+					$.each(_documentosActuales, function (indice, documento) {
+						if (archivos.filter(function (archivo) { return self.UrlArchivos<#= _propiedad.Nombre #>() + '/' + ko.unwrap(documento.RutaArchivo) == archivo.Ruta; }).length == 0) {
+							if (self.BorradoLogicoDeArchivos<#= _propiedad.Nombre #>) {
+								var _fechaEliminacion = (typeof moment !== 'undefined' ? moment().format() : new Date('01/01/0001 0:00:00'));
+								if (ko.isObservable(documento.FechaEliminacion)) { documento.FechaEliminacion(_fechaEliminacion); } else { documento.FechaEliminacion = _fechaEliminacion; }
+							} else {
+								_documentosABorrar.push(indice);
+							}
+						}
+					});
+					$.each(archivos, function (indice, archivo) {
+						// TODO: OLL: Mirar si es necesario comparar más propiedades para que siempre funcione. Lo ideal sería que archivo tuviese también el Id de documento, así podríamos por Id reconocer mejor si el elemento estaba en 
+						// DocumentosUsuario o no
+						if (_documentosActuales.filter(function (documento) { return self.UrlArchivos<#= _propiedad.Nombre #>() + '/' + ko.unwrap(documento.RutaArchivo) == archivo.Ruta; }).length == 0) {
+							//TODO: OLL: Falta pedir y añadir el tipo correctamente.
+							var _partesRuta = archivo.Ruta.split('/');
+							_documentosActuales.push(new DocumentoUsuariosModel({ Id: --self.IdDocumentoUsuarioModelNuevo, Nombre: _partesRuta[_partesRuta.length - 1], RutaArchivo: archivo.Ruta.replace(self.UrlArchivos<#= _propiedad.Nombre #>() + '/', ''), Doctype: archivo.Doctype, IdMarca: self.settings.IdMarca, IdTipo: 1, UsuarioAlta: (typeof (settings.Usuario) !== 'undefined' ? settings.Usuario : 'usuario_anonimo') }));
+						}
+					});
+					for (var i = 0; i < _documentosABorrar.length; i++) {
+						_documentosActuales = _documentosActuales.filter(function (registro) { return registro.Id !== _documentosActuales[_documentosABorrar[i]].Id; });
+					}
+					self.DocumentosUsuario<#= _propiedad.Nombre #>(_documentosActuales);
+					self.Sincronizando<#= _propiedad.Nombre #> = false;
+				}
+			}, self);
+<#	} #>
+
+			// TODO: OLL: Mirar de obtener antes del update los archivos e incluirlos en el registro para que así se envíen directamente.
+			self.Update = function (registro) {
+				//utils.Cargando.Mostrar(settings.IdPartial + 'ContenedorCargandoFormulario');
+				_numeroPropiedadesCargadas = 0;
+<#	foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesGestionArchivos) { #>
+				var _vmDocumentos<#= _propiedad.Nombre #> = ko.dataFor($('#' + self.settings.IdPartial + 'GestorArchivos<#= _propiedad.Nombre #>ContenedorInterno')[0].children[0]);
+				// TODO: OLL: Path en trozos
+				var _vm = ko.validatedObservable(registro);
+				if (_vm.isValid() || (!_vm.isValid() && _vm.errors().length == 1 && _vm.errors()[0].indexOf('Imagen') >= 0)) {
+					_vmDocumentos<#= _propiedad.Nombre #>.Cargar(self.UrlArchivos<#= _propiedad.Nombre #>());
+				} else {
+					utils.MostrarMensaje('#' + self.settings.ErrorContainer, settings.System.settings.MensajeErrorValidacion + "<br/>" + _vm.errors(), 'Error');
+					//utils.Cargando.Ocultar(settings.IdPartial + 'ContenedorCargandoFormulario');
+				}
+<#	} #>
+			};
+
+			var LimpiarArchivos = function() {
+<#	foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesGestionArchivos) { #>
+				self.DocumentosUsuario<#= _propiedad.Nombre #>([]);
+<#	} #>
+			}
+
+			self.InicioSelect = function (registro) { LimpiarArchivos(); }
+			self.InicioNew = function (modelo, datosPorDefecto) { LimpiarArchivos(); }
+			self.IdDocumentoUsuarioModelNuevo = 0
+
+			self.RegistroCargado = function (observable) {
+				// OLL: Crear método en utils que a partir de la extension devuelva el Doctype. Revisar IdTipo.
+<#	foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesGestionArchivos) { #>
+				var _documentos = [];
+				if (observable().<#= _propiedad.Nombre #>() != null && observable().<#= _propiedad.Nombre #>() != '') {
+					_documentos = [{ Id: --self.IdDocumentoUsuarioModelNuevo, Nombre: observable().<#= _propiedad.Nombre #>(), RutaArchivo: observable().<#= _propiedad.Nombre #>(), Doctype: 'image/jpeg', IdMARCA: self.settings.IdMarca, IdTipo: 1, UsuarioAlta: (typeof (settings.Usuario) !== 'undefined' ? self.settings.Usuario : 'usuario_anonimo') }];
+				}
+				self.DocumentosUsuario<#= _propiedad.Nombre #>(_documentos);
+<#	} #>
+				//GlobalControllers['DocumentoUsuariosController'].GetQuery(self.DocumentosUsuario, {
+				//	Todos: true,
+				//	Parameters: 'query=DocumentoUsuarios_ObtenerPorIdUsuario' +
+				//	'&parameter=IdUsuario|int|' + observable().Id(),
+				//	PrellamadaApi: function () { self.Cargando(true); },
+				//	PostllamadaApi: function () { self.Cargando(false); },
+				//	MostrarMensaje: function (error, tipo) { utils.MostrarMensaje('#' + self.settings.ErrorContainer, error, tipo); },
+				//	RespuestaPeticionCorrecta: function (observable) { },
+				//	GenerarModeloEntidad: true
+				//});
+			}
+			// #endregion Propiedades de gestión de archivos
+<# } #>
+
+			// #region Métodos sobreescritos o añadidos
+<# if (_metadataEntidades[_entity.Name].Multiidioma) { #>
+			// OLL: Revisar esto. Lo hice rápidamente. Mirar si hay una mejor manera de mantener propiedades del filtro
+			self.RevisarFiltro = function (viewModel) {
+				viewModel.Filtro().Cultura(viewModel.settings.Cultura);
+			}
+<# } #>
+			// #endregion Métodos sobreescritos o añadidos
+			
+			baseViewModel.InicializarViewModel(self, settings, <#=_code.Escape(_entity)#>Model);
+<# if (_propiedadesGestionArchivos.Count() > 0) { #>
+
+			// #region Propiedades de gestión de archivos
+<#	foreach (MetadataGenerador.MetadataPropiedad _propiedad in _propiedadesGestionArchivos) { #>
+			self.UrlArchivos<#= _propiedad.Nombre #> = ko.computed(function () {
+				return (self.Registro() != null ? self.settings.ApplicationPath + 'Portals/0/_extension/' + ko.unwrap(self.Registro().IdEdicion) + '/Imagenes/<#= _entitySet #>' : '');
+			});
+
+			self.UrlArchivosNuevos<#= _propiedad.Nombre #> = ko.computed(function () {
+				return self.UrlArchivos<#= _propiedad.Nombre #>();
+			});
+<#	} #>
+			// #endregion Propiedades de gestión de archivos
+<# }#>
+		};
+	} catch (excepcion) {
+		console.log(excepcion);
+		return null;
+	}
+});
+<#
+}
+_fileManager.Process();
+#>

@@ -1,0 +1,42 @@
+﻿@import "../variables.less.txt";
+
+.call-to-action.with-borders {
+	border-top: @BSBorderWidth @BSBorderStyle @BSBorderColor;
+	border-bottom: @BSBorderWidth @BSBorderStyle @BSBorderColor;
+	border-left: @BSBorderWidth @BSBorderStyle @BSBorderColor;
+	border-right: @BSBorderWidth @BSBorderStyle @BSBorderColor;
+	box-shadow: @BBoxShadow;
+}
+.call-to-action h3 {
+	color: @HSColor;
+	
+}
+.call-to-action.featured.featured-primary {
+	border-top-color: @FSColor;
+}
+
+.call-to-action.featured.featured-secondary {
+	border-top-color:@FSColor;
+}
+
+.call-to-action.featured.featured-tertiary {
+	border-top-color: @FSColor;
+}
+
+.call-to-action.featured.featured-quaternary {
+	border-top-color: @FSColor;
+}
+.container .call-to-action {
+	border-radius: @BSBorderRadius;
+}
+.call-to-action p {
+	font-size: @ISIconSize;
+}
+.call-to-action .call-to-action-content {
+	text-align: @HSTextAlign;
+}
+section.call-to-action.call-to-action-primary.mb-xl{
+    background: @HSBackgroundColor;
+}
+
+

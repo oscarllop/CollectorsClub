@@ -1,0 +1,52 @@
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="..\\Templates\\Context.Base.ttinclude"#>
+<#@ output extension=".cs"#>
+<#
+
+const string _inputFile = @"..\..\CollectorsClub.EntityFramework\Model.edmx";
+var _storeMetadata = LoadMetadata(_inputFile);
+var _textTransform = DynamicTextTransformation.Create(this);
+var _code = new CodeGenerationTools(this);
+var _ef = new MetadataTools(this);
+//var _itemCollection = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors).CreateEdmItemCollection(_inputFile);
+var _itemCollection = _storeMetadata.EdmItems;
+EntityContainer _container = _itemCollection.OfType<EntityContainer>().FirstOrDefault();
+var _typeMapper = new TypeMapper(_code, _ef, _container, _storeMetadata, _textTransform.Errors);
+var	_fileManager = EntityFrameworkTemplateFileManager.Create(this);
+var _codeStringGenerator = new CodeStringGenerator(_code, _typeMapper, _ef);
+ 
+if (!_typeMapper.VerifyCaseInsensitiveTypeUniqueness(_typeMapper.GetAllGlobalItems(_itemCollection), _inputFile)) {
+	return string.Empty;
+}
+
+WriteHeader(_codeStringGenerator, _fileManager);
+
+foreach (var _entity in _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection)) {
+    _fileManager.StartNewFile("Delete" + _entity.Name + "Handler.cs");
+#>
+<#= _codeStringGenerator.UsingDirectives(inHeader: false, otherNamespaces: new string[] { "CollectorsClub.Data.Command", "CollectorsClub.Model.Commands", "CollectorsClub.Data.Infrastructure", "CollectorsClub.Model.Repositories", "CollectorsClub.Model.Infrastructure", "CollectorsClub.Model.Entities" }) #>
+<# BeginNamespace(_code, "Handlers"); #>
+<#= _codeStringGenerator.ClassOpening(_entity, "Delete{2}Handler", "ICommandHandler<Delete" + _code.Escape(_entity) + "Command>")#> {
+	private readonly I<#=_code.Escape(_entity)#>Repository <#=_code.Escape(_entity)#>Repository;
+	private readonly IUnitOfWork unitOfWork;
+<# var keyProperties = _typeMapper.GetKeyProperties(_entity);
+    if (keyProperties.Any()) { #>
+	public Delete<#=_code.Escape(_entity)#>Handler(I<#=_code.Escape(_entity)#>Repository <#=_code.Escape(_entity)#>Repository, IUnitOfWork unitOfWork) {
+			this.<#=_code.Escape(_entity)#>Repository = <#=_code.Escape(_entity)#>Repository;
+			this.unitOfWork = unitOfWork;
+	}
+	public ICommandResult Execute(Delete<#=_code.Escape(_entity)#>Command command) {
+		var <#=_code.Escape(_entity)#> = <#=_code.Escape(_entity)#>Repository.GetById(<#=_codeStringGenerator.MethodParameters(keyProperties, "command")#>);
+		<#=_code.Escape(_entity)#>Repository.Delete(<#=_code.Escape(_entity)#>);
+		unitOfWork.Commit();
+		return new CommandResult(true);
+	}
+<#	} #>
+}
+<#
+	EndNamespace(_code);
+}
+_fileManager.Process();
+
+#>

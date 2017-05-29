@@ -1,0 +1,26 @@
+﻿@import "../variables.less.txt";
+
+.testimonial blockquote{
+    background: @HSBackgroundColor;
+	border-radius: @BSBorderRadius;
+    border:@HSBorder;
+    color:@FSColor;
+   font-family: @FSFontFamily;
+}
+.testimonial blockquote:before {
+	color:@FSColor;
+	font-size: @FSFontSize;
+	line-height: @FSLineHeight;
+	
+}
+.testimonial blockquote p {
+	color: @FSColor;
+	font-family: @FSFontFamily;
+	font-size: @FSFontSize;
+	line-height: @FSLineHeight;
+}
+.testimonial blockquote:after {
+	color:@FSColor;
+	font-size: @FSFontSize;
+	line-height: @FSLineHeight;
+}

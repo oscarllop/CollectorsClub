@@ -1,0 +1,222 @@
+05/09/2017 10:19:06 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Verificación de creación de carpetas Verificación de creación de archivos Verificación de borrado de archivos Verificación de borrado de carpetas 
+05/09/2017 10:19:06 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Verificando configuración IIS
+05/09/2017 10:19:06 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando el script de base de datos DotNetNuke.Schema
+05/09/2017 10:19:06 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start ExecuteScript:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\DotNetNuke.Schema.SqlDataProvider
+05/09/2017 10:19:08 [INFO] DotNetNuke.Services.Upgrade.Upgrade End ExecuteScript:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\DotNetNuke.Schema.SqlDataProvider
+05/09/2017 10:19:08 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando el script de base de datos DotNetNuke.Data
+05/09/2017 10:19:08 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start ExecuteScript:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\DotNetNuke.Data.SqlDataProvider
+05/09/2017 10:19:09 [INFO] DotNetNuke.Services.Upgrade.Upgrade End ExecuteScript:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\DotNetNuke.Data.SqlDataProvider
+05/09/2017 10:19:09 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando scripts de base de datos de Membership 
+05/09/2017 10:19:09 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallMemberRoleProvider
+05/09/2017 10:19:09 [INFO] DotNetNuke.Services.Upgrade.Upgrade End InstallMemberRoleProvider
+05/09/2017 10:19:09 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Aplicando script de actualización08.00.04.01
+05/09/2017 10:19:09 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpgradeVersion:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\08.00.04.01.SqlDataProvider
+05/09/2017 10:19:09 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start ExecuteScript:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\08.00.04.01.SqlDataProvider
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade End ExecuteScript:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\08.00.04.01.SqlDataProvider
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpgradeVersion:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\08.00.04.01.SqlDataProvider
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Aplicando script de actualización09.00.00
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpgradeVersion:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\09.00.00.SqlDataProvider
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start ExecuteScript:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\09.00.00.SqlDataProvider
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade End ExecuteScript:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\09.00.00.SqlDataProvider
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpgradeVersion:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\09.00.00.SqlDataProvider
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Aplicando script de actualización09.00.00.01
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpgradeVersion:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\09.00.00.01.SqlDataProvider
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start ExecuteScript:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\09.00.00.01.SqlDataProvider
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade End ExecuteScript:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\09.00.00.01.SqlDataProvider
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpgradeVersion:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\09.00.00.01.SqlDataProvider
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Aplicando script de actualización09.00.01
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpgradeVersion:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\09.00.01.SqlDataProvider
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start ExecuteScript:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\09.00.01.SqlDataProvider
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade End ExecuteScript:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\09.00.01.SqlDataProvider
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpgradeVersion:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Providers\DataProviders\SqlDataProvider\09.00.01.SqlDataProvider
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Actualizando aplicacion a 8.0.4.1
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start Application Upgrades: 8.0.4
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Actualizando aplicacion a 9.0.0
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start Application Upgrades: 9.0.0
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Actualizando aplicacion a 9.0.0.1
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start Application Upgrades: 9.0.0
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Actualizando aplicacion a 9.0.1
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start Application Upgrades: 9.0.1
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Actualizando la configuració para 8.0.4.1
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpdateConfig:08.00.04.01
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpdateConfig:8.0.4
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade End UpdateConfig:8.0.4
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade End UpdateConfig:08.00.04.01
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Actualizando la configuració para 9.0.0
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpdateConfig:09.00.00
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpdateConfig:9.0.0
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade End UpdateConfig:9.0.0
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade End UpdateConfig:09.00.00
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Actualizando la configuració para 9.0.0.1
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpdateConfig:09.00.00.01
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpdateConfig:9.0.0
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade End UpdateConfig:9.0.0
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade End UpdateConfig:09.00.00.01
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Actualizando la configuració para 9.0.1
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpdateConfig:09.00.01
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start UpdateConfig:9.0.1
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Installer.XmlMerge Target File dotnetnuke.config doesn't exist, ignore the merge process
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade End UpdateConfig:9.0.1
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade End UpdateConfig:09.00.01
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Borrando archivos anteriores de 8.0.4.1
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start DeleteFiles:08.00.04.01
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Borrando archivos anteriores de 9.0.0
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start DeleteFiles:09.00.00
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Borrando archivos anteriores de 9.0.0.1
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start DeleteFiles:09.00.00.01
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Borrando archivos anteriores de 9.0.1
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start DeleteFiles:09.00.01
+05/09/2017 10:19:10 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Actualizando aplicación
+05/09/2017 10:19:11 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DDRMenu_09.00.01_Install.zip
+05/09/2017 10:19:11 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DDRMenu_09.00.01_Install.zip
+05/09/2017 10:19:11 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/09/2017 10:19:11 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Library - Dnn.EditBar.UI_01.01.00_Install.zip
+05/09/2017 10:19:11 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.EditBar.UI_01.01.00_Install.zip
+05/09/2017 10:19:11 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/09/2017 10:19:12 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Library - Dnn.PersonaBar.UI_01.01.00_Install.zip
+05/09/2017 10:19:12 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.UI_01.01.00_Install.zip
+05/09/2017 10:19:13 [INFO] DotNetNuke.Services.Installer.XmlMerge Start AddNode:
+05/09/2017 10:19:13 [INFO] DotNetNuke.Services.Installer.XmlMerge Start AddNode:
+05/09/2017 10:19:13 [INFO] DotNetNuke.Services.Installer.XmlMerge Start AddNode:
+05/09/2017 10:19:13 [INFO] DotNetNuke.Services.Installer.XmlMerge Start AddNode:
+05/09/2017 10:19:13 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/09/2017 10:19:14 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_ConfigurationManager_09.00.01_Install.zip
+05/09/2017 10:19:14 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_ConfigurationManager_09.00.01_Install.zip
+05/09/2017 10:19:14 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_Console_09.00.01_Install.zip
+05/09/2017 10:19:14 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_Console_09.00.01_Install.zip
+05/09/2017 10:19:14 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_CoreMessaging_09.00.01_Install.zip
+05/09/2017 10:19:14 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_CoreMessaging_09.00.01_Install.zip
+05/09/2017 10:19:14 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_Dashboard_09.00.01_Install.zip
+05/09/2017 10:19:14 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_Dashboard_09.00.01_Install.zip
+05/09/2017 10:19:15 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_DigitalAssetsManagement_09.00.01_Install.zip
+05/09/2017 10:19:15 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_DigitalAssetsManagement_09.00.01_Install.zip
+05/09/2017 10:19:15 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_GoogleAnalytics_09.00.01_Install.zip
+05/09/2017 10:19:15 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_GoogleAnalytics_09.00.01_Install.zip
+05/09/2017 10:19:15 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_HtmlEditorManager_09.00.01_Install.zip
+05/09/2017 10:19:15 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_HtmlEditorManager_09.00.01_Install.zip
+05/09/2017 10:19:15 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_HTML_09.00.01_Install.zip
+05/09/2017 10:19:15 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_HTML_09.00.01_Install.zip
+05/09/2017 10:19:16 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_Journal_09.00.01_Install.zip
+05/09/2017 10:19:16 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_Journal_09.00.01_Install.zip
+05/09/2017 10:19:16 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_Languages_09.00.01_Install.zip
+05/09/2017 10:19:16 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_Languages_09.00.01_Install.zip
+05/09/2017 10:19:17 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_Lists_09.00.01_Install.zip
+05/09/2017 10:19:17 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_Lists_09.00.01_Install.zip
+05/09/2017 10:19:17 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_LogViewer_09.00.01_Install.zip
+05/09/2017 10:19:17 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_LogViewer_09.00.01_Install.zip
+05/09/2017 10:19:17 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_MemberDirectory_09.00.01_Install.zip
+05/09/2017 10:19:17 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_MemberDirectory_09.00.01_Install.zip
+05/09/2017 10:19:18 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_MobileManagement_09.00.01_Install.zip
+05/09/2017 10:19:18 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_MobileManagement_09.00.01_Install.zip
+05/09/2017 10:19:18 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_ModuleCreator_09.00.01_Install.zip
+05/09/2017 10:19:18 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_ModuleCreator_09.00.01_Install.zip
+05/09/2017 10:19:18 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_PreviewProfileManagement_09.00.01_Install.zip
+05/09/2017 10:19:18 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_PreviewProfileManagement_09.00.01_Install.zip
+05/09/2017 10:19:19 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=key
+05/09/2017 10:19:19 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_RazorHost_09.00.01_Install.zip
+05/09/2017 10:19:19 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_RazorHost_09.00.01_Install.zip
+05/09/2017 10:19:19 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_RecycleBin_09.00.01_Install.zip
+05/09/2017 10:19:19 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_RecycleBin_09.00.01_Install.zip
+05/09/2017 10:19:19 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_Sitemap_09.00.01_Install.zip
+05/09/2017 10:19:19 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_Sitemap_09.00.01_Install.zip
+05/09/2017 10:19:19 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_SiteWizard_09.00.01_Install.zip
+05/09/2017 10:19:19 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_SiteWizard_09.00.01_Install.zip
+05/09/2017 10:19:19 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_SocialGroups_09.00.01_Install.zip
+05/09/2017 10:19:19 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_SocialGroups_09.00.01_Install.zip
+05/09/2017 10:19:20 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_Sql_09.00.01_Install.zip
+05/09/2017 10:19:20 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_Sql_09.00.01_Install.zip
+05/09/2017 10:19:20 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_Tabs_09.00.01_Install.zip
+05/09/2017 10:19:20 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_Tabs_09.00.01_Install.zip
+05/09/2017 10:19:21 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_Taxonomy_09.00.01_Install.zip
+05/09/2017 10:19:21 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_Taxonomy_09.00.01_Install.zip
+05/09/2017 10:19:21 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Module - DNNCE_Themes_09.00.01_Install.zip
+05/09/2017 10:19:21 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_Themes_09.00.01_Install.zip
+05/09/2017 10:19:21 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Library - DNNCE_UrlManagement_09.00.01_Install.zip
+05/09/2017 10:19:21 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\DNNCE_UrlManagement_09.00.01_Install.zip
+05/09/2017 10:19:21 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Library - Telerik_08.00.01_Install.zip
+05/09/2017 10:19:21 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Telerik_08.00.01_Install.zip
+05/09/2017 10:19:22 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/09/2017 10:19:22 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/09/2017 10:19:22 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/09/2017 10:19:22 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Skin - Skin_Xcillion_01.00.00_Install.zip
+05/09/2017 10:19:22 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Skin\Skin_Xcillion_01.00.00_Install.zip
+05/09/2017 10:19:23 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando JavaScript_Library - jQuery.zip
+05/09/2017 10:19:23 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\JavaScriptLibrary\jQuery.zip
+05/09/2017 10:19:23 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando JavaScript_Library - Knockout.zip
+05/09/2017 10:19:23 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\JavaScriptLibrary\Knockout.zip
+05/09/2017 10:19:23 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Provider - DNNConnect.CKEditorProvider_01.00.03_Install.zip
+05/09/2017 10:19:23 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Provider\DNNConnect.CKEditorProvider_01.00.03_Install.zip
+05/09/2017 10:19:27 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/09/2017 10:19:27 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando Provider - FiftyOneClientCapabilityProvider_09.00.01_Install.zip
+05/09/2017 10:19:27 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Provider\FiftyOneClientCapabilityProvider_09.00.01_Install.zip
+05/09/2017 10:19:28 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/09/2017 10:19:28 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/09/2017 10:19:28 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/09/2017 10:19:28 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateAttribute:attributeName=defaultProvider
+05/09/2017 10:19:28 [INFO] DotNetNuke.Services.Installer.XmlMerge Start UpdateNode: keyAttribute=name
+05/09/2017 10:19:28 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.AdminLogs_01.01.00_Install.zip
+05/09/2017 10:19:28 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.AdminLogs_01.01.00_Install.zip
+05/09/2017 10:19:29 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.ConfigConsole_01.01.00_Install.zip
+05/09/2017 10:19:29 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.ConfigConsole_01.01.00_Install.zip
+05/09/2017 10:19:29 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.CssEditor_01.01.00_Install.zip
+05/09/2017 10:19:29 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.CssEditor_01.01.00_Install.zip
+05/09/2017 10:19:29 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.Extensions_01.01.00_Install.zip
+05/09/2017 10:19:29 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.Extensions_01.01.00_Install.zip
+05/09/2017 10:19:29 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.Licensing_01.01.00_Install.zip
+05/09/2017 10:19:29 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.Licensing_01.01.00_Install.zip
+05/09/2017 10:19:29 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.Recyclebin_01.01.00_Install.zip
+05/09/2017 10:19:29 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.Recyclebin_01.01.00_Install.zip
+05/09/2017 10:19:29 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.Roles_01.01.00_Install.zip
+05/09/2017 10:19:29 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.Roles_01.01.00_Install.zip
+05/09/2017 10:19:29 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.Security_01.01.00_Install.zip
+05/09/2017 10:19:29 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.Security_01.01.00_Install.zip
+05/09/2017 10:19:30 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.Seo_01.01.00_Install.zip
+05/09/2017 10:19:30 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.Seo_01.01.00_Install.zip
+05/09/2017 10:19:30 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.Servers_01.01.00_Install.zip
+05/09/2017 10:19:30 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.Servers_01.01.00_Install.zip
+05/09/2017 10:19:30 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.SiteSettings_01.01.00_Install.zip
+05/09/2017 10:19:30 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.SiteSettings_01.01.00_Install.zip
+05/09/2017 10:19:30 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.Sites_01.01.00_Install.zip
+05/09/2017 10:19:30 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.Sites_01.01.00_Install.zip
+05/09/2017 10:19:30 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.SqlConsole_01.01.00_Install.zip
+05/09/2017 10:19:30 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.SqlConsole_01.01.00_Install.zip
+05/09/2017 10:19:30 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.TaskScheduler_01.01.00_Install.zip
+05/09/2017 10:19:30 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.TaskScheduler_01.01.00_Install.zip
+05/09/2017 10:19:31 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.Themes_01.01.00_Install.zip
+05/09/2017 10:19:31 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.Themes_01.01.00_Install.zip
+05/09/2017 10:19:31 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.Users_01.02.00_Install.zip
+05/09/2017 10:19:31 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.Users_01.02.00_Install.zip
+05/09/2017 10:19:31 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.Vocabularies_01.01.00_Install.zip
+05/09/2017 10:19:31 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.Vocabularies_01.01.00_Install.zip
+05/09/2017 10:19:31 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando JavaScript_Library - jQueryMigrate.zip
+05/09/2017 10:19:31 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\JavaScriptLibrary\jQueryMigrate.zip
+05/09/2017 10:19:31 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando JavaScript_Library - jQueryUI.zip
+05/09/2017 10:19:31 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\JavaScriptLibrary\jQueryUI.zip
+05/09/2017 10:19:31 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando JavaScript_Library - KnockoutMapping.zip
+05/09/2017 10:19:31 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\JavaScriptLibrary\KnockoutMapping.zip
+05/09/2017 10:19:31 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Instalando PersonaBar - Dnn.PersonaBar.Pages_01.01.00_Install.zip
+05/09/2017 10:19:31 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\Module\Dnn.PersonaBar.Pages_01.01.00_Install.zip
+05/09/2017 10:19:32 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Inicializando configuración del sistema 
+05/09/2017 10:19:34 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Creando el sitio [Col·lectors Club]
+05/09/2017 10:19:34 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start InstallPackage:c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Platform\Website\Install\language\installlanguage.resources
+05/09/2017 10:19:37 [INFO] DotNetNuke.Services.Upgrade.Upgrade Final CreateUserInfo:host
+05/09/2017 10:19:41 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Crear el superusuario
+05/09/2017 10:19:41 [INFO] DotNetNuke.Services.Upgrade.Internals.Steps.BaseInstallationStep Creando el superusuariohost
+05/09/2017 10:19:51 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start AddHostPage:File Management
+05/09/2017 10:19:51 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start AddPage:File Management
+05/09/2017 10:19:53 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start AddModuleToPage:117
+05/09/2017 10:19:53 [INFO] DotNetNuke.Services.Upgrade.Upgrade End AddModuleToPage:117
+05/09/2017 10:19:53 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start AddAdminPage:File Management
+05/09/2017 10:19:53 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start AddPagePermission:View
+05/09/2017 10:19:53 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start AddPagePermission:Edit
+05/09/2017 10:19:53 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start AddPage:File Management
+05/09/2017 10:19:53 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start AddModuleToPage:117
+05/09/2017 10:19:53 [INFO] DotNetNuke.Services.Upgrade.Upgrade End AddModuleToPage:117
+05/09/2017 10:19:54 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start RemoveHostPage:File Manager
+05/09/2017 10:19:54 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start RemoveAdminPages://Admin//FileManager
+05/09/2017 10:19:54 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start AddHostPage:HTML Editor Manager
+05/09/2017 10:19:54 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start AddPage:HTML Editor Manager
+05/09/2017 10:19:54 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start RemoveModule:RadEditor Manager
+05/09/2017 10:19:54 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start AddModuleToPage:119
+05/09/2017 10:19:54 [INFO] DotNetNuke.Services.Upgrade.Upgrade End AddModuleToPage:119
+05/09/2017 10:19:54 [INFO] DotNetNuke.Services.Upgrade.Upgrade Start RemoveAdminPages://Admin//Skins

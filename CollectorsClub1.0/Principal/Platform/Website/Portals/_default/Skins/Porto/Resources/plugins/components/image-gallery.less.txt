@@ -1,0 +1,22 @@
+﻿@import "../variables.less.txt";
+
+.thumb-info .thumb-info-action-icon i, .thumb-info .thumb-info-action-icon em{
+     font-size:@ISIconSize;
+     color: @ISIconColor;
+                                    }
+
+
+.thumb-info .thumb-info-wrapper:after{
+    background:@HSBackgroundColor;
+    border-radius: @BSBorderRadius;
+}
+.thumb-info .thumb-info-action-icon{
+    font-size: @FSFontSize;
+     background-color: @HSBackgroundColor;
+}
+.thumb-info .thumb-info-type {
+    background-color: @HSBackgroundColor;
+}
+.thumb-info:hover .thumb-info-title {
+    background: @HSBackgroundColor;
+}

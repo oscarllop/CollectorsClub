@@ -1,0 +1,161 @@
+﻿/* Call to Action */
+.call-to-action {
+	position: relative;
+	clear: both;
+	min-height: 125px;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+.call-to-action:before, .call-to-action:after {
+	content: " ";
+	display: table;
+}
+
+.call-to-action:after {
+	clear: both;
+}
+
+.call-to-action h3 {
+	text-transform: none;
+	color: #1d2127;
+	padding: 0;
+	margin: 0 0 9px;
+}
+
+.call-to-action p {
+	font-size: 1.2em;
+}
+
+.call-to-action .call-to-action-content {
+	text-align: center;
+	width: 70%;
+	margin-left: 3%;
+	padding-top: 35px;
+}
+
+.call-to-action .call-to-action-btn {
+	width: 22%;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	margin: -18px 0 0;
+	left: auto;
+	right: 25px;
+}
+
+.call-to-action.call-to-action-default {
+	background: #f2f2f2;
+}
+
+.call-to-action.call-to-action-dark {
+	background: #2e353e;
+}
+
+.call-to-action.call-to-action-dark h3, .call-to-action.call-to-action-dark p {
+	color: #FFF;
+}
+
+.call-to-action.with-borders {
+	border-top: 1px solid #DFDFDF;
+	border-bottom: 1px solid #DFDFDF;
+	border-left: 1px solid #ECECEC;
+	border-right: 1px solid #ECECEC;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+.call-to-action.with-full-borders {
+	border: 2px solid #CCC;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+.call-to-action.featured {
+	background-color: transparent;
+	background: -webkit-linear-gradient(top, white 1%, #fcfcfc 98%) repeat scroll 0 0 transparent;
+	background: linear-gradient(to bottom, white 1%, #fcfcfc 98%) repeat scroll 0 0 transparent;
+	padding: 0;
+	margin: 0;
+	border-top: 3px solid #CCC;
+	border-bottom: 1px solid #DFDFDF;
+	border-left: 1px solid #ECECEC;
+	border-right: 1px solid #ECECEC;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+.call-to-action.featured.featured-primary {
+	border-top-color: #cccccc;
+}
+
+.call-to-action.featured.featured-secondary {
+	border-top-color: #e36159;
+}
+
+.call-to-action.featured.featured-tertiary {
+	border-top-color: #2baab1;
+}
+
+.call-to-action.featured.featured-quaternary {
+	border-top-color: #2e353e;
+}
+
+.call-to-action.with-button-arrow .call-to-action-btn {
+	top: 30%;
+}
+
+.call-to-action.button-centered .call-to-action-content {
+	text-align: center;
+	width: 100%;
+	padding: 35px 0 0;
+	margin: 0;
+}
+
+.call-to-action.button-centered .call-to-action-btn {
+	text-align: center;
+	position: static;
+	margin: 20px auto 25px;
+	width: auto;
+}
+
+.call-to-action.call-to-action-in-footer {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-top: 30px;
+	margin-bottom: -50px !important;
+}
+
+.call-to-action.call-to-action-in-footer:before {
+	content: "";
+	display: block;
+	position: absolute;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 20px solid #FFF;
+	height: 20px;
+	width: 20px;
+	top: -5px;
+	left: 50%;
+	margin-left: -20px;
+}
+
+.call-to-action.no-top-arrow:before {
+	display: none;
+}
+
+.call-to-action.call-to-action-in-footer-margin-top {
+	margin-top: 60px;
+}
+
+.container .call-to-action {
+	border-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+	.call-to-action .call-to-action-content,
+	.call-to-action .call-to-action-btn {
+		margin: 0;
+		padding: 0;
+		position: static;
+		width: auto;
+	}
+}

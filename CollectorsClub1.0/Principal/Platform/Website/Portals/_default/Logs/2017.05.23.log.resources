@@ -1,0 +1,70 @@
+2017-05-23 20:06:24,306 [LOOPYSCAVE][Thread:11][ERROR] DotNetNuke.Services.Exceptions.Exceptions - DotNetNuke.Services.Exceptions.PageLoadException: Unhandled error loading page. ---> System.Web.HttpParseException: Etiqueta de servidor 'dnn:SEARCH' desconocida. ---> System.Web.HttpParseException: Etiqueta de servidor 'dnn:SEARCH' desconocida. ---> System.Web.HttpException: Etiqueta de servidor 'dnn:SEARCH' desconocida.
+   en System.Web.UI.TagPrefixTagNameToTypeMapper.System.Web.UI.ITagNameToTypeMapper.GetControlType(String tagName, IDictionary attribs)
+   en System.Web.UI.MainTagNameToTypeMapper.GetControlType2(String tagName, IDictionary attribs, Boolean fAllowHtmlTags)
+   en System.Web.UI.MainTagNameToTypeMapper.GetControlType(String tagName, IDictionary attribs, Boolean fAllowHtmlTags)
+   en System.Web.UI.RootBuilder.GetChildControlType(String tagName, IDictionary attribs)
+   en System.Web.UI.ControlBuilder.CreateChildBuilder(String filter, String tagName, IDictionary attribs, TemplateParser parser, ControlBuilder parentBuilder, String id, Int32 line, VirtualPath virtualPath, Type& childType, Boolean defaultProperty)
+   en System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)
+   en System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en System.Web.UI.TemplateParser.ProcessException(Exception ex)
+   en System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   en System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+   en System.Web.UI.TemplateParser.ParseFile(String physicalPath, VirtualPath virtualPath)
+   en System.Web.UI.TemplateParser.ParseInternal()
+   en System.Web.UI.TemplateParser.Parse()
+   en System.Web.Compilation.BaseTemplateBuildProvider.get_CodeCompilerType()
+   en System.Web.Compilation.BuildProvider.GetCompilerTypeFromBuildProvider(BuildProvider buildProvider)
+   en System.Web.Compilation.BuildProvidersCompiler.ProcessBuildProviders()
+   en System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   en System.Web.UI.TemplateControl.LoadControl(String virtualPath)
+   en DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc) en C:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\DNN Platform\Library\UI\ControlUtilities.cs:línea 109
+   en DotNetNuke.UI.Skins.Skin.LoadSkin(PageBase page, String skinPath) en C:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\DNN Platform\Library\UI\Skins\Skin.cs:línea 372
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2017-05-23 20:09:50,600 [LOOPYSCAVE][Thread:12][ERROR] DotNetNuke.Services.Exceptions.Exceptions - DotNetNuke.Services.Exceptions.PageLoadException: Unhandled error loading page. ---> System.Web.HttpParseException: c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Website\_extension\SkinObjects\InformacionEdicion.ascx.cs(32): error CS1002: Se esperaba ; ---> System.Web.HttpCompileException: c:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Website\_extension\SkinObjects\InformacionEdicion.ascx.cs(32): error CS1002: Se esperaba ;
+   en System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   en System.Web.UI.BaseTemplateParser.GetReferencedType(VirtualPath virtualPath, Boolean allowNoCompile)
+   en System.Web.UI.BaseTemplateParser.GetUserControlType(VirtualPath virtualPath)
+   en System.Web.UI.MainTagNameToTypeMapper.ProcessUserControlRegistration(UserControlRegisterEntry ucRegisterEntry)
+   en System.Web.UI.BaseTemplateParser.ProcessDirective(String directiveName, IDictionary directive)
+   en System.Web.UI.TemplateControlParser.ProcessDirective(String directiveName, IDictionary directive)
+   en System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en System.Web.UI.TemplateParser.ProcessException(Exception ex)
+   en System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   en System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+   en System.Web.UI.TemplateParser.ParseFile(String physicalPath, VirtualPath virtualPath)
+   en System.Web.UI.TemplateParser.ParseInternal()
+   en System.Web.UI.TemplateParser.Parse()
+   en System.Web.Compilation.BaseTemplateBuildProvider.get_CodeCompilerType()
+   en System.Web.Compilation.BuildProvider.GetCompilerTypeFromBuildProvider(BuildProvider buildProvider)
+   en System.Web.Compilation.BuildProvidersCompiler.ProcessBuildProviders()
+   en System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   en System.Web.UI.TemplateControl.LoadControl(String virtualPath)
+   en DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc) en C:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\DNN Platform\Library\UI\ControlUtilities.cs:línea 109
+   en DotNetNuke.UI.Skins.Skin.LoadSkin(PageBase page, String skinPath) en C:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\DNN Platform\Library\UI\Skins\Skin.cs:línea 372
+   --- Fin del seguimiento de la pila de la excepción interna ---
+2017-05-23 20:12:47,095 [LOOPYSCAVE][Thread:17][ERROR] DotNetNuke.Modules.Admin.Authentication.Login - No se ha podido validar el usuario jcllop en la web api (https://localhost:44301)
+System.Net.WebException: No es posible conectar con el servidor remoto ---> System.Net.Sockets.SocketException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión 127.0.0.1:44301
+   en System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   en System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)
+   en System.Net.WebClient.DownloadString(Uri address)
+   en System.Net.WebClient.DownloadString(String address)
+   en DotNetNuke.Modules.Admin.Authentication.Login.ValidateUser(UserInfo objUser, Boolean ignoreExpiring) en C:\Mis Proyectos\CollectorsClub\CollectorsClub1.0\Principal\Platform\Website\DesktopModules\Admin\Authentication\Login.ascx.cs:línea 728

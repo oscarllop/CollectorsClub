@@ -1,0 +1,91 @@
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="..\\Templates\\Context.Base.ttinclude"#>
+<#@ output extension=".cs"#>
+<#
+
+const string _inputFile = @"..\..\CollectorsClub.EntityFramework\Model.edmx";
+var _storeMetadata = LoadMetadata(_inputFile);
+var _textTransform = DynamicTextTransformation.Create(this);
+var _code = new CodeGenerationTools(this);
+var _ef = new MetadataTools(this);
+//var _itemCollection = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors).CreateEdmItemCollection(_inputFile);
+var _itemCollection = _storeMetadata.EdmItems;
+EntityContainer _container = _itemCollection.OfType<EntityContainer>().FirstOrDefault();
+var _typeMapper = new TypeMapper(_code, _ef, _container, _storeMetadata, _textTransform.Errors);
+var	_fileManager = EntityFrameworkTemplateFileManager.Create(this);
+var _codeStringGenerator = new CodeStringGenerator(_code, _typeMapper, _ef);
+ 
+if (!_typeMapper.VerifyCaseInsensitiveTypeUniqueness(_typeMapper.GetAllGlobalItems(_itemCollection), _inputFile)) {
+	return string.Empty;
+}
+
+WriteHeader(_codeStringGenerator, _fileManager);
+
+foreach (var _entity in _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection)) {
+    _fileManager.StartNewFile("CreateOrUpdate" + _entity.Name + "Handler.cs"); #>
+<#= _codeStringGenerator.UsingDirectives(inHeader: false, otherNamespaces: new string[] { "AutoMapper", "CollectorsClub.Data.Command", "CollectorsClub.Model.Commands", "CollectorsClub.Data.Infrastructure", "CollectorsClub.Model.Repositories", "CollectorsClub.Model.Infrastructure", "CollectorsClub.Model.Entities", "System.Linq" }) #>
+<# BeginNamespace(_code, "Handlers"); #>
+<# List<ManyToMany> _datosPropiedadesManyToMany = new List<ManyToMany>();
+	 foreach (NavigationProperty _property in _typeMapper.GetNavigationProperties(_entity)) {
+			AssociationType _associationType = (AssociationType) _property.RelationshipType;
+			Tuple<EntitySet, Dictionary<RelationshipEndMember, Dictionary<EdmMember, string>>> _tupla; 
+			if (_storeMetadata.ManyToManyMappings.TryGetValue(_associationType, out _tupla)) { 
+				NavigationProperty _propiedadEntidadRelacionada = _property.ToEndMember.GetEntityType().NavigationProperties.Single(nv => (nv.RelationshipType == _property.RelationshipType) && (nv != _property)); 
+				_datosPropiedadesManyToMany.Add(new ManyToMany { Propiedad = _property, Asociacion = _associationType, Tupla = _tupla, PropiedadEntidadRelacionada = _propiedadEntidadRelacionada, PropiedadesClaveEntidadRelacionada = _typeMapper.GetKeyProperties((EntityType) _propiedadEntidadRelacionada.DeclaringType).ToList() });
+			}
+	 } #>
+<#= _codeStringGenerator.ClassOpening(_entity, "CreateOrUpdate{2}Handler", "ICommandHandler<CreateOrUpdate" + _code.Escape(_entity) + "Command>")#> {
+	private readonly I<#=_code.Escape(_entity.Name)#>Repository <#=_code.Escape(_entity.Name)#>Repository;
+<# foreach (string _nombreEntidad in _datosPropiedadesManyToMany.Where(m => m.PropiedadEntidadRelacionada.DeclaringType.Name != _entity.Name).Select(m => m.PropiedadEntidadRelacionada.DeclaringType.Name).Distinct()) { #>
+	private readonly I<#=_nombreEntidad#>Repository <#=_nombreEntidad#>Repository;
+<# } #>
+	private readonly IUnitOfWork unitOfWork;
+<# var _properties = _typeMapper.GetProperties(_entity);
+    if (_properties.Any()) { #>
+	public CreateOrUpdate<#=_code.Escape(_entity)#>Handler(I<#=_code.Escape(_entity)#>Repository <#=_code.Escape(_entity)#>Repository<# foreach (string _nombreEntidad in _datosPropiedadesManyToMany.Where(m => m.PropiedadEntidadRelacionada.DeclaringType.Name != _entity.Name).Select(m => m.PropiedadEntidadRelacionada.DeclaringType.Name).Distinct()) { #>, I<#= _nombreEntidad #>Repository <#= _nombreEntidad #>Repository<# } #>, IUnitOfWork unitOfWork) {
+		this.<#= _code.Escape(_entity.Name) #>Repository = <#= _code.Escape(_entity.Name) #>Repository;
+<# foreach (string _nombreEntidad in _datosPropiedadesManyToMany.Where(m => m.PropiedadEntidadRelacionada.DeclaringType.Name != _entity.Name).Select(m => m.PropiedadEntidadRelacionada.DeclaringType.Name).Distinct()) { #>
+		this.<#= _nombreEntidad #>Repository = <#= _nombreEntidad #>Repository;
+<# } #>
+		this.unitOfWork = unitOfWork;
+	}
+
+	public ICommandResult Execute(CreateOrUpdate<#=_code.Escape(_entity)#>Command command) {
+		<#=_code.Escape(_entity)#> _<#=_code.Escape(_entity)#> = AutoMapper.Mapper.Map<CreateOrUpdate<#=_code.Escape(_entity)#>Command, <#=_code.Escape(_entity)#>>(command);
+<# var _keyProperties = _typeMapper.GetKeyProperties(_entity);
+	 foreach (ManyToMany _manytoMany in _datosPropiedadesManyToMany) { 
+		string _tipoEntidadRelacionada = _code.Escape(_manytoMany.PropiedadEntidadRelacionada.DeclaringType);	#>
+		if (_<#=_code.Escape(_entity)#>.<#=_code.Escape(_manytoMany.Propiedad)#> != null && _<#=_code.Escape(_entity)#>.<#=_code.Escape(_manytoMany.Propiedad)#>.Count > 0) {
+			Dictionary<string, KeyValuePair<string, <#= _tipoEntidadRelacionada #>>> _<#=_code.Escape(_manytoMany.Propiedad)#>Existentes = _<#=_code.Escape(_entity)#>.<#=_code.Escape(_manytoMany.Propiedad)#>.Select(u => new KeyValuePair<string, <#= _tipoEntidadRelacionada #>>(<# foreach (EdmProperty _propiedadClave in _manytoMany.PropiedadesClaveEntidadRelacionada) { #><# if (_propiedadClave != _manytoMany.PropiedadesClaveEntidadRelacionada.First()) { #> + <# } #>u.<#= _code.Escape(_propiedadClave) #>.ToString()<# } #>, <#= _tipoEntidadRelacionada #>Repository.GetById(new string[] {}, (p => <#= _codeStringGenerator.CompareProperties(_manytoMany.PropiedadesClaveEntidadRelacionada, "u", "p", "&&", "==") #>)))).ToDictionary(u => u.Key);
+			_<#=_code.Escape(_entity)#>.<#=_code.Escape(_manytoMany.Propiedad)#> = _<#=_code.Escape(_entity)#>.<#=_code.Escape(_manytoMany.Propiedad)#>.Select(u => _<#=_code.Escape(_manytoMany.Propiedad)#>Existentes[<# foreach (EdmProperty _propiedadClave in _manytoMany.PropiedadesClaveEntidadRelacionada) { #><# if (_propiedadClave != _manytoMany.PropiedadesClaveEntidadRelacionada.First()) { #> + <# } #>u.<#= _code.Escape(_propiedadClave) #>.ToString()<# } #>].Value != null ? _<#=_code.Escape(_manytoMany.Propiedad)#>Existentes[<# foreach (EdmProperty _propiedadClave in _manytoMany.PropiedadesClaveEntidadRelacionada) { #><# if (_propiedadClave != _manytoMany.PropiedadesClaveEntidadRelacionada.First()) { #> + <# } #>u.<#= _code.Escape(_propiedadClave) #>.ToString()<# } #>].Value : u).ToList();
+			// TODO: OLL: Ver si es neceario poner los que existen como Modified. Ver la manera de incluir este código de manera genérica en RepositoryBase.Update
+			foreach (<#= _tipoEntidadRelacionada #> _<#= _tipoEntidadRelacionada.Substring(0, 1).ToLower() + _tipoEntidadRelacionada.Substring(1) #> in _<#=_code.Escape(_entity)#>.<#=_code.Escape(_manytoMany.Propiedad)#>) {
+				if (((<#=_code.Escape(_entity)#>Repository) <#=_code.Escape(_entity)#>Repository).DataContext.Entry(_<#= _tipoEntidadRelacionada.Substring(0, 1).ToLower() + _tipoEntidadRelacionada.Substring(1) #>).State == System.Data.EntityState.Detached) {
+					((<#=_code.Escape(_entity)#>Repository) <#=_code.Escape(_entity)#>Repository).DataContext.Entry(_<#= _tipoEntidadRelacionada.Substring(0, 1).ToLower() + _tipoEntidadRelacionada.Substring(1) #>).State = System.Data.EntityState.Added;
+				}
+			}
+		}
+<# } 
+	 if (_keyProperties.Count() > 1 || (_keyProperties.Count() == 1 && !_typeMapper.IsGeneratedByStore(_keyProperties.First()))) { #>
+		if (!<#=_code.Escape(_entity)#>Repository.Exist(p => <#= _codeStringGenerator.CompareProperties(_keyProperties, "command", "p", "&&", "==") #>)) { <#=_code.Escape(_entity)#>Repository.Add(_<#=_code.Escape(_entity)#>); } else { <#=_code.Escape(_entity)#>Repository.Update(_<#=_code.Escape(_entity)#>); }
+<# } else { #>
+		if (<# foreach (var edmProperty in _keyProperties) { #><# if (_keyProperties.FirstOrDefault() != edmProperty) { #> || <# } #><#=_codeStringGenerator.NewValueCondition(edmProperty, "command")#><# } #>) { <#=_code.Escape(_entity)#>Repository.Add(_<#=_code.Escape(_entity)#>); } else { <#=_code.Escape(_entity)#>Repository.Update(_<#=_code.Escape(_entity)#>); }
+<# } #>
+		unitOfWork.Commit();
+
+<# /* foreach (var edmProperty in _properties) { #>
+		//<#=_codeStringGenerator.ObjectPropertyAssign(edmProperty, _code.Escape(_entity), "command", true)#> 
+<# } */ #>
+		AutoMapper.Mapper.Map<<#=_code.Escape(_entity)#>, CreateOrUpdate<#=_code.Escape(_entity)#>Command>(_<#=_code.Escape(_entity)#>, command);
+
+		return new CommandResult(true);
+	}
+<#	} #>
+}
+<#
+	EndNamespace(_code);
+}
+_fileManager.Process();
+
+#>

@@ -1,0 +1,469 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <!--DOTWARE TST S.L.-->
+  <data name="AddContent.Action">
+    <value xml:space="preserve">Añadir tarea al programador</value>
+  </data>
+  <data name="All.Text">
+    <value xml:space="preserve">Todos</value>
+  </data>
+  <data name="APPLICATION_START.Text">
+    <value xml:space="preserve">APPLICATION_START </value>
+  </data>
+  <data name="Cancel.Text">
+    <value xml:space="preserve">Cancelar</value>
+  </data>
+  <data name="cmdAddTask.Text">
+    <value xml:space="preserve">Añadir tarea</value>
+  </data>
+  <data name="cmdDelete.Text">
+    <value xml:space="preserve">Eliminar</value>
+  </data>
+  <data name="cmdRun.Text">
+    <value xml:space="preserve">Ejecutar ahora</value>
+  </data>
+  <data name="cmdSave.Text">
+    <value xml:space="preserve">Guardar</value>
+  </data>
+  <data name="cmdStart.Text">
+    <value xml:space="preserve">Iniciar</value>
+  </data>
+  <data name="cmdStop.Text">
+    <value xml:space="preserve">Detener</value>
+  </data>
+  <data name="ContentOptions.Action">
+    <value xml:space="preserve">Ver estado del programador</value>
+  </data>
+  <data name="ControlTitle_.Text">
+    <value xml:space="preserve">Programador</value>
+  </data>
+  <data name="ControlTitle_edit.Text">
+    <value xml:space="preserve">Editar tarea</value>
+  </data>
+  <data name="ControlTitle_history.Text">
+    <value xml:space="preserve">Historial de ejecuciones</value>
+  </data>
+  <data name="ControlTitle_status.Text">
+    <value xml:space="preserve">Estado del programador</value>
+  </data>
+  <data name="Day.Text">
+    <value xml:space="preserve">Día</value>
+  </data>
+  <data name="Days.Text">
+    <value xml:space="preserve">Días</value>
+  </data>
+  <data name="DeleteError.Text">
+    <value xml:space="preserve">No se ha podido eliminar la tarea del programador. Vuelva a intentarlo.</value>
+  </data>
+  <data name="DeleteSuccess.Text">
+    <value xml:space="preserve">La tarea se ha eliminado.</value>
+  </data>
+  <data name="Description.Header">
+    <value xml:space="preserve">Descripción</value>
+  </data>
+  <data name="DescriptionColumn.Text">
+    <value xml:space="preserve">DESCRIPCIÓN</value>
+  </data>
+  <data name="Disabled.Text">
+    <value xml:space="preserve">Desactivado</value>
+  </data>
+  <data name="DisabledMessage.Text">
+    <value xml:space="preserve">El programado está desactivado.</value>
+  </data>
+  <data name="Duration.Header">
+    <value xml:space="preserve">Duración (segundos)</value>
+  </data>
+  <data name="DurationColumn.Text">
+    <value xml:space="preserve">DURACIÓN (SEG)</value>
+  </data>
+  <data name="Enabled.Header">
+    <value xml:space="preserve">ACTIVA</value>
+  </data>
+  <data name="Enabled.Label">
+    <value xml:space="preserve">Activa</value>
+  </data>
+  <data name="Ended.Header">
+    <value xml:space="preserve">Finalizado</value>
+  </data>
+  <data name="Frequency.Header">
+    <value xml:space="preserve">FRECUENCIA</value>
+  </data>
+  <data name="History.Text">
+    <value xml:space="preserve">Ver el historial</value>
+  </data>
+  <data name="HistoryModalTitle.Text">
+    <value xml:space="preserve">Historial de la tarea:</value>
+  </data>
+  <data name="Hour.Text">
+    <value xml:space="preserve">Hora</value>
+  </data>
+  <data name="Hours.Text">
+    <value xml:space="preserve">Horas</value>
+  </data>
+  <data name="InvalidFrequencyAndRetry.Text">
+    <value xml:space="preserve">Los valores de frecuencia y reintentos no son correctos. El valor de la frecuencia tiene que ser superior al de los reintentos.</value>
+  </data>
+  <data name="lblActiveThreadsLabel.Text">
+    <value xml:space="preserve">Hilos activos:</value>
+  </data>
+  <data name="lblCommand.Text">
+    <value xml:space="preserve">Comando:</value>
+  </data>
+  <data name="lblFreeThreadsLabel.Text">
+    <value xml:space="preserve">Hilos libres:</value>
+  </data>
+  <data name="lblMaxThreadsLabel.Text">
+    <value xml:space="preserve">Hilos máximos:</value>
+  </data>
+  <data name="lblProcessing.Text">
+    <value xml:space="preserve">Tareas en proceso</value>
+  </data>
+  <data name="lblQueue.Text">
+    <value xml:space="preserve">Tareas en la cola</value>
+  </data>
+  <data name="lblStartDelay.Text">
+    <value xml:space="preserve">Retardo de inicio del programador (mins):</value>
+  </data>
+  <data name="lblStatusLabel.Text">
+    <value xml:space="preserve">Estado:</value>
+  </data>
+  <data name="lnkHistory.Text">
+    <value xml:space="preserve">Ver histórico</value>
+  </data>
+  <data name="ManuallyStopped.Text">
+    <value xml:space="preserve">Detenido manualmente desde la página de estado del programador</value>
+  </data>
+  <data name="Minute.Text">
+    <value xml:space="preserve">Minuto</value>
+  </data>
+  <data name="Minutes.Text">
+    <value xml:space="preserve">Minutos</value>
+  </data>
+  <data name="ModuleHelp.Text">
+    <value xml:space="preserve">&lt;h1&gt;Acerca del programador de tareas&lt;/h1&gt;&lt;p&gt;Permite programar tareas para ser ejecutadas a intervalos establecidos.&lt;/p&gt;</value>
+  </data>
+  <data name="Months.Text">
+    <value xml:space="preserve">Meses</value>
+  </data>
+  <data name="n/a.Text">
+    <value xml:space="preserve">n/a</value>
+  </data>
+  <data name="Name.Header">
+    <value xml:space="preserve">Nombre de tarea</value>
+  </data>
+  <data name="nav_TaskScheduler.Text">
+    <value xml:space="preserve">Programador</value>
+  </data>
+  <data name="NextStart.Header">
+    <value xml:space="preserve">Próxima ejecución</value>
+  </data>
+  <data name="NextStart.Label">
+    <value xml:space="preserve">Próxima ejecución</value>
+  </data>
+  <data name="No.Text">
+    <value xml:space="preserve">No</value>
+  </data>
+  <data name="None.Text">
+    <value xml:space="preserve">Ninguno</value>
+  </data>
+  <data name="NOT_SET.Text">
+    <value xml:space="preserve">NO ESTABLECIDO</value>
+  </data>
+  <data name="NoTasks.Text">
+    <value xml:space="preserve">No hay tareas en la cola y ninguna tarea en ejecución.</value>
+  </data>
+  <data name="Notes.Header">
+    <value xml:space="preserve">Notas</value>
+  </data>
+  <data name="ObjectDependencies.Header">
+    <value xml:space="preserve">Dependencias de objetos:</value>
+  </data>
+  <data name="Overdue.Header">
+    <value xml:space="preserve">Vencida (segundos)</value>
+  </data>
+  <data name="pagerSummary.Text">
+    <value xml:space="preserve">Mostrando {0}-{1} de {2} resultados</value>
+  </data>
+  <data name="pageSizeOption.Text">
+    <value xml:space="preserve">{0} resultos por página</value>
+  </data>
+  <data name="plAttachToEvent.Help">
+    <value xml:space="preserve">Seleccione "Application Start" para que se ejecute esta tarea cuando arranca la aplicación. NOTA: los eventos programados para APPLICATION_END puede que no se ejecuten de forma fiable en algunos entornos.</value>
+  </data>
+  <data name="plAttachToEvent.Text">
+    <value xml:space="preserve">Ejecutar en evento:</value>
+  </data>
+  <data name="plCatchUpEnabled.Help">
+    <value xml:space="preserve">Si esta opción está marcada, cuando el servidor vuelva a estar en ejecución después de un periodo de inactividad, ejecutará la tarea una vez para cada repetición que no se haya ejecutado durante el periodo de inactividad.</value>
+  </data>
+  <data name="plCatchUpEnabled.Text">
+    <value xml:space="preserve">Recuperación habilitada</value>
+  </data>
+  <data name="plEnabled.Help">
+    <value xml:space="preserve">Active esta opción para activar la programación.</value>
+  </data>
+  <data name="plEnabled.Text">
+    <value xml:space="preserve">Activar</value>
+  </data>
+  <data name="plFriendlyName.Help">
+    <value xml:space="preserve">Introduzca el nombre de la tarea programada.</value>
+  </data>
+  <data name="plFriendlyName.Text">
+    <value xml:space="preserve">Nombre</value>
+  </data>
+  <data name="plObjectDependencies.Help">
+    <value xml:space="preserve">Escriba las tablas u objetos de los cuales depende este evento. Ejemplo: "SiteLog,Users,UsersOnline"</value>
+  </data>
+  <data name="plObjectDependencies.Text">
+    <value xml:space="preserve">Dependencias de objetos</value>
+  </data>
+  <data name="plRetainHistoryNum.Help">
+    <value xml:space="preserve">Indique el número de elementos a conservar en el historial del programador.</value>
+  </data>
+  <data name="plRetainHistoryNum.Text">
+    <value xml:space="preserve">Conservar histórico del programador:</value>
+  </data>
+  <data name="plRetryTimeLapse.Help">
+    <value xml:space="preserve">Indique el intervalo de tiempo para volver a ejecutar una tarea que ha fallado.</value>
+  </data>
+  <data name="plRetryTimeLapse.Text">
+    <value xml:space="preserve">Frecuencia de reintentos</value>
+  </data>
+  <data name="plScheduleAppStartDelay.Help">
+    <value xml:space="preserve">Número de minutos que el sistema tiene que esperar antes de empezar a ejecutar las tareas después de un reinicio del sistema. El valor predeterminado es de 1 minuto.</value>
+  </data>
+  <data name="plScheduleAppStartDelay.Text">
+    <value xml:space="preserve">Retardo al inicio:</value>
+  </data>
+  <data name="plSchedulerMode.Help">
+    <value xml:space="preserve">El modo Temporizador mantiene una tarea independiente para ejecutar las tareas mientras el proceso del web este activo. El modo Petición ejecuta las tareas cuando se reciben peticiones HTTP. Puede desactivar el programador seleccionando la opción Desactivado.</value>
+  </data>
+  <data name="plSchedulerMode.Text">
+    <value xml:space="preserve">Modo del programador:</value>
+  </data>
+  <data name="plScheduleStartDate.Help">
+    <value xml:space="preserve">Introduzca la fecha/hora de inicio de la tarea. Atención: Si el servidor no está activo en este momento o hay otras tareas ejecutándose, esta tarea se ejecutará tan pronto como el servidor esté disponible de nuevo.</value>
+  </data>
+  <data name="plScheduleStartDate.Text">
+    <value xml:space="preserve">Fecha y hora de inicio de la tarea.</value>
+  </data>
+  <data name="plServers.Help">
+    <value xml:space="preserve">Filtre las tareas según el servidor o Todas para ver todas las tareas.</value>
+  </data>
+  <data name="plServers.Text">
+    <value xml:space="preserve">Servidor:</value>
+  </data>
+  <data name="plTimeLapse.Help">
+    <value xml:space="preserve">Indique la frecuencia con la que se va a ejecutar la tarea.</value>
+  </data>
+  <data name="plTimeLapse.Text">
+    <value xml:space="preserve">Frecuencia</value>
+  </data>
+  <data name="plType.Help">
+    <value xml:space="preserve">El nombre completo de clase seguido por el nombre de ensamblado. Ejemplo: "DotNetNuke.Entities.Users.PurgeUsersOnline, DOTNETNUKE"</value>
+  </data>
+  <data name="plType.Text">
+    <value xml:space="preserve">Nombre completo de clase y ensamblado</value>
+  </data>
+  <data name="processing.Text">
+    <value xml:space="preserve">En proceso...</value>
+  </data>
+  <data name="RanOnServerColumn.Text">
+    <value xml:space="preserve">SERVIDOR</value>
+  </data>
+  <data name="RequestMethod.Text">
+    <value xml:space="preserve">Modo Petición</value>
+  </data>
+  <data name="RetryTimeLapse.Header">
+    <value xml:space="preserve">FRECUENCIA DE REINTENTOS</value>
+  </data>
+  <data name="RetryTimeLapseValidator.ErrorMessage">
+    <value xml:space="preserve">El rango válido para la frecuencia es entre 1 y 999999</value>
+  </data>
+  <data name="RUNNING_EVENT_SCHEDULE.Text">
+    <value xml:space="preserve">EJECUTANDO TAREA EVENTO</value>
+  </data>
+  <data name="RUNNING_REQUEST_SCHEDULE.Text">
+    <value xml:space="preserve">EJECUTANDO TAREA PETICIÓN</value>
+  </data>
+  <data name="RUNNING_TIMER_SCHEDULE.Text">
+    <value xml:space="preserve">EJECUTANDO TAREA TEMPORIZADOR</value>
+  </data>
+  <data name="RunNow.Text">
+    <value xml:space="preserve">Tarea agregada a la programación para su ejecución inmediata.</value>
+  </data>
+  <data name="RunNowError.Text">
+    <value xml:space="preserve">No se ha podido añadir la tarea al programador. Vuelva a intentarlo.</value>
+  </data>
+  <data name="ScheduleAppStartDelayValidation.Text">
+    <value xml:space="preserve">Introduzca un valor en minutos</value>
+  </data>
+  <data name="ScheduleHistory.Action">
+    <value xml:space="preserve">Ver historial del programador</value>
+  </data>
+  <data name="ScheduleID.Header">
+    <value xml:space="preserve">ID:</value>
+  </data>
+  <data name="ScheduleItemCreateError.Text">
+    <value xml:space="preserve">No se ha podido crear la tarea. Vuelva a intentarlo.</value>
+  </data>
+  <data name="ScheduleItemCreateSuccess.Text">
+    <value xml:space="preserve">La tarea se ha creado.</value>
+  </data>
+  <data name="ScheduleItemDeletedWarning.Text">
+    <value xml:space="preserve">¿Está seguro que desea eliminar esta tarea?</value>
+  </data>
+  <data name="ScheduleItemUpdateError.Text">
+    <value xml:space="preserve">No se ha podido actualizar la tarea del programador. Vuelva a intentarlo.</value>
+  </data>
+  <data name="ScheduleItemUpdateSuccess.Text">
+    <value xml:space="preserve">La tarea se ha actualizado.</value>
+  </data>
+  <data name="SchedulerStartError.Text">
+    <value xml:space="preserve">No se ha podido iniciar el programador. Vuelva a intentarlo.</value>
+  </data>
+  <data name="SchedulerStartSuccess.Text">
+    <value xml:space="preserve">El programador se ha iniciado.</value>
+  </data>
+  <data name="SchedulerStopError.Text">
+    <value xml:space="preserve">No se ha podido detener el programador. Vuelva a intentarlo.</value>
+  </data>
+  <data name="SchedulerStopSuccess.Text">
+    <value xml:space="preserve">El programador se ha detenido.</value>
+  </data>
+  <data name="SchedulerUpdateError.Text">
+    <value xml:space="preserve">No se ha podido actualizar la configuración del programador. Vuelva a intentarlo.</value>
+  </data>
+  <data name="SchedulerUpdateSuccess.Text">
+    <value xml:space="preserve">Se ha guardado la configuración.</value>
+  </data>
+  <data name="Seconds.Text">
+    <value xml:space="preserve">Segundos</value>
+  </data>
+  <data name="Server.Header">
+    <value xml:space="preserve">Ejecutada en el servidor</value>
+  </data>
+  <data name="Servers.Header">
+    <value xml:space="preserve">Servidores:</value>
+  </data>
+  <data name="ServerTime.Text">
+    <value xml:space="preserve">Hora del servidor:</value>
+  </data>
+  <data name="Settings.Text">
+    <value xml:space="preserve">Configuración</value>
+  </data>
+  <data name="SettingsRestoreWarning.Text">
+    <value xml:space="preserve">¿Está seguro que desea cancelar los cambios?</value>
+  </data>
+  <data name="SHUTTING_DOWN.Text">
+    <value xml:space="preserve">DETENER</value>
+  </data>
+  <data name="Start.Header">
+    <value xml:space="preserve">Inicio/final/siguiente</value>
+  </data>
+  <data name="Start/End/Next Start.Header">
+    <value xml:space="preserve">Inicio/final/siguiente</value>
+  </data>
+  <data name="Started.Header">
+    <value xml:space="preserve">Iniciado</value>
+  </data>
+  <data name="StartEndColumn.Text">
+    <value xml:space="preserve">INICIO/FIN</value>
+  </data>
+  <data name="StartSchedule.Text">
+    <value xml:space="preserve">Iniciar programador</value>
+  </data>
+  <data name="Status.Text">
+    <value xml:space="preserve">Ver estado</value>
+  </data>
+  <data name="Stop.Header">
+    <value xml:space="preserve">Detenido</value>
+  </data>
+  <data name="STOPPED.Text">
+    <value xml:space="preserve">DETENIDO</value>
+  </data>
+  <data name="StopSchedule.Text">
+    <value xml:space="preserve">Detener programador</value>
+  </data>
+  <data name="Succeeded.Header">
+    <value xml:space="preserve">Correcto</value>
+  </data>
+  <data name="SucceededColumn.Text">
+    <value xml:space="preserve">CORRECTO</value>
+  </data>
+  <data name="TabHistory.Text">
+    <value xml:space="preserve">HISTÓRICO</value>
+  </data>
+  <data name="TabHistoryTitle.Text">
+    <value xml:space="preserve">Histórico</value>
+  </data>
+  <data name="TabScheduler.Text">
+    <value xml:space="preserve">PROGRAMADOR</value>
+  </data>
+  <data name="TabTaskQueue.Text">
+    <value xml:space="preserve">COLA DE TAREAS</value>
+  </data>
+  <data name="Thread.Header">
+    <value xml:space="preserve">Hilo:</value>
+  </data>
+  <data name="TimeLapsePrefix.Text">
+    <value xml:space="preserve">Frecuencia</value>
+  </data>
+  <data name="TimeLapseRequired.ErrorMessage">
+    <value xml:space="preserve">El rango válido para la frecuencia es entre 1 y 999999</value>
+  </data>
+  <data name="TimeLapseValidator.ErrorMessage">
+    <value xml:space="preserve">El rango válido para la frecuencia es entre 1 y 999999</value>
+  </data>
+  <data name="TimeRemaining.Header">
+    <value xml:space="preserve">Tiempo restante (segundos):</value>
+  </data>
+  <data name="TimerMethod.Text">
+    <value xml:space="preserve">Modo Temporizador</value>
+  </data>
+  <data name="TriggeredBy.Header">
+    <value xml:space="preserve">Iniciado por:</value>
+  </data>
+  <data name="Type.Header">
+    <value xml:space="preserve">Tipo</value>
+  </data>
+  <data name="TypeRequired.Text">
+    <value xml:space="preserve">El tipo de la tarea es obligatorio.</value>
+  </data>
+  <data name="Update.Text">
+    <value xml:space="preserve">Actualizar</value>
+  </data>
+  <data name="UpdateSuccess.Text">
+    <value xml:space="preserve">Se han guardado los cambios.</value>
+  </data>
+  <data name="ViewLog.Header">
+    <value xml:space="preserve">Registro</value>
+  </data>
+  <data name="WAITING_FOR_OPEN_THREAD.Text">
+    <value xml:space="preserve">ESPERANDO HILOS DISPONIBLES</value>
+  </data>
+  <data name="WAITING_FOR_REQUEST.Text">
+    <value xml:space="preserve">ESPERANDO PETICIÓN</value>
+  </data>
+  <data name="Weeks.Text">
+    <value xml:space="preserve">Semanas</value>
+  </data>
+  <data name="Years.Text">
+    <value xml:space="preserve">Años</value>
+  </data>
+  <data name="Yes.Text">
+    <value xml:space="preserve">Sí</value>
+  </data>
+</root>

@@ -1,0 +1,83 @@
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="..\\..\\CollectorsClub.Model\\Templates\\Context.Base.ttinclude"#>
+<#@ output extension=".js"#><#
+
+const string _inputFile = @"..\..\CollectorsClub.EntityFramework\Model.edmx";
+string _aplicacion = "CollectorsClub";
+Dictionary<string, MetadataGenerador.MetadataEntidad> _metadataEntidades = MetadataGenerador.ObtenerEntidades(_aplicacion);
+var _storeMetadata = LoadMetadata(_inputFile);
+var _textTransform = DynamicTextTransformation.Create(this);
+var _code = new CodeGenerationTools(this);
+var _ef = new MetadataTools(this);
+//var _itemCollection = new EdmMetadataLoader(_textTransform.Host, _textTransform.Errors).CreateEdmItemCollection(_inputFile);
+var _itemCollection = _storeMetadata.EdmItems;
+EntityContainer _container = _itemCollection.OfType<EntityContainer>().FirstOrDefault();
+var _typeMapper = new TypeMapper(_code, _ef, _container, _storeMetadata, _textTransform.Errors);
+var	_fileManager = EntityFrameworkTemplateFileManager.Create(this);
+var _codeStringGenerator = new CodeStringGenerator(_code, _typeMapper, _ef);
+var _codeJSGenerator = new CodeJSGenerator(_code, _typeMapper, _ef);
+var _modulo = "Editor";
+
+if (!_typeMapper.VerifyCaseInsensitiveTypeUniqueness(_typeMapper.GetAllGlobalItems(_itemCollection), _inputFile)) {
+	return string.Empty;
+}
+
+MetadataGenerador.IncluirEntidadesNoExistentesEnFramework(_metadataEntidades, _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection).ToList(), _typeMapper);
+foreach (var _entity in _typeMapper.GetItemsToGenerate<EntityType>(_itemCollection)) {
+  _fileManager.StartNewFile(_entity.Name + _modulo + "Main.js"); 
+  IEnumerable<EdmProperty> propertiesWithDefaultValues = _typeMapper.GetPropertiesWithDefaultValues(_entity);
+  IEnumerable<NavigationProperty> collectionNavigationProperties = _typeMapper.GetCollectionNavigationProperties(_entity);
+  IEnumerable<NavigationProperty> navigationProperties = _typeMapper.GetNavigationProperties(_entity);
+  IEnumerable<EdmProperty> complexProperties = _typeMapper.GetComplexProperties(_entity);
+  IEnumerable<EdmProperty> simpleProperties = _typeMapper.GetSimpleProperties(_entity);
+  IEnumerable<EdmMember> _properties = _typeMapper.GetProperties(_entity);
+	IEnumerable<MetadataGenerador.MetadataPropiedad> _propiedadesFormulario = MetadataGenerador.AgruparPropiedadesPaneles(_metadataEntidades[_entity.Name].PanelesFormulario).Values.Where(p => p.Visible);
+	bool _incluirArchivosCargaArchivos = _propiedadesFormulario.Any(p => p.TipoCampo == MetadataGenerador.TipoCampo.Texto_CargaArchivo);
+	bool _incluirArchivosEditorHtml = _propiedadesFormulario.Any(p => p.TipoCampo == MetadataGenerador.TipoCampo.Texto_Editor);
+	#>
+if (ParametrosGlobales.trace) { console.log(new Date().getTime() - Inicio.getTime() + ' - Main: Antes de obtener dependencias'); }
+require(['ParametrosGlobales', 'knockout', 'dojox/json/ref', 'Globales/Cargando', 'Globales/Partials', 'WebAPI/knockout.mapping-latest', 'jquery', 'Globales/Error', 'DNN/dnn.modalpopup', 'global/bootstrap/js/bootstrap.min', 'Globales/popup'], function (parametrosGlobales, ko, dojoref, cargando, partials, mapping, $, error, modalPopup, bootstrap, popup) {
+	if (ParametrosGlobales.trace) { console.log(new Date().getTime() - Inicio.getTime() + ' - Iniciando main'); }
+	window.ko = ko;
+	window.ko.mapping = mapping;
+
+	// Deshabilita los eventos del link del menú que se está visualizando para evitar que se disparen eventos de validación al ir desde el menú a la misma página
+	function DeshabilitarEventosMenuitemActual() {
+		var old_element = $('.subcurrent a').get(0);
+		if (old_element != null) {
+			var new_element = old_element.cloneNode(true);
+			old_element.parentNode.replaceChild(new_element, old_element);
+		}
+	}
+	DeshabilitarEventosMenuitemActual();
+
+	partials.InicializarGlobalStylesheets();
+	if (!$("#dvContenedor<#=_code.Escape(_entity)#><#= _modulo #> #PanelListado").length) {
+		require(['dojo/text!' + parametrosGlobales.RutaPartials + '/<#=_code.Escape(_entity)#><#= _modulo #>View.html'], function (contenidoHtml) {
+			try {
+				var _parametros = $.extend({
+					PermitirCrear: false,
+					PermitirGuardar: true,
+					PermitirBorrar: false,
+					BusquedaAutomatica: true,
+					IdModulo: '<#=_code.Escape(_entity)#><#= _modulo #>',
+					Contenedor: '#dvContenedor<#=_code.Escape(_entity)#><#= _modulo #>',
+					TamanyoPagina: 50,
+					ColumnaOrden: 'FechaAlta',
+					TipoOrden: 0
+				}, parametrosGlobales);
+				$("#dvContenedor<#=_code.Escape(_entity)#><#= _modulo #>").html(contenidoHtml.replace(/~\//g, _parametros.ApplicationPath));
+				if (ParametrosGlobales.trace) { console.log(new Date().getTime() - Inicio.getTime() + ' - Cargado contenido ' + _parametros.IdModulo); }
+				<#=_code.Escape(_entity)#><#= _modulo #>_Iniciar(_parametros);
+			} catch (exception) {
+				console.error(exception);
+			}
+		});
+	}
+});<#
+}
+
+_fileManager.Process();
+#>	 

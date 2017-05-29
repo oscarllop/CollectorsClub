@@ -1,0 +1,10 @@
+﻿/* Image Gallery */
+ul.image-gallery {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul.image-gallery .image-gallery-item {
+	margin-bottom: 35px;
+}

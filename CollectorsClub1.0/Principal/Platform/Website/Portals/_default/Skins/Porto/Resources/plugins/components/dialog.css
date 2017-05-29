@@ -1,0 +1,25 @@
+﻿/* Dialog */
+.dialog {
+	background: white;
+	padding: 20px 30px;
+	text-align: left;
+	margin: 40px auto;
+	position: relative;
+	max-width: 600px;
+}
+
+.dialog.dialog-xs {
+	max-width: 200px;
+}
+
+.dialog.dialog-sm {
+	max-width: 400px;
+}
+
+.dialog.dialog-md {
+	max-width: 600px;
+}
+
+.dialog.dialog-lg {
+	max-width: 900px;
+}
