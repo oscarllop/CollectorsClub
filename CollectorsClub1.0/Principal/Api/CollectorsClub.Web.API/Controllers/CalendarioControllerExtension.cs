@@ -111,8 +111,10 @@ namespace CollectorsClub.Web.API.Controllers {
 					string _propuestaRuta = string.Format("{0}{1}{2}\\{3}\\{4} {5}{6}{7}.jpg", _rutaInicial + Path.DirectorySeparatorChar + _carpetatipoColeccion, _carpetaCategoria, _carpetaSubCategoria, _entidad, _calendario.Anyo, _nombreArchivo, _variante, _numeroSerie);
 
 					if (File.Exists(_propuestaRuta)) {
-						_calendario.Imagen = _propuestaRuta.Replace(_rutaInicial, string.Empty).Replace(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
-						calendarioRepository.Update(_calendario);
+						if (_calendario.Imagen != _propuestaRuta.Replace(_rutaInicial, string.Empty).Replace(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)) {
+							_calendario.Imagen = _propuestaRuta.Replace(_rutaInicial, string.Empty).Replace(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+							calendarioRepository.Update(_calendario);
+						}
 						_calendariosLozalizados++;
 					} else {
 						_mensajes.Add(string.Format("{0}-{1}: <b>{2}</b>", _calendario.Id, _propuestaRuta, File.Exists(_propuestaRuta)));

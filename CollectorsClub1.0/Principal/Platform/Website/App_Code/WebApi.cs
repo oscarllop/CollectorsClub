@@ -58,7 +58,7 @@ public static class WebApi {
 
 	private static HttpWebRequest GetHttpWebRequestConToken(string urlWebApi, string urlAccionController, WebApiVerbos verbo) {
 		HttpWebRequest _request = (HttpWebRequest) WebRequest.Create(new Uri(urlWebApi + urlAccionController));
-		_request.Timeout = 120000;
+		_request.Timeout = 600000;
 		_request.Headers.Add("Authorization", "Session " + Tokens[urlWebApi].access_token);
 		_request.Accept = "application/json";
 		_request.ContentType = "application/json";
